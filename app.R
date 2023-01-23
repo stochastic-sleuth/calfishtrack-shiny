@@ -111,7 +111,7 @@ if (as.numeric(Sys.Date() - last_checked_date) < 90) {
     
     # Change the last saved date to today
     last_checked_date <- Sys.Date()
-    saveRDS(last_checked_date, "data/last_checked_date.RDS")
+    saveRDS(last_checked_date, "./data/last_checked_date.RDS")
   }
 }
 
@@ -1118,7 +1118,7 @@ server <- function(input, output, session) {
   timestepVar<-  reactive({
     req(input$anim_dataset)
     
-    files <- list.files("./data/detections/", full.names = T)
+    files <- list.files("./detections/", full.names = T)
     
     # Choose the file that matches the studyID and read it in
     original_studyid <- convert_descriptive_to_studyid(input$anim_dataset)
@@ -1330,7 +1330,7 @@ server <- function(input, output, session) {
     req(input$time_of_day_input)
     
     # Directory of detection files
-    files <- list.files("./data/detections/", full.names = T)
+    files <- list.files("./detections/", full.names = T)
     
     original_studyid <- convert_descriptive_to_studyid(input$time_of_day_input)
     file <- files[str_detect(files, original_studyid)]
@@ -2769,7 +2769,7 @@ server <- function(input, output, session) {
   movementVar <-  reactive({
     req(input$movement_dataset)
     
-    files <- list.files("./data/detections/", full.names = T)
+    files <- list.files("./detections/", full.names = T)
     
     # Choose the file that matches the studyID and read it in
     original_studyid <- convert_descriptive_to_studyid(input$movement_dataset)
@@ -2883,7 +2883,7 @@ server <- function(input, output, session) {
     req(input$movement_plot_dataset)
     
     # Directory of detection files
-    files <- list.files("./data/detections/", full.names = T)
+    files <- list.files("./detections/", full.names = T)
     original_studyid <- convert_descriptive_to_studyid(input$movement_plot_dataset)
     file <- files[str_detect(files, original_studyid)]
     detections <- vroom(file, col_types = cols())
