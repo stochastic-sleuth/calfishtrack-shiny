@@ -45,7 +45,6 @@ library(DiagrammeR) # for Delta route survival diagram
 library(kableExtra) # for Delta route survival table
 
 
-
 # Global ------------------------------------------------------------------------------------------------------------------------------
 
 ## Load Receiver Deployments -----------------------------------------------
@@ -55,12 +54,12 @@ cache_delete_all()
 # If last dl was > 90 days update files, else read in csv
 
 # Download updates every 90 days
-last_checked_date <- read_rds("data/last_checked_date.RDS")
+last_checked_date <- read_rds("./data/last_checked_date.RDS")
 
 # If last update check was < 90 days read in CSVs (much faster load times)
 if (as.numeric(Sys.Date() - last_checked_date) < 90) {
-   ReceiverDeployments_fileID <- '1qk3eAB5e42bxQ1FbR08AwRbhf44Xf_95'
-   ReceiverDeployments <- read.csv(sprintf("https://docs.google.com/uc?id=%s&export=download", ReceiverDeployments_fileID))
+   ReceiverDeployments <- vroom("./data/rec_deployments.csv", col_types = cols())
+   
 } else { 
   # Else check if ERDDAP is online, x returns TRUE if database is down or "Timeout"
   # if the http check timeouts out 
@@ -69,8 +68,8 @@ if (as.numeric(Sys.Date() - last_checked_date) < 90) {
   
   # If the database isn't working then read csv
   if (x == TRUE | x == "Timeout") {
-     ReceiverDeployments_fileID <- '1qk3eAB5e42bxQ1FbR08AwRbhf44Xf_95'
-     ReceiverDeployments <- read.csv(sprintf("https://docs.google.com/uc?id=%s&export=download", ReceiverDeployments_fileID))
+     ReceiverDeployments <- vroom("./data/rec_deployments.csv")
+     
   } else {
     # If database is working then check for updates
     
