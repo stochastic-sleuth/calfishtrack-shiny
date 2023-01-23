@@ -1,0 +1,5 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
+1,0,0,0,Upper_Butte_2021,UpperButte_RST_Rel,340.854,0,Butte Creek,1 (NA),0,96,39.70936,-121.75056
+0.81,0.04,0.72,0.88,Upper_Butte_2021,UpperButte_SKWY,338.4,1,Butte Creek,0.81 (0.04),1,78,39.70481,-121.77057
+0.22,0.04,0.15,0.31,Upper_Butte_2021,UpperButte1,324.109,2,Butte Creek,0.22 (0.04),2,21,39.58413,-121.80032
+0.01,0.01,0,0.07,Upper_Butte_2021,UpperButte3,267.216,3,Butte Creek,0.01 (0.01),3,1,39.1876,-121.90903

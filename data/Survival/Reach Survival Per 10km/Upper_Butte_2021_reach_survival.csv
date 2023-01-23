@@ -1,0 +1,7 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.4284815,0.0857471,0.2740148,0.598267,Upper_Butte_2021,UpperButte_RST_Rel,UpperButte_SKWY,340.854,338.4,Butte Creek,"UpperButte_RST_Rel to 
+UpperButte_SKWY",340.854 to 338.4,96,78,39.70936,-121.75056,39.70481,-121.77057
+0.3992151,0.0521141,0.3026702,0.5042852,Upper_Butte_2021,UpperButte_SKWY,UpperButte1,338.4,324.109,Butte Creek,"UpperButte_SKWY to 
+UpperButte1",338.4 to 324.109,78,21,39.70481,-121.77057,39.58413,-121.80032
+0.5855759,0.100445,0.3856708,0.7607796,Upper_Butte_2021,UpperButte1,UpperButte3,324.109,267.216,Butte Creek,"UpperButte1 to 
+UpperButte3",324.109 to 267.216,21,1,39.58413,-121.80032,39.1876,-121.90903

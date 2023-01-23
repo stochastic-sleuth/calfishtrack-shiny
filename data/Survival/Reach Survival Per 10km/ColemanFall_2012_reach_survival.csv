@@ -1,0 +1,27 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.9999993,0,0.9999993,0.9999993,Nimbus_Fall_2018,BattleCk_CNFH_Rel,BattleCk2,517.34,515.33,Battle Ck,"BattleCk_CNFH_Rel to 
+BattleCk2",517.34 to 515.33,1,169,27,40.398155,-122.14556,40.3954,-122.16553
+0.9554368,0.0315478,0.8338261,0.9892019,Nimbus_Fall_2018,BattleCk2,Battle_Conf,515.33,507.48,Battle Ck,"BattleCk2 to 
+Battle_Conf",515.33 to 507.48,2,27,72,40.3954,-122.16553,40.35371,-122.17734
+0.9953867,0.0103311,0.724039,0.9999436,Nimbus_Fall_2018,Battle_Conf,Blw_Paynes_Ck,507.48,476.27,Upper Sac R,"Battle_Conf to 
+Blw_Paynes_Ck",507.48 to 476.27,3,72,92,40.35371,-122.17734,40.25534,-122.17332
+0.9593484,0.0187548,0.9019113,0.9837582,Nimbus_Fall_2018,Blw_Paynes_Ck,Blw_Salt,476.27,456.88,Upper Sac R,"Blw_Paynes_Ck to 
+Blw_Salt",476.27 to 456.88,4,92,56,40.25534,-122.17332,40.1464,-122.15246
+0.9898576,0.0080471,0.9530156,0.997875,Nimbus_Fall_2018,Blw_Salt,Abv_WoodsonBr,456.88,425.15,Upper Sac R,"Blw_Salt to 
+Abv_WoodsonBr",456.88 to 425.15,5,56,137,40.1464,-122.15246,39.920094,-122.08446000000001
+0.9870925,0.0108908,0.9347201,0.9975577,Nimbus_Fall_2018,Abv_WoodsonBr,Blw_IrvineFinch,425.15,394.66,Upper Sac R,"Abv_WoodsonBr to 
+Blw_IrvineFinch",425.15 to 394.66,6,137,124,39.920094,-122.08446000000001,39.73146,-121.97483
+0.9698829,0.0354052,0.7495829,0.997122,Nimbus_Fall_2018,Blw_IrvineFinch,ButteBr,394.66,344.1,Upper Sac R,"Blw_IrvineFinch to 
+ButteBr",394.66 to 344.1,7,124,29,39.73146,-121.97483,39.4569,-121.995
+0.9507411,0.0337156,0.824785,0.9875216,Nimbus_Fall_2018,ButteBr,AbvTisdale,344.1,269.23,Lower Sac R,"ButteBr to 
+AbvTisdale",344.1 to 269.23,8,29,18,39.4569,-121.995,39.0364,-121.82918
+0.9096305,0.0443623,0.7775388,0.9666534,Nimbus_Fall_2018,AbvTisdale,KnightsLandingBr,269.23,224.05,Lower Sac R,"AbvTisdale to 
+KnightsLandingBr",269.23 to 224.05,9,18,32,39.0364,-121.82918,38.8021,-121.72
+0.9318749,0.0308759,0.8405861,0.9725915,Nimbus_Fall_2018,KnightsLandingBr,TowerBridge,224.05,172,Lower Sac R,"KnightsLandingBr to 
+TowerBridge",224.05 to 172,10,32,8,38.8021,-121.72,38.5802,-121.508
+0.9316858,0.0659777,0.6413242,0.9904786,Nimbus_Fall_2018,TowerBridge,FreeportDiv,172,153.13,Lower Sac R,"TowerBridge to 
+FreeportDiv",172 to 153.13,11,8,32,38.5802,-121.508,38.47223,-121.50639
+0.8760732,0.0270354,0.8127057,0.920109,Nimbus_Fall_2018,FreeportDiv,Benicia,153.13,52.04,Lower Sac R,"FreeportDiv to 
+Benicia",153.13 to 52.04,12,32,7,38.47223,-121.50639,38.041233,-122.12382
+0.9353339,0.0444294,0.7741559,0.9838794,Nimbus_Fall_2018,Benicia,GoldenGateE,52.04,1.71,Carquinez Strait,"Benicia to 
+GoldenGateE",52.04 to 1.71,13,7,1,38.041233,-122.12382,37.82794,-122.46168

@@ -1,0 +1,6 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
+1,0,1,1,Mok_Fall_2018,Sherman_Island_Rel,89.76,0,West Delta,327,38.038162,-121.72443
+0.966,0.01,0.94,0.981,Mok_Fall_2018,AntiochBridge,86.94,1,West Delta,316,38.024254,-121.75163
+0.199,0.022,0.159,0.246,Mok_Fall_2018,Chipps,71.47999999999999,2,West Delta,65,38.046132,-121.912643
+0.147,0.02,0.112,0.189,Mok_Fall_2018,Benicia,52.14,3,Carquinez Strait,48,38.0423015,-122.1236
+0.053,0.013,0.033,0.084,Mok_Fall_2018,GoldenGateE,1.71,4,SF Bay,12,37.82794,-122.46168

@@ -1,0 +1,9 @@
+station_id,name,river_basin,county,longitude,latitude,elevation,operator,state
+KES,keswick reservoir,sacramento r,shasta,-122.445699,40.612104,596,US Bureau of Reclamation,ca
+BND,sacramento river at bend bridge,sacramento r,tehama,-122.186661,40.288486,286,US Geological Survey & US Bureau of Reclamation,ca
+BTC,sacramento river at butte city,sacramento r,glenn,-121.994164,39.45784,99,CA Dept of Water Resources/North Region Office,ca
+WLK,sacramento river below wilkins slough,sacramento r,sutter,-121.824692,39.009895,30,US Geological Survey,ca
+MEN,san joaquin river near mendota,san joaquin,fresno,-120.377222,36.810556,170,US Geological Survey,ca
+NEW,san joaquin river near newman,san joaquin,stanislaus,-120.976111,37.350556,90,US Geological Survey,ca
+VNS,san joaquin near vernalis,san joaquin,san joaquin,-121.265278,37.676111,35,US Geological Survey/Department of Water Resources,
+MSD,san joaquin river at mossdale bridge,san joaquin,san joaquin,-121.30649,37.786141,31,CA Dept of Water Resources/Div of Environmental Services,

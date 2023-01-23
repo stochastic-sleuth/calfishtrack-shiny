@@ -1,0 +1,9 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.8857325,0.0324065,0.8053857,0.935562,Nimbus_Fall_2018,Sherman_Island_Rel,AntiochBridge,89.76,86.94,West Delta,"Sherman_Island_Rel to 
+AntiochBridge",89.76 to 86.94,1,327,316,38.038162,-121.72443,38.024254,-121.75163
+0.359562,0.0257099,0.3108614,0.4113382,Nimbus_Fall_2018,AntiochBridge,Chipps,86.94,71.47999999999999,West Delta,"AntiochBridge to 
+Chipps",86.94 to 71.48,2,316,65,38.024254,-121.75163,38.046132,-121.912643
+0.8549037,0.0326293,0.7786847,0.9079757,Nimbus_Fall_2018,Chipps,Benicia,71.47999999999999,52.14,West Delta,"Chipps to 
+Benicia",71.48 to 52.14,3,65,48,38.046132,-121.912643,38.0423015,-122.1236
+0.8182437,0.0319708,0.7470894,0.8727881,Nimbus_Fall_2018,Benicia,GoldenGateE,52.14,1.71,Carquinez Strait,"Benicia to 
+GoldenGateE",52.14 to 1.71,4,48,12,38.0423015,-122.1236,37.82794,-122.46168

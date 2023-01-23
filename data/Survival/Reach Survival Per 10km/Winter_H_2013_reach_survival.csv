@@ -1,0 +1,39 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.9624565,0.0260832,0.8616626,0.9906112,SB_Spring_2018,Caldwell_Park_Rel,Hwy 44 Bridge,551.28,547.73,Upper Sac R,"Caldwell_Park_Rel to 
+Hwy 44 Bridge",551.28 to 547.73,1,148,65,40.593826,-122.39836,40.58691,-122.36891
+1,0,1,1,SB_Spring_2018,Hwy 44 Bridge,Blw_Cypress,547.73,543.9,Upper Sac R,"Hwy 44 Bridge to 
+Blw_Cypress",547.73 to 543.9,2,65,141,40.58691,-122.36891,40.56047,-122.37527
+1,0,1,1,SB_Spring_2018,Blw_Cypress,Blw_ClearCr,543.9,535.62,Upper Sac R,"Blw_Cypress to 
+Blw_ClearCr",543.9 to 535.62,3,141,138,40.56047,-122.37527,40.50188,-122.36192
+0.9955244,0.0104583,0.6908351,0.9999548,SB_Spring_2018,Blw_ClearCr,BlwCowCr,535.62,520.69,Upper Sac R,"Blw_ClearCr to 
+BlwCowCr",535.62 to 520.69,4,138,72,40.50188,-122.36192,40.46013,-122.22765
+0.9968335,0.0167391,0.0095463,0.9999999,SB_Spring_2018,BlwCowCr,Battle_Conf,520.69,507.48,Upper Sac R,"BlwCowCr to 
+Battle_Conf",520.69 to 507.48,5,72,97,40.46013,-122.22765,40.35371,-122.17734
+0.9855192,0.0055195,0.9695957,0.993162,SB_Spring_2018,Battle_Conf,Blw_Salt,507.48,456.88,Upper Sac R,"Battle_Conf to 
+Blw_Salt",507.48 to 456.88,6,97,133,40.35371,-122.17734,40.1464,-122.15246
+0.961001,0.010315,0.934929,0.976885,SB_Spring_2018,Blw_Salt,Abv_WoodsonBr,456.88,425.15,Upper Sac R,"Blw_Salt to 
+Abv_WoodsonBr",456.88 to 425.15,7,133,115,40.1464,-122.15246,39.920094,-122.08446000000001
+0.8573665,0.0208186,0.8115198,0.8935245,SB_Spring_2018,Abv_WoodsonBr,Blw_IrvineFinch,425.15,394.66,Upper Sac R,"Abv_WoodsonBr to 
+Blw_IrvineFinch",425.15 to 394.66,8,115,71,39.920094,-122.08446000000001,39.73146,-121.97483
+0.8879445,0.022145,0.8366741,0.9245713,SB_Spring_2018,Blw_IrvineFinch,BlwOrd,394.66,361.72,Upper Sac R,"Blw_IrvineFinch to 
+BlwOrd",394.66 to 361.72,9,71,50,39.73146,-121.97483,39.56548,-122.0018
+0.8522208,0.0354256,0.7686672,0.9091625,SB_Spring_2018,BlwOrd,BlwButteBr,361.72,338.28,Upper Sac R,"BlwOrd to 
+BlwButteBr",361.72 to 338.28,10,50,32,39.56548,-122.0018,39.41913,-122.00943
+0.9459048,0.023554,0.8764435,0.9773264,SB_Spring_2018,BlwButteBr,AbvColusaBr,338.28,307.73,Lower Sac R,"BlwButteBr to 
+AbvColusaBr",338.28 to 307.73,11,32,29,39.41913,-122.00943,39.2205,-122.00847
+0.9201025,0.0330853,0.8265876,0.965305,SB_Spring_2018,AbvColusaBr,Abv Grimes,307.73,281.17,Lower Sac R,"AbvColusaBr to 
+Abv Grimes",307.73 to 281.17,12,29,3,39.2205,-122.00847,39.0971,-121.89676
+1,0,1,1,SB_Spring_2018,Abv Grimes,AbvTisdale,281.17,269.23,Lower Sac R,"Abv Grimes to 
+AbvTisdale",281.17 to 269.23,13,3,14,39.0971,-121.89676,39.0364,-121.82918
+1,2.82499e-6,0.9999945,1.0000055,SB_Spring_2018,AbvTisdale,KnightsLanding,269.23,224.06,Lower Sac R,"AbvTisdale to 
+KnightsLanding",269.23 to 224.06,14,14,10,39.0364,-121.82918,38.82341,-121.72388
+0.9736131,0.0259813,0.8356174,0.9962801,SB_Spring_2018,KnightsLanding,Blw_FRConf,224.06,203.46,Lower Sac R,"KnightsLanding to 
+Blw_FRConf",224.06 to 203.46,15,10,4,38.82341,-121.72388,38.78212,-121.61526
+1,0,1,1,SB_Spring_2018,Blw_FRConf,TowerBridge,203.46,172,Lower Sac R,"Blw_FRConf to 
+TowerBridge",203.46 to 172,16,4,10,38.78212,-121.61526,38.5802,-121.508
+1,0,1,1,SB_Spring_2018,TowerBridge,FreeportDiv,172,153.13,Lower Sac R,"TowerBridge to 
+FreeportDiv",172 to 153.13,17,10,22,38.5802,-121.508,38.47223,-121.50639
+0.892902,0.0275664,0.8257395,0.9361797,SB_Spring_2018,FreeportDiv,Benicia,153.13,52.04,Lower Sac R,"FreeportDiv to 
+Benicia",153.13 to 52.04,18,22,7,38.47223,-121.50639,38.041233,-122.12382
+1,0,1,1,SB_Spring_2018,Benicia,GoldenGateE,52.04,1.71,Carquinez Strait,"Benicia to 
+GoldenGateE",52.04 to 1.71,19,7,3,38.041233,-122.12382,37.82794,-122.46168

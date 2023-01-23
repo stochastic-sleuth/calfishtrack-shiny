@@ -1,0 +1,32 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,GenLat,GenLon,count,release
+1,0,1,1,Juv_Green_Sturgeon_2016_2019,RBDD_Rel,450,0,Upper Sac R,40.033,-122.12,67,RBDD
+0.782,0.051,0.665,0.866,Juv_Green_Sturgeon_2016_2019,Mill_Ck_Conf,441.31,1,Upper Sac R,40.033,-122.12,44,RBDD
+0.75,0.054,0.632,0.84,Juv_Green_Sturgeon_2016_2019,Abv_WoodsonBr,425.15,2,Upper Sac R,39.92,-122.084,47,RBDD
+0.75,0.241,0.195,0.974,Juv_Green_Sturgeon_2016_2019,Woodson_Rel,420,3,Upper Sac R,39.92,-122.084,0,RBDD
+0.705,0.061,0.573,0.81,Juv_Green_Sturgeon_2016_2019,GCID_blw,404.42,4,Upper Sac R,39.791,-122.036,21,RBDD
+0.686,0.059,0.56,0.789,Juv_Green_Sturgeon_2016_2019,Blw_IrvineFinch,394.66,5,Upper Sac R,39.731,-121.975,37,RBDD
+0.613,0.06,0.492,0.721,Juv_Green_Sturgeon_2016_2019,BlwOrd,361.72,6,Upper Sac R,39.565,-122.002,38,RBDD
+0.613,0.06,0.492,0.721,Juv_Green_Sturgeon_2016_2019,ButteBr,344.1,7,Lower Sac R,39.457,-121.995,29,RBDD
+0.601,0.063,0.474,0.716,Juv_Green_Sturgeon_2016_2019,AbvColusaBr,307.73,8,Lower Sac R,39.221,-122.008,19,RBDD
+0.601,0.063,0.474,0.716,Juv_Green_Sturgeon_2016_2019,AbvTisdale,269.23,9,Lower Sac R,39.036,-121.829,27,RBDD
+0.494,0.061,0.376,0.612,Juv_Green_Sturgeon_2016_2019,TowerBridge,172,10,Lower Sac R,38.58,-121.508,31,RBDD
+0.485,0.062,0.366,0.605,Juv_Green_Sturgeon_2016_2019,I80-50_Br,170.74,11,Lower Sac R,38.571,-121.516,30,RBDD
+0.485,0.062,0.366,0.605,Juv_Green_Sturgeon_2016_2019,Freeport,152.43,12,Lower Sac R,38.465,-121.505,21,RBDD
+0.485,0.062,0.366,0.605,Juv_Green_Sturgeon_2016_2019,Hood,138.22,13,Lower Sac R,38.362,-121.52,14,RBDD
+0.016,1.386,0,1,Juv_Green_Sturgeon_2016_2019,RioVista,97.757,14,West Delta,38.157,-121.685,11,RBDD
+0.015,0.833,0,1,Juv_Green_Sturgeon_2016_2019,Chipps,71.48,15,West Delta,38.046,-121.913,2,RBDD
+0.015,0.346,0,1,Juv_Green_Sturgeon_2016_2019,BeniciaW,52.04,16,Carquinez Strait,38.041,-122.124,1,RBDD
+1,0,1,1,Juv_Green_Sturgeon_2016_2019,Woodson_Rel,420,0,Upper Sac R,39.92,-122.084,31,Woodson
+0.717,0.098,0.495,0.868,Juv_Green_Sturgeon_2016_2019,GCID_blw,404.42,1,Upper Sac R,39.791,-122.036,10,Woodson
+0.645,0.086,0.466,0.791,Juv_Green_Sturgeon_2016_2019,Blw_IrvineFinch,394.66,2,Upper Sac R,39.731,-121.975,20,Woodson
+0.548,0.089,0.374,0.711,Juv_Green_Sturgeon_2016_2019,BlwOrd,361.72,3,Upper Sac R,39.565,-122.002,17,Woodson
+0.548,0.089,0.374,0.711,Juv_Green_Sturgeon_2016_2019,ButteBr,344.1,4,Lower Sac R,39.457,-121.995,15,Woodson
+0.548,0.089,0.374,0.711,Juv_Green_Sturgeon_2016_2019,AbvColusaBr,307.73,5,Lower Sac R,39.221,-122.008,7,Woodson
+0.548,0.089,0.374,0.711,Juv_Green_Sturgeon_2016_2019,AbvTisdale,269.23,6,Lower Sac R,39.036,-121.829,11,Woodson
+0.339,0.089,0.19,0.528,Juv_Green_Sturgeon_2016_2019,TowerBridge,172,7,Lower Sac R,38.58,-121.508,7,Woodson
+0.339,0.089,0.19,0.528,Juv_Green_Sturgeon_2016_2019,I80-50_Br,170.74,8,Lower Sac R,38.571,-121.516,7,Woodson
+0.194,0.071,0.09,0.369,Juv_Green_Sturgeon_2016_2019,Freeport,152.43,9,Lower Sac R,38.465,-121.505,4,Woodson
+0.194,0.071,0.09,0.369,Juv_Green_Sturgeon_2016_2019,Hood,138.22,10,Lower Sac R,38.362,-121.52,6,Woodson
+0,0,0,0,Juv_Green_Sturgeon_2016_2019,RioVista,97.757,11,West Delta,38.157,-121.685,2,Woodson
+0,0,0,0,Juv_Green_Sturgeon_2016_2019,Chipps,71.48,12,West Delta,38.046,-121.913,0,Woodson
+0,0,0,0,Juv_Green_Sturgeon_2016_2019,BeniciaW,52.04,13,Carquinez Strait,38.041,-122.124,0,Woodson

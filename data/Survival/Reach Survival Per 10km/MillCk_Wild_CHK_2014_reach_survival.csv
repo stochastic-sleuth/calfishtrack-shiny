@@ -1,0 +1,23 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.7492426,0.0897128,0.5395836,0.883961,Nimbus_Fall_2018,MillCk_RST_Rel,MillCk2,450.7,444.47,Mill Ck,"MillCk_RST_Rel to 
+MillCk2",450.7 to 444.47,1,36,29,40.05479,-122.032104,40.046066,-122.09443
+0.8048437,0.129031,0.4518336,0.9537773,Nimbus_Fall_2018,MillCk2,Mill_Ck_Conf,444.47,441.31,Mill Ck,"MillCk2 to 
+Mill_Ck_Conf",444.47 to 441.31,2,29,27,40.046066,-122.09443,40.0327,-122.11987
+0.9534918,0.0321173,0.8321525,0.9883421,Nimbus_Fall_2018,Mill_Ck_Conf,Abv_WoodsonBr,441.31,425.15,Upper Sac R,"Mill_Ck_Conf to 
+Abv_WoodsonBr",441.31 to 425.15,3,27,26,40.0327,-122.11987,39.920094,-122.08446000000001
+0.886384,0.038009,0.7882789,0.9423545,Nimbus_Fall_2018,Abv_WoodsonBr,Blw_IrvineFinch,425.15,394.66,Upper Sac R,"Abv_WoodsonBr to 
+Blw_IrvineFinch",425.15 to 394.66,4,26,18,39.920094,-122.08446000000001,39.73146,-121.97483
+0.8365729,0.0535413,0.703783,0.9168666,Nimbus_Fall_2018,Blw_IrvineFinch,BlwOrd,394.66,361.72,Upper Sac R,"Blw_IrvineFinch to 
+BlwOrd",394.66 to 361.72,5,18,10,39.73146,-121.97483,39.56548,-122.0018
+0.8588465,0.0758524,0.6409249,0.9540036,Nimbus_Fall_2018,BlwOrd,BlwButteBr,361.72,338.28,Upper Sac R,"BlwOrd to 
+BlwButteBr",361.72 to 338.28,6,10,7,39.56548,-122.0018,39.41913,-122.00943
+0.7577908,0.1082576,0.4961403,0.9085992,Nimbus_Fall_2018,BlwButteBr,AbvColusaBr,338.28,307.73,Lower Sac R,"BlwButteBr to 
+AbvColusaBr",338.28 to 307.73,7,7,3,39.41913,-122.00943,39.2205,-122.00847
+0.7517482,0.1594286,0.3620596,0.9417147,Nimbus_Fall_2018,AbvColusaBr,AbvTisdale,307.73,269.23,Lower Sac R,"AbvColusaBr to 
+AbvTisdale",307.73 to 269.23,8,3,1,39.2205,-122.00847,39.0364,-121.82918
+1,0,1,1,Nimbus_Fall_2018,AbvTisdale,BlwChinaBend,269.23,240.61,Lower Sac R,"AbvTisdale to 
+BlwChinaBend",269.23 to 240.61,9,1,1,39.0364,-121.82918,38.88406,-121.81713
+1,0,1,1,Nimbus_Fall_2018,BlwChinaBend,KnightsLanding,240.61,224.06,Lower Sac R,"BlwChinaBend to 
+KnightsLanding",240.61 to 224.06,10,1,1,38.88406,-121.81713,38.82341,-121.72388
+1,0,1,1,Nimbus_Fall_2018,KnightsLanding,Blw_FRConf,224.06,203.46,Lower Sac R,"KnightsLanding to 
+Blw_FRConf",224.06 to 203.46,11,1,1,38.82341,-121.72388,38.78212,-121.61526

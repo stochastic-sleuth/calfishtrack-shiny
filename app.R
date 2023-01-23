@@ -44,9 +44,11 @@ library(DT)
 library(DiagrammeR) # for Delta route survival diagram
 library(kableExtra) # for Delta route survival table
 
-# Global ------------------------------------------------------------------
-## Load Receiver Deployments -----------------------------------------------
 
+
+# Global ------------------------------------------------------------------------------------------------------------------------------
+
+## Load Receiver Deployments -----------------------------------------------
 # Clear cached data in order to retrieve all latest data
 cache_delete_all()
 
@@ -67,7 +69,8 @@ if (as.numeric(Sys.Date() - last_checked_date) < 90) {
   
   # If the database isn't working then read csv
   if (x == TRUE | x == "Timeout") {
-    ReceiverDeployments <- vroom("./data/rec_deployments.csv")
+     ReceiverDeployments_fileID <- '1qk3eAB5e42bxQ1FbR08AwRbhf44Xf_95'
+     ReceiverDeployments <- read.csv(sprintf("https://docs.google.com/uc?id=%s&export=download", ReceiverDeployments_fileID))
   } else {
     # If database is working then check for updates
     
@@ -109,7 +112,7 @@ if (as.numeric(Sys.Date() - last_checked_date) < 90) {
     
     # Change the last saved date to today
     last_checked_date <- Sys.Date()
-    saveRDS(last_checked_date, "./data/last_checked_date.RDS")
+    saveRDS(last_checked_date, "data/last_checked_date.RDS")
   }
 }
 
