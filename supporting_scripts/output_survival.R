@@ -21,7 +21,8 @@ library(vroom)
 
 memory.limit(size=56000)
 
-setwd("C:/Users/pgcar/Google Drive/1 Work/1 NOAA UCSC AT/1 Projects/Shiny App/shiny_120822/data")
+# Set working directory
+setwd("~/github/calfishtrack-shiny/data") # PC 
 studyid_list <- read_csv("studyid_names.csv")
 
 # Clear cached data in order to retrieve all latest data
@@ -54,6 +55,8 @@ ReceiverDeployments <- tabledap(JSATSinfo,
                                            'receiver_general_latitude','receiver_general_longitude'),
                                 url = my_url) %>% as_tibble()
 
+my_url <- "https://oceanview.pfeg.noaa.gov/erddap/"
+JSATSinfo <- info('FED_JSATS_detects', url = my_url)
 
 # Retrieve list of all studyIDs on FED_JSATS
 studyid_list <- tabledap(JSATSinfo,
