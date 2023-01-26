@@ -1558,7 +1558,12 @@ server <- function(input, output, session) {
     
     # If survival estimates contain the column 'release'
     if (any(str_detect(colnames(df), "release"))) {
-      
+      # Set the order of release groups
+      df$release <- factor(df$release, unique(df$release))
+       
+      release_colors <- c("#E69F00","#56B4E9","#009E73", "#0072B2", "#D55E00", "#CC79A7")
+      release_colors <- release_colors[1:length(unique(df$release))]
+       
       p <- df %>% 
         ggplot(mapping = aes(x = RKM, y = Survival, group = release)) +
         geom_point(position = position_dodge(width = 1), 
@@ -1575,7 +1580,7 @@ server <- function(input, output, session) {
         geom_errorbar(mapping = aes(x = RKM, ymin = LCI, ymax = UCI, 
                                     color = release),  width = .1,
                       position = position_dodge(1)) +
-        scale_color_manual(values=c("#007EFF", "#FF8100")) +
+        scale_color_manual(values=release_colors) +
         labs(
           x = "RKM",
           y = "Survival",
@@ -1895,6 +1900,9 @@ server <- function(input, output, session) {
       # Set the order of release groups
       df$release <- factor(df$release, unique(df$release))
       
+      release_colors <- c("#E69F00","#56B4E9","#009E73", "#0072B2", "#D55E00", "#CC79A7")
+      release_colors <- release_colors[1:length(unique(df$release))]
+      
       p <- df %>% 
         mutate(reach_end = factor(reach_end, levels = unique(reach_end))) %>%
         mutate(reach_end = reorder(reach_end, -rkm_end)) %>%
@@ -1912,7 +1920,7 @@ server <- function(input, output, session) {
         geom_errorbar(mapping = aes(x = reach_end, ymin = LCI, ymax = UCI, 
                                     color = release),  width = .1,
                       position = position_dodge(.5)) +
-        scale_color_manual(values=c("#007EFF", "#FF8100", "#8100FF")) +
+        scale_color_manual(values=release_colors) +
         labs(
           title = paste0("Reach Survival for ", name),
           x = "Receiver Location",
