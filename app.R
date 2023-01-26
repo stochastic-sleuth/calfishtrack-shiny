@@ -1584,7 +1584,7 @@ server <- function(input, output, session) {
         scale_color_manual(values=release_colors) +
         labs(
           x = "RKM",
-          y = "Survival",
+          y = "Cumulative Survival",
           color = "Release"
         ) +
         theme_minimal() +
@@ -1616,7 +1616,8 @@ server <- function(input, output, session) {
                             showline = FALSE,
                             zeroline = FALSE)) %>% 
         layout(yaxis = list(showline = FALSE,
-                            zeroline = FALSE))
+                            zeroline = FALSE,
+                            title = "Cumulative Survival"))
     }
   })
   
@@ -1670,9 +1671,12 @@ server <- function(input, output, session) {
       # Widen data so that numbers for each release represented in a single row
       df <- df %>%
         select(-id) %>% 
+        dplyr::rename(
+          'Cumulative Survival' = 'Survival'
+        ) %>% 
         pivot_wider(
           names_from = release,
-          values_from = c("Survival", "SE", "LCI", "UCI", 
+          values_from = c("Cumulative Survival", "SE", "LCI", "UCI", 
                           "Count"),
           names_glue = "{release} {.value}"
         ) %>%
@@ -1697,7 +1701,7 @@ server <- function(input, output, session) {
                 fillContainer = T)
     } else{
       dat <- cumsurvivalVar() %>% 
-        select('Receiver Location' =  GEN, RKM, Region, Survival, LCI, UCI, Count, id)
+        select('Receiver Location' =  GEN, RKM, Region, 'Cumulative Survival' = Survival, LCI, UCI, Count, id)
       
       datatable(dat, selection = "single", 
                 options=list(stateSave = TRUE,
@@ -1982,11 +1986,12 @@ server <- function(input, output, session) {
         select(-id) %>% 
         dplyr::rename(
           'Count Start' = 'count_at_start',
-          'Count End' = 'count_at_end'
+          'Count End' = 'count_at_end',
+          'Survival per 10km' = 'Survival'
         ) %>% 
         pivot_wider(
           names_from = release,
-          values_from = c("Survival", "SE", "LCI", "UCI", 
+          values_from = c("Survival per 10km", "SE", "LCI", "UCI", 
                           "Count Start", "Count End"),
           names_glue = "{release} {.value}"
         ) %>%
@@ -2019,7 +2024,7 @@ server <- function(input, output, session) {
       df <- reachSurvVar() %>% 
         select('Reach Start' = reach_start, 'Reach End' = reach_end, 
                'RKM Start' = rkm_start, 'RKM End' = rkm_end, Region, 
-               Survival, LCI, UCI, 'Count Start' = count_at_start,
+               'Survival per 10km' = Survival, LCI, UCI, 'Count Start' = count_at_start,
                'Count End' = count_at_end, id)
       
       datatable(df, selection = "single", #extensions = 'Buttons',
