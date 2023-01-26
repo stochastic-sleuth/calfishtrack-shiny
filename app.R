@@ -11,7 +11,7 @@
 # -Sacramento River hydrology graph at several CDEC stations
 # -Outmigration animation of downstream movement of fish
 # -Time of day in which fish are detected
-# -Survival (reach per 10km, cumulative) plots/tables
+# -Survival (reach per 10km, cumulative, and delta routing/survival (provided by USGS)) plots/tables
 # -Movement: travel time from rel to GEN
 
 # Load data
