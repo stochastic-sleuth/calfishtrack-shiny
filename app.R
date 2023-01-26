@@ -1896,7 +1896,8 @@ server <- function(input, output, session) {
       df$release <- factor(df$release, unique(df$release))
       
       p <- df %>% 
-        mutate(reach_end = factor(reach_end, levels = unique(reach_end))) %>% 
+        mutate(reach_end = factor(reach_end, levels = unique(reach_end))) %>%
+        mutate(reach_end = reorder(reach_end, -rkm_end)) %>%
         ggplot(mapping = aes(x = reach_end, y = Survival, group = release)) +
         geom_point(position = position_dodge(width = 0.5), 
                    aes(color = release,
@@ -1911,7 +1912,7 @@ server <- function(input, output, session) {
         geom_errorbar(mapping = aes(x = reach_end, ymin = LCI, ymax = UCI, 
                                     color = release),  width = .1,
                       position = position_dodge(.5)) +
-        scale_color_manual(values=c("#007EFF", "#FF8100")) +
+        scale_color_manual(values=c("#007EFF", "#FF8100", "#8100FF")) +
         labs(
           title = paste0("Reach Survival for ", name),
           x = "Receiver Location",
