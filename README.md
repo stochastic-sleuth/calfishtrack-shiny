@@ -1,2 +1,4 @@
-# calfishtrack-shiny
-Code and related documents for the shiny app on calfishtrack website
+# Central Valley Enhanced Acoustic Tagging Project
+
+## Background
+Since 2012, juvenile salmon have been tagged and tracked throughout California's Central Valley (CCV) using Juvenile Salmon Acoustic Telemetry System (JSATS) technology. This technology allows researchers to monitor the movement and survival rates of various populations over 500 river kilometers, from Redding to the Pacific Ocean. The data compiled here is a result of the hard work and coordination between various federal and state agencies, universities, and private consultants, with the goal of conserving and restoring California's once abundant, but now imperiled, Chinook salmon populations. This data is open access and is managed and hosted by the National Marine Fisheries Service here: https://oceanview.pfeg.noaa.gov/erddap/tabledap/FED_JSATS_detects.html . 
