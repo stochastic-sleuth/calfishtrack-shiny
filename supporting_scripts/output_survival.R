@@ -242,16 +242,13 @@ make_EH <- function(detections_tmp) {
   min_detects <- detections_tmp %>% 
     filter(GEN %in% reach.meta.aggregate$GEN) %>% 
     group_by(FishID, GEN, GenRKM) %>% 
-    summarise(
-      min_time = min(time_pst)
-    ) %>% 
-    arrange(
-      FishID, min_time
-    )
+    summarise(min_time = min(time)) %>% 
+    arrange(FishID, min_time) %>%
+    ungroup()
   
   # Get list of all tagged fish for the studyID
   fish <- TaggedFish %>% 
-    filter(study_id == detections_tmp$studyID[1]) %>% 
+    filter(study_id == detections_tmp$StudyID[1]) %>% 
     arrange(fish_id) %>% 
     pull(fish_id)
   
@@ -305,7 +302,7 @@ create_inp <- function(detections_tmp, EH) {
     # Collapse the encounter columns into a single column of 1's and 0's
     unite("ch", 2:(length(EH)), sep ="") %>% 
     # Use the detections df to get the StudyID assignment
-    mutate(StudyID = unique(detections_tmp$studyID))
+    mutate(StudyID = unique(detections_tmp$StudyID))
   EH.inp
 }
 
@@ -558,13 +555,13 @@ get_unique_detects <- function(all_aggregated){
   
   all_aggregated %>% 
     bind_rows() %>% 
-    select(studyID, FishID, GEN, GenRKM) %>% 
+    select(StudyID, FishID, GEN, GenRKM) %>% 
     distinct() %>% 
-    group_by(studyID, GEN, GenRKM) %>% 
+    group_by(StudyID, GEN, GenRKM) %>% 
     summarise(
       count = n()
     ) %>% 
-    arrange(studyID, desc(GenRKM)) %>% 
+    arrange(StudyID, desc(GenRKM)) %>% 
     ungroup()
 }
 
@@ -752,10 +749,10 @@ multi_rel_loc <- find_multi_release_loc(studyid_list$study_id)
 
 ### Output survival estimates for multi-release location groups -------------
 # "FR_Spring_2013", "FR_Spring_2014", "FR_Spring_2015", "FR_Spring_2019" ,"FR_Spring_2020" ,
-# "Nimbus_Fall_2018", "ColemanAltRel_2021", "ColemanAltRel_2022"
+# "Nimbus_Fall_2018", "ColemanAltRel_2021", "ColemanAltRel_2022", "SJ_steelhead_2021", "SJ_steelhead_2022"
 
 # Select StudyID
-studyID <- "Winter_H_2022"
+studyID <- "SJ_Steelhead_2021"
 
 # Get detections
 detections <- get_detections(studyID)
@@ -806,20 +803,27 @@ reach.meta <- get_receiver_GEN(detections)
 #     )
 # }
 
-# Filter out receiver locations in the Delta, and any that are above the 
-# release RKM
+# Filter out receiver locations for SJ Steelhead studies
 reach.meta <- reach.meta %>%
-  filter(
-    !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta",
-                   "Yolo Bypass", "Franks Tract") |
-      GEN %in% c("ChippsE", "ChippsW"),
-    GenRKM <= TaggedFish %>%
-      filter(study_id == studyID) %>%
-      mutate(release_river_km = as.numeric(release_river_km)) %>%
-      group_by(study_id) %>%
-      summarise(max_rkm = max(release_river_km)) %>%
-      pull(max_rkm)
-  )
+              filter(Region %in% c("Carquinez Strait", "San Joaquin River ", "SF Bay") |
+                     GEN %in% c("OR_HOR_US", "OR_HOR_DS", "ChippsE", "ChippsW", "Stockton_Rel", "Head_of_Old_River_Rel")) %>%
+              filter(GEN != "Las Palmas" & GEN != "DurhamFerryUS_1")
+reach.meta <- rbind(reach.meta, data.frame(GEN = "Head_of_Old_River_Rel", GenRKM = 156, GenLat = 37.80789, GenLon = -121.3295, Region = NA))
+
+# # Filter out receiver locations in the Delta, and any that are above the 
+# # release RKM
+# reach.meta <- reach.meta %>%
+#   filter(
+#     !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta",
+#                    "Yolo Bypass", "Franks Tract") |
+#       GEN %in% c("ChippsE", "ChippsW"),
+#     GenRKM <= TaggedFish %>%
+#       filter(study_id == studyID) %>%
+#       mutate(release_river_km = as.numeric(release_river_km)) %>%
+#       group_by(study_id) %>%
+#       summarise(max_rkm = max(release_river_km)) %>%
+#       pull(max_rkm)
+#   )
 
 # Visually inspect receiver locations, determine if sites need to be removed
 leaflet(data = reach.meta) %>% 
@@ -836,27 +840,27 @@ rel_loc <- TaggedFish %>%
   pull(release_location)
 
 run_multi_survival <- function(release_loc, type) {
-  
   # If the current release location is not the first begin at its starting
   # position in reach.meta
-  if (reach.meta$GenRKM[reach.meta$GEN == release_loc] < max(reach.meta$GenRKM)) {
-    reach.meta <- reach.meta %>% 
-      filter(
-        GenRKM <= reach.meta$GenRKM[reach.meta$GEN == release_loc]
-      )
+  if(reach.meta$GenRKM[reach.meta$GEN == release_loc] < max(reach.meta$GenRKM)){
+    reach.meta <- reach.meta %>% filter(GenRKM <= reach.meta$GenRKM[reach.meta$GEN == release_loc])
   }
 
   detects <- detections %>% 
-    filter(
-      Rel_loc == release_loc,
-      GEN %in% reach.meta$GEN
-  )
-  
-  aggregated <- aggregate_GEN(detects, reach.meta)
+             filter(Rel_loc == release_loc,
+                    GEN %in% reach.meta$GEN)
+
+  aggregated <- aggregate_GEN(detects)
   
   EH <- make_EH(aggregated)
   
   inp <- create_inp(aggregated, EH)
+  
+  # Get river KM
+  KM <- reach.meta.aggregate$GenRKM
+  
+  # Get the reach lengths per 10km
+  reach_length <- round((abs(diff(KM))/10), digits = 3)
   
   if (type == "reach") {
     reach_surv <- get_mark_model(inp, standardized = T, multiple = F)
@@ -901,23 +905,48 @@ run_multi_survival <- function(release_loc, type) {
 reach_surv <- lapply(rel_loc, run_multi_survival, type = "reach") %>% 
   bind_rows()
 
+### CODE FOR RUNNING SAN JOAQUIN STEELHEAD STUDIES ####
+reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Mossdale")] - 4
+reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] - 1.16
+reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_DS")] <- reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] - 0.2
+reach.meta <- reach.meta %>% arrange(desc(GenRKM))
+reach.meta.main <- reach.meta 
+reach.meta.1 <- reach.meta %>%
+                filter(!Region %in% c("South Delta", NA))
+reach.meta.2 <- reach.meta %>%
+                filter(!Region %in% c("San Joaquin River ") &
+                       !GEN %in% c("Stockton_Rel"))
+reach.meta.3 <- reach.meta %>%
+                filter(!Region %in% c("San Joaquin River ") &
+                       !GEN %in% c("OR_HOR_US", "OR_HOR_DS", "Head_of_Old_River_Rel"))
+
+reach.meta <- reach.meta.main
+# reach_surv1 <- reach_surv
+# reach_surv2 <- reach_surv
+# reach_surv3 <- reach_surv
+reach_surv <- rbind(reach_surv1, reach_surv2, reach_surv3)
+# cum_surv1 <- cum_surv
+# cum_surv2 <- cum_surv
+# cum_surv3 <- cum_surv
+cum_surv <- rbind(cum_surv1, cum_surv2, cum_surv3)
+
 # Rerun first release group just to restore reach.meta.aggregate to full version
 run_multi_survival(rel_loc[1], type = "reach")
 
+reach.meta.aggregate <- reach.meta.aggregate %>%
+   mutate(reach_num = 1:length(GEN))
+
 # Fix reach_num for releases after the first
 reach_surv <- reach_surv %>% 
-  rowwise() %>% 
-  mutate(
-    reach_num = ifelse(
-      release != rel_loc[1], 
-      reach_surv$reach_num[reach_surv$reach_start == reach_start 
-                              & reach_surv$release == rel_loc[1]],
-      1:length(reach_surv$Reach)# reach_num
-    )
-  ) %>% 
+  # rowwise() %>% 
+  # mutate(reach_num = ifelse(release != rel_loc[1], 
+  #                           reach_surv$reach_num[reach_surv$reach_start == reach_start & reach_surv$release == rel_loc[1]],
+  #                           1:length(reach_surv$Reach)# reach_num
+  #   )
+  # ) %>% 
   left_join(
     reach.meta.aggregate %>% 
-      select(GEN, GenLat_start = GenLat, GenLon_start = GenLon),
+      select(GEN, GenLat_start = GenLat, GenLon_start = GenLon, reach_num),
     by = c("reach_start" = "GEN")
   ) %>% 
   left_join(
@@ -926,8 +955,13 @@ reach_surv <- reach_surv %>%
     by = c("reach_end" = "GEN")
   )
 
-write_csv(reach_surv, paste0("./Survival/Reach Survival Per 10km/", 
-                                studyID, "_reach_survival.csv"))
+# Format SJ reach survival
+reach_surv <- reach_surv %>%
+   select(estimate, se, lcl, ucl, StudyID, reach_start, reach_end, rkm_start, rkm_end, Region, Reach, RKM, reach_num, release, 
+          count_at_start, count_at_end, GenLat_start = GenLat_start.x, GenLon_start = GenLon_start.x, 
+          GenLat_end = GenLat_end.x, GenLon_end = GenLon_end.x)
+
+write_csv(reach_surv, paste0("Survival/Reach Survival Per 10km/", studyID, "_reach_survival.csv"))
 
 cum_surv <- lapply(rel_loc, run_multi_survival, type = "cumulative") %>% 
   bind_rows()
@@ -936,22 +970,23 @@ run_multi_survival(rel_loc[1], type = "cumulative")
 
 cum_surv <- cum_surv %>% 
   left_join(reach.meta.aggregate %>% 
-              select(GEN, GenLat, GenLon))
+              select(GEN, GenLat, GenLon, reach_n = reach_num))
+cum_surv <- cum_surv %>% 
+   select(cum.phi, cum.phi.se, LCI, UCI, StudyID, GEN, RKM, reach_num = reach_n, Region, release, count, GenLat, GenLon)
 
 # Fix reach_num for releases after the first
 cum_surv <- cum_surv %>% 
-  rowwise() %>% 
+  rowwise() %>%
   mutate(
     reach_num = ifelse(
-      release != rel_loc[1], 
-      cum_surv$reach_num[cum_surv$GEN == GEN 
+      release != rel_loc[1],
+      cum_surv$reach_num[cum_surv$GEN == GEN
                               & cum_surv$release == rel_loc[1]],
       reach_num
     )
   )
 
-write_csv(cum_surv, paste0("./Survival/Cumulative Survival/", 
-                           studyID, "_cum_survival.csv"))
+write_csv(cum_surv, paste0("Survival/Cumulative Survival/", studyID, "_cum_survival.csv"))
 
 cleanup(ask = FALSE)
 
@@ -969,8 +1004,9 @@ studyID <- "Winter_H_2022"
 # 2. Read the detections and get the receiver GEN data; if detections file
 # has not been saved for the studyID yet, run save_new_detections.R first
 
-detect_file <- paste0('../detections/', studyID, ".csv")
-detections <- vroom(detect_file)
+# detect_file <- paste0('../detections/', studyID, ".csv")
+# detections <- vroom(detect_file)
+detections <- get_detections(studyID)
 
 reach.meta <- get_receiver_GEN(detections)
 
