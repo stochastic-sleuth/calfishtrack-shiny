@@ -1,0 +1,183 @@
+
+   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Jan 2019  26-Jan-2023 10:37:35    Page  001
+    
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   Welcome to MARK pgcar on machine DESKTOP-TG0OUVB in subdirectory 
+   "C:\Users\pgcar\Documents\github\calfishtrack-shiny\data" running file "mark024.inp".
+   This version was compiled by GCC version 11.2.0 using the options: 
+     -cpp -iprefix c:\tdm-gcc-64\mingw64\bin\../lib/gcc/x86_64-w64-mingw32/11.2.0/
+     -D_MT -D_REENTRANT -U_REENTRANT -D IEEE -D DBLEPRECISION -m64 -mtune=generic
+     -march=x86-64 -mthreads -O2 -std=f2018 -fimplicit-none -fbounds-check
+     -funroll-loops -ftree-vectorize -ffpe-summary=invalid,zero,overflow,underflow
+     -fno-unsafe-math-optimizations -frounding-math -fsignaling-nans -flto
+     -fall-intrinsics -fopenmp.
+
+   This problem will use 7 of 8 possible threads.
+
+
+  INPUT --- proc title ;
+
+   CPU Time for the last procedure was 0.01 seconds.     
+
+
+  INPUT --- proc chmatrix occasions= 5 groups= 1 etype= Live Nodes= 101 
+  INPUT --- ICMeans NoHist hist= 6 ;
+
+  INPUT ---    time interval 1 1 1 1 ;
+
+  INPUT ---    glabel(1)=Group 1;
+
+      Number of unique encounter histories read was 6.
+
+      Number of individual covariates read was 0.
+      Time interval lengths are all equal to 1.
+
+      Data type number is 1
+      Data type is Live Recaptures (CJS)
+
+   CPU Time for the last procedure was 0.01 seconds.     
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Jan 2019  26-Jan-2023 10:37:35    Page  002
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc estimate link=Logit NOLOOP varest=2ndPart    ;
+
+
+  INPUT --- model={ Phi(~time)p(~time) };
+
+  INPUT ---    group=1 Phi    rows=4 cols=4 Triang ;
+  INPUT ---        1 2 3 4 ;
+  INPUT ---        2 3 4 ;
+  INPUT ---        3 4 ;
+  INPUT ---        4 ;
+
+  INPUT ---    group=1 p    rows=4 cols=4 Triang ;
+  INPUT ---        5 6 7 8 ;
+  INPUT ---        6 7 8 ;
+  INPUT ---        7 8 ;
+  INPUT ---        8 ;
+
+  INPUT ---    design matrix constraints=8 covariates=8;
+  INPUT ---        1 0 0 0 0 0 0 0;
+  INPUT ---        1 1 0 0 0 0 0 0;
+  INPUT ---        1 0 1 0 0 0 0 0;
+  INPUT ---        1 0 0 1 0 0 0 0;
+  INPUT ---        0 0 0 0 1 0 0 0;
+  INPUT ---        0 0 0 0 1 1 0 0;
+  INPUT ---        0 0 0 0 1 0 1 0;
+  INPUT ---        0 0 0 0 1 0 0 1;
+  INPUT ---       blabel(1)=Phi:(Intercept);
+  INPUT ---       blabel(2)=Phi:time2;
+  INPUT ---       blabel(3)=Phi:time3;
+  INPUT ---       blabel(4)=Phi:time4;
+  INPUT ---       blabel(5)=p:(Intercept);
+  INPUT ---       blabel(6)=p:time3;
+  INPUT ---       blabel(7)=p:time4;
+  INPUT ---       blabel(8)=p:time5;
+  INPUT ---       rlabel(1)=Phi g1 c1 a0 t1;
+  INPUT ---       rlabel(2)=Phi g1 c1 a1 t2;
+  INPUT ---       rlabel(3)=Phi g1 c1 a2 t3;
+  INPUT ---       rlabel(4)=Phi g1 c1 a3 t4;
+  INPUT ---       rlabel(5)=p g1 c1 a1 t2;
+  INPUT ---       rlabel(6)=p g1 c1 a2 t3;
+  INPUT ---       rlabel(7)=p g1 c1 a3 t4;
+  INPUT ---       rlabel(8)=p g1 c1 a4 t5;
+
+ Link Function Used is LOGIT        
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Jan 2019  26-Jan-2023 10:37:35    Page  003
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+ Variance Estimation Procedure Used is 2ndPart 
+ -2logL(saturated) = 315.57394     
+ Effective Sample Size = 1567
+
+ Number of function evaluations was 54 for 8 parameters.
+ CPU Time for numerical optimization was 0.02 seconds.     
+ -2logL { Phi(~time)p(~time) } = 315.57394     
+ Penalty { Phi(~time)p(~time) } = 0.0000000     
+ Gradient { Phi(~time)p(~time) }:
+ -0.40068709E-03 -0.61482520E-04 -0.94214479E-04  0.30587106E-04 -0.31054812E-04
+ -0.40964131E-06 -0.30763171E-04   0.0000000    
+ Maximum ABS(G) { Phi(~time)p(~time) } = 0.4006871E-03 
+ CPU Time to compute VC matrix was 0.01 seconds.     
+ S Vector { Phi(~time)p(~time) }:
+   32.29003      2.476269      2.011331      1.607911      1.464341    
+  0.1902079E-04 0.1824169E-06 0.1343475E-09
+ CPU Time to invert VC matrix was 0.01 seconds.     
+ Ratio Threshold = 50.000000       Max Gap (5/6) = 76986.365       Next Max Gap (7/8) = 1357.7993     
+ Gap Method for Num. of Estimated Parameters { Phi(~time)p(~time) } = 5          
+ Threshold { Phi(~time)p(~time) } = 0.8013742E-03           
+ Numerical Threshold Method for Num. of Estimated Parameters { Phi(~time)p(~time) } = 5          
+ Number of Estimated Parameters { Phi(~time)p(~time) } = 5          
+ DEVIANCE { Phi(~time)p(~time) } = 0.3660543E-06           
+ DEVIANCE Degrees of Freedom { Phi(~time)p(~time) } = 0          
+ c-hat { Phi(~time)p(~time) } = 1.0000000               
+ AIC { Phi(~time)p(~time) } = 325.57394               
+ AICc { Phi(~time)p(~time) } = 325.61238               
+ BIC { Phi(~time)p(~time) } = 352.35854               
+ Pearson Chisquare { Phi(~time)p(~time) } = 0.1844300E-06           
+ Possible Encounter Histories { Phi(~time)p(~time) } = 16          
+ Pearson Chisquare df { Phi(~time)p(~time) } = 10          
+ Pearson chat { Phi(~time)p(~time) } = 0.1844300E-07           
+ Sum(Observed/Expected) { Phi(~time)p(~time) } = 5.9999996               
+ s-bar { Phi(~time)p(~time) } = -0.6666667              
+ Fletcher chat { Phi(~time)p(~time) } = 0.5532899E-07           
+
+
+                 LOGIT Link Function Parameters of { Phi(~time)p(~time) }
+                                                              95% Confidence Interval
+    Parameter                  Beta         Standard Error     Lower           Upper
+ -------------------------  --------------  --------------  --------------  --------------
+    1:Phi:(Intercept)       -4.0362862       0.1978411      -4.4240547      -3.6485177    
+    2:Phi:time2              6.0731565       0.6449413       4.8090715       7.3372415    
+    3:Phi:time3              6.4500682       0.8119463       4.8586534       8.0414831    
+    4:Phi:time4              6.2335201       0.7711681       4.7220305       7.7450096    
+    5:p:(Intercept)          73.439558       0.0000000       73.439558       73.439558    
+    6:p:time3               -54.873718       2341.3032      -4643.8281       4534.0807    
+    7:p:time4               -70.549199       0.0000000      -70.549199      -70.549199    
+    8:p:time5                83.252985       86275.056      -169015.86       169182.37    
+
+
+                    Real Function Parameters of { Phi(~time)p(~time) }
+                                                               95% Confidence Interval
+     Parameter                Estimate       Standard Error     Lower           Upper
+ --------------------------  --------------  --------------  --------------  --------------
+     1:Phi g1 c1 a0 t1        0.0173564       0.0033742       0.0118436       0.0253693                          
+     2:Phi g1 c1 a1 t2        0.8846142       0.0626565       0.6971430       0.9623125                          
+     3:Phi g1 c1 a2 t3        0.9178722       0.0593620       0.7048149       0.9812426                          
+     4:Phi g1 c1 a3 t4        0.9000008       0.0670818       0.6761931       0.9748674                          
+     5:p g1 c1 a1 t2          1.0000000       0.0000000       1.0000000       1.0000000                          
+     6:p g1 c1 a2 t3          1.0000000       0.2029788E-04   0.9999602       1.0000398                          
+     7:p g1 c1 a3 t4          0.9473678       0.0512277       0.7061330       0.9926381                          
+     8:p g1 c1 a4 t5          1.0000000       0.0000000       1.0000000       1.0000000                          
+
+ Attempted ordering of parameters by estimatibility:
+  1 2 4 3 5 7 6 8
+ Beta number 8 is a singular value.
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(dble) Vers. 9.0 Jan 2019  26-Jan-2023 10:37:35    Page  004
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+   CPU Time for the last procedure was 0.02 seconds.     
+
+
+  INPUT --- proc stop;
+
+     CPU Time in minutes for this job was 0.00
+
+     Time Start = 10:37:35.765   Time End = 10:37:35.923
+
+     Wall Clock Time in minutes for this job was 0.00
+
+
+          E X E C U T I O N   S U C C E S S F U L 

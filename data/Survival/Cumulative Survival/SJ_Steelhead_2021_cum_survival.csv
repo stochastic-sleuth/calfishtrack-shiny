@@ -1,0 +1,18 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,release,count,GenLat,GenLon
+1,0,0,0,SJ_Steelhead_2021,DurhamFerry_Rel,183.58,1,San Joaquin River ,DurhamFerry_Rel,600,37.6878,-121.26219
+0.31,0.01,0.29,0.34,SJ_Steelhead_2021,Durhamferry,181.8,2,San Joaquin River ,DurhamFerry_Rel,458,37.69146,-121.27106
+0.22,0.01,0.2,0.24,SJ_Steelhead_2021,SJ_BCA,171.701,3,San Joaquin River ,DurhamFerry_Rel,329,37.73305,-121.29555
+0.19,0.01,0.17,0.21,SJ_Steelhead_2021,Mossdale,163.141,4,San Joaquin River ,DurhamFerry_Rel,280,37.79228,-121.306885
+0.01,0,0.01,0.02,SJ_Steelhead_2021,Chipps,71.48599999999999,9,West Delta,DurhamFerry_Rel,19,38.046132,-121.912643
+0.01,0,0.01,0.02,SJ_Steelhead_2021,Benicia,52.144000000000005,10,Carquinez Strait,DurhamFerry_Rel,17,38.0423015,-122.1236
+0.01,0,0,0.02,SJ_Steelhead_2021,GoldenGateE,1.71,11,SF Bay,DurhamFerry_Rel,7,37.82794,-122.46168
+1,0,0,0,SJ_Steelhead_2021,Head_of_Old_River_Rel,159.141,5,NA,Head_of_Old_River_Rel,0,37.80789,-121.3295
+0.32,0.01,0.3,0.34,SJ_Steelhead_2021,OR_HOR_US,157.981,6,South Delta,Head_of_Old_River_Rel,476,37.8145,-121.3349
+0.32,0.01,0.3,0.34,SJ_Steelhead_2021,OR_HOR_DS,157.781,7,South Delta,Head_of_Old_River_Rel,457,37.81544,-121.33453
+0.01,0,0.01,0.02,SJ_Steelhead_2021,Chipps,71.48599999999999,9,West Delta,Head_of_Old_River_Rel,18,38.046132,-121.912643
+0.01,0,0.01,0.02,SJ_Steelhead_2021,Benicia,52.144000000000005,10,Carquinez Strait,Head_of_Old_River_Rel,15,38.0423015,-122.1236
+0.01,0,0,0.02,SJ_Steelhead_2021,GoldenGateE,1.71,11,SF Bay,Head_of_Old_River_Rel,9,37.82794,-122.46168
+1,0,0,0,SJ_Steelhead_2021,Stockton_Rel,135.5,8,South Delta,Stockton_Rel,298,37.937782,-121.33374
+0.02,0,0.01,0.03,SJ_Steelhead_2021,Chipps,71.48599999999999,9,West Delta,Stockton_Rel,26,38.046132,-121.912643
+0.01,0,0.01,0.02,SJ_Steelhead_2021,Benicia,52.144000000000005,10,Carquinez Strait,Stockton_Rel,23,38.0423015,-122.1236
+0.01,0,0.01,0.02,SJ_Steelhead_2021,GoldenGateE,1.71,11,SF Bay,Stockton_Rel,20,37.82794,-122.46168
