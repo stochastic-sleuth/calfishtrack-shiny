@@ -227,7 +227,7 @@ aggregate_GEN <- function(detections,
 }
 
 
-make_EH <- function(detections_tmp) {
+make_EH <- function(detections_tmp, release_loc = NULL) {
   # Make an encounter history df
   #
   # Arguments:
@@ -247,10 +247,18 @@ make_EH <- function(detections_tmp) {
     ungroup()
   
   # Get list of all tagged fish for the studyID
-  fish <- TaggedFish %>% 
-    filter(study_id == detections_tmp$StudyID[1]) %>% 
-    arrange(fish_id) %>% 
-    pull(fish_id)
+  if(is.null(release_loc)){
+     fish <- TaggedFish %>% 
+        filter(study_id == detections_tmp$StudyID[1]) %>% 
+        arrange(fish_id) %>% 
+        pull(fish_id)   
+  } else {
+     fish <- TaggedFish %>% 
+        filter(study_id == detections_tmp$StudyID[1] & release_location == release_loc) %>% 
+        arrange(fish_id) %>% 
+        pull(fish_id)   
+  }
+  
   
   # Create matrix of all combinations of fish and GEN
   EH <- expand.grid(
@@ -806,8 +814,8 @@ reach.meta <- get_receiver_GEN(detections)
 # Filter out receiver locations for SJ Steelhead studies
 reach.meta <- reach.meta %>%
               filter(Region %in% c("Carquinez Strait", "San Joaquin River ", "SF Bay") |
-                     GEN %in% c("OR_HOR_US", "OR_HOR_DS", "ChippsE", "ChippsW", "Stockton_Rel", "Head_of_Old_River_Rel")) %>%
-              filter(GEN != "Las Palmas" & GEN != "DurhamFerryUS_1")
+                     GEN %in% c("ChippsE", "ChippsW", "Stockton_Rel", "Head_of_Old_River_Rel")) %>%
+              filter(!GEN %in% c("Las Palmas", "DurhamFerryUS_1"))
 reach.meta <- rbind(reach.meta, data.frame(GEN = "Head_of_Old_River_Rel", GenRKM = 156, GenLat = 37.80789, GenLon = -121.3295, Region = NA))
 
 # # Filter out receiver locations in the Delta, and any that are above the 
@@ -849,10 +857,10 @@ run_multi_survival <- function(release_loc, type) {
   detects <- detections %>% 
              filter(Rel_loc == release_loc,
                     GEN %in% reach.meta$GEN)
-
+  
   aggregated <- aggregate_GEN(detects)
   
-  EH <- make_EH(aggregated)
+  EH <- make_EH(aggregated, release_loc)
   
   inp <- create_inp(aggregated, EH)
   
@@ -907,8 +915,8 @@ reach_surv <- lapply(rel_loc, run_multi_survival, type = "reach") %>%
 
 ### CODE FOR RUNNING SAN JOAQUIN STEELHEAD STUDIES ####
 reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Mossdale")] - 4
-reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] - 1.16
-reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_DS")] <- reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] - 0.2
+# reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] - 1.16
+# reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_DS")] <- reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] - 0.2
 reach.meta <- reach.meta %>% arrange(desc(GenRKM))
 reach.meta.main <- reach.meta 
 reach.meta.1 <- reach.meta %>%
@@ -918,7 +926,7 @@ reach.meta.2 <- reach.meta %>%
                        !GEN %in% c("Stockton_Rel"))
 reach.meta.3 <- reach.meta %>%
                 filter(!Region %in% c("San Joaquin River ") &
-                       !GEN %in% c("OR_HOR_US", "OR_HOR_DS", "Head_of_Old_River_Rel"))
+                       !GEN %in% c("Head_of_Old_River_Rel"))
 
 reach.meta <- reach.meta.main
 # reach_surv1 <- reach_surv
