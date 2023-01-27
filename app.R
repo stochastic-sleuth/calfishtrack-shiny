@@ -44,8 +44,6 @@ library(DT)
 library(DiagrammeR) # for Delta route survival diagram
 library(kableExtra) # for Delta route survival table
 
-#a test comment!
-#a new test for desktop gui
 # Global ------------------------------------------------------------------------------------------------------------------------------
 
 ## Load Receiver Deployments -----------------------------------------------
@@ -2988,6 +2986,3 @@ server <- function(input, output, session) {
 # source('server.R', local = TRUE)
 
 shinyApp(ui = ui, server = server)
-
-
-# some changes
