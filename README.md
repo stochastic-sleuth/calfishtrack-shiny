@@ -24,3 +24,9 @@ Survival estimates are calculated by summarizing the detection history of study 
 For the Delta route-specific survival tab, we ran a Bayesian multi-state mark-recapture model in JAGS to obtain survival and route-entrainment probability estimates for the Delta between Sacramento and Benicia. We modeled routing and survival in four possible routes through the Delta: Sacramento River mainstem, Sutter Slough, Steamboat Slough, and Georgiana Slough. In this tab, there is a diagram showing survival and routing estimates for each reach and junction in the Delta, and a barplot and table summarizing survival and migration route probabilities for each of the four migratory pathways. This section was developed by the Quantitative Fisheries Ecology Section of USGS Western Fisheries Research Center. For questions or comments, send an email to our group at gs-b-crrl_qfes@usgs.gov .
 
 *These survival results are preliminary and for discussion purposes only. Detection data has not been filtered for predator detections, and survival estimates have not been adjusted for any potential premature tag failures.*
+
+### Movement
+Fish movement is summarized by study population in a table format. For each receiver location, the minimum, median, and maximum travel time is calculated in days and kilometers per day. The number of unique fish detected at each receiver location is displayed as well. We will update this page to display travel times in an interactive plot soon, so stay tuned.
+
+### Questions or comments?
+This Shiny App was developed by UCSC/NOAA, Southwest Science Fisheries Center, Fisheries Ecology Division. Source code used to create this site can be viewed here . If you have any questions or comments please feel free to send us an email . 
