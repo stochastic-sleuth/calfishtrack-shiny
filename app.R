@@ -1544,9 +1544,19 @@ server <- function(input, output, session) {
   
   
   output$cumsurvival_text <- renderUI({
-    sample_size <- cumsurvivalVar() %>% 
-      select("Count") %>% 
-      slice(1)
+    df <- cumsurvivalVar()
+    if(length(unique(df$release)) > 1){
+       sample_size <- df %>%
+          group_by(release) %>%
+          slice_head() %>%
+          ungroup() %>%
+          pull(Count)
+       sample_size <- sum(sample_size)
+    } else {
+       sample_size <- df %>% 
+          select("Count") %>% 
+          slice(1)
+    }
     
     tags$h4(paste0("Number of fish tagged: ", sample_size))
   })
