@@ -1634,8 +1634,8 @@ server <- function(input, output, session) {
     df <- cumsurvivalVar()
     
     df %>% 
-      slice(1:(max(df$reach_num) + 1)) %>% 
-      # filter(reach_num != 0) %>% 
+      slice(1:(max(df$reach_num, na.rm = T) + 1)) %>% 
+      filter(reach_num != 0) %>%
       leaflet() %>% 
       addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
                        options = providerTileOptions(noWrap = TRUE)) %>% 
