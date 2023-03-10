@@ -21,6 +21,7 @@
 # --- TaggedFish
 # --- CDEC Flows
 
+library(shiny)
 library(shinydashboard) # shiny tabs
 library(shinythemes)
 library(leaflet) # web mapping
@@ -1031,16 +1032,17 @@ server <- function(input, output, session) {
       domain = c( "BND","BTC","KES","MEN","MSD","NEW","VNS","WLK")
     )
 
-    # Bring in a Sacramento River shapefile
-    rivers   <- st_read("./data/GIS/sac_river_dissolve.shp")
+    # Bring in a Sacramento  and San Joquin River shapefile
+    sacrivers   <- st_read("./data/GIS/SacSanJ/SacSanJ_i08_C2VSimFG.shp")
     # Transform datum
-    rivers   <- st_transform(rivers, crs = '+proj=longlat +datum=WGS84')
+    sacrivers   <- st_transform(sacrivers, crs = '+proj=longlat +datum=WGS84')
     # Need to drop z dimension: https://gis.stackexchange.com/questions/253898/adding-a-linestring-by-st-read-in-shiny-leaflet
-    rivers   <- st_zm(rivers, drop = T, what = "ZM")
-
+    sacrivers <- st_zm(sacrivers, drop = T, what = "ZM")
+    
     leaflet(data = cdec_stations) %>%
-      addPolygons(
-        data = rivers, color = "#668db3",
+      addPolylines(
+        data = sacrivers,
+        color = "#668db3",
         weight = 3, opacity = 1
       ) %>%
       addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
@@ -2996,3 +2998,4 @@ server <- function(input, output, session) {
 # source('server.R', local = TRUE)
 
 shinyApp(ui = ui, server = server)
+
