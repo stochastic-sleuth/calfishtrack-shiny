@@ -1,0 +1,5 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+1,1.471677e-4,0.9997115,1.0002884,FRW_Fall_2021,FR_Eye_Rel,FR_Gateway,303.447,299.317,Feather_R,"FR_Eye_Rel to 
+FR_Gateway",303.447 to 299.317,4,1,39.4569,-121.61892,39.43369,-121.63458
+0.9999948,0,0.9999948,0.9999948,FRW_Fall_2021,FR_Gateway,Gridley,299.317,287.027,Feather_R,"FR_Gateway to 
+Gridley",299.317 to 287.027,1,1,39.43369,-121.63458,39.35455,-121.63422

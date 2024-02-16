@@ -1,0 +1,35 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
+1,0,0,0,Wild_stock_Chinook_RBDD_2022,Altube Island,460,0,Upper Sac R,1 (NA),0,303,40.15314,-122.19696
+0.98,0.01,0.96,0.99,Wild_stock_Chinook_RBDD_2022,Blw_Salt,456.888,1,Upper Sac R,0.98 (0.01),1,297,40.1464,-122.15246
+0.84,0.02,0.8,0.88,Wild_stock_Chinook_RBDD_2022,Mill_Ck_Conf,441.318,2,Upper Sac R,0.84 (0.02),2,254,40.0327,-122.11987
+0.66,0.03,0.6,0.71,Wild_stock_Chinook_RBDD_2022,Abv_WoodsonBr,425.158,3,Upper Sac R,0.66 (0.03),3,197,39.920094,-122.08446000000001
+0.61,0.03,0.56,0.67,Wild_stock_Chinook_RBDD_2022,Abv_Otter_Island,419.398,4,Upper Sac R,0.61 (0.03),4,171,39.882027,-122.064445
+0.47,0.03,0.41,0.53,Wild_stock_Chinook_RBDD_2022,Blw_IrvineFinch,394.668,5,Upper Sac R,0.47 (0.03),5,122,39.73146,-121.97483
+0.34,0.03,0.29,0.39,Wild_stock_Chinook_RBDD_2022,Ord,371.658,6,Upper Sac R,0.34 (0.03),6,102,39.634564999999995,-121.98939
+0.28,0.03,0.23,0.33,Wild_stock_Chinook_RBDD_2022,BlwOrd,361.728,7,Upper Sac R,0.28 (0.03),7,85,39.56548,-122.0018
+0.23,0.03,0.18,0.29,Wild_stock_Chinook_RBDD_2022,ButteBr,344.108,8,Lower Sac R,0.23 (0.03),8,25,39.4569,-121.995
+0.19,0.02,0.15,0.24,Wild_stock_Chinook_RBDD_2022,Colusa AC3,331.158,9,Lower Sac R,0.19 (0.02),9,58,39.36038,-122.01373
+0.17,0.02,0.13,0.22,Wild_stock_Chinook_RBDD_2022,Colusa AC2,318.618,10,Lower Sac R,0.17 (0.02),10,49,39.28007,-122.01891
+0.16,0.02,0.12,0.2,Wild_stock_Chinook_RBDD_2022,AbvColusaBr,307.738,11,Lower Sac R,0.16 (0.02),11,47,39.2205,-122.00847
+0.16,0.02,0.12,0.2,Wild_stock_Chinook_RBDD_2022,Colusa BC2,296.278,12,Lower Sac R,0.16 (0.02),12,48,39.184963,-121.943214
+0.15,0.02,0.12,0.2,Wild_stock_Chinook_RBDD_2022,MeridianBr,290.848,13,Lower Sac R,0.15 (0.02),13,44,39.145542,-121.917984
+0.14,0.02,0.11,0.19,Wild_stock_Chinook_RBDD_2022,Colusa BC3,287.208,14,Lower Sac R,0.14 (0.02),14,43,39.13132,-121.936554
+0.12,0.02,0.09,0.16,Wild_stock_Chinook_RBDD_2022,AbvTisdale,269.238,15,Lower Sac R,0.12 (0.02),15,37,39.0364,-121.82918
+0.12,0.02,0.08,0.16,Wild_stock_Chinook_RBDD_2022,BlwTisdale,261.408,16,Lower Sac R,0.12 (0.02),16,35,38.98941,-121.80463
+0.08,0.02,0.05,0.12,Wild_stock_Chinook_RBDD_2022,BlwChinaBend,240.618,17,Lower Sac R,0.08 (0.02),17,24,38.88406,-121.81713
+0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,KnightsBlwRST,221.58,18,Lower Sac R,0.08 (0.01),18,23,38.78877,-121.694
+0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,Abv_FremontWeir,215.18,19,Lower Sac R,0.08 (0.01),19,23,38.76009,-121.67145
+0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,Blw_FremontWeir,210.36,20,Lower Sac R,0.08 (0.01),20,23,38.77015,-121.6322
+0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,SacFeatherConfluence,205.76,21,Lower Sac R,0.08 (0.01),21,21,38.785259499999995,-121.62389999999999
+0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,RM75_RST,198.162,22,Lower Sac R,0.08 (0.01),22,4,38.727325,-121.60518
+0.07,0.01,0.05,0.1,Wild_stock_Chinook_RBDD_2022,Blw_Elkhorn_GS1,191.92,23,Lower Sac R,0.07 (0.01),23,21,38.64737,-121.57771
+0.06,0.01,0.04,0.09,Wild_stock_Chinook_RBDD_2022,TowerBridge,172,24,Lower Sac R,0.06 (0.01),24,18,38.5802,-121.508
+0.06,0.01,0.04,0.09,Wild_stock_Chinook_RBDD_2022,I80-50_Br,170.748,25,Lower Sac R,0.06 (0.01),25,16,38.571133,-121.5164
+0.06,0.01,0.04,0.09,Wild_stock_Chinook_RBDD_2022,SacTrawl,166.8225,26,Lower Sac R,0.06 (0.01),26,17,38.539519999999996,-121.51444000000001
+0.05,0.01,0.03,0.08,Wild_stock_Chinook_RBDD_2022,Little Pocket_DS of I80,164.387,27,Lower Sac R,0.05 (0.01),27,16,38.52448,-121.52849
+0.05,0.01,0.03,0.08,Wild_stock_Chinook_RBDD_2022,Freeport_1,152.438,28,Lower Sac R,0.05 (0.01),28,14,38.46467,-121.50501
+0.05,0.01,0.03,0.08,Wild_stock_Chinook_RBDD_2022,Freeport_2,152.025,29,Lower Sac R,0.05 (0.01),29,14,38.46467,-121.50501
+0.04,0.01,0.02,0.07,Wild_stock_Chinook_RBDD_2022,Abv_Clarksburg,147.668,30,Lower Sac R,0.04 (0.01),30,12,38.43443,-121.52448
+0.03,0.01,0.02,0.06,Wild_stock_Chinook_RBDD_2022,Hood_1,138.228,31,Lower Sac R,0.03 (0.01),31,10,38.3617,-121.52033
+0.01,0.01,0,0.04,Wild_stock_Chinook_RBDD_2022,Benicia,52.144000000000005,32,Carquinez Strait,0.01 (0.01),32,4,38.0423015,-122.1236
+0.01,0,0,0.03,Wild_stock_Chinook_RBDD_2022,GoldenGateE,1.71,33,SF Bay,0.01 (0),33,2,37.82794,-122.46168

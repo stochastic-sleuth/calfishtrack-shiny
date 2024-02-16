@@ -1,0 +1,7 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.9999996,0,0.9999996,0.9999996,FRH_Fall_2021,FR_TAO_Boat_Ramp_Rel,FR_Gateway,302.247,299.317,Feather_R,"FR_TAO_Boat_Ramp_Rel to 
+FR_Gateway",302.247 to 299.317,130,1,39.45625,-121.63308,39.43369,-121.63458
+0.0342478,0.0152369,0.014172,0.0804422,FRH_Fall_2021,FR_Gateway,FR_UpperHour,299.317,297.387,Feather_R,"FR_Gateway to 
+FR_UpperHour",299.317 to 297.387,1,66,39.43369,-121.63458,39.42064,-121.62668
+0.7745116,9.759066,9.330907e-48,1,FRH_Fall_2021,FR_UpperHour,Gridley,297.387,287.027,Feather_R,"FR_UpperHour to 
+Gridley",297.387 to 287.027,66,38,39.42064,-121.62668,39.35455,-121.63422

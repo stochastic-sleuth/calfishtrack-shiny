@@ -1,0 +1,5 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
+1,0,0,0,FRH_Fall_2021,FR_TAO_Boat_Ramp_Rel,302.247,0,Feather_R,1 (NA),0,130,39.45625,-121.63308
+1,0,0,1,FRH_Fall_2021,FR_Gateway,299.317,1,Feather_R,1 (0),1,1,39.43369,-121.63458
+0.52,0.04,0.43,0.61,FRH_Fall_2021,FR_UpperHour,297.387,2,Feather_R,0.52 (0.04),2,66,39.42064,-121.62668
+0.51,2.48,0,1,FRH_Fall_2021,Gridley,287.027,3,Feather_R,0.51 (2.48),3,38,39.35455,-121.63422

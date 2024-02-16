@@ -30,12 +30,10 @@ library(leaflet.minicharts) # web mapping animation
 library(dygraphs) # interactive time series graphing
 library(plotly) # interactive plotting
 library(cder)
-# May need to update CDEC package to library(cder)
 library(xts) # formatting for dygraphs
-library(lubridate) # date time madness
 library(tidyverse)
 library(suncalc) # getting sunset sunrise times
-library(arsenal) # nice summary stats tables
+library(arsenal) # nice summary stats tables ### masks is.Date from lubridate
 library(gt) # fancy tables
 library(rerddap) # ERDDAP data retrievals
 library(httr) # Check HTTP status for CDEC/ERDDAP
@@ -44,8 +42,11 @@ library(sf) # To display gis layers
 library(DT)
 library(DiagrammeR) # for Delta route survival diagram
 library(kableExtra) # for Delta route survival table
+library(lubridate) # date time madness
+library(htmlwidgets)
 
 # Global ------------------------------------------------------------------------------------------------------------------------------
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 ## Load Receiver Deployments -----------------------------------------------
 # Clear cached data in order to retrieve all latest data
@@ -95,7 +96,10 @@ if (as.numeric(Sys.Date() - last_checked_date) < 90) {
         StartTime = receiver_start,
         EndTime = receiver_end
       ) %>% 
-      mutate_at(vars(SN, LAT, LON, RKM, GenLat, GenLon, GenRKM), as.numeric) %>% 
+      mutate_at(vars(SN, LAT, LON, RKM, GenLat, GenLon, GenRKM), as.numeric) 
+    
+    ReceiverDeployments[ReceiverDeployments == "NULL"] <- NA
+    ReceiverDeployments <- ReceiverDeployments %>% 
       mutate(
         StartTime = mdy_hms(StartTime),
         EndTime = mdy_hms(EndTime),
@@ -794,7 +798,7 @@ server <- function(input, output, session) {
     leaflet(data = receivers) %>% 
       addTiles(group = "Open Street Map") %>% 
       # Provide optional basemap tiles
-      addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Esri World Topo",
                        options = providerTileOptions(noWrap = TRUE)) %>% 
       addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Esri Nat Geo",
                        options = providerTileOptions(noWrap = TRUE)) %>%
@@ -850,7 +854,7 @@ server <- function(input, output, session) {
           EndTime = as.character(EndTime)
         )
       
-      output$receiver_table <- renderDataTable(df)
+      output$receiver_table <- DT::renderDataTable(df)
       
       
     } else {
@@ -877,7 +881,7 @@ server <- function(input, output, session) {
           GPSname, SN, StartTime, EndTime, GenLat, GenLon
         )
       
-      output$receiver_table <- renderDataTable(df)
+      output$receiver_table <- DT::renderDataTable(df)
     }
     
   })
@@ -894,7 +898,7 @@ server <- function(input, output, session) {
                    GenLon = NA)
       )
       
-      output$receiver_table <- renderDataTable(df)
+      output$receiver_table <- DT::renderDataTable(df)
       
     }
   })
@@ -911,7 +915,7 @@ server <- function(input, output, session) {
                    GenLon = NA)
       )
       
-      output$receiver_table <- renderDataTable(df)
+      output$receiver_table <- DT::renderDataTable(df)
       
     }
   })
@@ -1116,14 +1120,19 @@ server <- function(input, output, session) {
   
   # Reactive expression that retrieves detections from ERDDAP and formats it for 
   # the time step animation
-  timestepVar<-  reactive({
+   timestepVar<-  reactive({
     req(input$anim_dataset)
     
-    files <- list.files("./detections/", full.names = T)
+    files <- list.files("./data/detections", full.names = T)
+    #files<-  gsub(".*detections\\/", "", files)
+    #files<- gsub("\\.csv", "", files)
     
     # Choose the file that matches the studyID and read it in
     original_studyid <- convert_descriptive_to_studyid(input$anim_dataset)
+    #original_studyid <- "Wild_stock_Chinook_RBDD_2022.csv"
     file <- files[str_detect(files, original_studyid)]
+    #file<- "Wild_stock_Chinook_RBDD_2022.csv"
+    #setwd("./data/detections")
     detections <- vroom(file, col_types = cols())
     
     # Get release info from TaggedFish
@@ -1134,7 +1143,7 @@ server <- function(input, output, session) {
     
     detections <- detections %>% 
       mutate(
-        date = as.Date(time_pst),
+        date = as.Date(time_pst, tz="UTC"),
         GenLat = ifelse(SN == 1, LAT, GenLat),
         GenLon = ifelse(SN == 1, LON, GenLon),
         GenRKM = ifelse(SN == 1, release$release_river_km, GenRKM)
@@ -1174,7 +1183,7 @@ server <- function(input, output, session) {
     data <- timestepVar()
     
     leaflet(data = data, width = "100%", height = "800px") %>%
-      addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Esri World Topo",
                        options = providerTileOptions(noWrap = TRUE)) %>% 
       addTiles(group = "Open Street Map") %>% 
       addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Esri Nat Geo",
@@ -1198,7 +1207,7 @@ server <- function(input, output, session) {
       ) %>% 
       # Give control for selecting basemaps
       addLayersControl(
-        baseGroups = c("Stamen Terrain", "Open Street Map", "Esri Nat Geo", 
+        baseGroups = c("Esri World Topo", "Open Street Map", "Esri Nat Geo", 
                        "Esri World Imagery"),
         options = layersControlOptions(collapsed = FALSE)
       )
@@ -1331,12 +1340,12 @@ server <- function(input, output, session) {
     req(input$time_of_day_input)
     
     # Directory of detection files
-    files <- list.files("./detections/", full.names = T)
+    files <- list.files("./data/detections/", full.names = T)
     
     original_studyid <- convert_descriptive_to_studyid(input$time_of_day_input)
     file <- files[str_detect(files, original_studyid)]
     detections <- vroom(file, col_types = cols()) %>% 
-      mutate(hour = hour(time_pst))
+      mutate(hour = lubridate::hour(time_pst))
     
   })
   
@@ -1639,7 +1648,7 @@ server <- function(input, output, session) {
       slice(1:(max(df$reach_num, na.rm = T) + 1)) %>% 
       filter(reach_num != 0) %>%
       leaflet() %>% 
-      addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Esri World Topo",
                        options = providerTileOptions(noWrap = TRUE)) %>% 
       addTiles(group = "Open Street Map") %>% 
       addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Esri Nat Geo",
@@ -1660,13 +1669,13 @@ server <- function(input, output, session) {
       ) %>% 
       # Give control for selecting basemaps
       addLayersControl(
-        baseGroups = c("Stamen Terrain", "Open Street Map", "Esri Nat Geo", 
+        baseGroups = c("Esri World Topo", "Open Street Map", "Esri Nat Geo", 
                        "Esri World Imagery"),
         options = layersControlOptions(collapsed = FALSE)
       )
   })
   
-  output$cumSurvDT <- renderDataTable({
+  output$cumSurvDT <- DT::renderDataTable({
     df <- cumsurvivalVar()
     
     # If survival estimates contain the column 'release'
@@ -1860,7 +1869,7 @@ server <- function(input, output, session) {
       # need one set
       dplyr::slice(1:max(df$reach_num)) %>% 
       leaflet() %>% 
-      addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Esri World Topo",
                        options = providerTileOptions(noWrap = TRUE)) %>% 
       addTiles(group = "Open Street Map") %>% 
       addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Esri Nat Geo",
@@ -1897,7 +1906,7 @@ server <- function(input, output, session) {
         icon = my_icon2
       ) %>%
       addLayersControl(
-        baseGroups = c("Stamen Terrain", "Open Street Map", "Esri Nat Geo", 
+        baseGroups = c("Esri World Topo", "Open Street Map", "Esri Nat Geo", 
                        "Esri World Imagery"),
         options = layersControlOptions(collapsed = FALSE)
       )
@@ -1982,7 +1991,7 @@ server <- function(input, output, session) {
     
   })
   
-  output$reachSurvDT <- renderDataTable({
+  output$reachSurvDT <- DT::renderDataTable({
     df <- reachSurvVar()
     
     # If multiple release
@@ -2794,7 +2803,7 @@ server <- function(input, output, session) {
   movementVar <-  reactive({
     req(input$movement_dataset)
     
-    files <- list.files("./detections/", full.names = T)
+    files <- list.files("./data/detections/", full.names = T)
     
     # Choose the file that matches the studyID and read it in
     original_studyid <- convert_descriptive_to_studyid(input$movement_dataset)
@@ -2838,8 +2847,8 @@ server <- function(input, output, session) {
       summarize(
         N = n(),
         min_travel_days = min(as.numeric(days_since_rel, units='days'), na.rm=T),
-        median_travel_days = median(days_since_rel),
-        max_travel_days = max(days_since_rel),
+        median_travel_days = median(as.numeric(days_since_rel, units='days'), na.rm=T),
+        max_travel_days = max(as.numeric(days_since_rel, units='days'), na.rm=T),
         mean_km_day = mean(km_day),
         median_km_day = median(km_day)
       ) %>% 
@@ -2908,7 +2917,7 @@ server <- function(input, output, session) {
     req(input$movement_plot_dataset)
     
     # Directory of detection files
-    files <- list.files("./detections/", full.names = T)
+    files <- list.files("./data/detections/", full.names = T)
     original_studyid <- convert_descriptive_to_studyid(input$movement_plot_dataset)
     file <- files[str_detect(files, original_studyid)]
     detections <- vroom(file, col_types = cols())

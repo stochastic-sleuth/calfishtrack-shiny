@@ -1,0 +1,19 @@
+estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
+0.5983563,0.0243614,0.549819,0.645039,Nimbus_Fall_2022,AR_Sunrise_Ramp_Rel,TowerBridge,206.041,172,Amer R,"AR_Sunrise_Ramp_Rel to 
+TowerBridge",206.041 to 172,247,39,38.63634,-121.26424,38.5802,-121.508
+1,2.466971e-7,0.9999995,1.0000005,Nimbus_Fall_2022,TowerBridge,I80-50_Br,172,170.748,Lower Sac R,"TowerBridge to 
+I80-50_Br",172 to 170.748,39,43,38.5802,-121.508,38.571133,-121.5164
+0.5129814,0.1189372,0.2929376,0.7281059,Nimbus_Fall_2022,I80-50_Br,Little Pocket_DS of I80,170.748,164.387,Lower Sac R,"I80-50_Br to 
+Little Pocket_DS of I80",170.748 to 164.387,43,25,38.571133,-121.5164,38.52448,-121.52849
+0.3982322,0.0939377,0.2348479,0.5879419,Nimbus_Fall_2022,Little Pocket_DS of I80,Freeport_2,164.387,152.025,Lower Sac R,"Little Pocket_DS of I80 to 
+Freeport_2",164.387 to 152.025,25,8,38.52448,-121.52849,38.46467,-121.50501
+1,1.932456e-7,0.9999996,1.0000004,Nimbus_Fall_2022,Freeport_2,Abv_Clarksburg,152.025,147.668,Lower Sac R,"Freeport_2 to 
+Abv_Clarksburg",152.025 to 147.668,8,8,38.46467,-121.50501,38.43443,-121.52448
+0.8813766,0.1112947,0.4797924,0.9835677,Nimbus_Fall_2022,Abv_Clarksburg,Hood_1,147.668,138.228,Lower Sac R,"Abv_Clarksburg to 
+Hood_1",147.668 to 138.228,8,8,38.43443,-121.52448,38.3617,-121.52033
+0.5161296,0.174121,0.2138304,0.8070682,Nimbus_Fall_2022,Hood_1,SacBlwSteamboat,138.228,127.74300000000001,Lower Sac R,"Hood_1 to 
+SacBlwSteamboat",138.228 to 127.743,8,4,38.3617,-121.52033,38.294000999999994,-121.56344
+0.463728,0.2570556,0.1023556,0.867684,Nimbus_Fall_2022,SacBlwSteamboat,SacBlwGeo,127.74300000000001,118.72800000000001,North Delta,"SacBlwSteamboat to 
+SacBlwGeo",127.743 to 118.728,4,2,38.294000999999994,-121.56344,38.23934,-121.530215
+0.8442685,15.562625,9.532339e-101,1,Nimbus_Fall_2022,SacBlwGeo,Sac_Rio_Vista,118.72800000000001,97.6045,North Delta,"SacBlwGeo to 
+Sac_Rio_Vista",118.728 to 97.6045,2,1,38.23934,-121.530215,38.1559235,-121.684595

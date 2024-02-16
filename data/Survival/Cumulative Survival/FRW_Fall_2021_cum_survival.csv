@@ -1,0 +1,4 @@
+cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
+1,0,0,0,FRW_Fall_2021,FR_Eye_Rel,303.447,0,Feather_R,1 (NA),0,4,39.4569,-121.61892
+1,0,0,0,FRW_Fall_2021,FR_Gateway,299.317,1,Feather_R,1 (0),1,1,39.43369,-121.63458
+1,0.78,0,0,FRW_Fall_2021,Gridley,287.027,2,Feather_R,1 (0.78),2,1,39.35455,-121.63422
