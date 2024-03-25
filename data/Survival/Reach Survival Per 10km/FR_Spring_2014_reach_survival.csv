@@ -1,41 +1,14 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,release,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.7063664,0.0618163,0.5728903,0.8118307,FR_Spring_2014,FR_Gridley_Rel,CoxRiffle,287.38,283.87,Feather_R,"FR_Gridley_Rel to 
-CoxRiffle",287.38 to 283.87,1,FR_Gridley_Rel,150,131,39.357876,-121.63604,39.333267,-121.632675
-0.6673206,0.0362398,0.5929423,0.7342007,FR_Spring_2014,CoxRiffle,SunsetPumps,283.87,269.75,Feather_R,"CoxRiffle to 
-SunsetPumps",283.87 to 269.75,2,FR_Gridley_Rel,131,75,39.333267,-121.632675,39.251724,-121.63522
-0.5610903,0.0477975,0.4663452,0.6515819,FR_Spring_2014,SunsetPumps,ShanghaiBend,269.75,245.45,Feather_R,"SunsetPumps to 
-ShanghaiBend",269.75 to 245.45,3,FR_Gridley_Rel,75,13,39.251724,-121.63522,39.094635,-121.59285
-0.8512112,5.9115229,1.06221e-39,1,FR_Spring_2014,ShanghaiBend,FR_Boyds_Rel,245.45,240.75,Feather_R,"ShanghaiBend to 
-FR_Boyds_Rel",245.45 to 240.75,4,FR_Gridley_Rel,13,0,39.094635,-121.59285,39.057335,-121.61066
-0.9137628,62.119419,5.894175e-308,1,FR_Spring_2014,FR_Boyds_Rel,BoydsPump,240.75,240.27,Feather_R,"FR_Boyds_Rel to 
-BoydsPump",240.75 to 240.27,5,FR_Gridley_Rel,0,17,39.057335,-121.61066,39.0518,-121.61039
-0.7914014,0.131005,0.4447308,0.9472886,FR_Spring_2014,BoydsPump,StarBend,240.27,234.92,Feather_R,"BoydsPump to 
-StarBend",240.27 to 234.92,6,FR_Gridley_Rel,17,15,39.0518,-121.61039,39.009884,-121.59382
-0.7943373,0.082354,0.589819,0.9120819,FR_Spring_2014,StarBend,BC_Beach,234.92,217.31,Feather_R,"StarBend to 
-BC_Beach",234.92 to 217.31,7,FR_Gridley_Rel,15,10,39.009884,-121.59382,38.877506,-121.61404
-0.7729606,0.1155365,0.4836877,0.92522,FR_Spring_2014,BC_Beach,Blw_FRConf,217.31,203.46,Feather_R,"BC_Beach to 
-Blw_FRConf",217.31 to 203.46,8,FR_Gridley_Rel,10,7,38.877506,-121.61404,38.78212,-121.61526
-1,6.797985e-9,1,1,FR_Spring_2014,Blw_FRConf,TowerBridge,203.46,172,Lower Sac R,"Blw_FRConf to 
-TowerBridge",203.46 to 172,9,FR_Gridley_Rel,7,7,38.78212,-121.61526,38.5802,-121.508
-0.6667063,0.1392222,0.3694243,0.8722876,FR_Spring_2014,TowerBridge,FreeportBr,172,151.1,Lower Sac R,"TowerBridge to 
-FreeportBr",172 to 151.1,10,FR_Gridley_Rel,7,3,38.5802,-121.508,38.45568,-121.501976
-0.9900449,5.7969611,5.532122e-307,1,FR_Spring_2014,FreeportBr,Hood,151.1,138.22,Lower Sac R,"FreeportBr to 
-Hood",151.1 to 138.22,11,FR_Gridley_Rel,3,2,38.45568,-121.501976,38.3617,-121.52033
-0.0013289,5.0387102,7.402141e-312,1,FR_Spring_2014,Hood,Benicia,138.22,52.04,Lower Sac R,"Hood to 
-Benicia",138.22 to 52.04,12,FR_Gridley_Rel,2,0,38.3617,-121.52033,38.041233,-122.12382
-0.9999919,0,0.9999919,0.9999919,FR_Spring_2014,FR_Boyds_Rel,BoydsPump,240.75,240.27,Feather_R,"FR_Boyds_Rel to 
-BoydsPump",240.75 to 240.27,5,FR_Boyds_Rel,150,5,39.057335,-121.61066,39.0518,-121.61039
-0.8374815,0.0412989,0.7397908,0.9032906,FR_Spring_2014,BoydsPump,StarBend,240.27,234.92,Feather_R,"BoydsPump to 
-StarBend",240.27 to 234.92,6,FR_Boyds_Rel,5,135,39.0518,-121.61039,39.009884,-121.59382
-0.8210861,0.0260823,0.7641793,0.8666566,FR_Spring_2014,StarBend,BC_Beach,234.92,217.31,Feather_R,"StarBend to 
-BC_Beach",234.92 to 217.31,7,FR_Boyds_Rel,135,94,39.009884,-121.59382,38.877506,-121.61404
-0.9119578,0.0337989,0.8194613,0.9594122,FR_Spring_2014,BC_Beach,Blw_FRConf,217.31,203.46,Feather_R,"BC_Beach to 
-Blw_FRConf",217.31 to 203.46,8,FR_Boyds_Rel,94,63,38.877506,-121.61404,38.78212,-121.61526
-0.9252712,0.0198681,0.8757768,0.9560354,FR_Spring_2014,Blw_FRConf,TowerBridge,203.46,172,Lower Sac R,"Blw_FRConf to 
-TowerBridge",203.46 to 172,9,FR_Boyds_Rel,63,64,38.78212,-121.61526,38.5802,-121.508
-0.9054338,0.026013,0.8407277,0.9455548,FR_Spring_2014,TowerBridge,FreeportBr,172,151.1,Lower Sac R,"TowerBridge to 
-FreeportBr",172 to 151.1,10,FR_Boyds_Rel,64,54,38.5802,-121.508,38.45568,-121.501976
-1,2.892428e-5,0.9999433,1.0000567,FR_Spring_2014,FreeportBr,Hood,151.1,138.22,Lower Sac R,"FreeportBr to 
-Hood",151.1 to 138.22,11,FR_Boyds_Rel,54,38,38.45568,-121.501976,38.3617,-121.52033
-0.6895302,5.586801,1.35619e-22,1,FR_Spring_2014,Hood,Benicia,138.22,52.04,Lower Sac R,"Hood to 
-Benicia",138.22 to 52.04,12,FR_Boyds_Rel,38,1,38.3617,-121.52033,38.041233,-122.12382
+reach_end,reach_start,estimate,se,lcl,ucl,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+StarBend,FR_Boyds_Rel,0.984,0.004,0.972,0.991,240.75,234.92,Feather_R,FR_Boyds_Rel to StarBend,240.75 to 234.92,39.057335,-121.61066,39.009884,-121.59382,2014-04-11_FR_Boyds_Rel,2014-04-11,150,135,1,4,FR_Boyds_Rel
+BC_Beach,StarBend,0.98,0.003,0.973,0.986,234.92,217.31,Feather_R,StarBend to BC_Beach,234.92 to 217.31,39.009884,-121.59382,38.877506,-121.61404,2014-04-11_FR_Boyds_Rel,2014-04-11,135,94,1,5,FR_Boyds_Rel
+Blw_FRConf,BC_Beach,0.99,0.004,0.98,0.995,217.31,203.46,Lower Sac R,BC_Beach to Blw_FRConf,217.31 to 203.46,38.877506,-121.61404,38.78212,-121.61526,2014-04-11_FR_Boyds_Rel,2014-04-11,94,63,1,6,FR_Boyds_Rel
+TowerBridge,Blw_FRConf,0.992,0.002,0.987,0.996,203.46,172,Lower Sac R,Blw_FRConf to TowerBridge,203.46 to 172,38.78212,-121.61526,38.5802,-121.508,2014-04-11_FR_Boyds_Rel,2014-04-11,63,64,1,7,FR_Boyds_Rel
+FreeportBr,TowerBridge,0.99,0.003,0.983,0.994,172,151.1,Lower Sac R,TowerBridge to FreeportBr,172 to 151.1,38.5802,-121.508,38.45568,-121.501976,2014-04-11_FR_Boyds_Rel,2014-04-11,64,54,1,8,FR_Boyds_Rel
+CoxRiffle,FR_Gridley_Rel,0.966,0.008,0.945,0.979,287.38,283.87,Feather_R,FR_Gridley_Rel to CoxRiffle,287.38 to 283.87,39.357876,-121.63604,39.333267,-121.632675,2014-04-10_FR_Gridley_Rel,2014-04-10,150,131,2,1,FR_Gridley_Rel
+SunsetPumps,CoxRiffle,0.96,0.005,0.949,0.969,283.87,269.75,Feather_R,CoxRiffle to SunsetPumps,283.87 to 269.75,39.333267,-121.632675,39.251724,-121.63522,2014-04-10_FR_Gridley_Rel,2014-04-10,131,75,2,2,FR_Gridley_Rel
+ShanghaiBend,SunsetPumps,0.942,0.008,0.924,0.957,269.75,245.45,Feather_R,SunsetPumps to ShanghaiBend,269.75 to 245.45,39.251724,-121.63522,39.094635,-121.59285,2014-04-10_FR_Gridley_Rel,2014-04-10,75,13,2,3,FR_Gridley_Rel
+StarBend,ShanghaiBend,0.985,0.011,0.939,0.996,245.45,234.92,Feather_R,ShanghaiBend to StarBend,245.45 to 234.92,39.094635,-121.59285,39.009884,-121.59382,2014-04-10_FR_Gridley_Rel,2014-04-10,13,15,2,4,FR_Gridley_Rel
+BC_Beach,StarBend,0.977,0.01,0.946,0.991,234.92,217.31,Feather_R,StarBend to BC_Beach,234.92 to 217.31,39.009884,-121.59382,38.877506,-121.61404,2014-04-10_FR_Gridley_Rel,2014-04-10,15,10,2,5,FR_Gridley_Rel
+Blw_FRConf,BC_Beach,0.974,0.015,0.922,0.992,217.31,203.46,Lower Sac R,BC_Beach to Blw_FRConf,217.31 to 203.46,38.877506,-121.61404,38.78212,-121.61526,2014-04-10_FR_Gridley_Rel,2014-04-10,10,7,2,6,FR_Gridley_Rel
+TowerBridge,Blw_FRConf,1,0,1,1,203.46,172,Lower Sac R,Blw_FRConf to TowerBridge,203.46 to 172,38.78212,-121.61526,38.5802,-121.508,2014-04-10_FR_Gridley_Rel,2014-04-10,7,7,2,7,FR_Gridley_Rel
+FreeportBr,TowerBridge,0.96,0.02,0.896,0.985,172,151.1,Lower Sac R,TowerBridge to FreeportBr,172 to 151.1,38.5802,-121.508,38.45568,-121.501976,2014-04-10_FR_Gridley_Rel,2014-04-10,7,3,2,8,FR_Gridley_Rel

@@ -1,21 +1,13 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
-1,0,1,1,Winter_H_2013,Caldwell_Park_Rel,551.28,0,Upper Sac R,148,40.593826,-122.39836
-0.987,0.009,0.948,0.997,Winter_H_2013,Hwy 44 Bridge,547.73,1,Upper Sac R,65,40.58691,-122.36891
-0.987,0.009,0.948,0.997,Winter_H_2013,Blw_Cypress,543.9,2,Upper Sac R,141,40.56047,-122.37527
-0.987,0.009,0.948,0.997,Winter_H_2013,Blw_ClearCr,535.62,3,Upper Sac R,138,40.50188,-122.36192
-0.98,0.018,0.89,0.997,Winter_H_2013,BlwCowCr,520.69,4,Upper Sac R,72,40.46013,-122.22765
-0.976,0.02,0.882,0.995,Winter_H_2013,Battle_Conf,507.48,5,Upper Sac R,97,40.35371,-122.17734
-0.906,0.024,0.847,0.944,Winter_H_2013,Blw_Salt,456.88,6,Upper Sac R,133,40.1464,-122.15246
-0.799,0.034,0.723,0.858,Winter_H_2013,Abv_WoodsonBr,425.15,7,Upper Sac R,115,39.920094,-122.08446000000001
-0.5,0.042,0.418,0.581,Winter_H_2013,Blw_IrvineFinch,394.66,8,Upper Sac R,71,39.73146,-121.97483
-0.338,0.039,0.266,0.418,Winter_H_2013,BlwOrd,361.72,9,Upper Sac R,50,39.56548,-122.0018
-0.232,0.035,0.171,0.308,Winter_H_2013,BlwButteBr,338.28,10,Lower Sac R,32,39.41913,-122.00943
-0.196,0.033,0.14,0.268,Winter_H_2013,AbvColusaBr,307.73,11,Lower Sac R,29,39.2205,-122.00847
-0.157,0.03,0.107,0.226,Winter_H_2013,Abv Grimes,281.17,12,Lower Sac R,3,39.0971,-121.89676
-0.157,0.03,0.107,0.226,Winter_H_2013,AbvTisdale,269.23,13,Lower Sac R,14,39.0364,-121.82918
-0.157,0.03,0.107,0.226,Winter_H_2013,KnightsLanding,224.06,14,Lower Sac R,10,38.82341,-121.72388
-0.149,0.029,0.1,0.215,Winter_H_2013,Blw_FRConf,203.46,15,Lower Sac R,4,38.78212,-121.61526
-0.149,0.029,0.1,0.215,Winter_H_2013,TowerBridge,172,16,Lower Sac R,10,38.5802,-121.508
-0.149,0.029,0.1,0.215,Winter_H_2013,FreeportDiv,153.13,17,Lower Sac R,22,38.47223,-121.50639
-0.047,0.017,0.023,0.096,Winter_H_2013,Benicia,52.04,18,Carquinez Strait,7,38.041233,-122.12382
-0.047,0.017,0.023,0.096,Winter_H_2013,GoldenGateE,1.71,19,SF Bay,3,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Caldwell_Park_Rel,0.5,1,0,0,0,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,551.28,40.593826,-122.39836,Upper Sac R,1 (NA),0.5,148,Caldwell_Park_Rel
+Blw_Cypress,1,0.987,0.009,0.95,1,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,543.9,40.56047,-122.37527,Upper Sac R,0.987 (0.009),1,141,Caldwell_Park_Rel
+Blw_ClearCr,2,0.987,0.009,0.95,1,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,535.62,40.50188,-122.36192,Upper Sac R,0.987 (0.009),2,138,Caldwell_Park_Rel
+Blw_Salt,3,0.906,0.024,0.85,0.94,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,456.88,40.1464,-122.15246,Upper Sac R,0.906 (0.024),3,133,Caldwell_Park_Rel
+Abv_WoodsonBr,4,0.799,0.034,0.72,0.86,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,425.15,39.920094,-122.08446000000001,Upper Sac R,0.799 (0.034),4,115,Caldwell_Park_Rel
+Blw_IrvineFinch,5,0.5,0.042,0.42,0.58,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,394.66,39.73146,-121.97483,Upper Sac R,0.5 (0.042),5,71,Caldwell_Park_Rel
+BlwOrd,6,0.338,0.039,0.27,0.42,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,361.72,39.56548,-122.0018,Upper Sac R,0.338 (0.039),6,50,Caldwell_Park_Rel
+BlwButteBr,7,0.232,0.035,0.17,0.31,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,338.28,39.41913,-122.00943,Lower Sac R,0.232 (0.035),7,32,Caldwell_Park_Rel
+AbvColusaBr,8,0.196,0.033,0.14,0.27,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,307.73,39.2205,-122.00847,Lower Sac R,0.196 (0.033),8,29,Caldwell_Park_Rel
+FreeportDiv,9,0.149,0.029,0.1,0.22,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,153.13,38.47223,-121.50639,Lower Sac R,0.149 (0.029),9,22,Caldwell_Park_Rel
+Benicia,10,0.047,0.017,0.02,0.1,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,52.04,38.041233,-122.12382,Carquinez Strait,0.047 (0.017),10,7,Caldwell_Park_Rel
+GoldenGateE,11,0.047,0.017,0.02,0.1,1,2013-02-07_Caldwell_Park_Rel,2013-02-07,Winter_H_2013,1.71,37.82794,-122.46168,SF Bay,0.047 (0.017),11,3,Caldwell_Park_Rel

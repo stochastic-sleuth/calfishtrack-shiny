@@ -1,0 +1,18 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Abv_CRC_Rel,3.5,1,0,0,0,1,2022-04-29_Abv_CRC_Rel,2022-04-29,146.962,38.252293,-121.42802,Lower Mok R,1 (NA),3.5,288,Abv_CRC_Rel
+Mok_I5_Bridge,4,0.16,0.022,0.12,0.21,1,2022-04-29_Abv_CRC_Rel,2022-04-29,142.69,38.25932,-121.464615,Lower Mok R,0.16 (0.022),4,46,Abv_CRC_Rel
+Mok_WB_WildArea_Rel,0.5,1,0,0,0,2,2022-04-27_Mok_WB_WildArea_Rel,2022-04-27,168.392,38.161175,-121.31219,Lower Mok R,1 (NA),0.5,192,Mok_WB_WildArea_Rel
+Mok_Woodbridge,1,1,0,0,0,2,2022-04-27_Mok_WB_WildArea_Rel,2022-04-27,167.942,38.164425,-121.31363,Lower Mok R,1 (0),1,184,Mok_WB_WildArea_Rel
+Mok_Peltier_Bridge,2,0.439,0.042,0.36,0.52,2,2022-04-27_Mok_WB_WildArea_Rel,2022-04-27,163.06,38.185066,-121.319984,Lower Mok R,0.439 (0.042),2,73,Mok_WB_WildArea_Rel
+Mok_FeistRanch,3,0.188,0.043,0.12,0.29,2,2022-04-27_Mok_WB_WildArea_Rel,2022-04-27,155.332,38.210052,-121.374725,Lower Mok R,0.188 (0.043),3,29,Mok_WB_WildArea_Rel
+Mok_I5_Bridge,4,0.005,0.005,0,0.04,2,2022-04-27_Mok_WB_WildArea_Rel,2022-04-27,142.69,38.25932,-121.464615,Lower Mok R,0.005 (0.005),4,1,Mok_WB_WildArea_Rel
+Abv_CRC_Rel,3.5,1,0,0,0,3,2022-05-13_Abv_CRC_Rel,2022-05-13,146.962,38.252293,-121.42802,Lower Mok R,1 (NA),3.5,289,Abv_CRC_Rel
+Mok_I5_Bridge,4,0.422,0.029,0.37,0.48,3,2022-05-13_Abv_CRC_Rel,2022-05-13,142.69,38.25932,-121.464615,Lower Mok R,0.422 (0.029),4,122,Abv_CRC_Rel
+Chipps,5,0.007,0.005,0,0.03,3,2022-05-13_Abv_CRC_Rel,2022-05-13,71.48599999999999,38.046132,-121.912643,West Delta,0.007 (0.005),5,2,Abv_CRC_Rel
+Benicia,6,0.003,0.003,0,0.02,3,2022-05-13_Abv_CRC_Rel,2022-05-13,52.048,38.041233,-122.12382,Carquinez Strait,0.003 (0.003),6,1,Abv_CRC_Rel
+GoldenGateE,7,0.003,0.003,0,0.02,3,2022-05-13_Abv_CRC_Rel,2022-05-13,1.71,37.82794,-122.46168,SF Bay,0.003 (0.003),7,1,Abv_CRC_Rel
+Mok_WB_WildArea_Rel,0.5,1,0,0,0,4,2022-05-11_Mok_WB_WildArea_Rel,2022-05-11,168.392,38.161175,-121.31219,Lower Mok R,1 (NA),0.5,189,Mok_WB_WildArea_Rel
+Mok_Woodbridge,1,0.928,0.023,0.87,0.96,4,2022-05-11_Mok_WB_WildArea_Rel,2022-05-11,167.942,38.164425,-121.31363,Lower Mok R,0.928 (0.023),1,150,Mok_WB_WildArea_Rel
+Mok_Peltier_Bridge,2,0.748,0.046,0.65,0.83,4,2022-05-11_Mok_WB_WildArea_Rel,2022-05-11,163.06,38.185066,-121.319984,Lower Mok R,0.748 (0.046),2,119,Mok_WB_WildArea_Rel
+Mok_FeistRanch,3,0.286,0.053,0.19,0.4,4,2022-05-11_Mok_WB_WildArea_Rel,2022-05-11,155.332,38.210052,-121.374725,Lower Mok R,0.286 (0.053),3,43,Mok_WB_WildArea_Rel
+Mok_I5_Bridge,4,0.048,0.015,0.03,0.09,4,2022-05-11_Mok_WB_WildArea_Rel,2022-05-11,142.69,38.25932,-121.464615,Lower Mok R,0.048 (0.015),4,9,Mok_WB_WildArea_Rel

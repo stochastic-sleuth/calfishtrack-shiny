@@ -1,0 +1,11 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+FR_Gridley_Rel,0.5,1,0,0,0,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,287.387,39.357876,-121.63604,Feather_R,1 (NA),0.5,490,FR_Gridley_Rel
+Gridley,1,0.956,0.009,0.93,0.97,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,287.027,39.35455,-121.63422,Feather_R,0.956 (0.009),1,461,FR_Gridley_Rel
+CoxRiffle,2,0.929,0.012,0.9,0.95,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,283.87,39.333267,-121.632675,Feather_R,0.929 (0.012),2,455,FR_Gridley_Rel
+FR_Herringer,3,0.923,0.012,0.9,0.94,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,282.673,39.325356,-121.62361,Feather_R,0.923 (0.012),3,399,FR_Gridley_Rel
+FR_Abv_Honcut_Ck,4,0.919,0.012,0.89,0.94,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,278.823,39.296703,-121.628456,Feather_R,0.919 (0.012),4,441,FR_Gridley_Rel
+SunsetPumps,5,0.9,0.014,0.87,0.92,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,269.756,39.251724,-121.63522,Feather_R,0.9 (0.014),5,420,FR_Gridley_Rel
+Blw_SunsetPumps,6,0.9,0.014,0.87,0.92,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,268.791,39.24316,-121.635475,Feather_R,0.9 (0.014),6,339,FR_Gridley_Rel
+BC_Beach,7,0.563,0.027,0.51,0.61,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,217.314,38.877506,-121.61404,Feather_R,0.563 (0.027),7,236,FR_Gridley_Rel
+Benicia,8,0.272,0.02,0.23,0.31,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.272 (0.02),8,129,FR_Gridley_Rel
+GoldenGateE,9,0.21,0.02,0.17,0.25,1,2023-04-11_FR_Gridley_Rel,2023-04-11,FR_Spring_2023,1.71,37.82794,-122.46168,SF Bay,0.21 (0.02),9,70,FR_Gridley_Rel

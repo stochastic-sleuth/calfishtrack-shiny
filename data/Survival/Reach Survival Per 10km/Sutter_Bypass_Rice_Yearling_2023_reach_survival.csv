@@ -1,0 +1,5 @@
+reach_end,reach_start,estimate,se,lcl,ucl,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+Benicia,Sutter_Bypass_Rice_Rel,0.985,0.002,0.98,0.989,228.021,52.144,Carquinez Strait,Sutter_Bypass_Rice_Rel to Benicia,228.021 to 52.144,38.94364,-121.66482,38.0423015,-122.1236,2023-02-10_Sutter_Bypass_Rice_Rel,2023-02-10,99,7,1,1,Sutter_Bypass_Rice_Rel
+GoldenGateE,Benicia,0.975,0.012,0.939,0.99,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2023-02-10_Sutter_Bypass_Rice_Rel,2023-02-10,7,1,1,2,Sutter_Bypass_Rice_Rel
+Benicia,Sutter_Bypass_Rice_Rel,0.997,0.001,0.996,0.998,228.021,52.144,Carquinez Strait,Sutter_Bypass_Rice_Rel to Benicia,228.021 to 52.144,38.94364,-121.66482,38.0423015,-122.1236,2023-03-13_Sutter_Bypass_Rice_Rel,2023-03-13,101,56,2,1,Sutter_Bypass_Rice_Rel
+GoldenGateE,Benicia,0.992,0.002,0.986,0.996,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2023-03-13_Sutter_Bypass_Rice_Rel,2023-03-13,56,26,2,2,Sutter_Bypass_Rice_Rel

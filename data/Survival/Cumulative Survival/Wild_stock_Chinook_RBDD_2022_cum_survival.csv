@@ -1,35 +1,45 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
-1,0,0,0,Wild_stock_Chinook_RBDD_2022,Altube Island,460,0,Upper Sac R,1 (NA),0,303,40.15314,-122.19696
-0.98,0.01,0.96,0.99,Wild_stock_Chinook_RBDD_2022,Blw_Salt,456.888,1,Upper Sac R,0.98 (0.01),1,297,40.1464,-122.15246
-0.84,0.02,0.8,0.88,Wild_stock_Chinook_RBDD_2022,Mill_Ck_Conf,441.318,2,Upper Sac R,0.84 (0.02),2,254,40.0327,-122.11987
-0.66,0.03,0.6,0.71,Wild_stock_Chinook_RBDD_2022,Abv_WoodsonBr,425.158,3,Upper Sac R,0.66 (0.03),3,197,39.920094,-122.08446000000001
-0.61,0.03,0.56,0.67,Wild_stock_Chinook_RBDD_2022,Abv_Otter_Island,419.398,4,Upper Sac R,0.61 (0.03),4,171,39.882027,-122.064445
-0.47,0.03,0.41,0.53,Wild_stock_Chinook_RBDD_2022,Blw_IrvineFinch,394.668,5,Upper Sac R,0.47 (0.03),5,122,39.73146,-121.97483
-0.34,0.03,0.29,0.39,Wild_stock_Chinook_RBDD_2022,Ord,371.658,6,Upper Sac R,0.34 (0.03),6,102,39.634564999999995,-121.98939
-0.28,0.03,0.23,0.33,Wild_stock_Chinook_RBDD_2022,BlwOrd,361.728,7,Upper Sac R,0.28 (0.03),7,85,39.56548,-122.0018
-0.23,0.03,0.18,0.29,Wild_stock_Chinook_RBDD_2022,ButteBr,344.108,8,Lower Sac R,0.23 (0.03),8,25,39.4569,-121.995
-0.19,0.02,0.15,0.24,Wild_stock_Chinook_RBDD_2022,Colusa AC3,331.158,9,Lower Sac R,0.19 (0.02),9,58,39.36038,-122.01373
-0.17,0.02,0.13,0.22,Wild_stock_Chinook_RBDD_2022,Colusa AC2,318.618,10,Lower Sac R,0.17 (0.02),10,49,39.28007,-122.01891
-0.16,0.02,0.12,0.2,Wild_stock_Chinook_RBDD_2022,AbvColusaBr,307.738,11,Lower Sac R,0.16 (0.02),11,47,39.2205,-122.00847
-0.16,0.02,0.12,0.2,Wild_stock_Chinook_RBDD_2022,Colusa BC2,296.278,12,Lower Sac R,0.16 (0.02),12,48,39.184963,-121.943214
-0.15,0.02,0.12,0.2,Wild_stock_Chinook_RBDD_2022,MeridianBr,290.848,13,Lower Sac R,0.15 (0.02),13,44,39.145542,-121.917984
-0.14,0.02,0.11,0.19,Wild_stock_Chinook_RBDD_2022,Colusa BC3,287.208,14,Lower Sac R,0.14 (0.02),14,43,39.13132,-121.936554
-0.12,0.02,0.09,0.16,Wild_stock_Chinook_RBDD_2022,AbvTisdale,269.238,15,Lower Sac R,0.12 (0.02),15,37,39.0364,-121.82918
-0.12,0.02,0.08,0.16,Wild_stock_Chinook_RBDD_2022,BlwTisdale,261.408,16,Lower Sac R,0.12 (0.02),16,35,38.98941,-121.80463
-0.08,0.02,0.05,0.12,Wild_stock_Chinook_RBDD_2022,BlwChinaBend,240.618,17,Lower Sac R,0.08 (0.02),17,24,38.88406,-121.81713
-0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,KnightsBlwRST,221.58,18,Lower Sac R,0.08 (0.01),18,23,38.78877,-121.694
-0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,Abv_FremontWeir,215.18,19,Lower Sac R,0.08 (0.01),19,23,38.76009,-121.67145
-0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,Blw_FremontWeir,210.36,20,Lower Sac R,0.08 (0.01),20,23,38.77015,-121.6322
-0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,SacFeatherConfluence,205.76,21,Lower Sac R,0.08 (0.01),21,21,38.785259499999995,-121.62389999999999
-0.08,0.01,0.05,0.11,Wild_stock_Chinook_RBDD_2022,RM75_RST,198.162,22,Lower Sac R,0.08 (0.01),22,4,38.727325,-121.60518
-0.07,0.01,0.05,0.1,Wild_stock_Chinook_RBDD_2022,Blw_Elkhorn_GS1,191.92,23,Lower Sac R,0.07 (0.01),23,21,38.64737,-121.57771
-0.06,0.01,0.04,0.09,Wild_stock_Chinook_RBDD_2022,TowerBridge,172,24,Lower Sac R,0.06 (0.01),24,18,38.5802,-121.508
-0.06,0.01,0.04,0.09,Wild_stock_Chinook_RBDD_2022,I80-50_Br,170.748,25,Lower Sac R,0.06 (0.01),25,16,38.571133,-121.5164
-0.06,0.01,0.04,0.09,Wild_stock_Chinook_RBDD_2022,SacTrawl,166.8225,26,Lower Sac R,0.06 (0.01),26,17,38.539519999999996,-121.51444000000001
-0.05,0.01,0.03,0.08,Wild_stock_Chinook_RBDD_2022,Little Pocket_DS of I80,164.387,27,Lower Sac R,0.05 (0.01),27,16,38.52448,-121.52849
-0.05,0.01,0.03,0.08,Wild_stock_Chinook_RBDD_2022,Freeport_1,152.438,28,Lower Sac R,0.05 (0.01),28,14,38.46467,-121.50501
-0.05,0.01,0.03,0.08,Wild_stock_Chinook_RBDD_2022,Freeport_2,152.025,29,Lower Sac R,0.05 (0.01),29,14,38.46467,-121.50501
-0.04,0.01,0.02,0.07,Wild_stock_Chinook_RBDD_2022,Abv_Clarksburg,147.668,30,Lower Sac R,0.04 (0.01),30,12,38.43443,-121.52448
-0.03,0.01,0.02,0.06,Wild_stock_Chinook_RBDD_2022,Hood_1,138.228,31,Lower Sac R,0.03 (0.01),31,10,38.3617,-121.52033
-0.01,0.01,0,0.04,Wild_stock_Chinook_RBDD_2022,Benicia,52.144000000000005,32,Carquinez Strait,0.01 (0.01),32,4,38.0423015,-122.1236
-0.01,0,0,0.03,Wild_stock_Chinook_RBDD_2022,GoldenGateE,1.71,33,SF Bay,0.01 (0),33,2,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Altube Island_Rel,0.5,1,0,0,0,1,2022-04-14_Altube Island_Rel,2022-04-14,460,40.15314,-122.19696,Upper Sac R,1 (NA),0.5,72,Altube Island_Rel
+Blw_Salt,1,1,0,0,0,1,2022-04-14_Altube Island_Rel,2022-04-14,456.888,40.1464,-122.15246,Upper Sac R,1 (0),1,72,Altube Island_Rel
+Mill_Ck_Conf,2,0.945,0.027,0.86,0.98,1,2022-04-14_Altube Island_Rel,2022-04-14,441.318,40.0327,-122.11987,Upper Sac R,0.945 (0.027),2,68,Altube Island_Rel
+Abv_WoodsonBr,3,0.82,0.045,0.71,0.89,1,2022-04-14_Altube Island_Rel,2022-04-14,425.158,39.920094,-122.08446000000001,Upper Sac R,0.82 (0.045),3,59,Altube Island_Rel
+GCID,4,0.75,0.051,0.64,0.84,1,2022-04-14_Altube Island_Rel,2022-04-14,405.273,39.798953499999996,-122.04724300000001,Upper Sac R,0.75 (0.051),4,54,Altube Island_Rel
+Blw_IrvineFinch,5,0.715,0.054,0.6,0.81,1,2022-04-14_Altube Island_Rel,2022-04-14,394.668,39.73146,-121.97483,Upper Sac R,0.715 (0.054),5,45,Altube Island_Rel
+Ord,6,0.667,0.056,0.55,0.77,1,2022-04-14_Altube Island_Rel,2022-04-14,371.658,39.63447,-121.98959,Upper Sac R,0.667 (0.056),6,48,Altube Island_Rel
+BlwOrd,7,0.625,0.057,0.51,0.73,1,2022-04-14_Altube Island_Rel,2022-04-14,361.728,39.56548,-122.0018,Upper Sac R,0.625 (0.057),7,45,Altube Island_Rel
+Colusa AC3,8,0.556,0.059,0.44,0.67,1,2022-04-14_Altube Island_Rel,2022-04-14,331.158,39.36038,-122.01373,Lower Sac R,0.556 (0.059),8,40,Altube Island_Rel
+Colusa AC2,9,0.528,0.059,0.41,0.64,1,2022-04-14_Altube Island_Rel,2022-04-14,318.618,39.28007,-122.01891,Lower Sac R,0.528 (0.059),9,36,Altube Island_Rel
+AbvColusaBr,10,0.514,0.059,0.4,0.63,1,2022-04-14_Altube Island_Rel,2022-04-14,307.738,39.2205,-122.00847,Lower Sac R,0.514 (0.059),10,36,Altube Island_Rel
+Colusa BC2,11,0.514,0.059,0.4,0.63,1,2022-04-14_Altube Island_Rel,2022-04-14,296.278,39.184963,-121.943214,Lower Sac R,0.514 (0.059),11,37,Altube Island_Rel
+AbvTisdale,12,0.417,0.058,0.31,0.53,1,2022-04-14_Altube Island_Rel,2022-04-14,269.238,39.0364,-121.82918,Lower Sac R,0.417 (0.058),12,30,Altube Island_Rel
+BlwTisdale,13,0.403,0.058,0.3,0.52,1,2022-04-14_Altube Island_Rel,2022-04-14,261.408,38.98941,-121.80463,Lower Sac R,0.403 (0.058),13,29,Altube Island_Rel
+BlwChinaBend,14,0.292,0.054,0.2,0.41,1,2022-04-14_Altube Island_Rel,2022-04-14,240.618,38.88406,-121.81713,Lower Sac R,0.292 (0.054),14,21,Altube Island_Rel
+Knights_RST,15,0.292,0.054,0.2,0.41,1,2022-04-14_Altube Island_Rel,2022-04-14,222.05,38.79348,-121.6914625,Lower Sac R,0.292 (0.054),15,21,Altube Island_Rel
+Blw_Knights_GS3,16,0.292,0.054,0.2,0.41,1,2022-04-14_Altube Island_Rel,2022-04-14,215.34,38.75972,-121.67329,Lower Sac R,0.292 (0.054),16,21,Altube Island_Rel
+Blw_FRConf,17,0.292,0.054,0.2,0.41,1,2022-04-14_Altube Island_Rel,2022-04-14,203.468,38.77409,-121.60043,Lower Sac R,0.292 (0.054),17,21,Altube Island_Rel
+Blw_Elkhorn_GS1,18,0.264,0.052,0.17,0.38,1,2022-04-14_Altube Island_Rel,2022-04-14,191.92,38.64737,-121.57771,Lower Sac R,0.264 (0.052),18,19,Altube Island_Rel
+TowerBridge,19,0.25,0.051,0.16,0.36,1,2022-04-14_Altube Island_Rel,2022-04-14,172,38.5802,-121.508,Lower Sac R,0.25 (0.051),19,18,Altube Island_Rel
+Freeport,20,0.194,0.047,0.12,0.3,1,2022-04-14_Altube Island_Rel,2022-04-14,152.23149999999998,38.46467,-121.50501,Lower Sac R,0.194 (0.047),20,14,Altube Island_Rel
+Hood_1,21,0.139,0.041,0.08,0.24,1,2022-04-14_Altube Island_Rel,2022-04-14,138.228,38.3617,-121.52033,Lower Sac R,0.139 (0.041),21,10,Altube Island_Rel
+Chipps,22,0.056,0.027,0.02,0.14,1,2022-04-14_Altube Island_Rel,2022-04-14,71.48599999999999,38.046132,-121.912643,West Delta,0.056 (0.027),22,4,Altube Island_Rel
+Benicia,23,0.056,0.027,0.02,0.14,1,2022-04-14_Altube Island_Rel,2022-04-14,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.056 (0.027),23,4,Altube Island_Rel
+GoldenGateE,24,0.028,0.019,0.01,0.1,1,2022-04-14_Altube Island_Rel,2022-04-14,1.71,37.82794,-122.46168,SF Bay,0.028 (0.019),24,2,Altube Island_Rel
+Altube Island_Rel,0.5,1,0,0,0,2,2022-05-04_Altube Island_Rel,2022-05-04,460,40.15314,-122.19696,Upper Sac R,1 (NA),0.5,231,Altube Island_Rel
+Blw_Salt,1,0.979,0.01,0.95,0.99,2,2022-05-04_Altube Island_Rel,2022-05-04,456.888,40.1464,-122.15246,Upper Sac R,0.979 (0.01),1,225,Altube Island_Rel
+Mill_Ck_Conf,2,0.811,0.026,0.76,0.86,2,2022-05-04_Altube Island_Rel,2022-05-04,441.318,40.0327,-122.11987,Upper Sac R,0.811 (0.026),2,186,Altube Island_Rel
+Abv_WoodsonBr,3,0.608,0.032,0.54,0.67,2,2022-05-04_Altube Island_Rel,2022-05-04,425.158,39.920094,-122.08446000000001,Upper Sac R,0.608 (0.032),3,138,Altube Island_Rel
+GCID,4,0.477,0.033,0.41,0.54,2,2022-05-04_Altube Island_Rel,2022-05-04,405.273,39.798953499999996,-122.04724300000001,Upper Sac R,0.477 (0.033),4,109,Altube Island_Rel
+Blw_IrvineFinch,5,0.389,0.034,0.32,0.46,2,2022-05-04_Altube Island_Rel,2022-05-04,394.668,39.73146,-121.97483,Upper Sac R,0.389 (0.034),5,77,Altube Island_Rel
+Ord,6,0.234,0.028,0.18,0.29,2,2022-05-04_Altube Island_Rel,2022-05-04,371.658,39.63447,-121.98959,Upper Sac R,0.234 (0.028),6,54,Altube Island_Rel
+BlwOrd,7,0.173,0.025,0.13,0.23,2,2022-05-04_Altube Island_Rel,2022-05-04,361.728,39.56548,-122.0018,Upper Sac R,0.173 (0.025),7,40,Altube Island_Rel
+Colusa AC3,8,0.078,0.018,0.05,0.12,2,2022-05-04_Altube Island_Rel,2022-05-04,331.158,39.36038,-122.01373,Lower Sac R,0.078 (0.018),8,18,Altube Island_Rel
+Colusa AC2,9,0.057,0.015,0.03,0.1,2,2022-05-04_Altube Island_Rel,2022-05-04,318.618,39.28007,-122.01891,Lower Sac R,0.057 (0.015),9,13,Altube Island_Rel
+AbvColusaBr,10,0.048,0.014,0.03,0.08,2,2022-05-04_Altube Island_Rel,2022-05-04,307.738,39.2205,-122.00847,Lower Sac R,0.048 (0.014),10,11,Altube Island_Rel
+Colusa BC2,11,0.048,0.014,0.03,0.08,2,2022-05-04_Altube Island_Rel,2022-05-04,296.278,39.184963,-121.943214,Lower Sac R,0.048 (0.014),11,11,Altube Island_Rel
+AbvTisdale,12,0.03,0.011,0.01,0.06,2,2022-05-04_Altube Island_Rel,2022-05-04,269.238,39.0364,-121.82918,Lower Sac R,0.03 (0.011),12,7,Altube Island_Rel
+BlwTisdale,13,0.026,0.01,0.01,0.06,2,2022-05-04_Altube Island_Rel,2022-05-04,261.408,38.98941,-121.80463,Lower Sac R,0.026 (0.01),13,6,Altube Island_Rel
+BlwChinaBend,14,0.013,0.007,0,0.04,2,2022-05-04_Altube Island_Rel,2022-05-04,240.618,38.88406,-121.81713,Lower Sac R,0.013 (0.007),14,3,Altube Island_Rel
+Knights_RST,15,0.009,0.006,0,0.03,2,2022-05-04_Altube Island_Rel,2022-05-04,222.05,38.79348,-121.6914625,Lower Sac R,0.009 (0.006),15,2,Altube Island_Rel
+Blw_Knights_GS3,16,0.009,0.006,0,0.03,2,2022-05-04_Altube Island_Rel,2022-05-04,215.34,38.75972,-121.67329,Lower Sac R,0.009 (0.006),16,2,Altube Island_Rel
+Blw_FRConf,17,0.009,0.006,0,0.03,2,2022-05-04_Altube Island_Rel,2022-05-04,203.468,38.77409,-121.60043,Lower Sac R,0.009 (0.006),17,2,Altube Island_Rel
+Blw_Elkhorn_GS1,18,0.009,0.006,0,0.03,2,2022-05-04_Altube Island_Rel,2022-05-04,191.92,38.64737,-121.57771,Lower Sac R,0.009 (0.006),18,2,Altube Island_Rel

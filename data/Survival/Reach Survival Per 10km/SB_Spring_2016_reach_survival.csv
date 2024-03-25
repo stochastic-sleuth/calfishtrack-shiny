@@ -1,33 +1,9 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.999999,3.203045e-4,2.458622e-268,1,Nimbus_Fall_2018,SutterBypass_Weir2_RST_Rel,Butte0.5,249.54,249.5,Sutter Bypass,"SutterBypass_Weir2_RST_Rel to 
-Butte0.5",249.54 to 249.5,1,200,53,39.10239,-121.758804,39.102,-121.75864
-0.7147244,0.1385921,0.3979951,0.9047116,Nimbus_Fall_2018,Butte0.5,Butte1,249.5,249.05,Sutter Bypass,"Butte0.5 to 
-Butte1",249.5 to 249.05,2,53,197,39.102,-121.75864,39.09834,-121.75655
-0.8458799,0.0250614,0.790155,0.8888878,Nimbus_Fall_2018,Butte1,Butte2,249.05,238.46,Sutter Bypass,"Butte1 to 
-Butte2",249.05 to 238.46,3,197,165,39.09834,-121.75655,39.00687,-121.72227
-0.8460106,0.0258728,0.7882476,0.8902114,Nimbus_Fall_2018,Butte2,Butte3,238.46,226.46,Sutter Bypass,"Butte2 to 
-Butte3",238.46 to 226.46,4,165,135,39.00687,-121.72227,38.92734,-121.62995
-1,0,1,1,Nimbus_Fall_2018,Butte3,Butte4,226.46,224.89,Sutter Bypass,"Butte3 to 
-Butte4",226.46 to 224.89,5,135,95,38.92734,-121.62995,38.915024,-121.62542
-0.5989347,0.0460812,0.5062573,0.6850388,Nimbus_Fall_2018,Butte4,Butte5,224.89,216.98,Sutter Bypass,"Butte4 to 
-Butte5",224.89 to 216.98,6,95,90,38.915024,-121.62542,38.85305,-121.65151
-0.7978497,0.0414338,0.7046187,0.8672002,Nimbus_Fall_2018,Butte5,Butte6,216.98,206.48,Sutter Bypass,"Butte5 to 
-Butte6",216.98 to 206.48,7,90,71,38.85305,-121.65151,38.78346,-121.63226
-0.9236879,0.0178388,0.8805364,0.9521005,Nimbus_Fall_2018,Butte6,TowerBridge,206.48,172,Sutter Bypass,"Butte6 to 
-TowerBridge",206.48 to 172,8,71,54,38.78346,-121.63226,38.5802,-121.508
-1,0,1,1,Nimbus_Fall_2018,TowerBridge,I80-50_Br,172,170.74,Lower Sac R,"TowerBridge to 
-I80-50_Br",172 to 170.74,9,54,53,38.5802,-121.508,38.571133,-121.5164
-1,0,1,1,Nimbus_Fall_2018,I80-50_Br,SacTrawl1,170.74,167,Lower Sac R,"I80-50_Br to 
-SacTrawl1",170.74 to 167,10,53,54,38.571133,-121.5164,38.54081,-121.51331
-0.6033976,0.3048315,0.1113521,0.9486458,Nimbus_Fall_2018,SacTrawl1,SacTrawl2,167,166.63,Lower Sac R,"SacTrawl1 to 
-SacTrawl2",167 to 166.63,11,54,53,38.54081,-121.51331,38.53823,-121.51557
-0.9462339,0.0261529,0.8653309,0.9796756,Nimbus_Fall_2018,SacTrawl2,Freeport,166.63,152.43,Lower Sac R,"SacTrawl2 to 
-Freeport",166.63 to 152.43,12,53,49,38.53823,-121.51557,38.46467,-121.50501
-1,0,1,1,Nimbus_Fall_2018,Freeport,Hood_RT,152.43,139,Lower Sac R,"Freeport to 
-Hood_RT",152.43 to 139,13,49,47,38.46467,-121.50501,38.3741,-121.523
-0.7902775,0.0330202,0.7183128,0.8477537,Nimbus_Fall_2018,Hood_RT,Chipps,139,71.47999999999999,Lower Sac R,"Hood_RT to 
-Chipps",139 to 71.48,14,47,10,38.3741,-121.523,38.046132,-121.912643
-0.7689139,0.1021272,0.5189035,0.9112284,Nimbus_Fall_2018,Chipps,Benicia,71.47999999999999,52.04,West Delta,"Chipps to 
-Benicia",71.48 to 52.04,15,10,6,38.046132,-121.912643,38.041233,-122.12382
-0.9226012,0.0529161,0.7360999,0.9807472,Nimbus_Fall_2018,Benicia,GoldenGateE,52.04,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.04 to 1.71,16,6,4,38.041233,-122.12382,37.82794,-122.46168
+estimate,se,lcl,ucl,CI,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,group,reach_num,mean_rel_date,release_site
+0.845,0.013,0.818,0.868,0.122692,SutterBypass_Weir2_RST_Rel,TowerBridge,249.54,172,Lower Sac R,SutterBypass_Weir2_RST_Rel to TowerBridge,249.54 to 172,200,54,39.10239,-121.758804,38.5802,-121.508,2016-04-15_SutterBypass_Weir2_RST_Rel,1,1,2016-04-15,SutterBypass_Weir2_RST_Rel
+1,0,1,1,8.000000000230045e-7,TowerBridge,I80-50_Br,172,170.74,Lower Sac R,TowerBridge to I80-50_Br,172 to 170.74,54,53,38.5802,-121.508,38.571133,-121.5164,2016-04-15_SutterBypass_Weir2_RST_Rel,1,2,2016-04-15,SutterBypass_Weir2_RST_Rel
+1,0,1,1,0,I80-50_Br,SacTrawl,170.74,166.815,Lower Sac R,I80-50_Br to SacTrawl,170.74 to 166.815,53,54,38.571133,-121.5164,38.539519999999996,-121.51444000000001,2016-04-15_SutterBypass_Weir2_RST_Rel,1,3,2016-04-15,SutterBypass_Weir2_RST_Rel
+0.935,0.028,0.852,0.973,0.16481199999999996,SacTrawl,Freeport,166.815,152.43,Lower Sac R,SacTrawl to Freeport,166.815 to 152.43,54,49,38.539519999999996,-121.51444000000001,38.46467,-121.50501,2016-04-15_SutterBypass_Weir2_RST_Rel,1,4,2016-04-15,SutterBypass_Weir2_RST_Rel
+0.969,0.021,0.886,0.992,0.13884260000000004,Freeport,Hood_RT,152.43,139,Lower Sac R,Freeport to Hood_RT,152.43 to 139,49,47,38.46467,-121.50501,38.3741,-121.523,2016-04-15_SutterBypass_Weir2_RST_Rel,1,5,2016-04-15,SutterBypass_Weir2_RST_Rel
+0.795,0.033,0.723,0.852,0.2336302,Hood_RT,Chipps,139,71.47999999999999,West Delta,Hood_RT to Chipps,139 to 71.48,47,10,38.3741,-121.523,38.046132,-121.912643,2016-04-15_SutterBypass_Weir2_RST_Rel,1,6,2016-04-15,SutterBypass_Weir2_RST_Rel
+0.769,0.102,0.519,0.911,0.5442611,Chipps,Benicia,71.47999999999999,52.04,Carquinez Strait,Chipps to Benicia,71.48 to 52.04,10,6,38.046132,-121.912643,38.041233,-122.12382,2016-04-15_SutterBypass_Weir2_RST_Rel,1,7,2016-04-15,SutterBypass_Weir2_RST_Rel
+0.923,0.053,0.736,0.981,0.6480002,Benicia,GoldenGateE,52.04,1.71,SF Bay,Benicia to GoldenGateE,52.04 to 1.71,6,4,38.041233,-122.12382,37.82794,-122.46168,2016-04-15_SutterBypass_Weir2_RST_Rel,1,8,2016-04-15,SutterBypass_Weir2_RST_Rel

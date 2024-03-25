@@ -58,7 +58,7 @@ cache_delete_all()
 last_checked_date <- read_rds("./data/last_checked_date.RDS")
 
 # If last update check was < 90 days read in CSVs (much faster load times)
-if (as.numeric(Sys.Date() - last_checked_date) < 90) {
+if (as.numeric(difftime(Sys.Date(),last_checked_date, units = "days")) < 90) {
    ReceiverDeployments <- vroom("./data/rec_deployments.csv", col_types = cols())
    
 } else { 
@@ -167,7 +167,7 @@ TaggedFish <- vroom("./data/tagged_fish.csv", col_types = cols())
 
 setwd("./data")
 # Update TaggedFish table from ERDDAP every 30 days
-if (as.numeric(Sys.Date() - last_checked_date) < 30) { 
+if (as.numeric(difftime(Sys.Date(),last_checked_date, units = "days")) > 30) { 
   my_url <- "https://oceanview.pfeg.noaa.gov/erddap/"
   JSATSinfo <- as.info('FED_JSATS_taggedfish', url = my_url)
   
@@ -213,7 +213,7 @@ comb_flow <- vroom("./data/comb_flow.csv", col_types = c(Index = "D",
 
 # # Update file with new flow data  from CDEC if it has been over 7 days since 
 # # last download
-if (as.numeric(Sys.Date() - max(comb_flow$Index)) > 7) {
+if (as.numeric(difftime(Sys.Date(), max(comb_flow$Index))) > 7) {
   # Choose CDEC gauges to display
   gauges <- c("KES", "BND", "BTC", "WLK", "MEN", "NEW", "VNS", "MSD", "BND")
 
@@ -249,7 +249,7 @@ temps <- vroom("./data/water_temps.csv", col_types = c(Index = "D", BND = "d", K
          select(Index, BND, KWK, MSD, WLK)
 
 # Update file with new water temp data from CDEC if it has been over 7 days since last download
-if (as.numeric(Sys.Date() - max(temps$Index)) > 7) {
+if (as.numeric(difftime(Sys.Date(),max(temps$Index), units = "days")) > 7) {
    # Choose CDEC gauges to display
    wtemp_gauges <- c("BND", "KWK", "MSD", "WLK")
    
@@ -442,12 +442,23 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                                sidebarPanel(
                                                  uiOutput("cumSurvSelect"),
                                                  helpText("Note: These survival results are
-                                          preliminary and for discussion purposes
-                                          only. Detection data has not been
-                                          filtered for predator detections, and
-                                          survival estimates have not been
-                                          adjusted for any potential premature
-                                          tag failures."),
+                                                            preliminary and for discussion purposes
+                                                            only. Detection data has not been
+                                                            filtered for predator detections, and
+                                                            survival estimates have not been
+                                                            adjusted for any potential premature
+                                                            tag failures.",tags$br(),
+                                                            "Some sites have been omitted: Delta 
+                                                            sites have been removed due to multiple 
+                                                            routes possible (see Delta Route Specific 
+                                                            Survival), poorly performing receiver 
+                                                            sites have been removed, and at times of 
+                                                            flood weir spills, lower Sacramento River
+                                                            sites have been removed due to alternate 
+                                                            fish pathways.",tags$br(),"Release groups
+                                                            were assigned based on time and/or distance
+                                                            between releases. If a release group had
+                                                            less than 5 fish, it was dropped."),
                                                  uiOutput("cumsurvival_text"),
                                                  radioButtons("cumsurvival_radio",
                                                               "View",
@@ -458,7 +469,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                                mainPanel(
                                                  conditionalPanel(
                                                    condition = "input.cumsurvival_radio == 'Plot'",
-                                                   plotlyOutput("plotly_survival_output")
+                                                   plotlyOutput("plotly_survival_output", height = "600px")
                                                  ),
                                                  conditionalPanel(
                                                    condition = "input.cumsurvival_radio == 'Table'",
@@ -472,12 +483,23 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                                sidebarPanel(
                                                  uiOutput("reachSurvSelect"),
                                                  helpText("Note: These survival results are
-                                          preliminary and for discussion purposes
-                                          only. Detection data has not been
-                                          filtered for predator detections, and
-                                          survival estimates have not been
-                                          adjusted for any potential premature
-                                          tag failures."),
+                                                            preliminary and for discussion purposes
+                                                            only. Detection data has not been
+                                                            filtered for predator detections, and
+                                                            survival estimates have not been
+                                                            adjusted for any potential premature
+                                                            tag failures.",tags$br(),
+                                                            "Some sites have been omitted: Delta 
+                                                            sites have been removed due to multiple 
+                                                            routes possible (see Delta Route Specific 
+                                                            Survival), poorly performing receiver 
+                                                            sites have been removed, and at times of 
+                                                            flood weir spills, lower Sacramento River
+                                                            sites have been removed due to alternate 
+                                                            fish pathways.",tags$br(),"Release groups
+                                                            were assigned based on time and/or distance
+                                                            between releases. If a release group had
+                                                            less than 5 fish, it was dropped."),
                                                  uiOutput("reachSurv_text"),
                                                  radioButtons("reachSurvRadio",
                                                               "View",
@@ -488,7 +510,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                                mainPanel(
                                                  conditionalPanel(
                                                    condition = "input.reachSurvRadio == 'Plot'",
-                                                   plotlyOutput("reachSurvPlotly")
+                                                   plotlyOutput("reachSurvPlotly", height = "600px")
                                                  ),
                                                  conditionalPanel(
                                                    condition = "input.reachSurvRadio == 'Table'",
@@ -700,8 +722,13 @@ server <- function(input, output, session) {
             there is a diagram showing survival and routing estimates for each 
             reach and junction in the Delta, and a barplot and table summarizing 
             survival and migration route probabilities for each of the four 
-            migratory pathways. This section was developed by the Quantitative 
-            Fisheries Ecology Section of USGS Western Fisheries Research Center. 
+            migratory pathways. Note that in years in which Yolo bypass overtops
+            due to high flows, we used a virtual release of fish detected at 
+            Sacramento in the model. A virtual release uses only fish detected 
+            at Sacramento in the survival model to avoid potential bias that 
+            could be introduced by fish entering Yolo bypass.This section was 
+            developed by the Quantitative Fisheries Ecology Section of USGS 
+            Western Fisheries Research Center. 
             For questions or comments, send an email to our group at 
             gs-b-crrl_qfes@usgs.gov ."),
           br(),
@@ -816,7 +843,7 @@ server <- function(input, output, session) {
                        fillOpacity = 1) %>% 
       # Give control for selecting basemaps
       addLayersControl(
-        baseGroups = c("Open Street Map", "Stamen Terrain", "Esri Nat Geo", 
+        baseGroups = c("Esri Street Map", "Esri Nat Geo", 
                        "Esri World Imagery"),
         options = layersControlOptions(collapsed = FALSE)
       ) %>% 
@@ -977,6 +1004,11 @@ server <- function(input, output, session) {
 
   temps <- as.data.frame(temps)
   row.names(temps) <- temps[,1]
+  ## remove obviously erroneous values
+  temps[(which(temps$BND < 3 | temps$BND >35)),"BND"] <- NA
+  temps[(which(temps$KWK < 3 | temps$KWK >35)),"KWK"] <- NA
+  temps[(which(temps$MSD < 3 | temps$MSD >35)),"MSD"] <- NA
+  temps[(which(temps$WLK < 3 | temps$WLK >35)),"WLK"] <- NA
   temps1 <- temps[,c(2,3,5)]
   names(temps1) <- c("BND", "KES", "WLK")
   output$plot3 <- renderDygraph({
@@ -1049,7 +1081,7 @@ server <- function(input, output, session) {
         color = "#668db3",
         weight = 3, opacity = 1
       ) %>%
-      addProviderTiles(providers$Stamen.Terrain, group = "Stamen Terrain",
+      addProviderTiles(providers$Esri.WorldTopoMap, group = "Esri World Topo",
                        options = providerTileOptions(noWrap = TRUE)) %>%
       addTiles(group = "Open Street Map") %>%
       addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Esri Nat Geo",
@@ -1069,7 +1101,7 @@ server <- function(input, output, session) {
           direction = "right",
           offset = c(10,0))) %>%
       addLayersControl(
-        baseGroups = c("Stamen Terrain", "Open Street Map", "Esri Nat Geo",
+        baseGroups = c("Esri Topo", "Esri Nat Geo",
                        "Esri World Imagery"),
         options = layersControlOptions(collapsed = FALSE)
       )
@@ -1157,8 +1189,8 @@ server <- function(input, output, session) {
     
     # Create a grid of all receiver general locations by all dates from the 
     # earliest detection date to the latest detection date
-    timestep <- expand.grid(receiver_loc$GEN, seq(min(detections$date), 
-                                                  max(detections$date), by = 1),
+    timestep <- expand.grid(receiver_loc$GEN, seq(min(detections$date, na.rm = T), 
+                                                  max(detections$date, na.rm = T), by = 1),
                             stringsAsFactors = F)
     colnames(timestep) <- c("GEN", "date")
     
@@ -1542,7 +1574,7 @@ server <- function(input, output, session) {
     df <- df %>% 
       mutate_at(c("cum.phi", "cum.phi.se", "LCI", "UCI"), round, digits = 3) %>% 
       mutate(
-        RKM = round(RKM, digits = 2),
+        RKM = round(GenRKM, digits = 2),
         id = seq.int(nrow(df))
       ) %>% 
       dplyr::rename(
@@ -1575,6 +1607,7 @@ server <- function(input, output, session) {
   output$plotly_survival_output <- renderPlotly({
     
     df <- cumsurvivalVar()
+    name <- studyIDSelect()
     
     # If survival estimates contain the column 'release'
     if (any(str_detect(colnames(df), "release"))) {
@@ -1602,6 +1635,7 @@ server <- function(input, output, session) {
                       position = position_dodge(1)) +
         scale_color_manual(values=release_colors) +
         labs(
+          title = paste0("Cumulative Survival for ", name),
           x = "RKM",
           y = "Cumulative Survival",
           color = "Release"
@@ -1612,7 +1646,10 @@ server <- function(input, output, session) {
         ) 
       
       ggplotly(p, tooltip = "text") %>% 
-        layout(xaxis = list(autorange = "reversed"))
+        layout(xaxis = list(autorange = "reversed"),
+               legend = list(orientation = "h",   # show entries horizontally
+                                      xanchor = "center",  # use center of legend as anchor
+                                      x = 0.5, y = -0.2))
     } else {
       df %>% 
         plot_ly(x = ~RKM, y = ~Survival, type = 'scatter', mode = 'lines+markers',
@@ -1693,12 +1730,12 @@ server <- function(input, output, session) {
         dplyr::rename(
           'Cumulative Survival' = 'Survival'
         ) %>% 
-        pivot_wider(
-          names_from = release,
-          values_from = c("Cumulative Survival", "SE", "LCI", "UCI", 
-                          "Count"),
-          names_glue = "{release} {.value}"
-        ) %>%
+        # pivot_wider(
+        #   names_from = release,
+        #   values_from = c("Cumulative Survival", "SE", "LCI", "UCI", 
+        #                   "Count"),
+        #   names_glue = "{release} {.value}"
+        # ) %>%
         mutate(id = row_number())
       
       names_to_order <- map(prefixes, ~ names(df)[grep(paste0(.x, " "), 
@@ -1853,9 +1890,19 @@ server <- function(input, output, session) {
   })
   
   output$reachSurv_text <- renderUI({
-    sample_size <- cumsurvivalVar() %>% 
-      select("Count") %>% 
-      slice(1)
+    df <- reachSurvVar() 
+    if(length(unique(df$release)) > 1){
+      sample_size <- df %>%
+        group_by(release) %>%
+        slice_head() %>%
+        ungroup() %>%
+        pull(count_at_start)
+      sample_size <- sum(sample_size)
+    } else {
+      sample_size <- df %>% 
+        select(count_at_start) %>% 
+        slice(1)
+    }
     
     tags$h4(paste0("Number of fish tagged: ", sample_size))
   })
@@ -1889,22 +1936,22 @@ server <- function(input, output, session) {
         label = ~Reach
       ) %>% 
       # Add the release site as a unique marker
-      addAwesomeMarkers(
-        data = df %>% filter(id == 1),
-        lng = ~GenLon_start,
-        lat = ~GenLat_start,
-        popup = paste0( "<b>Release Location: </b>"
-                        , df$reach_start[1]
-                        , "<br>"
-                        , "<b># Fish Tagged: </b>"
-                        , TaggedFish %>% 
-                          filter(study_id == df$StudyID[1]) %>% 
-                          count() %>% 
-                          unlist()
-        ),
-        label = ~reach_start,
-        icon = my_icon2
-      ) %>%
+      # addAwesomeMarkers(
+      #   data = df %>% filter(id == 1),
+      #   lng = ~GenLon_start,
+      #   lat = ~GenLat_start,
+      #   popup = paste0( "<b>Release Location: </b>"
+      #                   , df$reach_start[1]
+      #                   , "<br>"
+      #                   , "<b># Fish Tagged: </b>"
+      #                   , TaggedFish %>% 
+      #                     filter(study_id == df$StudyID[1]) %>% 
+      #                     count() %>% 
+      #                     unlist()
+      #   ),
+      #   label = ~reach_start,
+      #   icon = my_icon2
+      # ) %>%
       addLayersControl(
         baseGroups = c("Esri World Topo", "Open Street Map", "Esri Nat Geo", 
                        "Esri World Imagery"),
@@ -1957,7 +2004,10 @@ server <- function(input, output, session) {
           plot.title = element_text(hjust = 0.5)
         )
       
-      ggplotly(p, tooltip = "text")
+      ggplotly(p, tooltip = "text")  %>%
+        layout(legend = list(orientation = "h",   # show entries horizontally
+                             xanchor = "center",  # use center of legend as anchor
+                             x = 0.5, y = -0.3))
     } else {
       p <- df %>% 
         mutate(reach_end = factor(reach_end, levels = unique(reach_end))) %>% 
@@ -2008,12 +2058,12 @@ server <- function(input, output, session) {
           'Count End' = 'count_at_end',
           'Survival per 10km' = 'Survival'
         ) %>% 
-        pivot_wider(
-          names_from = release,
-          values_from = c("Survival per 10km", "SE", "LCI", "UCI", 
-                          "Count Start", "Count End"),
-          names_glue = "{release} {.value}"
-        ) %>%
+        # pivot_wider(
+        #   names_from = release,
+        #   values_from = c("Survival per 10km", "SE", "LCI", "UCI", 
+        #                   "Count Start", "Count End"),
+        #   names_glue = "{release} {.value}"
+        # ) %>%
         mutate(id = row_number())
       
       names_to_order <- map(prefixes, ~ names(df)[grep(paste0(.x, " "), names(df))]) %>% unlist

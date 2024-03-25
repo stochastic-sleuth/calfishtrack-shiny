@@ -1,0 +1,4 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Abv_CRC_Rel,1.5,1,0,0,0,1,2021-05-03_Abv_CRC_Rel,2021-05-03,146.962,38.252293,-121.42802,Lower Mok R,1 (NA),1.5,576,Abv_CRC_Rel
+Mok_WB_WildArea_Rel,0.5,1,0,0,0,2,2021-05-01_Mok_WB_WildArea_Rel,2021-05-01,168.392,38.161175,-121.31219,Lower Mok R,1 (NA),0.5,384,Mok_WB_WildArea_Rel
+Mok_Woodbridge,1,0.999,0,1,1,2,2021-05-01_Mok_WB_WildArea_Rel,2021-05-01,167.942,38.164425,-121.31363,Lower Mok R,0.999 (0),1,381,Mok_WB_WildArea_Rel

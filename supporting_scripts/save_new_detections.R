@@ -13,7 +13,7 @@ library(dbplyr)
 
 
 # Set working directory **IMPORTANT TO SET TO THE LATEST FOLDER**
-setwd("~/Desktop/calfishtrack/calfishtrack-shiny/data/detections")
+setwd("C:/Users/Cyril.Michel/Desktop/AT_shiny/calfishtrack-shiny/data/detections")
 
 # Clear cached data in order to retrieve all latest data
 cache_delete_all()
@@ -119,11 +119,15 @@ new_studies <- c('BC_Jumpstart_2023', 'Butte_Sink_2023', 'DeerCk_Wild_STH_2023',
                  'Winter_H_2023')
 
 # Provide the studyID name you want to download here
-studyID <- "BC_Jumpstart_2023"
+new_studies <- "Wild_stock_Chinook_RBDD_2022"
 
 # Call the download function and provide the studyID you want and it will
 # retrieve the data from ERDDAP and save it to csv in the detections folder
-download_detections(studyID)
+for(i in new_studies){
+  print(i)
+  download_detections(i)
+}
+
 
 # Wild_stock_Chinook_RBDD_2022<- read.csv("/Users/jessefrey/Desktop/calfishtrack/calfishtrack-shiny/data/detections/Wild_stock_Chinook_RBDD_2022.csv")
 # head(Wild_stock_Chinook_RBDD_2022)

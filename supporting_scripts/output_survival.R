@@ -5,7 +5,15 @@
 ##%######################################################%##
 # Author: Tom Pham
 # Updated: Paul Carvalho (6/10/2022)
-# Last Updated: Jessica Frey (11/30/2023)
+# Major overhaul by Cyril Michel 3/6/2023, major changes made:
+# to automatically drop bad receiver sites 
+# to automatically drop lower Sac River sites when weirs are overtopping
+# to automatically rerun the mark model with profile intervals when parameter estimates have oversized CIs
+# to automatically reduce the # of reaches to a max of 25 per study to make shiny plots more legible. drops lease useful recv sites preferentially (ones that create super short reaches)
+# automatically create release groups and estimate per reach and cumulative survival separately per release group
+# and if a release group has <5 fish released, drop the release group completely
+
+
 # Script and data info: This script performs survival analysis using CJS model
 # and outputs both reach per 10km and cumulative estimates to csv for use in
 # the Shiny app
@@ -17,16 +25,20 @@ library(RMark)
 library(tidyverse)
 library(rerddap)
 library(lubridate)
-library(clusterPower) # DO NOT UPDATE TO v0.7, removes function expit()
 library(cowplot)
 library(leaflet)
 library(vroom)
 library(data.table)
+library(cder)
+
+## this removes annoying messages when running summarise function
+options(dplyr.summarise.inform = FALSE)
+
 
 # memory.limit(size=56000)
 
 # Set working directory to 'data' folder
-setwd("~/Desktop/calfishtrack/calfishtrack-shiny/data")
+setwd("C:/Users/Cyril.Michel/Desktop/AT_shiny/calfishtrack-shiny/data")
 studyid_list <- fread("studyid_names.csv")
 
 # Clear cached data in order to retrieve all latest data
@@ -42,105 +54,33 @@ TaggedFish <- tabledap(JSATSinfo,
                                   'release_longitude'),
                        url = my_url) %>% as_tibble()
 
+TaggedFish$fish_release_date_PST <- as.POSIXct(TaggedFish$fish_release_date, tz = "Etc/GMT+8", format = "%m/%d/%Y %H:%M:%S")
+  
 JSATSinfo           <- info('FED_JSATS_receivers', url = my_url)
 ReceiverDeployments <- tabledap(JSATSinfo, 
-                                fields = c('receiver_serial_number','receiver_general_location','receiver_location','receiver_river_km',
-                                           'receiver_start','receiver_end','receiver_last_valid','receiver_general_river_km','receiver_region',
-                                           'receiver_general_latitude','receiver_general_longitude'),
+                                # fields = c('receiver_serial_number','receiver_general_location','receiver_location','receiver_river_km',
+                                #            'receiver_start','receiver_end','receiver_last_valid','receiver_general_river_km','receiver_region',
+                                #            'receiver_general_latitude','receiver_general_longitude'),
                                 url = my_url) %>% as_tibble()
 
-my_url <- "https://oceanview.pfeg.noaa.gov/erddap/"
-JSATSinfo <- info('FED_JSATS_detects', url = my_url)
+## read in weir overtopping data
+TIS <- cdec_query(stations = c("TIS"), sensors = 20, durations = "H", start.date = as.Date(min(TaggedFish$fish_release_date_PST)), end.date = as.Date(max(TaggedFish$fish_release_date_PST) + (7*60*60*24)))
+#FRE_by_day <- cdec_query(stations = c("FRE"), sensors = 41, durations = "D", start.date = min(TaggedFish$fish_release_date_PST), end.date = max(TaggedFish$fish_release_date_PST) + (7*60*60*24))
+#FRE_by_day$day <- as.Date(FRE_by_day$DateTime)
 
-# Retrieve list of all studyIDs on FED_JSATS
-studyid_list <- tabledap(JSATSinfo,
-                         fields = c('study_id'),
-                         url = my_url,
-                         distinct = TRUE) %>% 
-                  filter(study_id != "2017_BeaconTag")
-
+TIS$day <- as.Date(TIS$DateTime)
+TIS_by_day <- aggregate(list(Value = TIS$Value), by = list(day= TIS$day), mean,na.rm = T)
 
 # Load functions ----------------------------------------------------------
 # Need to create logit() and expit() functions because they're not updated in clusterPower package
-expit <- function(x){
+# naming expit "expiit" because for some unknown reason R (or Rstudio) drops the expit function when named "expit" after some time has passed in a session?!?
+expiit <- function(x){
   out <- exp(x) / (1 + exp(x))
   return(out)
 }
 logit <- function(p){
   out <- log(p/(1-p))
   return(out)
-}
-
-get_detections <- function(studyID) {
-  # Retrieve detection data from ERDDAP
-  #
-  # Arguments:
-  #  studyID: StudyID name to retrieve data for
-  #     
-  # Return:
-  #  df of detection data formatted correctly, add in RKM, Region, Lat, Lon, 
-  # Release RKM, Release Lat, Release Lon, format types, rename cols
-  
-  df <- tabledap(JSATSinfo,
-                 fields = c('study_id', 'fish_id', 'receiver_general_location',
-                            'first_time'),
-                 paste0('study_id=', '"',studyID, '"'),
-                 url = my_url,
-                 distinct = T) %>% 
-    left_join(ReceiverDeployments %>% select(receiver_general_location, receiver_general_river_km, receiver_region, 
-                                             receiver_general_latitude, receiver_general_longitude), relationship = "many-to-many") %>% 
-    left_join(TaggedFish %>% select(fish_id, release_river_km, release_latitude, release_longitude, release_location) %>% distinct()) %>% 
-    distinct()
-  
-  # Rename columns and change column types as ERDDAP returns data all in 
-  # character format
-  df <- df %>% 
-    rename(
-      StudyID = study_id,
-      FishID = fish_id,
-      GEN = receiver_general_location,
-      GenRKM = receiver_general_river_km,
-      Region = receiver_region,
-      GenLat = receiver_general_latitude,
-      GenLon =receiver_general_longitude,
-      RelRKM = release_river_km,
-      Rel_loc = release_location,
-      local_time = first_time
-    ) %>% 
-    mutate(
-      GenLat = ifelse(is.na(GenLat), release_latitude, GenLat),
-      GenLon = ifelse(is.na(GenLon), release_longitude, GenLon),
-      GenLat = as.numeric(GenLat),
-      GenLon = as.numeric(GenLon),
-      GenRKM = as.numeric(GenRKM),
-      RelRKM = as.numeric(RelRKM),
-      time_pst = ymd_hms(local_time),
-      GenRKM = ifelse(is.na(GenRKM), RelRKM, GenRKM)
-    ) %>% 
-    as_tibble() # ERDDAP by default returns a table.dap object which does not play nice with
-  # maggittr (pipes) so convert to tibble
-  
-  # Check for duplicate GEN with different GenRKM, if found replace with mean 
-  # GenRKM, GenLat, GenLon
-  dup_GEN <- df %>% 
-    distinct(GEN, GenRKM, GenLat, GenLon) %>% 
-    group_by(GEN) %>% 
-    summarise_at(
-      c("GenRKM", "GenLat", "GenLon"), mean
-    )
-  
-  # Replace any duplicated GEN with mean values
-  df <- df %>% 
-    rowwise() %>% 
-    mutate(
-      GenRKM = ifelse(GEN %in% dup_GEN$GEN, dup_GEN$GenRKM[dup_GEN$GEN == GEN], 
-                      GenRKM),
-      GenLat = ifelse(GEN %in% dup_GEN$GEN, dup_GEN$GenLat[dup_GEN$GEN == GEN], 
-                      GenLat),
-      GenLon = ifelse(GEN %in% dup_GEN$GEN, dup_GEN$GenLon[dup_GEN$GEN == GEN], 
-                      GenLon)
-    )
-  
 }
 
 get_receiver_GEN <- function(all_detections) {
@@ -200,8 +140,9 @@ aggregate_GEN <- function(detections,
   #  mean RKM, mean Lat, mean Lon. Creates reach.meta.aggregate which is the list
   #  of receiver sites with new aggregated GEN's, along with RKM, Lat, Lon
   
+  reach.meta <- get_receiver_GEN(detections)
   # Make a copy of reach.meta (receiver metadata)
-  reach.meta.aggregate <<- reach.meta
+  reach.meta.aggregate <- reach.meta
   
   # Walk through each key/pair value
   for (i in 1:length(replace_dict$replace_with)) {
@@ -230,7 +171,7 @@ aggregate_GEN <- function(detections,
       )
     
     # This new df shows receiver metadata and reflects the aggregation done
-    reach.meta.aggregate <<- reach.meta.aggregate %>% 
+    reach.meta.aggregate <- reach.meta.aggregate %>% 
       mutate(
         GEN = ifelse(GEN %in% replace_list, replace_with, GEN),
         GenRKM = ifelse(GEN %in% c(replace_list, replace_with), replace$GenRKM, GenRKM),
@@ -240,11 +181,14 @@ aggregate_GEN <- function(detections,
       ) %>% 
       distinct()
   }
-  detections
+  ## also, use mean GenRKM for all GENs, since some GEN recvs apear to have different GenRKMs
+  gens <- aggregate(data = detections, GenRKM ~ GEN, mean, na.rm=T)
+  detections$GenRKM <- NULL
+  detections <- merge(detections, gens, by = "GEN")
+  return(detections)
 }
 
-
-make_EH <- function(detections_tmp, release_loc = NULL) {
+assign_releases <- function(detections_tmp, day_gap = 6, rkm_gap = 20, minimum_rel_size = 5) {
   # Make an encounter history df
   #
   # Arguments:
@@ -255,61 +199,99 @@ make_EH <- function(detections_tmp, release_loc = NULL) {
   #  at every given receiver site (that is in reach.meta.aggregate) and whether
   #  it was present 1 or absent 0 in the detection df
   
+  rels <- detections_tmp[substr(detections_tmp$GEN,nchar(detections_tmp$GEN)-3,nchar(detections_tmp$GEN))%in% c("_Rel","_rel"),]
+  detections_tmp <- merge(detections_tmp,data.frame(FishID = rels$FishID, RelRKM = rels$GenRKM, fish_release_date = rels$local_time))
+  releases <- aggregate(list(count = detections_tmp$FishID), by = list(fish_release_date = detections_tmp$fish_release_date, RelRKM = as.numeric(detections_tmp$RelRKM)), function(x){length(unique(x))})
+  releases <- releases[order(releases$fish_release_date),]
+  releases$days_since_last <- as.numeric(difftime(releases$fish_release_date, shift(releases$fish_release_date, type = "lag"), units = "days"))
+  #releases$distance_since_last <- releases$RelRKM- shift(releases$RelRKM, type = "lag")
+  
+  releases$gap_time <- 0
+  releases[which(releases$days_since_last >=day_gap), "gap_time"] <- 1
+  #releases[which(releases$days_since_last >=day_gap | abs(releases$distance_since_last) > rkm_gap), "gap"] <- 1
+  releases$group <- cumsum(releases$gap_time)+1
+  
+  releases <- releases[order(releases$group,releases$RelRKM),]
+  releases$distance_since_last <- releases$RelRKM- shift(releases$RelRKM, type = "lag")
+  
+  releases$gap_space <- 0
+  releases[which(abs(releases$distance_since_last) > rkm_gap), "gap_space"] <- 1
+  releases$gap_final <- rowSums(releases[c("gap_space","gap_time")])
+  releases[releases$gap_final >1,"gap_final"] <- 1
+  
+  #releases <- releases[order(releases$group,releases$RelRKM),]
+  releases$group <- cumsum(releases$gap_final)+1
+  #releases$group <- LETTERS[releases$group]
+  
+  detections_tmp <- merge(detections_tmp, releases)
+  
+  rel_size <- aggregate(data = detections_tmp, FishID ~ group, FUN = function(x){length(unique(x))})
+  
+  ## drop any fish release groups that had less fish than the minimum rel size
+  detections_tmp <- detections_tmp[detections_tmp$group %in% rel_size[rel_size$FishID>minimum_rel_size,"group"],]
+  ## give warning
+  if(nrow(rel_size[rel_size$FishID<=minimum_rel_size,])>0){
+    print(paste("dropping",nrow(rel_size[rel_size$FishID<=minimum_rel_size,]),"release groups out of",nrow(rel_size),"due to insufficient numbers"))
+  }
+  
+  ## now reassign group so that there is a group 1, rmark doesn't seem to like groups starting at 2
+  names <- unique(detections_tmp$group)
+  if(length(names)>1){
+    group_names <- data.frame(group = names[order(names)])
+    group_names$group_new <- 1:nrow(group_names)
+    detections_tmp <- merge(detections_tmp,group_names, by = "group")
+    detections_tmp$group <- detections_tmp$group_new
+    detections_tmp$group_new <- NULL
+  }
+  return(detections_tmp)
+}
+
+
+make_EH <- function(detections_tmp, rkm_gap = 20) {
+  
+  rels <- detections_tmp[substr(detections_tmp$GEN,nchar(detections_tmp$GEN)-3,nchar(detections_tmp$GEN)) %in% c("_Rel","_rel"),]
+  rels_unique <- unique(rels[,c("group","GEN","GenRKM")])
+  reach.meta.group <- get_receiver_GEN(detections_tmp)
+  
+  ## in the rare situation that there are release group(s) downstream of other release group(s), we have to remove the release groups
+  ## as inp sites, and instead assign this release as 1s at the nearest upstream actual receiver site
+  if(length(unique(detections_tmp$group)) > 1 & any(abs(diff(rels_unique$GenRKM))>rkm_gap)){
+    downsteam_rels <- rels_unique[rels_unique$GenRKM < max(rels_unique$GenRKM),]
+    ## find closest upstream receiver site
+    for (j in 1:nrow(downsteam_rels)){
+      reach.meta.upstream <- reach.meta.group[reach.meta.group$GenRKM >downsteam_rels[j,"GenRKM"],]
+      detections_tmp[detections_tmp$GEN == downsteam_rels[j,"GEN"],"GenRKM"] <- reach.meta.upstream[which.min(reach.meta.upstream$GenRKM - downsteam_rels[j,"GenRKM"]),"GenRKM"]
+      detections_tmp[detections_tmp$GEN == downsteam_rels[j,"GEN"],"GEN"] <- reach.meta.upstream[which.min(reach.meta.upstream$GenRKM - downsteam_rels[j,"GenRKM"]),"GEN"]
+    }
+  }
+  
   # Get earliest detection for each fish at each GEN
   min_detects <- detections_tmp %>% 
-    filter(GEN %in% reach.meta.aggregate$GEN) %>% 
-    group_by(FishID, GEN, GenRKM) %>% 
+    #filter(GEN %in% reach.meta.aggregate$GEN) %>% 
+    group_by(FishID, GEN, GenRKM, group) %>% 
     summarise(min_time = min(local_time)) %>% 
     arrange(FishID, min_time) %>%
     ungroup()
   
-  # Get list of all tagged fish for the studyID
-  if(is.null(release_loc)){
-     fish <- TaggedFish %>% 
-        filter(study_id == detections_tmp$StudyID[1]) %>% 
-        arrange(fish_id) %>% 
-        pull(fish_id)   
-  } else {
-     fish <- TaggedFish %>% 
-        filter(study_id == detections_tmp$StudyID[1] & release_location == release_loc) %>% 
-        arrange(fish_id) %>% 
-        pull(fish_id)   
-  }
-  
-  
   # Create matrix of all combinations of fish and GEN
-  EH <- expand.grid(
-    fish,
-    reach.meta.aggregate$GEN, stringsAsFactors = FALSE 
-  )
+  EH <- table(min_detects$FishID,min_detects$GEN) # A will be rows, B will be columns
   
-  names(EH) <- c('FishID', 'GEN')  
+  EH <- as.data.frame(EH)
+  names(EH) <- c('FishID', 'GEN',"detect")  
+  EH <- merge(EH, unique(min_detects[,c("FishID", "group")]))
+  EH <- merge(EH, unique(min_detects[,c("GEN", "GenRKM")]))
   
-  # Add col detect to min_detects, these fish get a 1
-  min_detects$detect <- 1
-  
-  # Join in detections to the matrix, fish detected a GEN will be given a 1
-  # otherwise it will be given a 0
-  EH <- EH %>% 
-    left_join(
-      min_detects %>% 
-        select(
-          FishID, GEN, detect
-        ), by = c("FishID", "GEN")
-    ) %>% 
-    # Replace NA with 0 https://stackoverflow.com/questions/28992362/dplyr-join-define-na-values
-    mutate_if(
-      is.numeric, coalesce, 0
-    )
+  EH <- EH[order(EH$GenRKM,decreasing = T),]
+  EH$GenRKM <- NULL
   
   # Reshape the df wide, so that columns are GEN locations, rows are fish, 
   # values are 1 or 0 for presence/absence
-  EH <- reshape(EH, idvar = 'FishID', timevar = 'GEN', direction = 'wide')
+  EH <- reshape(EH, idvar = c('FishID','group'), timevar = 'GEN', direction = 'wide')
   colnames(EH) <- gsub('detect.', '', colnames(EH))
   # Manually make the release column a 1 because all fish were released there
   # sometimes detections df does not reflect that accurately
-  EH[2] <- 1
-  EH
+  #EH[2] <- 1
+  return(EH)
 }
 
 create_inp <- function(detections_tmp, EH) { 
@@ -325,21 +307,20 @@ create_inp <- function(detections_tmp, EH) {
   
   EH.inp <- EH %>% 
     # Collapse the encounter columns into a single column of 1's and 0's
-    unite("ch", 2:(length(EH)), sep ="") %>% 
+    unite("ch", 3:(length(EH)), sep ="") %>% 
     # Use the detections df to get the StudyID assignment
-    mutate(StudyID = unique(detections_tmp$StudyID))
+    mutate(group = EH$group,studyID = unique(detections_tmp$studyID))
   EH.inp
 }
 
 
-get_mark_model <- function(all.inp, standardized, multiple, multi_model = times) {
+get_mark_model <- function(all.inp, standardized = T, multi_model = "times", detections) {
   # Run a CJS Mark model
   #
   # Arguments:
   #  all.inp: inp df, can be more than one studyID
   #  standardized: TRUE or FALSE, if you want outputs to be standardized to 
   #     per10km or not
-  #  multiple: TRUE or FALSE, if you have multiple studyIDs or not   
   #  multi_model: model type to use for cases of multiple StudyIDs. By default
   #     multi_model = times runs reach*StudyID, alternatively 
   #     multi_model = plus runs reach+StudyID
@@ -347,56 +328,367 @@ get_mark_model <- function(all.inp, standardized, multiple, multi_model = times)
   # Return:
   #  the outputs of running a CJS Mark model, df with phi and p estimates, LCI
   #  UCI, SE
+  # Run a CJS Mark model for cumulative survival
   
-  # For single studyID
-  if (multiple == F) {
-    # If standardized, set time.intervals to reach_length to get per 10km
-    if (standardized) {
-      all.process <- process.data(all.inp, model="CJS", begin.time=1, 
-                                  time.intervals = reach_length)
-    } else {
-      all.process <- process.data(all.inp, model="CJS", begin.time=1)
-    }
-    # For multiple studyID
-  } else {
-    # If multiple studyIDs, set groups to "StudyID
-    if (standardized) {
-      all.process <- process.data(all.inp, model="CJS", begin.time=1, 
-                                  time.intervals = reach_length, groups = "StudyID")
-    } else {
-      all.process <- process.data(all.inp, model="CJS", begin.time=1,
-                                  groups = "StudyID")
-    }
-  }
+  reach.meta.all <- get_receiver_GEN(detections)
+  ## remove any downstream release locations before calculating reach_length
+  reach.meta.all <- rbind(reach.meta.all[1,],
+                            reach.meta.all[!(substr(reach.meta.all$GEN, nchar(reach.meta.all$GEN)-3,nchar(reach.meta.all$GEN))%in% c("_Rel","_rel")),])
+  reach.meta.all$reach_num <- 0:(nrow(reach.meta.all)-1)
   
-  
-  all.ddl <- make.design.data(all.process)
-  rm(list=ls(pattern="p.t.x.y"))
-  rm(list=ls(pattern="Phi.t.x.y"))
-  
-  # Set the model up differently depending on single vs multiple StudyIDs
-  # and multi_model argument (times vs plus)
-  if (multiple) {
-    if (multi_model == times) {
-      p.t.x.y <- list(formula= ~time*StudyID)
-      Phi.t.x.y <- list(formula= ~time*StudyID)
-    }else {
-      p.t.x.y <- list(formula= ~time+StudyID)
-      Phi.t.x.y <- list(formula= ~time+StudyID)
+  reach_length <- round((abs(diff(reach.meta.all$GenRKM))/10), digits = 3) 
+
+  if(length(unique(all.inp$group))==1){
+
+    all.process <- process.data(all.inp, model="CJS", begin.time=1)
+
+    all.ddl <- make.design.data(all.process)
+    
+    ## fix survival between benicia gates. too complicated to automate for now, just reducing Benicia down to 1 line
+    # if(nrow(reach.meta.all[reach.meta.all$GEN %in% c("BeniciaE","BeniciaW"),])>1){
+    #   all.ddl$Phi$fix <- NA
+    #   beniciaw_reach <- reach.meta.all[reach.meta.all$GEN == "BeniciaW","reach_num"]
+    #   all.ddl$Phi$fix[all.ddl$Phi$time == beniciaw_reach$reach_num] <- 1
+    # }
+    
+    rm(list=ls(pattern="Phi.t"))
+    rm(list=ls(pattern="p.t"))
+    
+    p.t <- list(formula= ~time) 
+    Phi.t <- list(formula= ~time)
+    
+    cml = create.model.list("CJS")
+    
+    model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, output = F, silent = T)
+    ## identify parameters estimates that have large CIs, rerun with profile.int
+    model.outputs$Phi.t.p.t$results$real$CI <- model.outputs$Phi.t.p.t$results$real$ucl - model.outputs$Phi.t.p.t$results$real$lcl
+    profile_int <- which(model.outputs$Phi.t.p.t$results$real$CI>0.75)
+    if(length(profile_int)>0){
+      print(paste("Using profile intervals on",length(profile_int),"parameters"))
+      model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, output = F, silent = T, profile.int = profile_int)
     }
     
-  }else {
-    p.t.x.y <- list(formula= ~time)
-    Phi.t.x.y <- list(formula= ~time)
+    # surv_index <- grep("Phi g",rownames(model.outputs$Phi.t.p.t$results$real))
+    # p_index <- grep("p g",rownames(model.outputs$Phi.t.p.t$results$real))
+    # ## for releases made further downstream than others, subset based in inp length
+    # surv_index_length <- nrow(reach.meta.group)-1
+    # surv_index <- tail(surv_index, n = surv_index_length)
+    
+    #phi.t <- model.outputs$Phi.t.p.t$results$real 
+    surv_index <- grep("Phi g",rownames(model.outputs$Phi.t.p.t$results$real))
+    unique_detects <- get_unique_detects(detections)
+    # ## for releases made further downstream than others, subset based in inp length
+    surv_index_length <- nrow(reach.meta.all)-1
+    surv_index <- tail(surv_index, n = surv_index_length)
+    phi.t <- model.outputs$Phi.t.p.t$results$real[surv_index,]
+    if (standardized) {
+      phi.t$se <- sqrt(((phi.t$estimate^((1-reach_length)/reach_length))/reach_length)^2 * phi.t$se^2)
+      phi.t$estimate <- phi.t$estimate^(1/reach_length)
+      phi.t$lcl <- expiit(logit(phi.t$estimate)-1.96*sqrt(phi.t$se^2/((exp(logit(phi.t$estimate))/(1+exp(logit(phi.t$estimate)))^2)^2)))
+      phi.t$ucl <- expiit(logit(phi.t$estimate)+1.96*sqrt(phi.t$se^2/((exp(logit(phi.t$estimate))/(1+exp(logit(phi.t$estimate)))^2)^2)))
+      # if se is 0, above code produces NaNs for ucl and lcl, but Rmark produces the estimate for these, so mimic
+      phi.t[is.na(phi.t$lcl),c("lcl","ucl")] <- phi.t[is.na(phi.t$lcl),c("estimate")]
+    }
+    phi.t$reach_start <- reach.meta.all$GEN[1:nrow(reach.meta.all)-1]
+    phi.t$reach_end <- reach.meta.all$GEN[2:nrow(reach.meta.all)]
+    phi.t$rkm_start <- reach.meta.all$GenRKM[1:nrow(reach.meta.all)-1]
+    phi.t$rkm_end <- reach.meta.all$GenRKM[2:nrow(reach.meta.all)]
+    phi.t$Region <- reach.meta.all$Region[2:nrow(reach.meta.all)]
+    phi.t$Reach <- paste(phi.t$reach_start,"to",phi.t$reach_end)
+    phi.t$RKM <- paste(phi.t$rkm_start,"to",phi.t$rkm_end)
+    phi.t$count_at_start <- unique_detects$count[1:nrow(unique_detects)-1]
+    phi.t$count_at_end <- unique_detects$count[2:nrow(unique_detects)]
+    phi.t$GenLat_start <- reach.meta.all$GenLat[1:nrow(reach.meta.all)-1]
+    phi.t$GenLon_start <- reach.meta.all$GenLon[1:nrow(reach.meta.all)-1]
+    phi.t$GenLat_end <- reach.meta.all$GenLat[2:nrow(reach.meta.all)]
+    phi.t$GenLon_end <- reach.meta.all$GenLon[2:nrow(reach.meta.all)]
+    phi.t$release <- reach.meta.all$GEN[1]
+    phi.t$group <- 1
+    phi.t$reach_num <- reach.meta.all$reach_num[2:nrow(reach.meta.all)]
+    phi.t$mean_rel_date <- unique_detects$mean_rel_date[1]
+
+    ### Output estimate, SE, LCI, UCI to a dataframe
+    cumulative <- phi.t
+    
+  }else{
+    
+    ## we standardize after the fact when there are multiple release groups since reach lengths for downstream releases are wrong (since those detections get assigned to a rel loc nearby)
+    all.inp$group <- as.factor(all.inp$group)
+    all.process <- process.data(all.inp, model="CJS", begin.time=1,
+                                  groups = "group")
+
+    all.ddl <- make.design.data(all.process)
+    
+    # ## fix survival between benicia gates. too complicated to automate for now, just reducing Benicia down to 1 line
+    # if(nrow(reach.meta.all[reach.meta.all$GEN %in% c("BeniciaE","BeniciaW"),])>1){
+    #   all.ddl$Phi$fix <- NA
+    #   beniciaw_reach <- reach.meta.all[reach.meta.all$GEN == "BeniciaW","reach_num"]
+    #   all.ddl$Phi$fix[all.ddl$Phi$time == beniciaw_reach$reach_num] <- 1
+    # }
+    
+    rm(list=ls(pattern="Phi.t"))
+    rm(list=ls(pattern="p.t"))
+    
+    # Set the model up differently depending on single vs multiple StudyIDs
+    # and multi_model argument (times vs plus)
+
+    if (multi_model == "times") {
+      p.t <- list(formula= ~time)
+      Phi.txr <- list(formula= ~time*group)
+    }else {
+      p.t <- list(formula= ~time)
+      Phi.txr <- list(formula= ~time+group)
+    } 
+      
+    cml = create.model.list("CJS")
+    
+    model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, output = F, silent = T)
+    #model.outputs$Phi.txr.p.t$results$real$reach <- as.numeric(sub('.*t', '', row.names(model.outputs$Phi.txr.p.t$results$real)))
+    ## identify parameters estimates that have large CIs, rerun with profile.int
+    model.outputs$Phi.txr.p.t$results$real$CI <- model.outputs$Phi.txr.p.t$results$real$ucl - model.outputs$Phi.txr.p.t$results$real$lcl
+    profile_int <- which(model.outputs$Phi.txr.p.t$results$real$CI>0.9)
+    if(length(profile_int)>0){
+      print(paste("Using profile intervals on",length(profile_int),"parameters"))
+      model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, output = F, silent = T, profile.int = profile_int)
+    }
+    
+    
+    ## create empty df to fill
+    cumulative <- data.frame(model.outputs$Phi.txr.p.t$results$real[0,],
+                             reach_start = as.character(),
+                             reach_end = as.character(),
+                             rkm_start = as.numeric(),
+                             rkm_end = as.numeric(),
+                             Region = as.character(),
+                             Reach = as.character(),
+                             RKM = as.character(),
+                             count_at_start = as.numeric(),
+                             count_at_end = as.numeric(),
+                             GenLat_start = as.numeric(),
+                             GenLon_start = as.numeric(),
+                             GenLat_end = as.numeric(),
+                             GenLon_end = as.numeric(),
+                             release = as.character(), 
+                             group = as.numeric())
+    
+    
+    #reach.meta.all.w.rels <- get_receiver_GEN(detections)
+    
+    for (j in unique(all.inp$group)){
+      reach.meta.group <- data.frame(get_receiver_GEN(detections[detections$group == j,]),group = j)
+      reach.meta.group.all <- merge(reach.meta.group,reach.meta.all, all = T, by = "GEN")
+      #reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$reach_num),]
+      ## these next steps may seem clunky but come from a need of being able to get all the GEN metadata, but sometimes the data exists in reach.meta.group and not in reach.meta.all and vice versa
+      reach.meta.group.all$GenRKM <- apply(reach.meta.group.all[,c("GenRKM.x","GenRKM.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      reach.meta.group.all$GenLat <- apply(reach.meta.group.all[,c("GenLat.x","GenLat.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      reach.meta.group.all$GenLon <- apply(reach.meta.group.all[,c("GenLon.x","GenLon.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      reach.meta.group.all$Region <- apply(reach.meta.group.all[,c("Region.x","Region.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      
+      surv_index <- grep(paste("Phi g",j,sep =""),rownames(model.outputs$Phi.txr.p.t$results$real))
+      unique_detects <- get_unique_detects(detections[detections$group == j,])
+      unique_detects$count_at_start <- unique_detects$count
+      unique_detects$count_at_end <- unique_detects$count
+      # ## for releases made further downstream than others, subset based in inp length
+      # surv_index_length <- nrow(reach.meta.group)-1
+      # surv_index <- tail(surv_index, n = surv_index_length)
+      reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$GenRKM,decreasing = T),]
+      ## here, if release was downstream of other releases, we need to subset surv_index differently (due to having assigned release to existing recv site)
+      if(min(which(is.na(reach.meta.group.all[,"group"])==F)) ==1){
+        surv_index_index <- min(which(is.na(reach.meta.group.all[,"group"])==F)):(max(which(is.na(reach.meta.group.all[,"group"])==F))-1)
+      }else{
+        surv_index_index <- (min(which(is.na(reach.meta.group.all[,"group"])==F))-1):(max(which(is.na(reach.meta.group.all[,"group"])==F))-2)
+      }
+      #surv_index_index <- surv_index_index[surv_index_index >0]
+      surv_index <- surv_index[surv_index_index]
+      reach.meta.group.final <- reach.meta.group.all[min(which(is.na(reach.meta.group.all[,"group"])==F)):max(which(is.na(reach.meta.group.all[,"group"])==F)),]
+      ## make sure release loc has a reach_num, this sometimes doesn't happen automatically when a release is downstream of another
+      #reach.meta.group.final[1,"reach_num"] <- min(reach.meta.group.final$reach_num, na.rm = T)-1
+      reach_length_group <- abs(diff(reach.meta.group.final$GenRKM))
+      
+      phi.t <- model.outputs$Phi.txr.p.t$results$real[surv_index,]
+      if (standardized) {
+          phi.t$se <- sqrt(((phi.t$estimate^((1-reach_length_group)/reach_length_group))/reach_length_group)^2 * phi.t$se^2)
+          phi.t$estimate <- phi.t$estimate^(1/reach_length_group)
+          phi.t$lcl <- expiit(logit(phi.t$estimate)-1.96*sqrt(phi.t$se^2/((exp(logit(phi.t$estimate))/(1+exp(logit(phi.t$estimate)))^2)^2)))
+          phi.t$ucl <- expiit(logit(phi.t$estimate)+1.96*sqrt(phi.t$se^2/((exp(logit(phi.t$estimate))/(1+exp(logit(phi.t$estimate)))^2)^2)))
+          # if se is 0, above code produces NaNs for ucl and lcl, but Rmark produces the estimate for these, so mimic
+          phi.t[is.na(phi.t$lcl),c("lcl","ucl")] <- phi.t[is.na(phi.t$lcl),c("estimate")]
+      }
+      phi.t$reach_start <- reach.meta.group.final$GEN[1:nrow(reach.meta.group.final)-1]
+      phi.t$reach_end <- reach.meta.group.final$GEN[2:nrow(reach.meta.group.final)]
+      phi.t$rkm_start <- round(reach.meta.group.final$GenRKM[1:nrow(reach.meta.group.final)-1],3)
+      phi.t$rkm_end <- round(reach.meta.group.final$GenRKM[2:nrow(reach.meta.group.final)],3)
+      phi.t$Region <- reach.meta.group.final$Region[2:nrow(reach.meta.group.final)]
+      phi.t$Reach <- paste(phi.t$reach_start,"to",phi.t$reach_end)
+      phi.t$RKM <- paste(phi.t$rkm_start,"to",phi.t$rkm_end)
+      phi.t$GenLat_start <- reach.meta.group.final$GenLat[1:nrow(reach.meta.group.final)-1]
+      phi.t$GenLon_start <- reach.meta.group.final$GenLon[1:nrow(reach.meta.group.final)-1]
+      phi.t$GenLat_end <- reach.meta.group.final$GenLat[2:nrow(reach.meta.group.final)]
+      phi.t$GenLon_end <- reach.meta.group.final$GenLon[2:nrow(reach.meta.group.final)]
+      phi.t$release <- reach.meta.group.final$GEN[1]
+      phi.t$mean_rel_date <- unique_detects$mean_rel_date[1]
+      
+      phi.t <- merge(phi.t, unique_detects[,c("GEN","count_at_start")], by.x = "reach_start", by.y = "GEN", all.x = T)
+      phi.t <- merge(phi.t, unique_detects[,c("GEN","count_at_end")], by.x = "reach_end", by.y = "GEN", all.x = T)
+      phi.t[is.na(phi.t$count_at_start),"count_at_start"] <- 0
+      phi.t[is.na(phi.t$count_at_end),"count_at_end"] <- 0
+      
+      # phi.t.vcv <- model.outputs$Phi.txr.p.t$results$real.vcv[surv_index,surv_index]
+      # cum.phi <- cumprod(phi.t$estimate)
+      # # calculate standard errors for the cumulative product. 
+      # cum.phi.se <- deltamethod.special("cumprod", phi.t$estimate, phi.t.vcv)
+      cumulative <- rbind(cumulative,data.frame(phi.t, group = j))
+    }
+    # p_index <- grep("p g1",rownames(model.outputs$Phi.txr.p.t$results$real))
+    # surv_index_length <- nrow(reach.meta.all)-1
+    # p_index <- tail(p_index, n = surv_index_length)
+    # p.t <- model.outputs$Phi.txr.p.t$results$real[p_index,] 
+    # cumulative <- rbind(cumulative,data.frame(p.t,GEN = reach.meta.all[2:nrow(reach.meta.all),"GEN"],group = "All"))
+    cumulative <- merge(cumulative, reach.meta.all[,c("GEN","reach_num")], by.x = "reach_end", by.y = "GEN")
   }
+  # Round to 3 digits
+  cumulative[,c("estimate","se","lcl","ucl")] <- round(cumulative[,c("estimate","se","lcl","ucl")],3)
+  cumulative$fixed <- NULL
+  cumulative$note <- NULL
   
-  cml = create.model.list("CJS")
-  model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl) 
-  outputs <- model.outputs$Phi.t.x.y.p.t.x.y$results$real
+  ## in rare instances, profile likelihood still doesn't fix incorrectly large CIs, but if surv is 1 and SE is 0, we can assume ucl and lcl of 1
+  cumulative[cumulative$estimate == 1 & cumulative$se < 0.03 & cumulative$lcl == 0,c("lcl","ucl")] <- 1
+  
+  cumulative <- cumulative[order(cumulative$group,cumulative$reach_num),]
+  
+  ## remove last reach due to unidentifiability
+  cumulative <- cumulative[cumulative$reach_num < max(cumulative$reach_num),]
+  return(cumulative)
   
 }
 
-get_cum_survival <- function(all.inp, add_release) {
+
+remove_bad_sites <- function(all.inp, EH, p_cutoff = 0.7, detections) {
+  
+  reach.meta.all <- get_receiver_GEN(detections)
+  ## remove any downstream release locations before calculating reach_length
+  reach.meta.all <- rbind(reach.meta.all[1,],
+                          reach.meta.all[!(substr(reach.meta.all$GEN, nchar(reach.meta.all$GEN)-3,nchar(reach.meta.all$GEN))%in% c("_Rel","_rel")),])
+  reach.meta.all$reach_num <- 0:(nrow(reach.meta.all)-1)
+  
+  
+  if(length(unique(all.inp$group))==1){
+    
+    all.process <- process.data(all.inp, model="CJS", begin.time=1)
+    
+    all.ddl <- make.design.data(all.process)
+    
+    rm(list=ls(pattern="Phi.t"))
+    rm(list=ls(pattern="p.t"))
+    
+    p.t <- list(formula= ~time) 
+    Phi.t <- list(formula= ~time)
+    
+    cml = create.model.list("CJS")
+    
+    model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, output = F, silent = T)
+    
+    #phi.t <- model.outputs$Phi.t.p.t$results$real 
+    surv_index <- grep("p g",rownames(model.outputs$Phi.t.p.t$results$real))
+    # ## for releases made further downstream than others, subset based in inp length
+    surv_index_length <- nrow(reach.meta.all)-1
+    surv_index <- tail(surv_index, n = surv_index_length)
+    phi.t <- model.outputs$Phi.t.p.t$results$real[surv_index,]
+
+    phi.t$GEN <- reach.meta.all$GEN[2:nrow(reach.meta.all)]
+    
+    
+    ### Output estimate, SE, LCI, UCI to a dataframe
+    cumulative <- phi.t
+    
+  }else{
+    
+    all.inp$group <- as.factor(all.inp$group)
+    
+    ## we standardize after the fact when there are multiple release groups since reach lengths for downstream releases are wrong (since those detections get assigned to a rel loc nearby)
+    all.process <- process.data(all.inp, model="CJS", begin.time=1,
+                                groups = "group")
+    
+    all.ddl <- make.design.data(all.process)
+    
+    rm(list=ls(pattern="Phi.t"))
+    rm(list=ls(pattern="p.t"))
+    
+    # Set the model up differently depending on single vs multiple StudyIDs
+    # and multi_model argument (times vs plus)
+    # if lots of parameters, may need to keep survival just time variable to speed up
+    if((ncol(EH)-3)*length(unique(EH$group))>100){
+      p.t <- list(formula= ~time*group)
+      Phi.txr <- list(formula= ~time)
+    }else{
+      p.t <- list(formula= ~time*group)
+      Phi.txr <- list(formula= ~time*group) 
+    }
+
+    cml = create.model.list("CJS")
+    
+    model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, output = F, silent = T)
+    #model.outputs$Phi.txr.p.t$results$real$reach <- as.numeric(sub('.*t', '', row.names(model.outputs$Phi.txr.p.t$results$real)))
+    
+    ## create empty df to fill
+    cumulative <- model.outputs$Phi.txr.p.t$results$real[0,]
+    
+    
+    #reach.meta.all.w.rels <- get_receiver_GEN(detections)
+    
+    for (j in unique(all.inp$group)){
+      reach.meta.group <- data.frame(get_receiver_GEN(detections[detections$group == j,]),group = j)
+      reach.meta.group.all <- merge(reach.meta.group,reach.meta.all, all = T, by = "GEN")
+      #reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$reach_num),]
+      ## these next steps may seem clunky but come from a need of being able to get all the GEN metadata, but sometimes the data exists in reach.meta.group and not in reach.meta.all and vice versa
+      reach.meta.group.all$GenRKM <- apply(reach.meta.group.all[,c("GenRKM.x","GenRKM.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      reach.meta.group.all$GenLat <- apply(reach.meta.group.all[,c("GenLat.x","GenLat.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      reach.meta.group.all$GenLon <- apply(reach.meta.group.all[,c("GenLon.x","GenLon.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      reach.meta.group.all$Region <- apply(reach.meta.group.all[,c("Region.x","Region.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      
+      surv_index <- grep(paste("p g",j,sep =""),rownames(model.outputs$Phi.txr.p.t$results$real))
+      # ## for releases made further downstream than others, subset based in inp length
+      # surv_index_length <- nrow(reach.meta.group)-1
+      # surv_index <- tail(surv_index, n = surv_index_length)
+      reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$GenRKM,decreasing = T),]
+      ## here, if release was downstream of other releases, we need to subset surv_index differently (due to having assigned release to existing recv site)
+      if(min(which(is.na(reach.meta.group.all[,"group"])==F)) ==1){
+        surv_index_index <- min(which(is.na(reach.meta.group.all[,"group"])==F)):(max(which(is.na(reach.meta.group.all[,"group"])==F))-1)
+      }else{
+        surv_index_index <- (min(which(is.na(reach.meta.group.all[,"group"])==F))-1):(max(which(is.na(reach.meta.group.all[,"group"])==F))-2)
+      }
+      #surv_index_index <- surv_index_index[surv_index_index >0]
+      surv_index <- surv_index[surv_index_index]
+      reach.meta.group.final <- reach.meta.group.all[min(which(is.na(reach.meta.group.all[,"group"])==F)):max(which(is.na(reach.meta.group.all[,"group"])==F)),]
+      
+      phi.t <- model.outputs$Phi.txr.p.t$results$real[surv_index,]
+
+      phi.t$GEN <- reach.meta.group.final$GEN[2:nrow(reach.meta.group.final)]
+      phi.t$GEN <- reach.meta.group.final$GEN[2:nrow(reach.meta.group.final)]
+      
+      # phi.t.vcv <- model.outputs$Phi.txr.p.t$results$real.vcv[surv_index,surv_index]
+      # cum.phi <- cumprod(phi.t$estimate)
+      # # calculate standard errors for the cumulative product. 
+      # cum.phi.se <- deltamethod.special("cumprod", phi.t$estimate, phi.t.vcv)
+      cumulative <- rbind(cumulative,data.frame(phi.t, group = j))
+    }
+
+  }
+  
+  ## here, select sites that have a p < p_cutoff (default 0.7)
+  bad_sites <- unique(cumulative[cumulative$estimate < p_cutoff,"GEN"])
+  ## don't remove rel sites or GG sites
+  bad_sites <- bad_sites[!(substr(bad_sites,nchar(bad_sites)-3,nchar(bad_sites))%in% c("_Rel","_rel"))]
+  bad_sites <- bad_sites[substr(bad_sites,1,6)!= "Golden"]
+  if(length(bad_sites)>0){
+    print(paste("dropped", bad_sites))
+    detections <- detections[!detections$GEN %in% bad_sites,]
+  }
+  return(detections)
+
+}  
+ 
+get_cum_survival <- function(all.inp, add_release, detections) {
   # Run a CJS Mark model for cumulative survival
   #
   # Arguments:
@@ -407,166 +699,192 @@ get_cum_survival <- function(all.inp, add_release) {
   # Return:
   #  Cumulative survival outputs of CJS Mark model
   
-  all.process <- process.data(all.inp, model = "CJS", begin.time = 1)
-  all.ddl <- make.design.data(all.process)
+  reach.meta.all <- get_receiver_GEN(detections)
+  ## remove any downstream release locations before calculating reach_length
+  reach.meta.all <- rbind(reach.meta.all[1,],
+                          reach.meta.all[!(substr(reach.meta.all$GEN, nchar(reach.meta.all$GEN)-3,nchar(reach.meta.all$GEN))%in% c("_Rel","_rel")),])
+  reach.meta.all$reach_num <- 0:(nrow(reach.meta.all)-1)
   
-  rm(list=ls(pattern="Phi.t"))
-  rm(list=ls(pattern="p.t"))
-  
-  p.t <- list(formula= ~time) 
-  Phi.t <- list(formula= ~time)
-  
-  cml = create.model.list("CJS")
-  
-  model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl, realvcv = TRUE)
-  
-  reaches <- nchar(all.inp$ch[1]) - 1
-  
-  phi.t <- model.outputs$Phi.t.p.t$results$real$estimate[1:reaches] 
-  phi.t.vcv <- model.outputs$Phi.t.p.t$results$real.vcv
-  
-  cum.phi <- cumprod(phi.t)
-  
-  # calculate standard errors for the cumulative product. 
-  cum.phi.se <- deltamethod.special("cumprod", phi.t[1:reaches], 
-                                    phi.t.vcv[1:(reaches),1:(reaches)])
-  
-  
-  ### Output estimate, SE, LCI, UCI to a dataframe
-  cumulative <- data.frame(cum.phi = cum.phi, 
-                           cum.phi.se = cum.phi.se,
-                           # LCI = cum.phi - 1.96 * cum.phi.se,
-                           # UCI = cum.phi + 1.96 * cum.phi.se)
-                           LCI = expit(logit(cum.phi) - 1.96 * sqrt(cum.phi.se^2/((exp(logit(cum.phi))/(1+exp(logit(cum.phi)))^2)^2))),
-                           UCI = expit(logit(cum.phi) + 1.96 * sqrt(cum.phi.se^2/((exp(logit(cum.phi))/(1+exp(logit(cum.phi)))^2)^2))))
- 
-  
-  # Round to 3 digits
-  cumulative <- round(cumulative,3)
-  
-  # If add_release TRUE, add in the dummy row to the top which just represents
-  # survival of 100% at release
-  if (add_release == T) {
-    cumulative <- cumulative %>% 
-      add_row(
-        .before = 1,
-        cum.phi = 1,
-        cum.phi.se = NA,
-        LCI = NA, 
-        UCI = NA
-      ) %>% 
-      mutate(
-        StudyID = all.inp$StudyID[1]
-      )
-  }else {
-    cumulative <- cumulative %>% 
-      mutate(
-        StudyID = all.inp$StudyID[1]
-      )
+  if(length(unique(all.inp$group))==1){
+    
+    reach.meta.group <- get_receiver_GEN(detections)
+    
+    all.process <- process.data(all.inp, model = "CJS", begin.time = 1)
+    all.ddl <- make.design.data(all.process)
+    
+    rm(list=ls(pattern="Phi.t"))
+    rm(list=ls(pattern="p.t"))
+    
+    p.t <- list(formula= ~time) 
+    Phi.t <- list(formula= ~time)
+    
+    cml = create.model.list("CJS")
+    
+    model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl, realvcv = TRUE,brief = T, output = F, silent = T)
+    ## identify parameters estimates that have large CIs, rerun with profile.int
+    model.outputs$Phi.t.p.t$results$real$CI <- model.outputs$Phi.t.p.t$results$real$ucl - model.outputs$Phi.t.p.t$results$real$lcl
+    profile_int <- which(model.outputs$Phi.t.p.t$results$real$CI>0.9)
+    if(length(profile_int)>0){
+      print(paste("Using profile intervals on",length(profile_int),"parameters"))
+      model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, realvcv = TRUE, output = F, silent = T, profile.int = profile_int)
+    }
+    
+    model.outputs$Phi.t.p.t$results$real$reach <- as.numeric(sub('.*t', '', row.names(model.outputs$Phi.t.p.t$results$real)))
+    
+    unique_detects <- get_unique_detects(detections)
+    surv_index <- grep("Phi g",rownames(model.outputs$Phi.t.p.t$results$real))
+    ## for releases made further downstream than others, subset based in inp length
+    surv_index_length <- nrow(reach.meta.group)-1
+    surv_index <- tail(surv_index, n = surv_index_length)
+    
+    phi.t <- model.outputs$Phi.t.p.t$results$real[surv_index,] 
+    phi.t.vcv <- model.outputs$Phi.t.p.t$results$real.vcv[surv_index,surv_index]
+    
+    cum.phi <- cumprod(phi.t$estimate)
+    
+    # calculate standard errors for the cumulative product. 
+    cum.phi.se <- deltamethod.special("cumprod", phi.t$estimate, phi.t.vcv)
+    
+    
+    ### Output estimate, SE, LCI, UCI to a dataframe
+
+    cumulative <- rbind(data.frame(reach = min(phi.t$reach)-0.5,
+                                   cum.phi = 1, 
+                                   cum.phi.se = NA,
+                                   LCI = NA,
+                                   UCI = NA,
+                                   GEN = reach.meta.group[1,"GEN"],
+                                   group = 1,      
+                                   release = reach.meta.group$GEN[1],
+                                   mean_rel_date = unique_detects$mean_rel_date[1]),
+                        data.frame(reach = phi.t$reach,
+                                   cum.phi = cum.phi, 
+                                   cum.phi.se = cum.phi.se,
+                                   LCI = expiit(logit(cum.phi) - 1.96 * sqrt(cum.phi.se^2/((exp(logit(cum.phi))/(1+exp(logit(cum.phi)))^2)^2))),
+                                   UCI = expiit(logit(cum.phi) + 1.96 * sqrt(cum.phi.se^2/((exp(logit(cum.phi))/(1+exp(logit(cum.phi)))^2)^2))),
+                                   GEN = reach.meta.group[2:nrow(reach.meta.group),"GEN"],
+                                   group = 1,      
+                                   release = reach.meta.group$GEN[1],
+                                   mean_rel_date = unique_detects$mean_rel_date[1]))
+    
+    
+    # If add_release TRUE, add in the dummy row to the top which just represents
+    # survival of 100% at release
+    if (add_release == T) {
+      cumulative <- cumulative %>% 
+        add_row(
+          .before = 1,
+          group = 1,
+          reach = 0.5,
+          cum.phi = 1,
+          cum.phi.se = NA,
+          LCI = NA, 
+          UCI = NA
+        ) %>% 
+        mutate(
+          studyID = all.inp$studyID[1]
+        )
+    }else {
+      cumulative <- cumulative %>% 
+        mutate(
+          studyID = all.inp$studyID[1]
+        )
+    }
+  }else{
+    
+    all.inp$group <- as.factor(all.inp$group)
+    all.process <- process.data(all.inp, model = "CJS", begin.time = 1, groups = "group")
+    all.ddl <- make.design.data(all.process)
+    
+    rm(list=ls(pattern="Phi.t"))
+    rm(list=ls(pattern="p.t"))
+    
+    p.t <- list(formula= ~time) 
+    Phi.txr <- list(formula= ~time*group)
+    
+    cml = create.model.list("CJS")
+    
+    model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl, realvcv = TRUE,brief = T, output = F, silent = T)
+    ## identify parameters estimates that have large CIs, rerun with profile.int
+    model.outputs$Phi.txr.p.t$results$real$CI <- model.outputs$Phi.txr.p.t$results$real$ucl - model.outputs$Phi.txr.p.t$results$real$lcl
+    profile_int <- which(model.outputs$Phi.txr.p.t$results$real$CI>0.9)
+    if(length(profile_int)>0){
+      print(paste("Using profile intervals on",length(profile_int),"parameters"))
+      model.outputs <- mark.wrapper(cml, data=all.process, ddl=all.ddl,brief = T, realvcv = TRUE, output = F, silent = T, profile.int = profile_int)
+    }
+    
+    model.outputs$Phi.txr.p.t$results$real$reach <- as.numeric(sub('.*t', '', row.names(model.outputs$Phi.txr.p.t$results$real)))
+    
+    
+    ### Output estimate, SE, LCI, UCI to a dataframe
+    cumulative <- data.frame(reach = as.numeric(),
+                             cum.phi = as.numeric(), 
+                             cum.phi.se = as.numeric(), 
+                             # LCI = cum.phi - 1.96 * cum.phi.se,
+                             # UCI = cum.phi + 1.96 * cum.phi.se)
+                             LCI = as.numeric(), 
+                             UCI = as.numeric(),
+                             GEN = as.character(),
+                             group = as.character(),
+                             release = as.character(),
+                             mean_rel_date = as.character())
+    
+    for (j in unique(all.inp$group)){
+
+      reach.meta.group <- data.frame(get_receiver_GEN(detections[detections$group == j,]),group = j)
+      reach.meta.group.all <- merge(reach.meta.group,reach.meta.all, by = "GEN", all = T)
+      reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$reach_num),]
+      reach.meta.group.all$GenRKM <- apply(reach.meta.group.all[,c("GenRKM.x","GenRKM.y")], MARGIN = 1, FUN = function(x){first(na.omit(x))})
+      
+      unique_detects <- get_unique_detects(detections[detections$group == j,])
+      
+      surv_index <- grep(paste("Phi g",j,sep =""),rownames(model.outputs$Phi.txr.p.t$results$real))
+      #reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$GenRKM,decreasing = T),]
+      reach.meta.group.all <- reach.meta.group.all[order(reach.meta.group.all$GenRKM,decreasing = T),]
+      
+      ## here, if release was downstream of other releases, we need to subset surv_index differently (due to having assigned release to existing recv site)
+      if(min(which(is.na(reach.meta.group.all[,"group"])==F)) ==1){
+        surv_index_index <- min(which(is.na(reach.meta.group.all[,"group"])==F)):(max(which(is.na(reach.meta.group.all[,"group"])==F))-1)
+      }else{
+        surv_index_index <- (min(which(is.na(reach.meta.group.all[,"group"])==F))-1):(max(which(is.na(reach.meta.group.all[,"group"])==F))-2)
+      }
+      #surv_index_index <- surv_index_index[surv_index_index >0]
+      surv_index <- surv_index[surv_index_index]
+      reach.meta.group.final <- reach.meta.group.all[min(which(is.na(reach.meta.group.all[,"group"])==F)):max(which(is.na(reach.meta.group.all[,"group"])==F)),]
+      phi.t <- model.outputs$Phi.txr.p.t$results$real[surv_index,] 
+      phi.t.vcv <- model.outputs$Phi.txr.p.t$results$real.vcv[surv_index,surv_index]
+      cum.phi <- cumprod(phi.t$estimate)
+      # calculate standard errors for the cumulative product. 
+      if(length(surv_index)==1){
+        cum.phi.se <- phi.t$se
+      }else{
+        cum.phi.se <- deltamethod.special("cumprod", phi.t$estimate, phi.t.vcv)
+      }
+      cumulative <- rbind(cumulative,rbind(data.frame(reach = min(phi.t$reach)-0.5,
+                                                cum.phi = 1, 
+                                                cum.phi.se = NA,
+                                                LCI = NA,
+                                                UCI = NA,
+                                                GEN = reach.meta.group[1,"GEN"],
+                                                group = j,
+                                                release = reach.meta.group$GEN[1],
+                                                mean_rel_date = unique_detects$mean_rel_date[1]),
+                                          data.frame(reach = phi.t$reach,
+                                                cum.phi = cum.phi, 
+                                                cum.phi.se = cum.phi.se,
+                                                LCI = expiit(logit(cum.phi) - 1.96 * sqrt(cum.phi.se^2/((exp(logit(cum.phi))/(1+exp(logit(cum.phi)))^2)^2))),
+                                                UCI = expiit(logit(cum.phi) + 1.96 * sqrt(cum.phi.se^2/((exp(logit(cum.phi))/(1+exp(logit(cum.phi)))^2)^2))),
+                                                GEN = reach.meta.group.final[2:nrow(reach.meta.group.final),"GEN"],
+                                                group = j,      
+                                                release = reach.meta.group$GEN[1],
+                                                mean_rel_date = unique_detects$mean_rel_date[1])))
+    }
   }
-  
+  # Round to 3 digits
+  cumulative[,c("cum.phi", "cum.phi.se", "LCI", "UCI")] <- round(cumulative[,c("cum.phi", "cum.phi.se", "LCI", "UCI")],3)
+  return(cumulative)
 }
 
-format_phi <- function(outputs, multiple) {
-  # Format phi outputs for plotting and table outputs
-  #
-  # Arguments:
-  #  output: output df from Mark model
-  #  mutliple: TRUE/FALSE if there were multiple StudyIDs in the outputs
-  #
-  # Return:
-  #  properly formatted df for phi outputs, now ready to plot
-  
-  
-  # Identify number of fish detected at each GEN
-  unique_detects <- get_unique_detects(aggregated) 
-  # %>% 
-  #   filter(StudyID %in% unique(outputs$StudyID))
-  
-  # Format for single
-  if (multiple == F) {
-    outputs %>%
-      # Grab first half of Mark outputs which represent Phi values
-      slice(1:(nrow(outputs) / 2)) %>%
-      select(
-        -c("fixed", "note")
-      ) %>% 
-      add_column(
-        StudyID = studyID,
-        reach_start = reach.meta.aggregate$GEN[1:(length(reach.meta.aggregate$GEN)-1)],
-        reach_end = reach.meta.aggregate$GEN[2:(length(reach.meta.aggregate$GEN))],
-        rkm_start = reach.meta.aggregate$GenRKM[1:(length(reach.meta.aggregate$GenRKM)-1)],
-        rkm_end = reach.meta.aggregate$GenRKM[2:(length(reach.meta.aggregate$GenRKM))]
-      ) %>% 
-      left_join(
-        reach.meta.aggregate %>%
-          select(GEN, Region) %>%
-          distinct(),
-        by = c("reach_start" = "GEN")
-      ) %>% 
-      mutate(
-        Reach = paste0(reach_start, " to \n", reach_end),
-        RKM = paste0(rkm_start, " to ", rkm_end)
-      ) %>% 
-      left_join(unique_detects %>% 
-                  select(GEN, count_at_start = count),
-                by = c("reach_start" = "GEN")) %>% 
-      mutate(count_at_start = ifelse(is.na(count_at_start), 0, count_at_start)) %>% 
-      left_join(unique_detects %>% 
-                  select(GEN, count_at_end = count),
-                by = c("reach_end" = "GEN")) %>% 
-      mutate(count_at_end = ifelse(is.na(count_at_end), 0, count_at_end)) %>% 
-      add_column(
-        GenLat_start = reach.meta.aggregate$GenLat[1:(length(reach.meta.aggregate$GenLat)-1)],
-        GenLon_start = reach.meta.aggregate$GenLon[1:(length(reach.meta.aggregate$GenLon)-1)],
-        GenLat_end = reach.meta.aggregate$GenLat[2:(length(reach.meta.aggregate$GenLat))],
-        GenLon_end = reach.meta.aggregate$GenLon[2:(length(reach.meta.aggregate$GenLon))]
-      )
-  } else {
-    outputs %>%
-      slice(1:(nrow(outputs) / 2)) %>%
-      select(
-        -c("fixed", "note")
-      ) %>% 
-      rownames_to_column(var = "StudyID") %>%
-      add_column(
-        reach_start = rep(reach.meta.aggregate$GEN[1:(length(reach.meta.aggregate$GEN)-1)], 2),
-        reach_end = rep(reach.meta.aggregate$GEN[2:(length(reach.meta.aggregate$GEN))], 2),
-        rkm_start = rep(reach.meta.aggregate$GenRKM[1:(length(reach.meta.aggregate$GenRKM)-1)], 2),
-        rkm_end = rep(reach.meta.aggregate$GenRKM[2:(length(reach.meta.aggregate$GenRKM))], 2)
-      ) %>% 
-      left_join(
-        reach.meta.aggregate %>%
-          select(GEN, Region) %>%
-          distinct(),
-        by = c("reach_start" = "GEN")
-      ) %>% 
-      mutate(
-        Reach = paste0(reach_start, " to \n", reach_end),
-        RKM = paste0(rkm_start, " to ", rkm_end)
-      ) %>% 
-      rowwise() %>%
-      mutate(
-        StudyID = strsplit(strsplit(StudyID, "Phi g")[[1]][2], " ")[[1]][1]
-      ) %>% 
-      left_join(unique_detects %>% 
-                  select(GEN, StudyID, count_at_start = count),
-                by = c("reach_start" = "GEN", "StudyID")) %>% 
-      mutate(count_at_start = ifelse(is.na(count_at_start), 0, count_at_start)) %>% 
-      left_join(unique_detects %>% 
-                  select(GEN, StudyID, count_at_end = count),
-                by = c("reach_end" = "GEN", "StudyID")) %>% 
-      mutate(count_at_end = ifelse(is.na(count_at_end), 0, count_at_end)) %>% 
-      add_column(
-        StudyID = studyID,
-        GenLat_start = reach.meta.aggregate$GenLat[1:(length(reach.meta.aggregate$GenLat)-1)],
-        GenLon_start = reach.meta.aggregate$GenLon[1:(length(reach.meta.aggregate$GenLon)-1)],
-        GenLat_end = reach.meta.aggregate$GenLat[2:(length(reach.meta.aggregate$GenLat))],
-        GenLon_end = reach.meta.aggregate$GenLon[2:(length(reach.meta.aggregate$GenLon))]
-      )
-  }
-  
-}
 
 get_unique_detects <- function(all_aggregated){
   # Get raw number of unique fish detected at each GEN 
@@ -580,44 +898,19 @@ get_unique_detects <- function(all_aggregated){
   
   all_aggregated %>% 
     bind_rows() %>% 
-    select(StudyID, FishID, GEN, GenRKM) %>% 
+    select(FishID, GEN, GenRKM,group,fish_release_date) %>% 
     distinct() %>% 
-    group_by(StudyID, GEN, GenRKM) %>% 
+    group_by(group, GEN, GenRKM) %>% 
     summarise(
-      count = n()
+      count = n(),
+      mean_rel_date = mean(as.Date(fish_release_date))
     ) %>% 
-    arrange(StudyID, desc(GenRKM)) %>% 
+    arrange(desc(GenRKM)) %>% 
     ungroup()
 }
 
-make_phi_table <- function(phi, standardized = T) {
-  # Format phi outputs further to be ready to save as a csv
-  #
-  # Arguments:
-  #  phi: phi outputs from Mark model, must be formatted with (format_phi) first
-  #
-  # Return:
-  #  phi df formatted the way I want to be saved as csv
-  ifelse(standardized, label <-  'Survival rate per 10km (SE)',
-         label <- 'Survival rate (SE)')
-  
-  phi %>% 
-    select(studyID, reach_num, Reach, RKM, Region, Estimate = estimate, SE = se, 
-           LCI = lcl, UCI = ucl) %>% 
-    mutate(
-      Reach = str_remove_all(Reach, "\n"),
-      Estimate = round(Estimate, 2),
-      SE = round(SE, 2),
-      LCI = round(LCI, 2),
-      UCI = round(UCI, 2),
-      Estimate2 = paste0(Estimate, " (", as.character(SE), ")")
-    ) %>% 
-    rename(!!label := Estimate2,
-           'Reach #' = reach_num)
-}
 
-
-format_cum_surv <- function(cum_survival_all) {
+format_cum_surv <- function(cum_survival_all, detections) {
   # Format cumulative survival outputs for plotting and table outputs
   #
   # Arguments:
@@ -625,562 +918,267 @@ format_cum_surv <- function(cum_survival_all) {
   #
   # Return:
   #  properly formatted df for phi outputs, now ready to plot
-  StudyID = unique(cum_survival_all$StudyID)
-   
+  
+  reach.meta.aggregate <- get_receiver_GEN(detections)
+  
+  
+  cum_survival_all <- merge(cum_survival_all,reach.meta.aggregate, all.x = T)
+  
+  
   cum_survival_all <- cum_survival_all %>% 
-    add_column(
-      GEN = rep(reach.meta.aggregate$GEN[1:(length(reach.meta.aggregate$GEN))], 
-                length(StudyID)),
-      RKM = rep(reach.meta.aggregate$GenRKM[1:(length(reach.meta.aggregate$GenRKM))], 
-                length(StudyID)),
-      reach_num = rep(seq(0, (nrow(reach.meta.aggregate))-1, 1), length(StudyID))
-    ) %>% 
-    left_join(
-      reach.meta.aggregate %>%
-        select(GEN, Region) %>% 
-        distinct(),
-      by = c("GEN")
-    ) %>% 
+    # add_column(
+    #   GEN = rep(reach.meta.aggregate$GEN[1:(length(reach.meta.aggregate$GEN))], 
+    #             length(groups)),
+    #   RKM = rep(reach.meta.aggregate$GenRKM[1:(length(reach.meta.aggregate$GenRKM))], 
+    #             length(groups)),
+    #   reach_num = rep(seq(0, (nrow(reach.meta.aggregate))-1, 1), length(groups))
+    # ) %>% 
+    # left_join(
+    #   reach.meta.aggregate %>%
+    #     select(GEN, Region) %>% 
+    #     distinct(),
+    #   by = c("GEN")
+    # ) %>% 
     mutate(
-      cum.phi = round(cum.phi, digits = 2),
-      cum.phi.se = round(cum.phi.se, digits = 2),
+      cum.phi = round(cum.phi, digits = 3),
+      cum.phi.se = round(cum.phi.se, digits = 3),
       LCI = round(LCI, digits = 2),
       UCI = round(UCI, digits = 2),
       'Survival estimate (SE)' = paste0(cum.phi, " (", as.character(cum.phi.se), ")"),
-      'Reach #' = reach_num,
-    ) %>% 
-    filter(
-      GEN != "GoldenGateW"
-    ) 
+      reach_num = reach,
+    )
   
+  ## remove last reach due to unidentifiability
+  cum_survival_all <- cum_survival_all[cum_survival_all$reach_num < max(cum_survival_all$reach_num),]
+  
+  return(cum_survival_all)
 }
 
-plot_cum_surv <- function(cum_survival_all, add_breaks, multiple, padding = 5.5,
-                          text_size = 20) {
-  # Plot cumulative survival outputs from Mark model
-  #
-  # Arguments:
-  #  cum_survival_all: cumulative survival outputs from Mark model, 
-  #     must be formatted with (format_cum_surv) first
-  #  add_breaks: TRUE/FALSE whether to add vertical line breaks to represent
-  #     regions
-  #  multiple: TRUE/FALSE, whether there are multiple studyIDs or not
-  #  padding: leftside plot margin, default set to 5.5 good for most, but can
-  #     be adjusted of the xaxis label too long and gets cut off
-  #
-  # Return:
-  #  plot of cumulative survival with estimate and error bars representing LCI, UCI
-  
-  # Create the levels order 
-  lvls <- cum_survival_all %>% 
-    select(GEN) %>% 
-    distinct() %>% 
-    pull()
-  
-  if (multiple) {
-    cum_survival_all %>% 
-      mutate(
-        GEN = factor(GEN, levels = lvls)
-      ) %>%
-      ggplot(mapping = aes(x = GEN, y = cum.phi, group = studyID)) +
-      geom_point(size = 2, aes(color = studyID)) +
-      geom_errorbar(mapping = aes(x= GEN, ymin = LCI, ymax = UCI, 
-                                  color = studyID),  width = .1) +
-      geom_line(size = 0.7, aes(color = studyID)) +
-      {if(add_breaks)geom_vline(xintercept = region_breaks, linetype = "dotted")} +
-      ylab("Cumulative survival") +
-      xlab("Receiver Location") +
-      scale_y_continuous(breaks = seq(0, 1, 0.1)) +
-      # scale_x_continuous(breaks = 0:max(cum_survival_all$reach_num)) +
-      # NEEDS TO BE FIXED FOR IF THERE ARE MORE THEN 2 STUDYIDS
-      scale_color_manual(values=c("#007EFF", "#FF8100")) +
-      theme_classic() +
-      theme(
-        panel.border = element_rect(colour = "black", fill=NA, size=.5),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
-        plot.margin = margin(5.5, 5.5, 5.5, padding, "pt"),
-        legend.position = "top",
-        text = element_text(size=text_size)
-      ) 
-  } else {
-    cum_survival_all %>% 
-      mutate(
-        # GEN = factor(GEN, levels = reach.meta.aggregate$GEN,
-        #              labels = paste0(reach.meta.aggregate$GEN, " (",
-        #                              reach.meta.aggregate$GenRKM, ")"))
-        GEN = factor(GEN, levels = lvls)
-      ) %>%
-      ggplot(mapping = aes(x = GEN, y = cum.phi)) +
-      geom_point(size = 2) +
-      geom_errorbar(mapping = aes(x= GEN, ymin = LCI, ymax = UCI),  width = .1) +
-      geom_line(size = 0.7, group = 1) +
-      {if(add_breaks)geom_vline(xintercept = region_breaks, linetype = "dotted")} +
-      ylab("Cumulative survival") +
-      xlab("Receiver Location") +
-      scale_y_continuous(breaks = seq(0, 1, 0.1)) +
-      # scale_x_continuous(breaks = 0:max(cum_survival_all$GEN)) +
-      theme_classic() +
-      theme(
-        panel.border = element_rect(colour = "black", fill=NA, size=.5),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
-        plot.margin=unit(c(.5,.5,.5,.5), "cm"),
-        text = element_text(size=text_size)
-      ) 
+
+#### Get Reach per 10km Survival estimates ####------------------------------------------
+
+# 1. Run all studyids
+
+studyid_to_run <- as.data.frame(studyid_list[studyid_list$incl_survival == "YES",])
+
+## here, uncomment code to instead run just a few select studies
+#studyid_to_run <- studyid_to_run[studyid_to_run$study_id %in% c("Wild_stock_Chinook_Rbdd_2021","Wild_stock_Chinook_RBDD_2022","Lower_Yuba_FRH_Chinook_2023" ),]
+
+for(i in 1:nrow(studyid_to_run)){
+  print(studyid_to_run[i,"study_id"])
+  day_gap_custom <- 6
+  rkm_gap_custom <- 20
+  p_cutoff_custom <- 0.7
+  if(is.na(studyid_to_run[i,"custom_rkm_gap"])==F){
+    rkm_gap_custom <- studyid_to_run[i,"custom_rkm_gap"]
+    print(paste("Custom rkm gap",rkm_gap_custom))
   }
+  if(is.na(studyid_to_run[i,"custom_day_gap"])==F){
+    day_gap_custom <- studyid_to_run[i,"custom_day_gap"]
+    print(paste("Custom day gap",day_gap_custom))
+  }
+  if(is.na(studyid_to_run[i,"p_cutoff_custom"])==F){
+    p_cutoff_custom <- studyid_to_run[i,"p_cutoff_custom"]
+    print(paste("Custom p cutoff for bad sites",p_cutoff_custom))
+  }
+  # 2. Read the detections and get the receiver GEN data; if detections file
+  # has not been saved for the studyID yet, run save_new_detections.R first
+  try({  
+    detect_file <- paste0('detections/', studyid_to_run[i,"study_id"], ".csv")
+    detections <- vroom(detect_file, show_col_types=FALSE)
+    #detections <- get_detections(studyID)
+    
+    ## Head_of_Old_River is a release site but doesn't contain "_Rel"
+    detections[detections$GEN == "Head_of_Old_River","GEN"] <- "Head_of_Old_River_Rel"
+    
+    ## Altube Island is a release site but doesn't contain "_Rel"
+    detections[detections$GEN == "Altube Island","GEN"] <- "Altube Island_Rel"
+    
+    # 3. Remove Delta receivers, since we never use these due to braiding
+    #detections <- detections[detections$Region %in% c("Carquinez Strait","Battle Ck","Lower Sac R","SF Bay","Upper Sac R") | detections$GEN %in% c("ChippsE",	"ChippsW"),]
+    aggregated <- detections[!(detections$Region %in% c("South Delta","East Delta","North Delta","West Delta","Delta","Yolo Bypass","Sutter Bypass","Suisun Bay")),]
+    aggregated <- aggregated[!(aggregated$Region %in% c("Lower Mok R") & aggregated$GenRKM< 139),]
+    
+    ## add back in chipps since this is downstream of braiding
+    aggregated <- rbind(aggregated, detections[detections$GEN %in% c("ChippsE",	"ChippsW"),])
+    ## add back in any release locs in the delta
+    aggregated <- rbind(aggregated,detections[substr(detections$GEN,nchar(detections$GEN)-3,nchar(detections$GEN)) %in% c("_Rel","_rel") &
+                                                detections$Region %in% c("South Delta","East Delta","North Delta","West Delta","Delta","Yolo Bypass","Sutter Bypass"),])
+    
+    ## remove lower river receiver sites if bypasses were flooding
+    min_detects <- aggregated %>%
+      #filter(GEN %in% reach.meta.aggregate$GEN) %>%
+      group_by(Region, FishID, GEN, GenRKM) %>%
+      summarise(min_time = min(local_time)) %>%
+      arrange(GenRKM, min_time) %>%
+      ungroup() %>%
+      group_by(Region, GEN, GenRKM) %>%
+      summarise(min_arrival = min(min_time),max_arrival = max(min_time)) %>%
+      arrange(GenRKM, min_arrival) %>%
+      ungroup()
+    river_min_detects <- min_detects[min_detects$Region == "Lower Sac R",]
+    if(nrow(river_min_detects)>0){
+    ## using Tisdale weir because it is first to spill so most conservative
+      if(sum(TIS_by_day[TIS_by_day$day >= min(river_min_detects$min_arrival) & TIS_by_day$day <= max(river_min_detects$max_arrival),"Value"],na.rm = T)>100){
+        print("dropping lower Sac locations due to weir spilling")
+        ## RKM 331 is just upstream of Moulton Weir, so most conservative since Moulton is last to spill
+        aggregated <- aggregated[!(aggregated$Region == "Lower Sac R" & aggregated$GenRKM < 331),]
+      }
+    }
+    # 3. Using the replacement dictionary, aggregate the detections
+    aggregated <- aggregate_GEN(aggregated)
+    
+    # 4. assign release groups automatically
+    aggregated <- assign_releases(aggregated, day_gap = day_gap_custom, rkm_gap = rkm_gap_custom)
+    
+    # 5. Remove any fish detections upstream of release location
+    aggregated <- aggregated[aggregated$RelRKM >= aggregated$GenRKM,]
+    
+    # Similarly, remove any fish that were released in Feather and run up Sac (or Moke), or vice versa
+    rel_river <- unique(aggregated[substr(aggregated$GEN,nchar(aggregated$GEN)-3,nchar(aggregated$GEN)) %in% c("_Rel","_rel"),"Region"])
+    if(any(rel_river == "Feather_R")){
+      aggregated <- aggregated[!(aggregated$GenRKM > 205 & aggregated$Region == "Lower Sac R"),]
+      aggregated <- aggregated[!(aggregated$Region == "Lower Mok R"),]
+    }
+    if(any(rel_river %in% c("Upper Sac R","Battle Ck"))){
+      aggregated <- aggregated[!(aggregated$GenRKM > 205 & aggregated$Region == "Feather_R"),]
+      aggregated <- aggregated[!(aggregated$Region == "Lower Mok R"),]
+    }
+    if(any(rel_river %in% c("Lower Mok R"))){
+      aggregated <- aggregated[!(aggregated$Region == "Lower Sac R"),]
+    }
+    if(any(rel_river %in% c("South Delta","San Joaquin River"))){
+      aggregated <- aggregated[!(aggregated$Region == "Lower Sac R"),]
+    }
+    
+    ## Also, remove any "_Rel_Rec" receivers. these are meant to double check that all tags are on at release, but gum up the works of this code
+    aggregated <- aggregated[substr(aggregated$GEN, nchar(aggregated$GEN)-7,nchar(aggregated$GEN)) != "_Rel_Rec",]
+    ## these next 2 are also a release receiver but not labeled as such
+    aggregated <- aggregated[aggregated$GEN != "UpperButte_RST",]
+    aggregated <- aggregated[aggregated$GEN != "FR_Gridley_Rel_DS",]
+    aggregated <- aggregated[aggregated$GEN != "BoydsPump",]
+    
+    ## finally, a back door to remove pervasively erroneous sites
+    if (studyid_to_run[i,"study_id"] == "SacRiverSpringJPE_2023"){
+      aggregated <- aggregated[aggregated$GEN != "Blw_Salt",]
+      aggregated <- aggregated[aggregated$GEN != "BlwOrd",]
+    }
+    if (studyid_to_run[i,"study_id"] == "ColemanLateFall_2019"){
+      aggregated <- aggregated[aggregated$GEN != "Abv_Otter_Island",]
+    }
+    
+    # 5. Create an encounter history from the aggregated detections
+    EH <- make_EH(aggregated, rkm_gap = rkm_gap_custom) #summarise by FishID, GEN
+    
+    # 6. Create an inp from the given encounter history
+    inp <- create_inp(detections_tmp = aggregated, EH = EH)
+    
+    # 7. Remove bad sites
+    aggregated <- remove_bad_sites(all.inp = inp, EH = EH, detections = aggregated, p_cutoff = p_cutoff_custom)
+    
+    reach.meta <- get_receiver_GEN(aggregated)
+    
+    # QA the detections for 
+    # -duplicate GenRKM with different names
+    # -GEN that is above the release RKM
+    
+    
+    # Check for any duplicate GenRKM
+    dupe<- reach.meta %>% 
+      group_by(GenRKM) %>% 
+      filter(n() > 1)
+    # Three Mile Slough is a dupe of Three Mile North
+    # Freeport doesn't show up as a dupe because RKM dist is different, but it looks like one point on the map - will aggregate
+    
+    # Visually inspect receiver locations, determine if sites need to be removed
+    leaflet(data = reach.meta) %>% 
+      addTiles() %>% 
+      addMarkers(lng = ~GenLon, lat = ~GenLat, label = ~GEN, 
+                 labelOptions = labelOptions(noHide = T))
+    
+    ## remove detections from sites that were removed manually above
+    aggregated <- aggregated[aggregated$GEN %in% reach.meta$GEN,]
+    
+    ## if study has a lot of reaches (>25), drop some short reaches
+    reach.meta.all <- as.data.frame(get_receiver_GEN(aggregated))
+    if(length(unique(reach.meta.all$GEN))>25){
+      ## make sure not to remove the receiver site just upstream or downstream of rel locs
+      reach.meta.all$keep <- 0
+      reach.meta.all$reach_num <- 0:(nrow(reach.meta.all)-1)
+      rels <- reach.meta.all[(substr(reach.meta.all$GEN, nchar(reach.meta.all$GEN)-3,nchar(reach.meta.all$GEN))%in% c("_Rel","_rel")),"reach_num"]
+      reach.meta.all[reach.meta.all$reach_num %in% (rels[rels>0]-1),"keep"] <- 1
+      reach.meta.all[reach.meta.all$reach_num %in% (rels+1),"keep"] <- 1
+      ## make sure to also not drop GG_W or Benicia w
+      reach.meta.all[reach.meta.all$GEN %in% c("GoldenGateW","BeniciaW"),"keep"] <- 1
+      ## remove any release locations before calculating reach_length
+      reach.meta.all <- reach.meta.all[!(substr(reach.meta.all$GEN, nchar(reach.meta.all$GEN)-3,nchar(reach.meta.all$GEN))%in% c("_Rel","_rel")),]
+      reach.meta.all$reach_length <- c(NA,round((abs(diff(reach.meta.all$GenRKM))/10), digits = 3))
+      reach.meta.all <- reach.meta.all[order(reach.meta.all$reach_length, decreasing = F),]
+      num_to_drop <- length(unique(reach.meta.all$GEN))-25
+      print(paste("dropping",num_to_drop,"sites to shorten to 25 reaches"))
+      reach.meta.all <- reach.meta.all[which(reach.meta.all$keep == 0),]
+      
+      aggregated <- aggregated[!(aggregated$GEN %in% reach.meta.all[1:num_to_drop,"GEN"]),]
+      reach.meta.all <- as.data.frame(get_receiver_GEN(aggregated))
+      leaflet(data = reach.meta.all) %>% 
+        addTiles() %>% 
+        addMarkers(lng = ~GenLon, lat = ~GenLat, label = ~GEN, 
+                   labelOptions = labelOptions(noHide = T))
+    }
+    
+
+    # 8. Remake EH and inp
+    EH <- make_EH(aggregated, rkm_gap = rkm_gap_custom)
+    inp <- create_inp(detections_tmp = aggregated, EH = EH)
+    
+    # 7. Run reach per 10km survival in Mark using the inp
+    
+    # Get the estimates
+    reach_surv <- get_mark_model(inp, standardized = T, detections = aggregated)
+    cleanup(ask = F)
+    
+    # Format the estimates table
+    #reach_surv_formatted <- format_phi(outputs = reach_surv, multiple = F, detections = aggregated)
+    reach_surv$release_site <- reach_surv$release
+    reach_surv$release <- paste(reach_surv$mean_rel_date,reach_surv$release_site, sep = "_")
+    
+    write_csv(reach_surv, paste0("Survival/Reach Survival per 10km/", studyid_to_run[i,"study_id"], "_reach_survival.csv"))
+    
+    # Get Cumulative Survival Estimates ---------------------------------------
+    
+    # 1. Get the cumulative survival estimates
+    cum_surv <- get_cum_survival(inp, add_release = F, detections = aggregated)
+    #cum_surv <- get_cum_survival(detections)
+    
+    # 2. Format the estimates table
+    cum_surv_formatted <- format_cum_surv(cum_surv, detections = aggregated)
+    
+    # Add in unique fish counts at each GEN and lat/lon
+    fish_count <- get_unique_detects(aggregated) #Summarise by StudyID, GEN
+    
+    cum_surv_formatted$group <- as.integer(cum_surv_formatted$group)
+    
+    cum_surv_formatted <- cum_surv_formatted %>% 
+      left_join(
+        fish_count %>% 
+          select(GEN,group, count) %>% 
+          distinct(),by = join_by(GEN, group)
+      ) %>% 
+      mutate_if(is.numeric, coalesce, 0) %>% 
+      left_join(
+        reach.meta %>% 
+          select(GEN, GenLat, GenLon),
+        by = join_by(GEN, GenLat, GenLon)
+      )
+    
+    cum_surv_formatted <- cum_surv_formatted[order(cum_surv_formatted$group,cum_surv_formatted$reach),]
+    
+    cum_surv_formatted$release_site <- cum_surv_formatted$release
+    cum_surv_formatted$release <- paste(cum_surv_formatted$mean_rel_date,cum_surv_formatted$release_site, sep = "_")
+    
+    write_csv(cum_surv_formatted, paste0("Survival/Cumulative Survival/", studyid_to_run[i,"study_id"], "_cum_survival.csv"))
+    
+    cleanup(ask = F)
+  })
 }
 
-pivot_cum_surv <- function (p){
-  df <- p %>% 
-    pivot_wider(names_from = studyID, values_from = c("Survival estimate (SE)", 
-                                                      "LCI", "UCI"),
-                names_glue = "{studyID} {.value}")
-  
-  prefixes <- unique(cum_survival_all$studyID)
-  
-  names_to_order <- map(prefixes, ~ names(df)[grep(paste0(.x, " "), names(df))]) %>% unlist
-  names_id <- setdiff(names(df), names_to_order)
-  
-  df <- df %>%
-    select(names_id, names_to_order)
-}
-
-
-#### END ALWAYS RUN ####
-
-# Identify StudyIDs with multiple release locations -----------------------
-
-find_multi_release_loc <- function(studyid_list) {
-  rel_loc <- TaggedFish %>% 
-    filter(study_id %in% studyid_list) %>% 
-    select(study_id, release_location) %>% 
-    distinct() %>% 
-    group_by(study_id) %>% 
-    filter(n() > 1)
-
-}
-
-# # Identify the studyIDs with multiple releases and their locations
-multi_rel_loc <- find_multi_release_loc(studyid_list$study_id)
-# 
-# # find_multi_release_date <- function(studyid_list) {
-# #   rel_loc <- TaggedFish %>% 
-# #     filter(study_id %in% studyid_list) %>% 
-# #     select(study_id, fish_release_date) %>% 
-# #     mutate(fish_release_date = as.Date(mdy_hms(fish_release_date))) %>% 
-# #     distinct() %>% 
-# #     group_by(study_id) %>% 
-# #     filter(n() > 1)
-# # }
-# # 
-# # multi_rel_date <- find_multi_release_date(studyid_list)
-# 
-# 
-# ### Output survival estimates for multi-release location groups -------------
-# # "FR_Spring_2013", "FR_Spring_2014", "FR_Spring_2015", "FR_Spring_2019" ,"FR_Spring_2020" ,
-# # "Nimbus_Fall_2018", "ColemanAltRel_2021", "ColemanAltRel_2022", "SJ_steelhead_2021", "SJ_steelhead_2022"
-# 
-# # Select StudyID
-# studyID <- "Nimbus_Fall_2022"
-# 
-# # Get detections
-# detections <- get_detections(studyID)
-# 
-# # Get list of GEN
-# reach.meta <- get_receiver_GEN(detections)
-# 
-# # Remove some GEN used for survival analysis, should be linear path, no upstream
-# # In general, ignore Delta sites, more specific removal according to each studyID
-# 
-# #### Feather River studies #### remove any Sac GEN above Blw_FRConf
-# # if (str_detect(studyID, "FR_Spring")) {
-# #   reach.meta <- reach.meta %>% 
-# #     filter(
-# #       !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta", 
-# #                      "Yolo Bypass", "Franks Tract", "Upper Sac R") |
-# #         GEN %in% c("ChippsE", "ChippsW"),
-# #       !(Region == "Lower Sac R" & GenRKM > 203.46)
-# #     )
-# # } else if (studyID == "CNFH_FMR_2019") {
-# #   reach.meta <- reach.meta %>% 
-# #     filter(
-# #       !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta", 
-# #                      "Yolo Bypass", "Franks Tract") |
-# #         GEN %in% c("ChippsE", "ChippsW"),
-# #       GEN != "Butte1"
-# #     )
-# # } else if (studyID == "Nimbus_Fall_2018") {
-# #   reach.meta <- reach.meta %>% 
-# #     filter(
-# #       !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta", 
-# #                      "Yolo Bypass", "Franks Tract", "Upper Sac R") |
-# #         GEN %in% c("ChippsE", "ChippsW"),
-# #       !(Region == "Lower Sac R" & GenRKM > 172.00)
-# #     )
-# # } else {
-# #   reach.meta <- reach.meta %>%
-# #     filter(
-# #       !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta",
-# #                      "Yolo Bypass", "Franks Tract") |
-# #         GEN %in% c("ChippsE", "ChippsW"),
-# #       GenRKM <= TaggedFish %>%
-# #         filter(study_id == studyID) %>%
-# #         mutate(release_river_km = as.numeric(release_river_km)) %>%
-# #         group_by(study_id) %>%
-# #         summarise(max_rkm = max(release_river_km)) %>%
-# #         pull(max_rkm)
-# #     )
-# # }
-# 
-# #### Use for SJ Steelhead studies #### to select receiver locations
-# # reach.meta <- reach.meta %>%
-# #               filter(Region %in% c("Carquinez Strait", "San Joaquin River ", "SF Bay") |
-# #                      GEN %in% c("ChippsE", "ChippsW", "Stockton_Rel", "Head_of_Old_River_Rel")) %>%
-# #               filter(!GEN %in% c("Las Palmas", "DurhamFerryUS_1"))
-# # reach.meta <- rbind(reach.meta, data.frame(GEN = "Head_of_Old_River_Rel", GenRKM = 156, GenLat = 37.80789, GenLon = -121.3295, Region = NA))
-# 
-# # # Filter out receiver locations in the Delta, and any that are above the 
-# # # release RKM
-# # reach.meta <- reach.meta %>%
-# #   filter(
-# #     !Region %in% c("North Delta", "East Delta", "West Delta", "South Delta",
-# #                    "Yolo Bypass", "Franks Tract") |
-# #       GEN %in% c("ChippsE", "ChippsW"),
-# #     GenRKM <= TaggedFish %>%
-# #       filter(study_id == studyID) %>%
-# #       mutate(release_river_km = as.numeric(release_river_km)) %>%
-# #       group_by(study_id) %>%
-# #       summarise(max_rkm = max(release_river_km)) %>%
-# #       pull(max_rkm)
-# #   )
-# 
-# # Visually inspect receiver locations, determine if sites need to be removed
-# leaflet(data = reach.meta) %>% 
-#   addTiles() %>% 
-#   addMarkers(lng = ~GenLon, lat = ~GenLat, label = ~GEN, 
-#              labelOptions = labelOptions(noHide = T))
-# 
-# # Identify the unique release locations
-# rel_loc <- TaggedFish %>% 
-#   filter(study_id == detections$StudyID[1]) %>% 
-#   select(release_location, release_river_km) %>% 
-#   distinct() %>% 
-#   arrange(desc(as.numeric(release_river_km))) %>% 
-#   pull(release_location)
-# 
-# run_multi_survival <- function(release_loc, type) {
-#   # If the current release location is not the first begin at its starting
-#   # position in reach.meta
-#   if(reach.meta$GenRKM[reach.meta$GEN == release_loc] < max(reach.meta$GenRKM)){
-#     reach.meta <- reach.meta %>% filter(GenRKM <= reach.meta$GenRKM[reach.meta$GEN == release_loc])
-#   }
-# 
-#   detects <- detections %>% 
-#              filter(Rel_loc == release_loc,
-#                     GEN %in% reach.meta$GEN)
-#   
-#   aggregated <- aggregate_GEN(detects)
-#   
-#   EH <- make_EH(aggregated, release_loc)
-#   
-#   inp <- create_inp(aggregated, EH)
-#   
-#   # Get river KM
-#   KM <- reach.meta.aggregate$GenRKM
-#   
-#   # Get the reach lengths per 10km
-#   reach_length <- round((abs(diff(KM))/10), digits = 3)
-#   
-#   if (type == "reach") {
-#     reach_surv <- get_mark_model(inp, standardized = T, multiple = F)
-#     reach_surv <- format_phi(reach_surv, multiple = F) %>% 
-#       filter(reach_end != "GoldenGateW") %>% 
-#       mutate(release = release_loc)
-#     
-#     fish_count <- get_unique_detects(aggregated)
-#     reach_surv <- reach_surv %>% 
-#       left_join(
-#         fish_count %>% 
-#           select(reach_start = GEN, count_at_start = count)
-#       ) %>% 
-#       left_join(
-#         fish_count %>% 
-#           select(reach_end = GEN, count_at_end = count)
-#       ) %>% 
-#       mutate_if(is.numeric, coalesce, 0)
-#   } else if (type == "cumulative") {
-#     cum_surv <- get_cum_survival(inp, add_release = T)
-#     cum_surv <- format_cum_surv(cum_surv)
-#     cum_surv <- cum_surv %>% 
-#       mutate(release = release_loc)
-#     
-#     fish_count <- get_unique_detects(aggregated)
-#     cum_surv <- cum_surv %>%
-#       left_join(
-#         fish_count %>%
-#           select(GEN, count)
-#       ) %>%
-#       left_join(
-#         reach.meta.aggregate %>% 
-#           select(GEN, GenLat, GenLon)
-#       ) %>% 
-#       mutate_if(is.numeric, coalesce, 0)
-#   } else {
-#     print("Type must be 'reach' or 'cumulative")
-#   }
-#   
-# }
-# 
-# reach_surv <- lapply(rel_loc, run_multi_survival, type = "reach") %>% 
-#   bind_rows()
-
-# ### CODE FOR RUNNING SAN JOAQUIN STEELHEAD STUDIES ####
-# reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Mossdale")] - 4
-# # reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] <- reach.meta$GenRKM[which(reach.meta$GEN == "Head_of_Old_River_Rel")] - 1.16
-# # reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_DS")] <- reach.meta$GenRKM[which(reach.meta$GEN == "OR_HOR_US")] - 0.2
-# reach.meta <- reach.meta %>% arrange(desc(GenRKM))
-# reach.meta.main <- reach.meta 
-# reach.meta.1 <- reach.meta %>%
-#                 filter(!Region %in% c("South Delta", NA))
-# reach.meta.2 <- reach.meta %>%
-#                 filter(!Region %in% c("San Joaquin River ") &
-#                        !GEN %in% c("Stockton_Rel"))
-# reach.meta.3 <- reach.meta %>%
-#                 filter(!Region %in% c("San Joaquin River ") &
-#                        !GEN %in% c("Head_of_Old_River_Rel"))
-# 
-# reach.meta <- reach.meta.main
-# # reach_surv1 <- reach_surv
-# # reach_surv2 <- reach_surv
-# # reach_surv3 <- reach_surv
-# reach_surv <- rbind(reach_surv1, reach_surv2, reach_surv3)
-# # cum_surv1 <- cum_surv
-# # cum_surv2 <- cum_surv
-# # cum_surv3 <- cum_surv
-# cum_surv <- rbind(cum_surv1, cum_surv2, cum_surv3)
-# 
-# # Rerun first release group just to restore reach.meta.aggregate to full version
-# run_multi_survival(rel_loc[1], type = "reach")
-# 
-# reach.meta.aggregate <- reach.meta.aggregate %>%
-#    mutate(reach_num = 1:length(GEN))
-# 
-# # Fix reach_num for releases after the first
-# reach_surv <- reach_surv %>% 
-#   # rowwise() %>% 
-#   # mutate(reach_num = ifelse(release != rel_loc[1], 
-#   #                           reach_surv$reach_num[reach_surv$reach_start == reach_start & reach_surv$release == rel_loc[1]],
-#   #                           1:length(reach_surv$Reach)# reach_num
-#   #   )
-#   # ) %>% 
-#   left_join(
-#     reach.meta.aggregate %>% 
-#       select(GEN, GenLat_start = GenLat, GenLon_start = GenLon, reach_num),
-#     by = c("reach_start" = "GEN")
-#   ) %>% 
-#   left_join(
-#     reach.meta.aggregate %>% 
-#       select(GEN, GenLat_end = GenLat, GenLon_end = GenLon),
-#     by = c("reach_end" = "GEN")
-#   )
-# 
-# # Format SJ reach survival
-# reach_surv <- reach_surv %>%
-#    select(estimate, se, lcl, ucl, StudyID, reach_start, reach_end, rkm_start, rkm_end, Region, Reach, RKM, reach_num, release, 
-#           count_at_start, count_at_end, GenLat_start = GenLat_start.x, GenLon_start = GenLon_start.x, 
-#           GenLat_end = GenLat_end.x, GenLon_end = GenLon_end.x)
-# 
-# write_csv(reach_surv, paste0("Survival/Reach Survival Per 10km/", studyID, "_reach_survival.csv"))
-# 
-# cum_surv <- lapply(rel_loc, run_multi_survival, type = "cumulative") %>% 
-#   bind_rows()
-# 
-# run_multi_survival(rel_loc[1], type = "cumulative")
-# 
-# cum_surv <- cum_surv %>% 
-#   left_join(reach.meta.aggregate %>% 
-#               select(GEN, GenLat, GenLon, reach_n = reach_num))
-# cum_surv <- cum_surv %>% 
-#    select(cum.phi, cum.phi.se, LCI, UCI, StudyID, GEN, RKM, reach_num = reach_n, Region, release, count, GenLat, GenLon)
-# 
-# # Fix reach_num for releases after the first
-# cum_surv <- cum_surv %>% 
-#   rowwise() %>%
-#   mutate(
-#     reach_num = ifelse(
-#       release != rel_loc[1],
-#       cum_surv$reach_num[cum_surv$GEN == GEN
-#                               & cum_surv$release == rel_loc[1]],
-#       reach_num
-#     )
-#   )
-# 
-# write_csv(cum_surv, paste0("Survival/Cumulative Survival/", studyID, "_cum_survival.csv"))
-# 
-# cleanup(ask = FALSE)
-
-
-#### Get Reach per 10km Survival estimates ------------------------------------------
-
-# 1. Provide StudyID
-
-studyID <- "SacRiverSpringJPE_2022"
-
-# 2. Read the detections and get the receiver GEN data; if detections file
-# has not been saved for the studyID yet, run save_new_detections.R first
-
-# detect_file <- paste0('../detections/', studyID, ".csv")
-# detections <- vroom(detect_file)
-detections <- get_detections(studyID)
-
-reach.meta <- get_receiver_GEN(detections)
-
-# QA the detections for 
-# -duplicate GenRKM with different names
-# -GEN that is above the release RKM
-
-# Check for any GenRKM above release RKM for the studyID
-# Do not use for Mok
-abv<- reach.meta %>% 
-  filter(
-    GenRKM > TaggedFish %>% 
-      filter(study_id == studyID) %>% 
-      distinct(release_river_km) %>% #### would love to make a distance requirement here, use best detection efficiency
-      mutate(release_river_km = as.numeric(release_river_km)) %>% 
-      pull()
-  )
-
-# Check for any duplicate GenRKM
-dupe<- reach.meta %>% 
-  group_by(GenRKM) %>% 
-  filter(n() > 1)
-# Three Mile Slough is a dupe of Three Mile North
-# Freeport doesn't show up as a dupe because RKM dist is different, but it looks like one point on the map - will aggregate
-
-# Remove GEN as necessary
-    #used for Wild_stock_Chinook_RBDD_2022
-    # reach.meta <- reach.meta %>% ## works for REL= RBDD, BattleCk
-    #   filter(
-    #     !GEN %in% abv, #remove receivers above release
-    #     !is.na(Region), #remove NA region receivers
-    #     !grepl(
-    #       ".*Delta|.*Bypass|Feather.*", Region), #remove bypasses and the delta
-    #     !grepl("Chipps.*|.*Slough|.*Moss|.*Mok|GCID|.*84.*|MillCk_RST|Deer.*.
-    #       |Blw_Knights_GS3|Knights_RST|Blw_FR_GS2|Blw_FRConf", GEN)) #remove chipps island and the duplicate 3M loc
-
-reach.meta<- reach.meta %>% 
-  filter(
-    !GEN %in% abv,
-    #!grepl( ".*Elk.*|.*Toe.*|.*rgS.*|Freeport_1", GEN) ##Nimbus
-    !grepl("SutterWestSacRiver|Abv_FremontWeir|KnightsBlwRST|MeridianBr|Jersey.*|I80.*|
-           GCID_blw|Abv_Altube2|RM75_RST|.*GS3.*|.*Entrance.*|.*Geo.*|.*Base.*|.*onf.*", GEN) ##SacRiverSpringJPE_2022
-    # !grepl("SutterWestCanal1|.*Slough|.*Tisdale.*|.*China.*|.*Liberty.*|.*84.*|
-    #        |Knights.*|.*Canal4|.*Canal5|.*Fremont.*|Mok.*", GEN),
-    # !grepl(".*Delta.*", Region)
-  )
-
-
-# Visually inspect receiver locations, determine if sites need to be removed
-leaflet(data = reach.meta) %>% 
-  addTiles() %>% 
-  addMarkers(lng = ~GenLon, lat = ~GenLat, label = ~GEN, 
-             labelOptions = labelOptions(noHide = T))
-
-# 3. Using the replacement dictionary, aggregate the detections
-aggregated <- aggregate_GEN(detections)
-
-# 5. Create an encounter history from the aggregated detections
-EH <- make_EH(aggregated) #summarise by FishID, GEN
-
-# 6. Create an inp from the given encounter history
-inp <- create_inp(aggregated, EH)
-
-# 7. Run reach per 10km survival in Mark using the inp
-
-# Get river KM
-KM <- reach.meta.aggregate$GenRKM
-
-# Get the reach lengths per 10km
-reach_length <- round((abs(diff(KM))/10), digits = 3) 
-
-# Get the estimates
-reach_surv <- get_mark_model(inp, standardized = T, multiple = F)
-cleanup(ask = F)
-
-# Format the estimates table
-reach_surv_formatted <- format_phi(reach_surv, multiple = F)
-
-write_csv(reach_surv_formatted, paste0("Survival/Reach Survival per 10km/", studyID, "_reach_survival.csv"))
-
-# Get Cumulative Survival Estimates ---------------------------------------
-
-# 1. Get the cumulative survival estimates
-cum_surv <- get_cum_survival(inp, add_release = T)
-
-# 2. Format the estimates table
-cum_surv_formatted <- format_cum_surv(cum_surv)
-
-# Add in unique fish counts at each GEN and lat/lon
-fish_count <- get_unique_detects(aggregated) #Summarise by StudyID, GEN
-
-cum_surv_formatted <- cum_surv_formatted %>% 
-  left_join(
-    fish_count %>% 
-      select(GEN, count) %>% 
-      distinct()
-  ) %>% 
-  mutate_if(is.numeric, coalesce, 0) %>% 
-  left_join(
-    reach.meta.aggregate %>% 
-      select(GEN, GenLat, GenLon)
-  )
-
-write_csv(cum_surv_formatted, paste0("Survival/Cumulative Survival/", studyID, "_cum_survival.csv"))
-
-cleanup(ask = F)
-
-
-
-
-# # Check num fish per studyID ----------------------------------------------
-# 
-# studyIDs <- c("DeerCk_Wild_STH_2019", "DeerCk_Wild_STH_2020",
-#               "MillCk_Wild_STH_2015", "MillCk_Wild_STH_2019",
-#               "MillCk_Wild_STH_2020", "Upper_Butte_2019", "Upper_Butte_2020")
-# 
-# 
-# TaggedFish %>% 
-#   filter(study_id %in% studyIDs) %>% 
-#   group_by(study_id) %>% 
-#   count()
-# 
-# studyID <- "DeerCk_Wild_STH_2019" 
-# 
-# # 2. Read the detections and get the receiver GEN data; if detections file
-# # has not been saved for the studyID yet, run save_new_detections.R first
-# 
-# detect_file <- paste0('./data/detections/', studyID, ".csv")
-# detections <- vroom(detect_file)
-# 
-# reach.meta <- get_receiver_GEN(detections)
-# 
-# # QA the detections for 
-# # -duplicate GenRKM with different names
-# # -GEN that is above the release RKM
-# 
-# # Check for any GenRKM above release RKM for the studyID
-# reach.meta %>% 
-#   filter(
-#     GenRKM > TaggedFish %>% 
-#       filter(study_id == studyID) %>% 
-#       distinct(release_river_km) %>% 
-#       mutate(release_river_km = as.numeric(release_river_km)) %>% 
-#       pull()
-#   )
-# 
-# # Visually inspect receiver locations, determine if sites need to be removed
-# leaflet(data = reach.meta) %>% 
-#   addTiles() %>% 
-#   addMarkers(lng = ~GenLon, lat = ~GenLat, label = ~GEN, 
-#              labelOptions = labelOptions(noHide = T))
-# 
-# 

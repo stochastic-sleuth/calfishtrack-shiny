@@ -1,41 +1,23 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-1,8.327824e-7,0.9999984,1.0000016,Wild_stock_Chinook_Rbdd_2021,Abv_Altube1,Altube Island,460.4,460,Upper Sac R,"Abv_Altube1 to 
-Altube Island",460.4 to 460,85,91,40.15348,-122.1887,40.15314,-122.19696
-0.7959776,0.0809533,0.5949104,0.9120062,Wild_stock_Chinook_Rbdd_2021,Altube Island,Blw_Salt,460,456.888,Upper Sac R,"Altube Island to 
-Blw_Salt",460 to 456.888,91,83,40.15314,-122.19696,40.1464,-122.15246
-0.9929208,0.0721215,2.588328e-7,1,Wild_stock_Chinook_Rbdd_2021,Blw_Salt,Abv_WoodsonBr,456.888,425.158,Upper Sac R,"Blw_Salt to 
-Abv_WoodsonBr",456.888 to 425.158,83,17,40.1464,-122.15246,39.920094,-122.08446000000001
-0.6730755,0.0909763,0.4779586,0.8223688,Wild_stock_Chinook_Rbdd_2021,Abv_WoodsonBr,GCID_abv,425.158,406.118,Upper Sac R,"Abv_WoodsonBr to 
-GCID_abv",425.158 to 406.118,17,39,39.920094,-122.08446000000001,39.806767,-122.05846
-0.6227401,0.1703325,0.2849896,0.8723874,Wild_stock_Chinook_Rbdd_2021,GCID_abv,GCID_blw,406.118,404.428,Upper Sac R,"GCID_abv to 
-GCID_blw",406.118 to 404.428,39,36,39.806767,-122.05846,39.79114,-122.036026
-0.8863183,0.053511,0.7335579,0.9566693,Wild_stock_Chinook_Rbdd_2021,GCID_blw,Blw_IrvineFinch,404.428,394.668,Upper Sac R,"GCID_blw to 
-Blw_IrvineFinch",404.428 to 394.668,36,32,39.79114,-122.036026,39.73146,-121.97483
-0.7787624,0.0527644,0.6588599,0.8651476,Wild_stock_Chinook_Rbdd_2021,Blw_IrvineFinch,Ord,394.668,371.658,Upper Sac R,"Blw_IrvineFinch to 
-Ord",394.668 to 371.658,32,18,39.73146,-121.97483,39.63447,-121.98959
-0.8113115,0.1101095,0.5121942,0.9462581,Wild_stock_Chinook_Rbdd_2021,Ord,BlwOrd,371.658,361.728,Upper Sac R,"Ord to 
-BlwOrd",371.658 to 361.728,18,13,39.63447,-121.98959,39.56548,-122.0018
-0.8796244,0.1569733,0.2856122,0.9925684,Wild_stock_Chinook_Rbdd_2021,BlwOrd,ButteBr,361.728,344.108,Upper Sac R,"BlwOrd to 
-ButteBr",361.728 to 344.108,13,5,39.56548,-122.0018,39.4569,-121.995
-0.6740429,0.190059,0.2750864,0.9184913,Wild_stock_Chinook_Rbdd_2021,ButteBr,Colusa AC3,344.108,331.158,Lower Sac R,"ButteBr to 
-Colusa AC3",344.108 to 331.158,5,7,39.4569,-121.995,39.36038,-122.01373
-0.8843278,0.1088157,0.4872703,0.9840004,Wild_stock_Chinook_Rbdd_2021,Colusa AC3,Colusa AC2,331.158,318.618,Lower Sac R,"Colusa AC3 to 
-Colusa AC2",331.158 to 318.618,7,6,39.36038,-122.01373,39.28007,-122.01891
-0.8457124,0.141917,0.3940327,0.9788164,Wild_stock_Chinook_Rbdd_2021,Colusa AC2,AbvColusaBr,318.618,307.738,Lower Sac R,"Colusa AC2 to 
-AbvColusaBr",318.618 to 307.738,6,5,39.28007,-122.01891,39.2205,-122.00847
-0.6403462,0.2040325,0.2387476,0.9099719,Wild_stock_Chinook_Rbdd_2021,AbvColusaBr,Colusa BC2,307.738,296.278,Lower Sac R,"AbvColusaBr to 
-Colusa BC2",307.738 to 296.278,5,3,39.2205,-122.00847,39.184963,-121.943214
-1,2.727306e-11,1,1,Wild_stock_Chinook_Rbdd_2021,Colusa BC2,Colusa BC3,296.278,287.208,Lower Sac R,"Colusa BC2 to 
-Colusa BC3",296.278 to 287.208,3,3,39.184963,-121.943214,39.13132,-121.936554
-1,0,1,1,Wild_stock_Chinook_Rbdd_2021,Colusa BC3,AbvTisdale,287.208,269.238,Lower Sac R,"Colusa BC3 to 
-AbvTisdale",287.208 to 269.238,3,3,39.13132,-121.936554,39.0364,-121.82918
-1,1.527336e-10,1,1,Wild_stock_Chinook_Rbdd_2021,AbvTisdale,BlwTisdale,269.238,261.408,Lower Sac R,"AbvTisdale to 
-BlwTisdale",269.238 to 261.408,3,3,39.0364,-121.82918,38.98941,-121.80463
-0.8228109,0.1615734,0.3460072,0.9760526,Wild_stock_Chinook_Rbdd_2021,BlwTisdale,BlwChinaBend,261.408,240.618,Lower Sac R,"BlwTisdale to 
-BlwChinaBend",261.408 to 240.618,3,2,38.98941,-121.80463,38.88406,-121.81713
-0.6884875,0.26216,0.1675984,0.9604129,Wild_stock_Chinook_Rbdd_2021,BlwChinaBend,Knights_RST,240.618,222.05,Lower Sac R,"BlwChinaBend to 
-Knights_RST",240.618 to 222.05,2,1,38.88406,-121.81713,38.79248,-121.69087
-1,4.847548e-6,0.9999905,1.0000095,Wild_stock_Chinook_Rbdd_2021,Knights_RST,KnightsBlwRST,222.05,221.58,Lower Sac R,"Knights_RST to 
-KnightsBlwRST",222.05 to 221.58,1,1,38.79248,-121.69087,38.78877,-121.694
-1,1.587631e-8,1,1,Wild_stock_Chinook_Rbdd_2021,KnightsBlwRST,Abv_FremontWeir,221.58,215.18,Lower Sac R,"KnightsBlwRST to 
-Abv_FremontWeir",221.58 to 215.18,1,1,38.78877,-121.694,38.76009,-121.67145
+reach_end,reach_start,estimate,se,lcl,ucl,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+Blw_Salt,Altube Island_Rel,0.99,0.008,0.957,0.998,460,456.888,Upper Sac R,Altube Island_Rel to Blw_Salt,460 to 456.888,40.15314,-122.19696,40.1464,-122.15246,2021-05-03_Altube Island_Rel,2021-05-03,61,58,1,1,Altube Island_Rel
+Mill_Ck_Conf,Blw_Salt,0.992,0.003,0.983,0.996,456.888,441.318,Upper Sac R,Blw_Salt to Mill_Ck_Conf,456.888 to 441.318,40.1464,-122.15246,40.0327,-122.11987,2021-05-03_Altube Island_Rel,2021-05-03,58,52,1,2,Altube Island_Rel
+GCID,Mill_Ck_Conf,0.986,0.003,0.978,0.991,441.318,404.941,Upper Sac R,Mill_Ck_Conf to GCID,441.318 to 404.941,40.0327,-122.11987,39.796839,-122.049394,2021-05-03_Altube Island_Rel,2021-05-03,52,31,1,3,Altube Island_Rel
+Blw_IrvineFinch,GCID,0.983,0.008,0.96,0.993,404.941,394.668,Upper Sac R,GCID to Blw_IrvineFinch,404.941 to 394.668,39.796839,-122.049394,39.73146,-121.97483,2021-05-03_Altube Island_Rel,2021-05-03,31,26,1,4,Altube Island_Rel
+Ord,Blw_IrvineFinch,0.979,0.007,0.961,0.989,394.668,371.658,Upper Sac R,Blw_IrvineFinch to Ord,394.668 to 371.658,39.73146,-121.97483,39.63447,-121.98959,2021-05-03_Altube Island_Rel,2021-05-03,26,16,1,5,Altube Island_Rel
+BlwOrd,Ord,0.976,0.015,0.919,0.993,371.658,361.728,Upper Sac R,Ord to BlwOrd,371.658 to 361.728,39.63447,-121.98959,39.56548,-122.0018,2021-05-03_Altube Island_Rel,2021-05-03,16,11,1,6,Altube Island_Rel
+Colusa AC3,BlwOrd,0.981,0.009,0.955,0.992,361.728,331.158,Lower Sac R,BlwOrd to Colusa AC3,361.728 to 331.158,39.56548,-122.0018,39.36038,-122.01373,2021-05-03_Altube Island_Rel,2021-05-03,11,7,1,7,Altube Island_Rel
+Colusa AC2,Colusa AC3,0.988,0.012,0.918,0.998,331.158,318.618,Lower Sac R,Colusa AC3 to Colusa AC2,331.158 to 318.618,39.36038,-122.01373,39.28007,-122.01891,2021-05-03_Altube Island_Rel,2021-05-03,7,6,1,8,Altube Island_Rel
+AbvColusaBr,Colusa AC2,0.983,0.017,0.891,0.998,318.618,307.738,Lower Sac R,Colusa AC2 to AbvColusaBr,318.618 to 307.738,39.28007,-122.01891,39.2205,-122.00847,2021-05-03_Altube Island_Rel,2021-05-03,6,5,1,9,Altube Island_Rel
+Colusa BC2,AbvColusaBr,0.956,0.03,0.84,0.989,307.738,296.278,Lower Sac R,AbvColusaBr to Colusa BC2,307.738 to 296.278,39.2205,-122.00847,39.184963,-121.943214,2021-05-03_Altube Island_Rel,2021-05-03,5,3,1,10,Altube Island_Rel
+Colusa BC3,Colusa BC2,1,0,1,1,296.278,287.208,Lower Sac R,Colusa BC2 to Colusa BC3,296.278 to 287.208,39.184963,-121.943214,39.13132,-121.936554,2021-05-03_Altube Island_Rel,2021-05-03,3,3,1,11,Altube Island_Rel
+AbvTisdale,Colusa BC3,1,0,1,1,287.208,269.238,Lower Sac R,Colusa BC3 to AbvTisdale,287.208 to 269.238,39.13132,-121.936554,39.0364,-121.82918,2021-05-03_Altube Island_Rel,2021-05-03,3,3,1,12,Altube Island_Rel
+BlwTisdale,AbvTisdale,1,0,1,1,269.238,261.408,Lower Sac R,AbvTisdale to BlwTisdale,269.238 to 261.408,39.0364,-121.82918,38.98941,-121.80463,2021-05-03_Altube Island_Rel,2021-05-03,3,3,1,13,Altube Island_Rel
+BlwChinaBend,BlwTisdale,0.981,0.019,0.874,0.997,261.408,240.618,Lower Sac R,BlwTisdale to BlwChinaBend,261.408 to 240.618,38.98941,-121.80463,38.88406,-121.81713,2021-05-03_Altube Island_Rel,2021-05-03,3,2,1,14,Altube Island_Rel
+Knights_RST,BlwChinaBend,0.963,0.037,0.774,0.995,240.618,222.05,Lower Sac R,BlwChinaBend to Knights_RST,240.618 to 222.05,38.88406,-121.81713,38.79248,-121.69087,2021-05-03_Altube Island_Rel,2021-05-03,2,1,1,15,Altube Island_Rel
+KnightsBlwRST,Knights_RST,1,0,1,1,222.05,221.58,Lower Sac R,Knights_RST to KnightsBlwRST,222.05 to 221.58,38.79248,-121.69087,38.78877,-121.694,2021-05-03_Altube Island_Rel,2021-05-03,1,1,1,16,Altube Island_Rel
+Blw_Salt,Altube Island_Rel,0.943,0.025,0.87,0.976,460,456.888,Upper Sac R,Altube Island_Rel to Blw_Salt,460 to 456.888,40.15314,-122.19696,40.1464,-122.15246,2021-05-27_Altube Island_Rel,2021-05-27,30,25,2,1,Altube Island_Rel
+Mill_Ck_Conf,Blw_Salt,0.995,0.004,0.979,0.999,456.888,441.318,Upper Sac R,Blw_Salt to Mill_Ck_Conf,456.888 to 441.318,40.1464,-122.15246,40.0327,-122.11987,2021-05-27_Altube Island_Rel,2021-05-27,25,23,2,2,Altube Island_Rel
+GCID,Mill_Ck_Conf,0.971,0.008,0.952,0.983,441.318,404.941,Upper Sac R,Mill_Ck_Conf to GCID,441.318 to 404.941,40.0327,-122.11987,39.796839,-122.049394,2021-05-27_Altube Island_Rel,2021-05-27,23,8,2,3,Altube Island_Rel
+Blw_IrvineFinch,GCID,0.972,0.019,0.896,0.993,404.941,394.668,Upper Sac R,GCID to Blw_IrvineFinch,404.941 to 394.668,39.796839,-122.049394,39.73146,-121.97483,2021-05-27_Altube Island_Rel,2021-05-27,8,6,2,4,Altube Island_Rel
+Ord,Blw_IrvineFinch,0.953,0.024,0.877,0.983,394.668,371.658,Upper Sac R,Blw_IrvineFinch to Ord,394.668 to 371.658,39.73146,-121.97483,39.63447,-121.98959,2021-05-27_Altube Island_Rel,2021-05-27,6,2,2,5,Altube Island_Rel
+BlwOrd,Ord,1,0,1,1,371.658,361.728,Upper Sac R,Ord to BlwOrd,371.658 to 361.728,39.63447,-121.98959,39.56548,-122.0018,2021-05-27_Altube Island_Rel,2021-05-27,2,2,2,6,Altube Island_Rel

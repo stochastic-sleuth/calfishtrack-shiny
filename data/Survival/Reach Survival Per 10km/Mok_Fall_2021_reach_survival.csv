@@ -1,0 +1,2 @@
+reach_end,reach_start,estimate,se,lcl,ucl,CI,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+Mok_Woodbridge,Mok_WB_WildArea_Rel,0.998,0,0.998,0.998,0,168.392,167.942,Lower Mok R,Mok_WB_WildArea_Rel to Mok_Woodbridge,168.392 to 167.942,38.161175,-121.31219,38.164425,-121.31363,2021-05-01_Mok_WB_WildArea_Rel,2021-05-01,384,381,2,1,Mok_WB_WildArea_Rel

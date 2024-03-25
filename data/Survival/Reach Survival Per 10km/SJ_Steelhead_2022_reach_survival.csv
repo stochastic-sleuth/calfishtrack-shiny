@@ -1,25 +1,25 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,release,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.2244836,0.0329014,0.1665682,0.2953988,SJ_Steelhead_2022,DurhamFerry_Rel,Durhamferry,183.58,181.8,San Joaquin River ,"DurhamFerry_Rel to 
-Durhamferry",183.58 to 181.8,1,DurhamFerry_Rel,487,354,37.6878,-121.26219,37.69146,-121.27106
-0.7326878,0.0237476,0.683662,0.7765984,SJ_Steelhead_2022,Durhamferry,SJ_BCA,181.8,171.701,San Joaquin River ,"Durhamferry to 
-SJ_BCA",181.8 to 171.701,2,DurhamFerry_Rel,354,263,37.69146,-121.27106,37.73305,-121.29555
-0.8282314,0.0372488,0.7426829,0.8895673,SJ_Steelhead_2022,SJ_BCA,Mossdale,171.701,163.141,San Joaquin River ,"SJ_BCA to 
-Mossdale",171.701 to 163.141,3,DurhamFerry_Rel,263,225,37.73305,-121.29555,37.79228,-121.306885
-0.8083325,0.0144385,0.7784322,0.8350527,SJ_Steelhead_2022,Mossdale,Chipps,163.141,71.48599999999999,San Joaquin River ,"Mossdale to 
-Chipps",163.141 to 71.486,4,DurhamFerry_Rel,225,33,37.79228,-121.306885,38.046132,-121.912643
-1,4.629106e-6,0.9999909,1.0000091,SJ_Steelhead_2022,Chipps,Benicia,71.48599999999999,52.144000000000005,West Delta,"Chipps to 
-Benicia",71.486 to 52.144,7,DurhamFerry_Rel,33,33,38.046132,-121.912643,38.0423015,-122.1236
-0.9669657,0.0169259,0.9119803,0.9880521,SJ_Steelhead_2022,Benicia,GoldenGateE,52.144000000000005,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.144 to 1.71,8,DurhamFerry_Rel,33,15,38.0423015,-122.1236,37.82794,-122.46168
-0.752843,0.0167888,0.7184903,0.7842624,SJ_Steelhead_2022,Head_of_Old_River_Rel,Chipps,159.141,71.48599999999999,NA,"Head_of_Old_River_Rel to 
-Chipps",159.141 to 71.486,5,Head_of_Old_River_Rel,289,24,37.807888,-121.329475,38.046132,-121.912643
-0.9560067,0.030423,0.8403642,0.9889751,SJ_Steelhead_2022,Chipps,Benicia,71.48599999999999,52.144000000000005,West Delta,"Chipps to 
-Benicia",71.486 to 52.144,7,Head_of_Old_River_Rel,24,22,38.046132,-121.912643,38.0423015,-122.1236
-0.9069615,0.0324713,0.8209586,0.9539691,SJ_Steelhead_2022,Benicia,GoldenGateE,52.144000000000005,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.144 to 1.71,8,Head_of_Old_River_Rel,22,11,38.0423015,-122.1236,37.82794,-122.46168
-0.7546594,0.0187538,0.716078,0.7895389,SJ_Steelhead_2022,Stockton_Rel,Chipps,135.5,71.48599999999999,South Delta,"Stockton_Rel to 
-Chipps",135.5 to 71.486,6,Stockton_Rel,200,32,37.937782,-121.33374,38.046132,-121.912643
-1,3.239332e-6,0.9999937,1.0000063,SJ_Steelhead_2022,Chipps,Benicia,71.48599999999999,52.144000000000005,West Delta,"Chipps to 
-Benicia",71.486 to 52.144,7,Stockton_Rel,32,33,38.046132,-121.912643,38.0423015,-122.1236
-0.9556361,0.0231583,0.8807254,0.9843358,SJ_Steelhead_2022,Benicia,GoldenGateE,52.144000000000005,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.144 to 1.71,8,Stockton_Rel,33,15,38.0423015,-122.1236,37.82794,-122.46168
+reach_end,reach_start,estimate,se,lcl,ucl,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+Chipps,Stockton_Rel,0.967,0.004,0.958,0.975,135.5,71.486,West Delta,Stockton_Rel to Chipps,135.5 to 71.486,37.937782,-121.33374,38.046132,-121.912643,2022-03-16_Stockton_Rel,2022-03-16,100,11,1,4,Stockton_Rel
+Benicia,Chipps,1,0,1,1,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2022-03-16_Stockton_Rel,2022-03-16,11,12,1,5,Stockton_Rel
+GoldenGateE,Benicia,0.995,0.004,0.972,0.999,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2022-03-16_Stockton_Rel,2022-03-16,12,6,1,6,Stockton_Rel
+Chipps,Head_of_Old_River_Rel,0.974,0.003,0.967,0.979,156,71.486,West Delta,Head_of_Old_River_Rel to Chipps,156 to 71.486,37.807888,-121.329475,38.046132,-121.912643,2022-03-16_Head_of_Old_River_Rel,2022-03-16,144,15,2,4,Head_of_Old_River_Rel
+Benicia,Chipps,0.993,0.005,0.971,0.998,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2022-03-16_Head_of_Old_River_Rel,2022-03-16,15,13,2,5,Head_of_Old_River_Rel
+GoldenGateE,Benicia,0.995,0.004,0.975,0.999,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2022-03-16_Head_of_Old_River_Rel,2022-03-16,13,9,2,6,Head_of_Old_River_Rel
+Durhamferry,DurhamFerry_Rel,0.814,0.02,0.772,0.85,183.58,181.8,San Joaquin River,DurhamFerry_Rel to Durhamferry,183.58 to 181.8,37.6878,-121.26219,37.69146,-121.27106,2022-03-16_DurhamFerry_Rel,2022-03-16,248,166,3,1,DurhamFerry_Rel
+SJ_BCA,Durhamferry,0.961,0.005,0.949,0.97,181.8,171.701,San Joaquin River,Durhamferry to SJ_BCA,181.8 to 171.701,37.69146,-121.27106,37.73305,-121.29555,2022-03-16_DurhamFerry_Rel,2022-03-16,166,113,3,2,DurhamFerry_Rel
+SJ_Mossdale_1,SJ_BCA,0.971,0.007,0.954,0.982,171.701,163.141,San Joaquin River,SJ_BCA to SJ_Mossdale_1,171.701 to 163.141,37.73305,-121.29555,37.7920615,-121.306925,2022-03-16_DurhamFerry_Rel,2022-03-16,113,87,3,3,DurhamFerry_Rel
+Chipps,SJ_Mossdale_1,0.979,0.003,0.973,0.984,163.141,71.486,West Delta,SJ_Mossdale_1 to Chipps,163.141 to 71.486,37.7920615,-121.306925,38.046132,-121.912643,2022-03-16_DurhamFerry_Rel,2022-03-16,87,13,3,4,DurhamFerry_Rel
+Benicia,Chipps,1,0,1,1,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2022-03-16_DurhamFerry_Rel,2022-03-16,13,13,3,5,DurhamFerry_Rel
+GoldenGateE,Benicia,0.995,0.003,0.984,0.998,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2022-03-16_DurhamFerry_Rel,2022-03-16,13,5,3,6,DurhamFerry_Rel
+Chipps,Stockton_Rel,0.976,0.003,0.969,0.981,135.5,71.486,West Delta,Stockton_Rel to Chipps,135.5 to 71.486,37.937782,-121.33374,38.046132,-121.912643,2022-04-20_Stockton_Rel,2022-04-20,100,21,4,4,Stockton_Rel
+Benicia,Chipps,1,0,1,1,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2022-04-20_Stockton_Rel,2022-04-20,21,21,4,5,Stockton_Rel
+GoldenGateE,Benicia,0.995,0.003,0.987,0.998,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2022-04-20_Stockton_Rel,2022-04-20,21,9,4,6,Stockton_Rel
+Chipps,Head_of_Old_River_Rel,0.968,0.004,0.96,0.974,156,71.486,West Delta,Head_of_Old_River_Rel to Chipps,156 to 71.486,37.807888,-121.329475,38.046132,-121.912643,2022-04-20_Head_of_Old_River_Rel,2022-04-20,145,9,5,4,Head_of_Old_River_Rel
+Benicia,Chipps,1,0,1,1,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2022-04-20_Head_of_Old_River_Rel,2022-04-20,9,9,5,5,Head_of_Old_River_Rel
+GoldenGateE,Benicia,0.984,0.007,0.961,0.994,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2022-04-20_Head_of_Old_River_Rel,2022-04-20,9,2,5,6,Head_of_Old_River_Rel
+Durhamferry,DurhamFerry_Rel,0.908,0.015,0.874,0.933,183.58,181.8,San Joaquin River,DurhamFerry_Rel to Durhamferry,183.58 to 181.8,37.6878,-121.26219,37.69146,-121.27106,2022-04-20_DurhamFerry_Rel,2022-04-20,239,188,6,1,DurhamFerry_Rel
+SJ_BCA,Durhamferry,0.976,0.004,0.968,0.982,181.8,171.701,San Joaquin River,Durhamferry to SJ_BCA,181.8 to 171.701,37.69146,-121.27106,37.73305,-121.29555,2022-04-20_DurhamFerry_Rel,2022-04-20,188,150,6,2,DurhamFerry_Rel
+SJ_Mossdale_1,SJ_BCA,0.988,0.005,0.975,0.995,171.701,163.141,San Joaquin River,SJ_BCA to SJ_Mossdale_1,171.701 to 163.141,37.73305,-121.29555,37.7920615,-121.306925,2022-04-20_DurhamFerry_Rel,2022-04-20,150,138,6,3,DurhamFerry_Rel
+Chipps,SJ_Mossdale_1,0.979,0.002,0.974,0.983,163.141,71.486,West Delta,SJ_Mossdale_1 to Chipps,163.141 to 71.486,37.7920615,-121.306925,38.046132,-121.912643,2022-04-20_DurhamFerry_Rel,2022-04-20,138,20,6,4,DurhamFerry_Rel
+Benicia,Chipps,1,0,1,1,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2022-04-20_DurhamFerry_Rel,2022-04-20,20,20,6,5,DurhamFerry_Rel
+GoldenGateE,Benicia,0.998,0.002,0.988,0.999,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2022-04-20_DurhamFerry_Rel,2022-04-20,20,10,6,6,DurhamFerry_Rel

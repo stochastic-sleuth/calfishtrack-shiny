@@ -1,0 +1,4 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Sutter_Bypass_Rice_Rel,0.5,1,0,0,0,1,2023-03-17_Sutter_Bypass_Rice_Rel,2023-03-17,Sutter_Bypass_Rice_Subyearling_2023,228.021,38.94364,-121.66482,Sutter Bypass,1 (NA),0.5,459,Sutter_Bypass_Rice_Rel
+Benicia,1,0.296,0.021,0.26,0.34,1,2023-03-17_Sutter_Bypass_Rice_Rel,2023-03-17,Sutter_Bypass_Rice_Subyearling_2023,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.296 (0.021),1,136,Sutter_Bypass_Rice_Rel
+GoldenGateE,2,0.219,0.022,0.18,0.26,1,2023-03-17_Sutter_Bypass_Rice_Rel,2023-03-17,Sutter_Bypass_Rice_Subyearling_2023,1.71,37.82794,-122.46168,SF Bay,0.219 (0.022),2,69,Sutter_Bypass_Rice_Rel

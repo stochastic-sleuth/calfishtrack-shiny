@@ -1,16 +1,31 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,release,count,GenLat,GenLon
-1,0,0,0,SJ_Steelhead_2022,DurhamFerry_Rel,183.58,1,San Joaquin River ,DurhamFerry_Rel,487,37.6878,-121.26219
-0.77,0.02,0.72,0.8,SJ_Steelhead_2022,Durhamferry,181.8,2,San Joaquin River ,DurhamFerry_Rel,354,37.69146,-121.27106
-0.56,0.02,0.52,0.6,SJ_Steelhead_2022,SJ_BCA,171.701,3,San Joaquin River ,DurhamFerry_Rel,263,37.73305,-121.29555
-0.48,0.03,0.42,0.53,SJ_Steelhead_2022,Mossdale,163.141,4,San Joaquin River ,DurhamFerry_Rel,225,37.79228,-121.306885
-0.07,0.01,0.05,0.09,SJ_Steelhead_2022,Chipps,71.48599999999999,7,West Delta,DurhamFerry_Rel,33,38.046132,-121.912643
-0.07,0.01,0.05,0.09,SJ_Steelhead_2022,Benicia,52.144000000000005,8,Carquinez Strait,DurhamFerry_Rel,33,38.0423015,-122.1236
-0.06,0.01,0.04,0.08,SJ_Steelhead_2022,GoldenGateE,1.71,9,SF Bay,DurhamFerry_Rel,15,37.82794,-122.46168
-1,0,0,0,SJ_Steelhead_2022,Head_of_Old_River_Rel,159.141,NA,NA,Head_of_Old_River_Rel,289,37.807888,-121.329475
-0.08,0.02,0.06,0.12,SJ_Steelhead_2022,Chipps,71.48599999999999,7,West Delta,Head_of_Old_River_Rel,24,38.046132,-121.912643
-0.08,0.02,0.05,0.11,SJ_Steelhead_2022,Benicia,52.144000000000005,8,Carquinez Strait,Head_of_Old_River_Rel,22,38.0423015,-122.1236
-0.05,0.01,0.03,0.08,SJ_Steelhead_2022,GoldenGateE,1.71,9,SF Bay,Head_of_Old_River_Rel,11,37.82794,-122.46168
-1,0,0,0,SJ_Steelhead_2022,Stockton_Rel,135.5,NA,South Delta,Stockton_Rel,200,37.937782,-121.33374
-0.16,0.03,0.12,0.22,SJ_Steelhead_2022,Chipps,71.48599999999999,7,West Delta,Stockton_Rel,32,38.046132,-121.912643
-0.16,0.03,0.12,0.22,SJ_Steelhead_2022,Benicia,52.144000000000005,8,Carquinez Strait,Stockton_Rel,33,38.0423015,-122.1236
-0.13,0.03,0.09,0.19,SJ_Steelhead_2022,GoldenGateE,1.71,9,SF Bay,Stockton_Rel,15,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Stockton_Rel,3.5,1,0,0,0,1,2022-03-16_Stockton_Rel,2022-03-16,135.5,37.937782,-121.33374,South Delta,1 (NA),3.5,100,Stockton_Rel
+Chipps,4,0.12,0.032,0.07,0.2,1,2022-03-16_Stockton_Rel,2022-03-16,71.48599999999999,38.046132,-121.912643,West Delta,0.12 (0.032),4,11,Stockton_Rel
+Benicia,5,0.12,0.032,0.07,0.2,1,2022-03-16_Stockton_Rel,2022-03-16,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.12 (0.032),5,12,Stockton_Rel
+GoldenGateE,6,0.093,0.033,0.05,0.18,1,2022-03-16_Stockton_Rel,2022-03-16,1.71,37.82794,-122.46168,SF Bay,0.093 (0.033),6,6,Stockton_Rel
+Head_of_Old_River_Rel,3.5,1,0,0,0,2,2022-03-16_Head_of_Old_River_Rel,2022-03-16,156,37.807888,-121.329475,South Delta,1 (NA),3.5,144,Head_of_Old_River_Rel
+Chipps,4,0.104,0.025,0.06,0.17,2,2022-03-16_Head_of_Old_River_Rel,2022-03-16,71.48599999999999,38.046132,-121.912643,West Delta,0.104 (0.025),4,15,Head_of_Old_River_Rel
+Benicia,5,0.09,0.024,0.05,0.15,2,2022-03-16_Head_of_Old_River_Rel,2022-03-16,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.09 (0.024),5,13,Head_of_Old_River_Rel
+GoldenGateE,6,0.072,0.024,0.04,0.14,2,2022-03-16_Head_of_Old_River_Rel,2022-03-16,1.71,37.82794,-122.46168,SF Bay,0.072 (0.024),6,9,Head_of_Old_River_Rel
+DurhamFerry_Rel,0.5,1,0,0,0,3,2022-03-16_DurhamFerry_Rel,2022-03-16,183.58,37.6878,-121.26219,San Joaquin River,1 (NA),0.5,248,DurhamFerry_Rel
+Durhamferry,1,0.694,0.03,0.63,0.75,3,2022-03-16_DurhamFerry_Rel,2022-03-16,181.8,37.69146,-121.27106,San Joaquin River,0.694 (0.03),1,166,DurhamFerry_Rel
+SJ_BCA,2,0.464,0.032,0.4,0.53,3,2022-03-16_DurhamFerry_Rel,2022-03-16,171.701,37.73305,-121.29555,San Joaquin River,0.464 (0.032),2,113,DurhamFerry_Rel
+SJ_Mossdale_1,3,0.36,0.033,0.3,0.43,3,2022-03-16_DurhamFerry_Rel,2022-03-16,163.141,37.7920615,-121.306925,San Joaquin River,0.36 (0.033),3,87,DurhamFerry_Rel
+Chipps,4,0.052,0.014,0.03,0.09,3,2022-03-16_DurhamFerry_Rel,2022-03-16,71.48599999999999,38.046132,-121.912643,West Delta,0.052 (0.014),4,13,DurhamFerry_Rel
+Benicia,5,0.052,0.014,0.03,0.09,3,2022-03-16_DurhamFerry_Rel,2022-03-16,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.052 (0.014),5,13,DurhamFerry_Rel
+GoldenGateE,6,0.04,0.012,0.02,0.07,3,2022-03-16_DurhamFerry_Rel,2022-03-16,1.71,37.82794,-122.46168,SF Bay,0.04 (0.012),6,5,DurhamFerry_Rel
+Stockton_Rel,3.5,1,0,0,0,4,2022-04-20_Stockton_Rel,2022-04-20,135.5,37.937782,-121.33374,South Delta,1 (NA),3.5,100,Stockton_Rel
+Chipps,4,0.21,0.041,0.14,0.3,4,2022-04-20_Stockton_Rel,2022-04-20,71.48599999999999,38.046132,-121.912643,West Delta,0.21 (0.041),4,21,Stockton_Rel
+Benicia,5,0.21,0.041,0.14,0.3,4,2022-04-20_Stockton_Rel,2022-04-20,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.21 (0.041),5,21,Stockton_Rel
+GoldenGateE,6,0.167,0.039,0.1,0.26,4,2022-04-20_Stockton_Rel,2022-04-20,1.71,37.82794,-122.46168,SF Bay,0.167 (0.039),6,9,Stockton_Rel
+Head_of_Old_River_Rel,3.5,1,0,0,0,5,2022-04-20_Head_of_Old_River_Rel,2022-04-20,156,37.807888,-121.329475,South Delta,1 (NA),3.5,145,Head_of_Old_River_Rel
+Chipps,4,0.062,0.02,0.03,0.12,5,2022-04-20_Head_of_Old_River_Rel,2022-04-20,71.48599999999999,38.046132,-121.912643,West Delta,0.062 (0.02),4,9,Head_of_Old_River_Rel
+Benicia,5,0.062,0.02,0.03,0.12,5,2022-04-20_Head_of_Old_River_Rel,2022-04-20,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.062 (0.02),5,9,Head_of_Old_River_Rel
+GoldenGateE,6,0.028,0.014,0.01,0.07,5,2022-04-20_Head_of_Old_River_Rel,2022-04-20,1.71,37.82794,-122.46168,SF Bay,0.028 (0.014),6,2,Head_of_Old_River_Rel
+DurhamFerry_Rel,0.5,1,0,0,0,6,2022-04-20_DurhamFerry_Rel,2022-04-20,183.58,37.6878,-121.26219,San Joaquin River,1 (NA),0.5,239,DurhamFerry_Rel
+Durhamferry,1,0.842,0.025,0.79,0.88,6,2022-04-20_DurhamFerry_Rel,2022-04-20,181.8,37.69146,-121.27106,San Joaquin River,0.842 (0.025),1,188,DurhamFerry_Rel
+SJ_BCA,2,0.66,0.031,0.6,0.72,6,2022-04-20_DurhamFerry_Rel,2022-04-20,171.701,37.73305,-121.29555,San Joaquin River,0.66 (0.031),2,150,DurhamFerry_Rel
+SJ_Mossdale_1,3,0.597,0.036,0.52,0.67,6,2022-04-20_DurhamFerry_Rel,2022-04-20,163.141,37.7920615,-121.306925,San Joaquin River,0.597 (0.036),3,138,DurhamFerry_Rel
+Chipps,4,0.084,0.018,0.06,0.13,6,2022-04-20_DurhamFerry_Rel,2022-04-20,71.48599999999999,38.046132,-121.912643,West Delta,0.084 (0.018),4,20,DurhamFerry_Rel
+Benicia,5,0.084,0.018,0.06,0.13,6,2022-04-20_DurhamFerry_Rel,2022-04-20,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.084 (0.018),5,20,DurhamFerry_Rel
+GoldenGateE,6,0.074,0.017,0.05,0.12,6,2022-04-20_DurhamFerry_Rel,2022-04-20,1.71,37.82794,-122.46168,SF Bay,0.074 (0.017),6,10,DurhamFerry_Rel

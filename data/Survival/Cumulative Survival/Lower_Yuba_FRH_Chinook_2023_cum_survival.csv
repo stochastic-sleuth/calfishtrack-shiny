@@ -1,0 +1,21 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Daguerre_Dam_Rel,0.5,1,0,0,0,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,268.383,39.209,-121.445,Yuba River,1 (NA),0.5,209,Daguerre_Dam_Rel
+ShanghaiBend,1,0.848,0.03,0.78,0.9,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,245.454,39.094635,-121.59285,Feather_R,0.848 (0.03),1,151,Daguerre_Dam_Rel
+BC_Beach,2,0.61,0.034,0.54,0.67,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,217.314,38.877506,-121.61404,Feather_R,0.61 (0.034),2,123,Daguerre_Dam_Rel
+FR_Verona_Upper,3,0.575,0.037,0.5,0.64,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,207.894,38.798393,-121.63363,Feather_R,0.575 (0.037),3,97,Daguerre_Dam_Rel
+TowerBridge,4,0.45,0.034,0.38,0.52,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,172,38.5802,-121.508,Lower Sac R,0.45 (0.034),4,82,Daguerre_Dam_Rel
+I80-50_Br,5,0.45,0.034,0.38,0.52,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,170.748,38.571133,-121.5164,Lower Sac R,0.45 (0.034),5,83,Daguerre_Dam_Rel
+SacTrawl,6,0.446,0.034,0.38,0.51,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.446 (0.034),6,67,Daguerre_Dam_Rel
+Freeport,7,0.446,0.034,0.38,0.51,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,152.23149999999998,38.46467,-121.50501,Lower Sac R,0.446 (0.034),7,93,Daguerre_Dam_Rel
+Benicia,8,0.201,0.028,0.15,0.26,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.201 (0.028),8,42,Daguerre_Dam_Rel
+GoldenGateE,9,0.141,0.025,0.1,0.2,1,2023-05-25_Daguerre_Dam_Rel,2023-05-25,1.71,37.82794,-122.46168,SF Bay,0.141 (0.025),9,26,Daguerre_Dam_Rel
+Englebright_Dam_Rel,0.5,1,0,0,0,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,288.253,39.236,-121.273,Yuba River,1 (NA),0.5,210,Englebright_Dam_Rel
+ShanghaiBend,1,0.721,0.035,0.65,0.78,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,245.454,39.094635,-121.59285,Feather_R,0.721 (0.035),1,124,Englebright_Dam_Rel
+BC_Beach,2,0.506,0.035,0.44,0.57,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,217.314,38.877506,-121.61404,Feather_R,0.506 (0.035),2,101,Englebright_Dam_Rel
+FR_Verona_Upper,3,0.483,0.036,0.41,0.55,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,207.894,38.798393,-121.63363,Feather_R,0.483 (0.036),3,81,Englebright_Dam_Rel
+TowerBridge,4,0.4,0.034,0.34,0.47,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,172,38.5802,-121.508,Lower Sac R,0.4 (0.034),4,69,Englebright_Dam_Rel
+I80-50_Br,5,0.4,0.034,0.34,0.47,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,170.748,38.571133,-121.5164,Lower Sac R,0.4 (0.034),5,64,Englebright_Dam_Rel
+SacTrawl,6,0.4,0.034,0.34,0.47,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.4 (0.034),6,60,Englebright_Dam_Rel
+Freeport,7,0.397,0.034,0.33,0.47,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,152.23149999999998,38.46467,-121.50501,Lower Sac R,0.397 (0.034),7,82,Englebright_Dam_Rel
+Benicia,8,0.157,0.025,0.11,0.21,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.157 (0.025),8,33,Englebright_Dam_Rel
+GoldenGateE,9,0.112,0.022,0.07,0.16,2,2023-05-25_Englebright_Dam_Rel,2023-05-25,1.71,37.82794,-122.46168,SF Bay,0.112 (0.022),9,19,Englebright_Dam_Rel

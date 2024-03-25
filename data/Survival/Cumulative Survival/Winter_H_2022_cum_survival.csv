@@ -1,46 +1,51 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
-1,0,0,0,Winter_H_2022,Caldwell_Park_Rel,551.288,0,Upper Sac R,1 (NA),0,569,40.593826,-122.39836
-1,0,0,0,Winter_H_2022,Caldwell_Park,551.088,1,Upper Sac R,1 (NaN),1,288,40.593,-122.394875
-0.97,0,0,0,Winter_H_2022,Blw_Cypress,543.908,2,Upper Sac R,0.97 (NaN),2,552,40.56047,-122.37527
-0.96,0,0,0,Winter_H_2022,Blw_ClearCr,535.628,3,Upper Sac R,0.96 (NaN),3,547,40.50188,-122.36192
-0.96,0,0,0,Winter_H_2022,BlwCowCr,520.698,4,Upper Sac R,0.96 (NaN),4,544,40.46013,-122.22765
-0.94,0,0,0,Winter_H_2022,Battle_Conf,507.488,5,Upper Sac R,0.94 (NaN),5,532,40.35371,-122.17734
-0.86,0,0,0,Winter_H_2022,Blw_Paynes_Ck,476.278,6,Upper Sac R,0.86 (NaN),6,488,40.25534,-122.17332
-0.81,0,0,0,Winter_H_2022,Abv_Altube1,460.4,7,Upper Sac R,0.81 (NaN),7,107,40.15348,-122.1887
-0.8,0,0,0,Winter_H_2022,Blw_Salt,456.888,8,Upper Sac R,0.8 (NaN),8,455,40.1464,-122.15246
-0.7,0,0,0,Winter_H_2022,Abv_WoodsonBr,425.158,9,Upper Sac R,0.7 (NaN),9,94,39.920094,-122.08446000000001
-0.7,0,0,0,Winter_H_2022,Abv_Otter_Island,419.398,10,Upper Sac R,0.7 (NaN),10,258,39.882027,-122.064445
-0.42,0,0,0,Winter_H_2022,GCID_abv,406.118,11,Upper Sac R,0.42 (NaN),11,81,39.806767,-122.05846
-0.4,0,0,0,Winter_H_2022,GCID_blw,404.428,12,Upper Sac R,0.4 (NaN),12,74,39.79114,-122.036026
-0.4,0,0,0,Winter_H_2022,Blw_IrvineFinch,394.668,13,Upper Sac R,0.4 (NaN),13,74,39.73146,-121.97483
-0.36,0,0,0,Winter_H_2022,Ord,371.658,14,Upper Sac R,0.36 (NaN),14,173,39.63447,-121.98959
-0.36,0,0,0,Winter_H_2022,BlwOrd,361.728,15,Upper Sac R,0.36 (NaN),15,69,39.56548,-122.0018
-0.24,0,0,0,Winter_H_2022,ButteBr,344.108,16,Lower Sac R,0.24 (NaN),16,89,39.4569,-121.995
-0.21,0,0,0,Winter_H_2022,Colusa AC3,331.158,17,Lower Sac R,0.21 (NaN),17,34,39.36038,-122.01373
-0.21,0,0,0,Winter_H_2022,Colusa AC2,318.618,18,Lower Sac R,0.21 (NaN),18,120,39.28007,-122.01891
-0.19,0,0,0,Winter_H_2022,AbvColusaBr,307.738,19,Lower Sac R,0.19 (NaN),19,99,39.2205,-122.00847
-0.19,0,0,0,Winter_H_2022,Colusa BC2,296.278,20,Lower Sac R,0.19 (NaN),20,87,39.184963,-121.943214
-0.19,0,0,0,Winter_H_2022,Colusa BC3,287.208,21,Lower Sac R,0.19 (NaN),21,27,39.13132,-121.936554
-0.18,0,0,0,Winter_H_2022,AbvTisdale,269.238,22,Lower Sac R,0.18 (NaN),22,99,39.0364,-121.82918
-0.18,0,0,0,Winter_H_2022,BlwTisdale,261.408,23,Lower Sac R,0.18 (NaN),23,23,38.98941,-121.80463
-0.17,0,0,0,Winter_H_2022,BlwChinaBend,240.618,24,Lower Sac R,0.17 (NaN),24,59,38.88406,-121.81713
-0.16,0,0,0,Winter_H_2022,Knights_RST,222.05,25,Lower Sac R,0.16 (NaN),25,91,38.79348,-121.6914625
-0.16,0,0,0,Winter_H_2022,KnightsBlwRST,221.58,26,Lower Sac R,0.16 (NaN),26,90,38.78877,-121.694
-0.16,0,0,0,Winter_H_2022,Abv_FremontWeir,215.18,27,Lower Sac R,0.16 (NaN),27,79,38.76009,-121.67145
-0.16,0,0,0,Winter_H_2022,Blw_Knights_GS3,212.8,28,Lower Sac R,0.16 (NaN),28,89,38.75972,-121.67329
-0.15,0,0,0,Winter_H_2022,Blw_FremontWeir,210.36,29,Lower Sac R,0.15 (NaN),29,86,38.77015,-121.6322
-0.15,0,0,0,Winter_H_2022,SacFeather,205.76,30,Lower Sac R,0.15 (NaN),30,83,38.785244,-121.62445
-0.15,0,0,0,Winter_H_2022,Blw_FRConf,203.468,31,Lower Sac R,0.15 (NaN),31,77,38.77409,-121.60043
-0.15,0,0,0,Winter_H_2022,Blw_FR_GS2,199,32,Lower Sac R,0.15 (NaN),32,58,38.73505,-121.60267
-0.15,0,0,0,Winter_H_2022,RM75_RST,198.162,33,Lower Sac R,0.15 (NaN),33,38,38.727325,-121.60518
-0.15,0,0,0,Winter_H_2022,Blw_Elkhorn_GS1,191.92,34,Lower Sac R,0.15 (NaN),34,84,38.64737,-121.57771
-0.13,0,0,0,Winter_H_2022,TowerBridge,172,35,Lower Sac R,0.13 (NaN),35,76,38.5802,-121.508
-0.13,0,0,0,Winter_H_2022,I80-50_Br,170.748,36,Lower Sac R,0.13 (NaN),36,76,38.571133,-121.5164
-0.13,0,0,0,Winter_H_2022,SacTrawl,166.8225,37,Lower Sac R,0.13 (NaN),37,72,38.539519999999996,-121.51444000000001
-0.12,0,0,0,Winter_H_2022,Little Pocket_DS of I80,164.387,38,Lower Sac R,0.12 (NaN),38,65,38.52448,-121.52849
-0.11,0,0,0,Winter_H_2022,Freeport,152.438,39,Lower Sac R,0.11 (NaN),39,65,38.46467,-121.50501
-0.11,0,0,0,Winter_H_2022,Abv_Clarksburg,147.668,40,Lower Sac R,0.11 (NaN),40,63,38.43443,-121.52448
-0.11,0,0,0,Winter_H_2022,Hood,138.228,41,Lower Sac R,0.11 (NaN),41,61,38.3617,-121.52033
-0.07,0,0,0,Winter_H_2022,Chipps,71.48599999999999,42,West Delta,0.07 (NaN),42,37,38.046132,-121.912643
-0.06,0,0,0,Winter_H_2022,Benicia,52.144000000000005,43,Carquinez Strait,0.06 (NaN),43,33,38.0423015,-122.1236
-0.03,0,0,0,Winter_H_2022,GoldenGateE,1.71,44,SF Bay,0.03 (NaN),44,13,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Caldwell_Park_Rel,0.5,1,0,0,0,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,551.288,40.593826,-122.39836,Upper Sac R,1 (NA),0.5,139,Caldwell_Park_Rel
+Blw_Cypress,1,0.964,0.016,0.92,0.98,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,543.908,40.56047,-122.37527,Upper Sac R,0.964 (0.016),1,134,Caldwell_Park_Rel
+Blw_ClearCr,2,0.957,0.017,0.91,0.98,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,535.628,40.50188,-122.36192,Upper Sac R,0.957 (0.017),2,133,Caldwell_Park_Rel
+BlwCowCr,3,0.95,0.019,0.9,0.98,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,520.698,40.46013,-122.22765,Upper Sac R,0.95 (0.019),3,132,Caldwell_Park_Rel
+Battle_Conf,4,0.935,0.021,0.88,0.97,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,507.488,40.35371,-122.17734,Upper Sac R,0.935 (0.021),4,130,Caldwell_Park_Rel
+Blw_Paynes_Ck,5,0.863,0.029,0.8,0.91,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,476.278,40.25534,-122.17332,Upper Sac R,0.863 (0.029),5,120,Caldwell_Park_Rel
+Blw_Salt,6,0.799,0.034,0.72,0.86,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,456.888,40.1464,-122.15246,Upper Sac R,0.799 (0.034),6,111,Caldwell_Park_Rel
+Mill_Ck_Conf,7,0.782,0.038,0.7,0.85,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,441.318,40.0327,-122.11987,Upper Sac R,0.782 (0.038),7,106,Caldwell_Park_Rel
+Ord,8,0.449,0.045,0.36,0.54,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,371.658,39.63447,-121.98959,Upper Sac R,0.449 (0.045),8,57,Caldwell_Park_Rel
+Colusa AC2,9,0.252,0.037,0.19,0.33,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,318.618,39.28007,-122.01891,Lower Sac R,0.252 (0.037),9,35,Caldwell_Park_Rel
+AbvColusaBr,10,0.245,0.037,0.18,0.32,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,307.738,39.2205,-122.00847,Lower Sac R,0.245 (0.037),10,31,Caldwell_Park_Rel
+Colusa BC2,11,0.241,0.037,0.18,0.32,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,296.278,39.184963,-121.943214,Lower Sac R,0.241 (0.037),11,26,Caldwell_Park_Rel
+AbvTisdale,12,0.224,0.036,0.16,0.3,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,269.238,39.0364,-121.82918,Lower Sac R,0.224 (0.036),12,30,Caldwell_Park_Rel
+Knights_RST,13,0.18,0.033,0.12,0.25,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,222.05,38.79348,-121.6914625,Lower Sac R,0.18 (0.033),13,25,Caldwell_Park_Rel
+Abv_FremontWeir,14,0.174,0.032,0.12,0.25,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,215.18,38.76009,-121.67145,Lower Sac R,0.174 (0.032),14,21,Caldwell_Park_Rel
+SacFeather,15,0.165,0.032,0.11,0.24,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,205.76,38.785244,-121.62445,Lower Sac R,0.165 (0.032),15,22,Caldwell_Park_Rel
+Blw_Elkhorn_GS1,16,0.165,0.032,0.11,0.24,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,191.92,38.64737,-121.57771,Lower Sac R,0.165 (0.032),16,23,Caldwell_Park_Rel
+TowerBridge,17,0.158,0.031,0.11,0.23,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,172,38.5802,-121.508,Lower Sac R,0.158 (0.031),17,22,Caldwell_Park_Rel
+SacTrawl,18,0.158,0.031,0.11,0.23,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.158 (0.031),18,22,Caldwell_Park_Rel
+Freeport,19,0.137,0.029,0.09,0.2,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,152.438,38.46467,-121.50501,Lower Sac R,0.137 (0.029),19,19,Caldwell_Park_Rel
+Abv_Clarksburg,20,0.137,0.029,0.09,0.2,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,147.668,38.43443,-121.52448,Lower Sac R,0.137 (0.029),20,19,Caldwell_Park_Rel
+Hood,21,0.137,0.029,0.09,0.2,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,138.228,38.3617,-121.52033,Lower Sac R,0.137 (0.029),21,19,Caldwell_Park_Rel
+Chipps,22,0.08,0.023,0.04,0.14,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,71.48599999999999,38.046132,-121.912643,West Delta,0.08 (0.023),22,11,Caldwell_Park_Rel
+Benicia,23,0.065,0.021,0.03,0.12,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.065 (0.021),23,9,Caldwell_Park_Rel
+GoldenGateE,24,0.065,0.021,0.03,0.12,1,2022-02-10_Caldwell_Park_Rel,2022-02-10,1.71,37.82794,-122.46168,SF Bay,0.065 (0.021),24,2,Caldwell_Park_Rel
+Caldwell_Park_Rel,0.5,1,0,0,0,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,551.288,40.593826,-122.39836,Upper Sac R,1 (NA),0.5,430,Caldwell_Park_Rel
+Blw_Cypress,1,0.972,0.008,0.95,0.98,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,543.908,40.56047,-122.37527,Upper Sac R,0.972 (0.008),1,418,Caldwell_Park_Rel
+Blw_ClearCr,2,0.963,0.009,0.94,0.98,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,535.628,40.50188,-122.36192,Upper Sac R,0.963 (0.009),2,414,Caldwell_Park_Rel
+BlwCowCr,3,0.958,0.01,0.94,0.97,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,520.698,40.46013,-122.22765,Upper Sac R,0.958 (0.01),3,412,Caldwell_Park_Rel
+Battle_Conf,4,0.935,0.012,0.91,0.96,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,507.488,40.35371,-122.17734,Upper Sac R,0.935 (0.012),4,402,Caldwell_Park_Rel
+Blw_Paynes_Ck,5,0.856,0.017,0.82,0.89,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,476.278,40.25534,-122.17332,Upper Sac R,0.856 (0.017),5,368,Caldwell_Park_Rel
+Blw_Salt,6,0.8,0.019,0.76,0.84,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,456.888,40.1464,-122.15246,Upper Sac R,0.8 (0.019),6,344,Caldwell_Park_Rel
+Mill_Ck_Conf,7,0.722,0.024,0.67,0.77,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,441.318,40.0327,-122.11987,Upper Sac R,0.722 (0.024),7,291,Caldwell_Park_Rel
+Ord,8,0.315,0.024,0.27,0.36,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,371.658,39.63447,-121.98959,Upper Sac R,0.315 (0.024),8,116,Caldwell_Park_Rel
+Colusa AC2,9,0.198,0.019,0.16,0.24,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,318.618,39.28007,-122.01891,Lower Sac R,0.198 (0.019),9,85,Caldwell_Park_Rel
+AbvColusaBr,10,0.178,0.018,0.14,0.22,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,307.738,39.2205,-122.00847,Lower Sac R,0.178 (0.018),10,68,Caldwell_Park_Rel
+Colusa BC2,11,0.171,0.018,0.14,0.21,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,296.278,39.184963,-121.943214,Lower Sac R,0.171 (0.018),11,61,Caldwell_Park_Rel
+AbvTisdale,12,0.166,0.018,0.13,0.2,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,269.238,39.0364,-121.82918,Lower Sac R,0.166 (0.018),12,69,Caldwell_Park_Rel
+Knights_RST,13,0.153,0.017,0.12,0.19,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,222.05,38.79348,-121.6914625,Lower Sac R,0.153 (0.017),13,66,Caldwell_Park_Rel
+Abv_FremontWeir,14,0.151,0.017,0.12,0.19,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,215.18,38.76009,-121.67145,Lower Sac R,0.151 (0.017),14,58,Caldwell_Park_Rel
+SacFeather,15,0.149,0.017,0.12,0.19,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,205.76,38.785244,-121.62445,Lower Sac R,0.149 (0.017),15,61,Caldwell_Park_Rel
+Blw_Elkhorn_GS1,16,0.142,0.017,0.11,0.18,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,191.92,38.64737,-121.57771,Lower Sac R,0.142 (0.017),16,61,Caldwell_Park_Rel
+TowerBridge,17,0.126,0.016,0.1,0.16,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,172,38.5802,-121.508,Lower Sac R,0.126 (0.016),17,54,Caldwell_Park_Rel
+SacTrawl,18,0.116,0.015,0.09,0.15,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.116 (0.015),18,50,Caldwell_Park_Rel
+Freeport,19,0.107,0.015,0.08,0.14,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,152.438,38.46467,-121.50501,Lower Sac R,0.107 (0.015),19,46,Caldwell_Park_Rel
+Abv_Clarksburg,20,0.102,0.015,0.08,0.14,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,147.668,38.43443,-121.52448,Lower Sac R,0.102 (0.015),20,44,Caldwell_Park_Rel
+Hood,21,0.098,0.014,0.07,0.13,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,138.228,38.3617,-121.52033,Lower Sac R,0.098 (0.014),21,42,Caldwell_Park_Rel
+Chipps,22,0.063,0.012,0.04,0.09,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,71.48599999999999,38.046132,-121.912643,West Delta,0.063 (0.012),22,26,Caldwell_Park_Rel
+Benicia,23,0.056,0.011,0.04,0.08,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.056 (0.011),23,24,Caldwell_Park_Rel
+GoldenGateE,24,0.056,0.011,0.04,0.08,2,2022-03-02_Caldwell_Park_Rel,2022-03-02,1.71,37.82794,-122.46168,SF Bay,0.056 (0.011),24,11,Caldwell_Park_Rel

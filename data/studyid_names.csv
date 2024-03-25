@@ -1,83 +1,97 @@
-study_id,fish_type,descript_name,incl_survival,incl_other,incl_deltasurv
-BattleCk_Wild_2014,BattleCk Chinook,Battle Creek Wild Chinook 2014,YES,YES,NO
-BC_Jumpstart_2021,BattleCk Winter Chinook,Battle Creek Hatchery Winter-run Chinook 2021,YES,YES,YES
-BC_Jumpstart_2022,BattleCk Winter Chinook,Battle Creek Hatchery Winter-run Chinook 2022,YES,YES,NO
-BC-Spring-2018,ButteCk Chinook,Butte Creek Wild Chinook 2018,YES,YES,NO
-ColemanFall_2012,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2012,YES,YES,NO
-ColemanFall_2013,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2013,YES,YES,NO
-ColemanFall_2016,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2016,YES,YES,NO
-ColemanFall_2017,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2017,YES,YES,NO
-CNFH_FMR_2019,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2019,YES,YES,NO
-CNFH_FMR_2020,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2020,YES,YES,NO
-CNFH_FMR_2021,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2021,YES,YES,NO
-ColemanAltRel_2021,CNFH Fall Chinook,Coleman Hatchery Fall-run Paired Rel 2021,NO,YES,YES
-ColemanAltRel_2022,CNFH Fall Chinook,Coleman Hatchery Fall-run Paired Rel 2022,NO,YES,YES
-ColemanLateFall_2018,CNFH Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2018,YES,YES,NO
-ColemanLateFall_2019,Coleman Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2019,YES,YES,NO
-ColemanLateFall_2020,CNFH Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2020,YES,YES,NO
-ColemanLateFall_2021,CNFH Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2021,YES,YES,YES
-DeerCk_Wild_STH_2018,Steelhead,Deer Creek Wild Steelhead 2018,NO,YES,NO
-DeerCk_Wild_STH_2019,Steelhead,Deer Creek Wild Steelhead 2019,NO,YES,NO
-DeerCk_Wild_STH_2020,Steelhead,Deer Creek Wild Steelhead 2020,NO,YES,NO
-DeerCk_Wild_STH_2021,Steelhead,Deer Creek Wild Steelhead 2021,YES,YES,NO
-FR_Spring_2013,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2013,YES,YES,NO
-FR_Spring_2014,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2014,YES,YES,NO
-FR_Spring_2015,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2015,YES,YES,NO
-FR_Spring_2019,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2019,YES,YES,NO
-FR_Spring_2020,FRH spring Chinook,Feather River Hatchery Spring-run Chinook 2020,YES,YES,NO
-FR_Spring_2021,FRH spring Chinook,Feather River Hatchery Spring-run Chinook 2021,YES,YES,YES
-FRH_Fall_2021,FRH Fall Chinook,Feather River Hatchery Fall-run Chinook 2021,YES,YES,NO
-FRW_Fall_2021,FRH Fall Chinook,Feather River Wild Fall-run Chinook 2021,YES,YES,NO
-Juv_Green_Sturgeon_2016,Green Sturgeon,Juvenile Green Sturgeon 2016,NO,YES,NO
-Juv_Green_Sturgeon_2017,Green Sturgeon,Juvenile Green Sturgeon 2017,NO,YES,NO
-Juv_Green_Sturgeon_2018,Green Sturgeon,Juvenile Green Sturgeon 2018,NO,YES,NO
-Juv_Green_Sturgeon_2019,Green Sturgeon,Juvenile Green Sturgeon 2019,NO,YES,NO
-Juv_Green_Sturgeon_2016_2019,Green Sturgeon,Juvenile Green Sturgeon 2016-2019,YES,YES,NO
-MillCk_Wild_CHK_2013,MillCk Chinook,Mill Creek Wild Chinook 2013,YES,YES,NO
-MillCk_Wild_CHK_2014,MillCk Chinook,Mill Creek Wild Chinook 2014,YES,YES,NO
-MillCk_Wild_CHK_2015,MillCk Chinook,Mill Creek Wild Chinook 2015,YES,YES,NO
-MillCk_Wild_CHK_2016,MillCk Chinook,Mill Creek Wild Chinook 2016,YES,YES,NO
-MillCk_Wild_CHK_2017,MillCk Chinook,Mill Creek Wild Chinook 2017,YES,YES,NO
-MillCk_Wild_STH_2015,O. mykiss,Mill Creek Wild Steelhead 2015,YES,YES,NO
-MillCk_Wild_STH_2016,O. mykiss,Mill Creek Wild Steelhead 2016,YES,YES,NO
-MillCk_Wild_STH_2019,Steelhead,Mill Creek Wild Steelhead 2019,YES,YES,NO
-MillCk_Wild_STH_2020,Steelhead,Mill Creek Wild Steelhead 2020,YES,YES,NO
-MillCk_Wild_STH_2021,Steelhead,Mill Creek Wild Steelhead 2021,NO,YES,NO
-MillCk_Wild_STH_2022,Steelhead,Mill Creek Wild Steelhead 2022,YES,YES,NO
-Mok_Fall_2017,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2017,YES,YES,NO
-Mok_Fall_2018,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2018,YES,YES,NO
-Mok_Fall_2021,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2021,NO,YES,NO
-Mok_Fall_2022,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2022,NO,YES,NO
-Nimbus_Fall_2016,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2016,YES,YES,NO
-Nimbus_Fall_2017,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2017,YES,YES,NO
-Nimbus_Fall_2018,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2018,YES,YES,NO
-Nimbus_Fall_2022,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2022,YES,YES,NO
-Putah_Creek_CHN_2020,Putah Creek Chinook,Wild Putah Creek Chinook Salmon 2020,NO,YES,NO
-Putah_Creek_CHN_2021,Putah Creek Chinook,Wild Putah Creek Chinook Salmon 2021,NO,YES,NO
-RBDD_2017,Chinook,Red Bluff Diversion Dam Wild Chinook 2017,YES,YES,NO
-RBDD_2018,Chinook,Red Bluff Diversion Dam Wild Chinook 2018,YES,YES,NO
-SacRiverSpringJPE_2022,Chinook,Upper Sac Spring-run Surrogate Chinook 2022,YES,YES,YES
-SB_Spring_2015,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2015,YES,YES,NO
-SB_Spring_2016,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2016,YES,YES,NO
-SB_Spring_2017,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2017,YES,YES,NO
-SB_Spring_2018,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2018,YES,YES,NO
-SB_Spring_2019,ButteCK Chinook,Butte Creek Wild Spring-run Chinook 2019,YES,YES,NO
-Seasonal_Survival_2022,Chinook,Hatchery-Origin Chinook Salmon Seasonal Survival 2022,YES,YES,YES
-SJ_Steelhead_2021,Steelhead,San Joaquin River Steelhead 2021,YES,YES,NO
-SJ_Steelhead_2022,Steelhead,San Joaquin River Steelhead 2022,YES,YES,NO
-Sutter_Bypass_Rice_2022,Chinook,Hatchery-Origin Rice Field Reared Fall-run Chinook 2022,YES,YES,YES
-Upper_Butte_2019,Butte Spring-run,Upper Butte Creek Wild Spring-run Chinook 2019,YES,NO,NO
-Upper_Butte_2020,ButteCk Chinook,Upper Butte Creek Wild Spring-run Chinook 2020,YES,YES,NO
-Upper_Butte_2021,ButteCk Chinook,Upper Butte Creek Wild Spring-run Chinook 2021,YES,YES,NO
-Wild_stock_Chinook_RBDD_2021,Chinook,Red Bluff RST Chinook 2021,YES,YES,NO
-Wild_stock_Chinook_RBDD_2022,Chinook,Red Bluff RST Chinook 2022,YES,YES,NO
-Winter_H_2013,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2013,YES,YES,NO
-Winter_H_2014,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2014,YES,YES,NO
-Winter_H_2015,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2015,YES,YES,NO
-Winter_H_2016,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2016,YES,YES,NO
-Winter_H_2017,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2017,YES,YES,NO
-Winter_H_2018,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2018,YES,YES,NO
-Winter_H_2019,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2019,YES,YES,NO
-Winter_H_2020,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2020,YES,YES,NO
-Winter_H_2021,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2021,YES,YES,YES
-Winter_H_2022,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2022,YES,YES,YES
+study_id,fish_type,descript_name,incl_survival,incl_other,incl_deltasurv,custom_rkm_gap,custom_day_gap,p_cutoff_custom
+BattleCk_Wild_2014,BattleCk Chinook,Battle Creek Wild Chinook 2014,YES,YES,NO,,,
+BC_Jumpstart_2021,BattleCk Winter Chinook,Battle Creek Hatchery Winter-run Chinook 2021,YES,YES,YES,,,
+BC_Jumpstart_2022,BattleCk Winter Chinook,Battle Creek Hatchery Winter-run Chinook 2022,YES,YES,NO,,,
+BC_Jumpstart_2023,BattleCk Winter Chinook,Battle Creek Hatchery Winter-run Chinook 2023,YES,YES,YES,,,
+BC-Spring-2018,ButteCk Chinook,Butte Creek Wild Chinook 2018,YES,YES,NO,,,
+Butte_Sink_2023,ButteCk Chinook,Butte Sink Wild Spring-run Chinook 2023,YES,YES,YES,0.5,,
+CNFH_FMR_2019,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2019,YES,YES,NO,,,
+CNFH_FMR_2020,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2020,YES,YES,NO,,,
+CNFH_FMR_2021,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2021,YES,YES,NO,,,
+ColemanAltRel_2021,CNFH Fall Chinook,Coleman Hatchery Fall-run Paired Rel 2021,YES,YES,YES,,,
+ColemanAltRel_2022,CNFH Fall Chinook,Coleman Hatchery Fall-run Paired Rel 2022,YES,YES,YES,,,
+ColemanFall_2012,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2012,YES,YES,NO,,,
+ColemanFall_2013,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2013,YES,YES,NO,,,
+ColemanFall_2016,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2016,YES,YES,NO,,,
+ColemanFall_2017,CNFH Fall Chinook,Coleman Hatchery Fall-run Chinook 2017,YES,YES,NO,,,
+ColemanLateFall_2018,CNFH Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2018,YES,YES,NO,,,
+ColemanLateFall_2019,Coleman Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2019,YES,YES,NO,,,
+ColemanLateFall_2020,CNFH Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2020,YES,YES,NO,,,
+ColemanLateFall_2021,CNFH Late-fall Chinook,Coleman Hatchery Late fall-run Chinook 2021,YES,YES,YES,,,
+DeerCk_Wild_STH_2018,Steelhead,Deer Creek Wild Steelhead 2018,NO,YES,NO,,,
+DeerCk_Wild_STH_2019,Steelhead,Deer Creek Wild Steelhead 2019,NO,YES,NO,,,
+DeerCk_Wild_STH_2020,Steelhead,Deer Creek Wild Steelhead 2020,NO,YES,NO,,,
+DeerCk_Wild_STH_2021,Steelhead,Deer Creek Wild Steelhead 2021,YES,YES,NO,,,
+FR_Fall_Chinook_2023,FRH fall Chinook,Feather River Hatchery Fall-run Chinook 2023,YES,YES,YES,,,
+FR_Spring_2013,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2013,YES,YES,NO,,,
+FR_Spring_2014,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2014,YES,YES,NO,,,
+FR_Spring_2015,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2015,YES,YES,NO,,,
+FR_Spring_2019,FRH Spring Chinook,Feather River Hatchery Spring-run Chinook 2019,YES,YES,NO,,,
+FR_Spring_2020,FRH spring Chinook,Feather River Hatchery Spring-run Chinook 2020,YES,YES,NO,,,
+FR_Spring_2021,FRH spring Chinook,Feather River Hatchery Spring-run Chinook 2021,YES,YES,YES,,,
+FR_Spring_2023,FRH spring Chinook,Feather River Hatchery Spring-run Chinook 2023,YES,YES,YES,,,
+FRH_Fall_2021,FRH Fall Chinook,Feather River Hatchery Fall-run Chinook 2021,NO,YES,NO,,,
+FRW_Fall_2021,FRH Fall Chinook,Feather River Wild Fall-run Chinook 2021,NO,YES,NO,,,
+Juv_Green_Sturgeon_2016,Green Sturgeon,Juvenile Green Sturgeon 2016,NO,YES,NO,,,
+Juv_Green_Sturgeon_2016_2019,Green Sturgeon,Juvenile Green Sturgeon 2016-2019,NO,YES,NO,,,
+Juv_Green_Sturgeon_2017,Green Sturgeon,Juvenile Green Sturgeon 2017,NO,YES,NO,,,
+Juv_Green_Sturgeon_2018,Green Sturgeon,Juvenile Green Sturgeon 2018,NO,YES,NO,,,
+Juv_Green_Sturgeon_2019,Green Sturgeon,Juvenile Green Sturgeon 2019,NO,YES,NO,,,
+Lower_Yuba_FRH_Chinook_2023,FRH spring Chinook,Yuba River Releases Hatchery Spring-run Chinook 2023,YES,YES,YES,19,,
+MillCk_Wild_CHK_2013,MillCk Chinook,Mill Creek Wild Chinook 2013,YES,YES,NO,,,
+MillCk_Wild_CHK_2014,MillCk Chinook,Mill Creek Wild Chinook 2014,YES,YES,NO,,,
+MillCk_Wild_CHK_2015,MillCk Chinook,Mill Creek Wild Chinook 2015,YES,YES,NO,,,
+MillCk_Wild_CHK_2016,MillCk Chinook,Mill Creek Wild Chinook 2016,YES,YES,NO,,,
+MillCk_Wild_CHK_2017,MillCk Chinook,Mill Creek Wild Chinook 2017,YES,YES,NO,,,
+MillCk_Wild_STH_2015,O. mykiss,Mill Creek Wild Steelhead 2015,YES,YES,NO,,,
+MillCk_Wild_STH_2016,O. mykiss,Mill Creek Wild Steelhead 2016,YES,YES,NO,,,
+MillCk_Wild_STH_2019,Steelhead,Mill Creek Wild Steelhead 2019,YES,YES,NO,,,
+MillCk_Wild_STH_2020,Steelhead,Mill Creek Wild Steelhead 2020,YES,YES,NO,,,
+MillCk_Wild_STH_2021,Steelhead,Mill Creek Wild Steelhead 2021,NO,YES,NO,,,
+MillCk_Wild_STH_2022,Steelhead,Mill Creek Wild Steelhead 2022,YES,YES,NO,,30,
+Mok_Fall_2017,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2017,YES,YES,NO,,,
+Mok_Fall_2018,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2018,YES,YES,NO,,,
+Mok_Fall_2021,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2021,YES,YES,NO,,,
+Mok_Fall_2022,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2022,YES,YES,NO,,,
+Mok_Fall_2023,Mok Fall Chinook,Mokelumne River Hatchery Fall-run Chinook 2023,YES,YES,NO,,,
+Nimbus_Fall_2016,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2016,YES,YES,NO,,,
+Nimbus_Fall_2017,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2017,YES,YES,NO,,,
+Nimbus_Fall_2018,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2018,YES,YES,NO,,,
+Nimbus_Fall_2022,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2022,YES,YES,NO,,,
+Nimbus_Fall_2023,Nimbus Fall Chinook,Nimbus Hatchery Fall-run Chinook 2023,YES,YES,YES,,,
+Putah_Creek_CHN_2020,Putah Creek Chinook,Wild Putah Creek Chinook Salmon 2020,NO,YES,NO,,,
+Putah_Creek_CHN_2021,Putah Creek Chinook,Wild Putah Creek Chinook Salmon 2021,NO,YES,NO,,,
+RBDD_2017,Chinook,Red Bluff Diversion Dam Wild Chinook 2017,YES,YES,NO,,,
+RBDD_2018,Chinook,Red Bluff Diversion Dam Wild Chinook 2018,YES,YES,NO,,,
+SacRiverSpringJPE_2022,Chinook,Upper Sac Spring-run Surrogate Chinook 2022,YES,YES,YES,,,
+SacRiverSpringJPE_2023,CNFH Fall Chinook,Spring-run JPE Fall-run surrogates 2023,YES,YES,YES,,,
+SB_Spring_2015,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2015,YES,YES,NO,,,
+SB_Spring_2016,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2016,YES,YES,NO,,,
+SB_Spring_2017,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2017,YES,YES,NO,,,
+SB_Spring_2018,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2018,YES,YES,NO,,,
+SB_Spring_2019,ButteCK Chinook,Butte Creek Wild Spring-run Chinook 2019,YES,YES,NO,,,
+SB_Spring_2023,ButteCk Chinook,Butte Creek Wild Spring-run Chinook 2023,YES,YES,YES,,,
+Seasonal_Survival_2022,Chinook,Hatchery-Origin Chinook Salmon Seasonal Survival 2022,YES,YES,YES,,,
+Seasonal_Survival_2023,Chinook,Hatchery-Origin Chinook Salmon Seasonal Survival 2023,YES,YES,YES,1,,
+SJ_Steelhead_2021,Steelhead,San Joaquin River Steelhead 2021,YES,YES,NO,,,
+SJ_Steelhead_2022,Steelhead,San Joaquin River Steelhead 2022,YES,YES,NO,,,
+Spring_Pulse_2023,CNFH Fall Chinook,Spring Pulse Flow Fall-run Chinook experimental releases 2023,YES,YES,YES,,2,
+Sutter_Bypass_Rice_2022,Chinook,Hatchery-Origin Rice Field Reared Fall-run Chinook 2022,YES,YES,YES,,,
+Sutter_Bypass_Rice_Subyearling_2023,CNFH Fall Chinook,Hatchery-Origin Rice Field Reared Fall-run Chinook 2023,YES,NO,YES,,,
+Sutter_Bypass_Rice_Yearling_2023,CNFH Late-fall Chinook,Hatchery-Origin Rice Field Reared Late Fall-run Chinook 2023,YES,NO,YES,,,
+Upper_Butte_2019,Butte Spring-run,Upper Butte Creek Wild Spring-run Chinook 2019,YES,NO,NO,,,0.85
+Upper_Butte_2020,ButteCk Chinook,Upper Butte Creek Wild Spring-run Chinook 2020,YES,YES,NO,,,
+Upper_Butte_2021,ButteCk Chinook,Upper Butte Creek Wild Spring-run Chinook 2021,YES,YES,NO,,,
+Wild_stock_Chinook_Rbdd_2021,Chinook,Red Bluff RST Chinook 2021,YES,YES,NO,,,
+Wild_stock_Chinook_RBDD_2022,Chinook,Red Bluff RST Chinook 2022,YES,YES,NO,,,
+Winter_H_2013,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2013,YES,YES,NO,,,
+Winter_H_2014,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2014,YES,YES,NO,,,
+Winter_H_2015,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2015,YES,YES,NO,,,
+Winter_H_2016,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2016,YES,YES,NO,,,
+Winter_H_2017,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2017,YES,YES,NO,,,
+Winter_H_2018,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2018,YES,YES,NO,,,
+Winter_H_2019,LSNFH Winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2019,YES,YES,NO,,,
+Winter_H_2020,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2020,YES,YES,NO,,,
+Winter_H_2021,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2021,YES,YES,YES,,,
+Winter_H_2022,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2022,YES,YES,YES,,,
+Winter_H_2023,LSNFH winter Chinook,Livingston Stone Hatchery Winter-run Chinook 2023,YES,YES,YES,,,
