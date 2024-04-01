@@ -1,0 +1,3 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+UpperButte_RST_Rel,0.5,1,0,0,0,1,2020-05-17_UpperButte_RST_Rel,2020-05-17,Upper_Butte_2020,340.85,39.70936,-121.75056,Butte Creek,1 (NA),0.5,23,UpperButte_RST_Rel
+UpperButte1,1,0.261,0.092,0.12,0.47,1,2020-05-17_UpperButte_RST_Rel,2020-05-17,Upper_Butte_2020,324.1,39.58413,-121.80032,Butte Creek,0.261 (0.092),1,6,UpperButte_RST_Rel

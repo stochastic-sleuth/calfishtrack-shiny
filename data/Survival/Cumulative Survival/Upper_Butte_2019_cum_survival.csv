@@ -1,0 +1,9 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+UpperButte_RST_Rel,0.5,1,0,0,0,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,340.85,39.70936,-121.75056,Butte Creek,1 (NA),0.5,31,UpperButte_RST_Rel
+UpperButte3,1,0.387,0.087,0.23,0.56,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,267.21,39.1876,-121.90903,Butte Creek,0.387 (0.087),1,12,UpperButte_RST_Rel
+Blw_FRConf,2,0.295,0.083,0.16,0.48,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,203.46,38.78212,-121.61526,Lower Sac R,0.295 (0.083),2,8,UpperButte_RST_Rel
+TowerBridge,3,0.258,0.079,0.14,0.44,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,172,38.5802,-121.508,Lower Sac R,0.258 (0.079),3,7,UpperButte_RST_Rel
+I80-50_Br,4,0.258,0.079,0.14,0.44,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,170.74,38.571133,-121.5164,Lower Sac R,0.258 (0.079),4,8,UpperButte_RST_Rel
+Chipps,5,0.065,0.044,0.02,0.22,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,71.47999999999999,38.046132,-121.912643,West Delta,0.065 (0.044),5,2,UpperButte_RST_Rel
+Benicia,6,0.065,0.044,0.02,0.22,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,52.14,38.0423015,-122.1236,Carquinez Strait,0.065 (0.044),6,2,UpperButte_RST_Rel
+GoldenGateE,7,0.032,0.032,0,0.2,1,2019-05-11_UpperButte_RST_Rel,2019-05-11,Upper_Butte_2019,1.71,37.82794,-122.46168,SF Bay,0.032 (0.032),7,1,UpperButte_RST_Rel

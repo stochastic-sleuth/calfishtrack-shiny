@@ -1,0 +1,8 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+SutterBypass_Weir2_RST_Rel,0.5,1,0,0,0,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,249.541,39.10239,-121.758804,Sutter Bypass,1 (NA),0.5,95,SutterBypass_Weir2_RST_Rel
+Blw_FRConf,1,0.519,0.052,0.42,0.62,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,203.468,38.77409,-121.60043,Lower Sac R,0.519 (0.052),1,37,SutterBypass_Weir2_RST_Rel
+TowerBridge,2,0.506,0.051,0.41,0.61,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,172,38.5802,-121.508,Lower Sac R,0.506 (0.051),2,34,SutterBypass_Weir2_RST_Rel
+I80-50_Br,3,0.506,0.051,0.41,0.61,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,170.748,38.571133,-121.5164,Lower Sac R,0.506 (0.051),3,40,SutterBypass_Weir2_RST_Rel
+SacTrawl,4,0.506,0.051,0.41,0.61,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.506 (0.051),4,38,SutterBypass_Weir2_RST_Rel
+Benicia,5,0.406,0.052,0.31,0.51,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.406 (0.052),5,37,SutterBypass_Weir2_RST_Rel
+GoldenGateE,6,0.26,0.046,0.18,0.36,1,2023-04-12_SutterBypass_Weir2_RST_Rel,2023-04-12,SB_Spring_2023,1.71,37.82794,-122.46168,SF Bay,0.26 (0.046),6,20,SutterBypass_Weir2_RST_Rel

@@ -1,21 +1,8 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,release,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.8928852,0.014692,0.8605024,0.918463,Nimbus_Fall_2018,AR_Sunrise_Ramp_Rel,TowerBridge,206.04,172,Amer R,"AR_Sunrise_Ramp_Rel to 
-TowerBridge",206.04 to 172,1,AR_Sunrise_Ramp_Rel,150,102,38.63634,-121.26424,38.5802,-121.508
-1,0,1,1,Nimbus_Fall_2018,TowerBridge,I80-50_Br,172,170.74,Lower Sac R,"TowerBridge to 
-I80-50_Br",172 to 170.74,2,AR_Sunrise_Ramp_Rel,102,62,38.5802,-121.508,38.571133,-121.5164
-0.8742483,0.0525489,0.7314913,0.9466425,Nimbus_Fall_2018,I80-50_Br,SacTrawl1,170.74,167,Lower Sac R,"I80-50_Br to 
-SacTrawl1",170.74 to 167,3,AR_Sunrise_Ramp_Rel,62,97,38.571133,-121.5164,38.54081,-121.51331
-1,0,1,1,Nimbus_Fall_2018,SacTrawl1,SacTrawl2,167,166.63,Lower Sac R,"SacTrawl1 to 
-SacTrawl2",167 to 166.63,4,AR_Sunrise_Ramp_Rel,97,97,38.54081,-121.51331,38.53823,-121.51557
-0.8083595,0.0263231,0.7514466,0.8547595,Nimbus_Fall_2018,SacTrawl2,Hood,166.63,138.22,Lower Sac R,"SacTrawl2 to 
-Hood",166.63 to 138.22,5,AR_Sunrise_Ramp_Rel,97,53,38.53823,-121.51557,38.3617,-121.52033
-0.7020583,0.0447697,0.6076904,0.7818743,Nimbus_Fall_2018,Hood,Chipps,138.22,71.47999999999999,Lower Sac R,"Hood to 
-Chipps",138.22 to 71.48,6,AR_Sunrise_Ramp_Rel,53,5,38.3617,-121.52033,38.046132,-121.912643
-0.7678738,0.1449785,0.401825,0.9421633,Nimbus_Fall_2018,Chipps,Benicia,71.47999999999999,52.14,West Delta,"Chipps to 
-Benicia",71.48 to 52.14,7,AR_Sunrise_Ramp_Rel,5,3,38.046132,-121.912643,38.0423015,-122.1236
-0.8814277,0,0.8814277,0.8814277,Nimbus_Fall_2018,Benicia,Mare_Island_Rel,52.14,40.02,Carquinez Strait,"Benicia to 
-Mare_Island_Rel",52.14 to 40.02,8,AR_Sunrise_Ramp_Rel,3,0,38.0423015,-122.1236,38.066307,-122.24687
-0.9362196,0,0.9362196,0.9362196,Nimbus_Fall_2018,Mare_Island_Rel,GoldenGateE,40.02,1.71,San Pablo Bay,"Mare_Island_Rel to 
-GoldenGateE",40.02 to 1.71,9,AR_Sunrise_Ramp_Rel,0,2,38.066307,-122.24687,37.82794,-122.46168
-0.7218247,0.0325178,0.6538749,0.7809046,Nimbus_Fall_2018,Mare_Island_Rel,GoldenGateE,40.02,1.71,San Pablo Bay,"Mare_Island_Rel to 
-GoldenGateE",40.02 to 1.71,9,Mare_Island_Rel,84,23,38.066307,-122.24687,37.82794,-122.46168
+reach_end,reach_start,estimate,se,lcl,ucl,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+TowerBridge,AR_Sunrise_Ramp_Rel,0.989,0.002,0.985,0.992,206.04,172,Lower Sac R,AR_Sunrise_Ramp_Rel to TowerBridge,206.04 to 172,38.63634,-121.26424,38.5802,-121.508,2018-05-10_AR_Sunrise_Ramp_Rel,2018-05-10,150,102,1,1,AR_Sunrise_Ramp_Rel
+SacTrawl,TowerBridge,0.99,0.004,0.977,0.996,172,166.815,Lower Sac R,TowerBridge to SacTrawl,172 to 166.815,38.5802,-121.508,38.539519999999996,-121.51444000000001,2018-05-10_AR_Sunrise_Ramp_Rel,2018-05-10,102,97,1,2,AR_Sunrise_Ramp_Rel
+Hood,SacTrawl,0.979,0.003,0.972,0.984,166.815,138.22,Lower Sac R,SacTrawl to Hood,166.815 to 138.22,38.539519999999996,-121.51444000000001,38.3617,-121.52033,2018-05-10_AR_Sunrise_Ramp_Rel,2018-05-10,97,53,1,3,AR_Sunrise_Ramp_Rel
+Chipps,Hood,0.965,0.006,0.951,0.975,138.22,71.48,West Delta,Hood to Chipps,138.22 to 71.48,38.3617,-121.52033,38.046132,-121.912643,2018-05-10_AR_Sunrise_Ramp_Rel,2018-05-10,53,5,1,4,AR_Sunrise_Ramp_Rel
+Benicia,Chipps,0.974,0.018,0.9,0.994,71.48,52.14,Carquinez Strait,Chipps to Benicia,71.48 to 52.14,38.046132,-121.912643,38.0423015,-122.1236,2018-05-10_AR_Sunrise_Ramp_Rel,2018-05-10,5,3,1,5,AR_Sunrise_Ramp_Rel
+GoldenGateE,Benicia,0.992,0.008,0.941,0.999,52.14,1.71,SF Bay,Benicia to GoldenGateE,52.14 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2018-05-10_AR_Sunrise_Ramp_Rel,2018-05-10,3,2,1,6,AR_Sunrise_Ramp_Rel
+GoldenGateE,Mare_Island_Rel,0.968,0.004,0.958,0.975,40.02,1.71,SF Bay,Mare_Island_Rel to GoldenGateE,40.02 to 1.71,38.066307,-122.24687,37.82794,-122.46168,2018-05-22_Mare_Island_Rel,2018-05-22,84,23,2,6,Mare_Island_Rel

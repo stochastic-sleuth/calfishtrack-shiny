@@ -1,5 +1,4 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
-1,0,1,1,BC-Spring-2018,UpperButte_RST_Rel,340.85,0,Butte Creek,59,39.70936,-121.75056
-0.39,0.063,0.275,0.519,BC-Spring-2018,UpperButte1,324.1,1,Butte Creek,23,39.58413,-121.80032
-0.102,0.039,0.046,0.208,BC-Spring-2018,UpperButte2,307.16,2,Butte Creek,6,39.464115,-121.87012
-0.017,0.017,0.002,0.111,BC-Spring-2018,UpperButte3,267.21,3,Butte Creek,1,39.1876,-121.90903
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+UpperButte_RST_Rel,0.5,1,0,0,0,1,2018-05-16_UpperButte_RST_Rel,2018-05-16,BC-Spring-2018,340.85,39.70936,-121.75056,Butte Creek,1 (NA),0.5,59,UpperButte_RST_Rel
+UpperButte1,1,0.39,0.063,0.28,0.52,1,2018-05-16_UpperButte_RST_Rel,2018-05-16,BC-Spring-2018,324.1,39.58413,-121.80032,Butte Creek,0.39 (0.063),1,23,UpperButte_RST_Rel
+UpperButte2,2,0.102,0.039,0.05,0.21,1,2018-05-16_UpperButte_RST_Rel,2018-05-16,BC-Spring-2018,307.16,39.464115,-121.87012,Butte Creek,0.102 (0.039),2,6,UpperButte_RST_Rel

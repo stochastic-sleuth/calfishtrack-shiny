@@ -1,39 +1,19 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.715231,0.1697351,0.329056,0.9278627,MillCk_Wild_STH_2016,MillCk1,MillCk2,449.921,444.478,Mill Ck,"MillCk1 to 
-MillCk2",449.921 to 444.478,5,7,40.055504,-122.04123,40.046066,-122.09443
-1,0,1,1,MillCk_Wild_STH_2016,MillCk2,Mill_Ck_Conf,444.478,441.318,Mill Ck,"MillCk2 to 
-Mill_Ck_Conf",444.478 to 441.318,7,10,40.046066,-122.09443,40.0327,-122.11987
-0.7289829,0.1164744,0.4585856,0.8951983,MillCk_Wild_STH_2016,Mill_Ck_Conf,Abv_WoodsonBr,441.318,425.158,Upper Sac R,"Mill_Ck_Conf to 
-Abv_WoodsonBr",441.318 to 425.158,10,6,40.0327,-122.11987,39.920094,-122.08446000000001
-0.9419555,0.0564043,0.6823877,0.9919078,MillCk_Wild_STH_2016,Abv_WoodsonBr,Blw_IrvineFinch,425.158,394.668,Upper Sac R,"Abv_WoodsonBr to 
-Blw_IrvineFinch",425.158 to 394.668,6,5,39.920094,-122.08446000000001,39.73146,-121.97483
-1,0,1,1,MillCk_Wild_STH_2016,Blw_IrvineFinch,BlwOrd,394.668,361.728,Upper Sac R,"Blw_IrvineFinch to 
-BlwOrd",394.668 to 361.728,5,5,39.73146,-121.97483,39.56548,-122.0018
-1,0,1,1,MillCk_Wild_STH_2016,BlwOrd,ButteBr,361.728,344.108,Upper Sac R,"BlwOrd to 
-ButteBr",361.728 to 344.108,5,5,39.56548,-122.0018,39.4569,-121.995
-0.8418368,0.1036048,0.5366452,0.960724,MillCk_Wild_STH_2016,ButteBr,AbvColusaBrRT,344.108,314.438,Lower Sac R,"ButteBr to 
-AbvColusaBrRT",344.108 to 314.438,5,2,39.4569,-121.995,39.2647,-122
-1,0,1,1,MillCk_Wild_STH_2016,AbvColusaBrRT,AbvColusaBr,314.438,307.738,Lower Sac R,"AbvColusaBrRT to 
-AbvColusaBr",314.438 to 307.738,2,3,39.2647,-122,39.2205,-122.00847
-1,0,1,1,MillCk_Wild_STH_2016,AbvColusaBr,AbvTisdale,307.738,269.238,Lower Sac R,"AbvColusaBr to 
-AbvTisdale",307.738 to 269.238,3,3,39.2205,-122.00847,39.0364,-121.82918
-0.8679059,0.1238019,0.4417714,0.9819981,MillCk_Wild_STH_2016,AbvTisdale,BlwChinaBend,269.238,240.618,Lower Sac R,"AbvTisdale to 
-BlwChinaBend",269.238 to 240.618,3,2,39.0364,-121.82918,38.88406,-121.81713
-0.6581548,0.2808607,0.1428685,0.9569682,MillCk_Wild_STH_2016,BlwChinaBend,KnightsLandingBr,240.618,224.05,Lower Sac R,"BlwChinaBend to 
-KnightsLandingBr",240.618 to 224.05,2,1,38.88406,-121.81713,38.8021,-121.72
-1,0,1,1,MillCk_Wild_STH_2016,KnightsLandingBr,Blw_FRConf,224.05,203.468,Lower Sac R,"KnightsLandingBr to 
-Blw_FRConf",224.05 to 203.468,1,1,38.8021,-121.72,38.778105,-121.607845
-1,0,1,1,MillCk_Wild_STH_2016,Blw_FRConf,TowerBridge,203.468,172,Lower Sac R,"Blw_FRConf to 
-TowerBridge",203.468 to 172,1,1,38.778105,-121.607845,38.5802,-121.508
-1,4.862871e-5,0.9999047,1.0000953,MillCk_Wild_STH_2016,TowerBridge,I80-50_Br,172,170.748,Lower Sac R,"TowerBridge to 
-I80-50_Br",172 to 170.748,1,1,38.5802,-121.508,38.571133,-121.5164
-1,0,1,1,MillCk_Wild_STH_2016,I80-50_Br,SacTrawl,170.748,166.8225,Lower Sac R,"I80-50_Br to 
-SacTrawl",170.748 to 166.8225,1,1,38.571133,-121.5164,38.539519999999996,-121.51444000000001
-1,0,1,1,MillCk_Wild_STH_2016,SacTrawl,Freeport,166.8225,152.438,Lower Sac R,"SacTrawl to 
-Freeport",166.8225 to 152.438,1,1,38.539519999999996,-121.51444000000001,38.46467,-121.50501
-1,0,1,1,MillCk_Wild_STH_2016,Freeport,Benicia,152.438,52.048,Lower Sac R,"Freeport to 
-Benicia",152.438 to 52.048,1,1,38.46467,-121.50501,38.041233,-122.12382
-1,0,1,1,MillCk_Wild_STH_2016,Benicia,GoldenGateE,52.048,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.048 to 1.71,1,1,38.041233,-122.12382,37.82794,-122.46168
-1,4.891193e-4,2.13369e-301,1,MillCk_Wild_STH_2016,GoldenGateE,GoldenGateW,1.71,0.8,SF Bay,"GoldenGateE to 
-GoldenGateW",1.71 to 0.8,1,1,37.82794,-122.46168,37.82126,-122.46918
+estimate,se,lcl,ucl,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,group,reach_num,mean_rel_date,release_site
+0.807,0.122,0.473,0.951,MillCk_RST_Rel,Mill_Ck_Conf,450.703,441.318,Upper Sac R,MillCk_RST_Rel to Mill_Ck_Conf,450.703 to 441.318,11,9,40.05479,-122.032104,40.0327,-122.11987,2016-05-10_MillCk_RST_Rel,1,1,2016-05-10,MillCk_RST_Rel
+0.695,0.128,0.41,0.882,Mill_Ck_Conf,Abv_WoodsonBr,441.318,425.158,Upper Sac R,Mill_Ck_Conf to Abv_WoodsonBr,441.318 to 425.158,9,5,40.0327,-122.11987,39.920094,-122.08446000000001,2016-05-10_MillCk_RST_Rel,1,2,2016-05-10,MillCk_RST_Rel
+0.898,0.097,0.526,0.986,Abv_WoodsonBr,GCID,425.158,404.428,Upper Sac R,Abv_WoodsonBr to GCID,425.158 to 404.428,5,4,39.920094,-122.08446000000001,39.79114,-122.036026,2016-05-10_MillCk_RST_Rel,1,3,2016-05-10,MillCk_RST_Rel
+1,0,1,1,GCID,Blw_IrvineFinch,404.428,394.668,Upper Sac R,GCID to Blw_IrvineFinch,404.428 to 394.668,4,4,39.79114,-122.036026,39.73146,-121.97483,2016-05-10_MillCk_RST_Rel,1,4,2016-05-10,MillCk_RST_Rel
+1,0,1,1,Blw_IrvineFinch,BlwOrd,394.668,361.728,Upper Sac R,Blw_IrvineFinch to BlwOrd,394.668 to 361.728,4,4,39.73146,-121.97483,39.56548,-122.0018,2016-05-10_MillCk_RST_Rel,1,5,2016-05-10,MillCk_RST_Rel
+1,0,1,1,BlwOrd,ButteBr,361.728,344.108,Lower Sac R,BlwOrd to ButteBr,361.728 to 344.108,4,4,39.56548,-122.0018,39.4569,-121.995,2016-05-10_MillCk_RST_Rel,1,6,2016-05-10,MillCk_RST_Rel
+0.826,0.114,0.502,0.957,ButteBr,AbvColusaBr,344.108,307.738,Lower Sac R,ButteBr to AbvColusaBr,344.108 to 307.738,4,2,39.4569,-121.995,39.2205,-122.00847,2016-05-10_MillCk_RST_Rel,1,7,2016-05-10,MillCk_RST_Rel
+1,0,1,1,AbvColusaBr,AbvTisdale,307.738,269.238,Lower Sac R,AbvColusaBr to AbvTisdale,307.738 to 269.238,2,2,39.2205,-122.00847,39.0364,-121.82918,2016-05-10_MillCk_RST_Rel,1,8,2016-05-10,MillCk_RST_Rel
+1,0,1,1,AbvTisdale,BlwChinaBend,269.238,240.618,Lower Sac R,AbvTisdale to BlwChinaBend,269.238 to 240.618,2,2,39.0364,-121.82918,38.88406,-121.81713,2016-05-10_MillCk_RST_Rel,1,9,2016-05-10,MillCk_RST_Rel
+0.658,0.281,0.143,0.957,BlwChinaBend,KnightsLandingBr,240.618,224.05,Lower Sac R,BlwChinaBend to KnightsLandingBr,240.618 to 224.05,2,1,38.88406,-121.81713,38.8021,-121.72,2016-05-10_MillCk_RST_Rel,1,10,2016-05-10,MillCk_RST_Rel
+1,0,1,1,KnightsLandingBr,Blw_FRConf,224.05,203.468,Lower Sac R,KnightsLandingBr to Blw_FRConf,224.05 to 203.468,1,1,38.8021,-121.72,38.78212,-121.61526,2016-05-10_MillCk_RST_Rel,1,11,2016-05-10,MillCk_RST_Rel
+1,0,1,1,Blw_FRConf,TowerBridge,203.468,172,Lower Sac R,Blw_FRConf to TowerBridge,203.468 to 172,1,1,38.78212,-121.61526,38.5802,-121.508,2016-05-10_MillCk_RST_Rel,1,12,2016-05-10,MillCk_RST_Rel
+1,0,1,1,TowerBridge,I80-50_Br,172,170.748,Lower Sac R,TowerBridge to I80-50_Br,172 to 170.748,1,1,38.5802,-121.508,38.571133,-121.5164,2016-05-10_MillCk_RST_Rel,1,13,2016-05-10,MillCk_RST_Rel
+1,0,1,1,I80-50_Br,SacTrawl,170.748,166.8225,Lower Sac R,I80-50_Br to SacTrawl,170.748 to 166.8225,1,1,38.571133,-121.5164,38.539519999999996,-121.51444000000001,2016-05-10_MillCk_RST_Rel,1,14,2016-05-10,MillCk_RST_Rel
+1,0,1,1,SacTrawl,Freeport,166.8225,152.438,Lower Sac R,SacTrawl to Freeport,166.8225 to 152.438,1,1,38.539519999999996,-121.51444000000001,38.46467,-121.50501,2016-05-10_MillCk_RST_Rel,1,15,2016-05-10,MillCk_RST_Rel
+1,0,1,1,Freeport,Chipps,152.438,71.48599999999999,West Delta,Freeport to Chipps,152.438 to 71.486,1,1,38.46467,-121.50501,38.046132,-121.912643,2016-05-10_MillCk_RST_Rel,1,16,2016-05-10,MillCk_RST_Rel
+1,0,1,1,Chipps,Benicia,71.48599999999999,52.048,Carquinez Strait,Chipps to Benicia,71.486 to 52.048,1,1,38.046132,-121.912643,38.041233,-122.12382,2016-05-10_MillCk_RST_Rel,1,17,2016-05-10,MillCk_RST_Rel
+1,0,1,1,Benicia,GoldenGateE,52.048,1.71,SF Bay,Benicia to GoldenGateE,52.048 to 1.71,1,1,38.041233,-122.12382,37.82794,-122.46168,2016-05-10_MillCk_RST_Rel,1,18,2016-05-10,MillCk_RST_Rel

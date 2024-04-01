@@ -1,17 +1,13 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
-1,0,1,1,BattleCk_Wild_2014,BattleCk_RST_Rel,517.38,0,Battle Ck,77,40.39812,-122.144875
-0.954,0.044,0.741,0.994,BattleCk_Wild_2014,BattleCk2_2014,516.7,1,Battle Ck,34,40.39672,-122.15365
-0.871,0.038,0.776,0.929,BattleCk_Wild_2014,BattleCk_Bridge,516.58,2,Battle Ck,66,40.391815,-122.17781
-0.82,0.044,0.717,0.891,BattleCk_Wild_2014,Battle_Conf,507.48,3,Upper Sac R,62,40.35371,-122.17734
-0.714,0.051,0.604,0.804,BattleCk_Wild_2014,Blw_Paynes_Ck,476.27,4,Upper Sac R,55,40.25534,-122.17332
-0.628,0.056,0.514,0.729,BattleCk_Wild_2014,Blw_Salt,456.88,5,Upper Sac R,41,40.1464,-122.15246
-0.604,0.057,0.489,0.708,BattleCk_Wild_2014,Mill_Ck_Conf,441.31,6,Upper Sac R,43,40.0327,-122.11987
-0.528,0.058,0.414,0.638,BattleCk_Wild_2014,Abv_WoodsonBr,425.15,7,Upper Sac R,38,39.920094,-122.08446000000001
-0.403,0.056,0.299,0.515,BattleCk_Wild_2014,Blw_IrvineFinch,394.66,8,Upper Sac R,31,39.73146,-121.97483
-0.338,0.054,0.241,0.45,BattleCk_Wild_2014,BlwOrd,361.72,9,Upper Sac R,26,39.56548,-122.0018
-0.25,0.058,0.154,0.379,BattleCk_Wild_2014,BlwButteBr,338.28,10,Lower Sac R,14,39.41913,-122.00943
-0.143,0.04,0.081,0.24,BattleCk_Wild_2014,AbvColusaBr,307.73,11,Lower Sac R,11,39.2205,-122.00847
-0.136,0.041,0.074,0.238,BattleCk_Wild_2014,AbvTisdale,269.23,12,Lower Sac R,9,39.0364,-121.82918
-0.098,0.036,0.046,0.195,BattleCk_Wild_2014,BlwChinaBend,240.61,13,Lower Sac R,6,38.88406,-121.81713
-0.098,0.036,0.046,0.195,BattleCk_Wild_2014,KnightsLanding,224.06,14,Lower Sac R,2,38.82341,-121.72388
-0.095,0,0,0,BattleCk_Wild_2014,Blw_FRConf,203.46,15,Lower Sac R,4,38.78212,-121.61526
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+BattleCk_RST_Rel,0.5,1,0,0,0,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,517.384,40.39812,-122.144875,Battle Ck,1 (NA),0.5,77,BattleCk_RST_Rel
+BattleCk_Bridge,1,0.87,0.038,0.78,0.93,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,516.58,40.391815,-122.17781,Battle Ck,0.87 (0.038),1,67,BattleCk_RST_Rel
+Battle_Conf,2,0.818,0.044,0.72,0.89,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,507.488,40.35371,-122.17734,Upper Sac R,0.818 (0.044),2,63,BattleCk_RST_Rel
+Blw_Paynes_Ck,3,0.714,0.051,0.6,0.8,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,476.278,40.25534,-122.17332,Upper Sac R,0.714 (0.051),3,55,BattleCk_RST_Rel
+Blw_Salt,4,0.642,0.055,0.53,0.74,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,456.888,40.1464,-122.15246,Upper Sac R,0.642 (0.055),4,41,BattleCk_RST_Rel
+Mill_Ck_Conf,5,0.614,0.056,0.5,0.72,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,441.318,40.0327,-122.11987,Upper Sac R,0.614 (0.056),5,45,BattleCk_RST_Rel
+Abv_WoodsonBr,6,0.54,0.058,0.43,0.65,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,425.158,39.920094,-122.08446000000001,Upper Sac R,0.54 (0.058),6,39,BattleCk_RST_Rel
+Blw_IrvineFinch,7,0.416,0.056,0.31,0.53,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,394.668,39.73146,-121.97483,Upper Sac R,0.416 (0.056),7,32,BattleCk_RST_Rel
+BlwOrd,8,0.351,0.054,0.25,0.46,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,361.728,39.56548,-122.0018,Upper Sac R,0.351 (0.054),8,27,BattleCk_RST_Rel
+BlwButteBr,9,0.351,0.054,0.25,0.46,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,338.288,39.41913,-122.00943,Lower Sac R,0.351 (0.054),9,14,BattleCk_RST_Rel
+AbvColusaBr,10,0.143,0.04,0.08,0.24,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,307.738,39.2205,-122.00847,Lower Sac R,0.143 (0.04),10,11,BattleCk_RST_Rel
+AbvTisdale,11,0.143,0.04,0.08,0.24,1,2014-04-26_BattleCk_RST_Rel,2014-04-26,BattleCk_Wild_2014,269.238,39.0364,-121.82918,Lower Sac R,0.143 (0.04),11,9,BattleCk_RST_Rel

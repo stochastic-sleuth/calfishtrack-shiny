@@ -1,19 +1,5 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
-1,0,0,0,Sutter_Bypass_Rice_2022,Sutter_Bypass_Rice_Rel,228.021,0,Sutter Bypass,1 (NA),0,315,38.94364,-121.66482
-0.26,0.03,0.22,0.32,Sutter_Bypass_Rice_2022,SutterWestCanal2,223.64,1,Sutter Bypass,0.26 (0.03),1,82,38.910755,-121.63891
-0.2,0.02,0.16,0.25,Sutter_Bypass_Rice_2022,SutterWestCanal3,219.33,2,Sutter Bypass,0.2 (0.02),2,61,38.873375,-121.64053
-0.13,0.02,0.1,0.18,Sutter_Bypass_Rice_2022,SutterWestSacRiver,206.48,3,Sutter Bypass,0.13 (0.02),3,42,38.78346,-121.63226
-0.13,0.02,0.1,0.18,Sutter_Bypass_Rice_2022,SacFeather,205.76,4,Lower Sac R,0.13 (0.02),4,37,38.785244,-121.62445
-0.13,0.02,0.1,0.18,Sutter_Bypass_Rice_2022,Blw_FRConf,203.468,5,Lower Sac R,0.13 (0.02),5,37,38.778105,-121.607845
-0.13,0.02,0.1,0.18,Sutter_Bypass_Rice_2022,Blw_FR_GS2,199,6,Lower Sac R,0.13 (0.02),6,19,38.73505,-121.60267
-0.13,0.02,0.09,0.18,Sutter_Bypass_Rice_2022,RM75_RST,198.162,7,Lower Sac R,0.13 (0.02),7,14,38.727325,-121.60518
-0.11,0.02,0.08,0.15,Sutter_Bypass_Rice_2022,Blw_Elkhorn_GS1,191.92,8,Lower Sac R,0.11 (0.02),8,35,38.64737,-121.57771
-0.1,0.02,0.07,0.14,Sutter_Bypass_Rice_2022,TowerBridge,172,9,Lower Sac R,0.1 (0.02),9,31,38.5802,-121.508
-0.1,0.02,0.07,0.13,Sutter_Bypass_Rice_2022,I80-50_Br,170.748,10,Lower Sac R,0.1 (0.02),10,29,38.571133,-121.5164
-0.09,0.02,0.06,0.12,Sutter_Bypass_Rice_2022,SacTrawl,166.8225,11,Lower Sac R,0.09 (0.02),11,27,38.539519999999996,-121.51444000000001
-0.08,0.02,0.06,0.12,Sutter_Bypass_Rice_2022,Little Pocket_DS of I80,164.387,12,Lower Sac R,0.08 (0.02),12,26,38.52448,-121.52849
-0.07,0.01,0.05,0.1,Sutter_Bypass_Rice_2022,Freeport,152.438,13,Lower Sac R,0.07 (0.01),13,22,38.46467,-121.50501
-0.06,0.01,0.04,0.1,Sutter_Bypass_Rice_2022,Abv_Clarksburg,147.668,14,Lower Sac R,0.06 (0.01),14,20,38.43443,-121.52448
-0.06,0.01,0.04,0.09,Sutter_Bypass_Rice_2022,Hood,138.228,15,Lower Sac R,0.06 (0.01),15,19,38.3617,-121.52033
-0.01,0,0,0.03,Sutter_Bypass_Rice_2022,Benicia,52.144000000000005,16,Carquinez Strait,0.01 (0),16,3,38.0423015,-122.1236
-0,0,0,0.02,Sutter_Bypass_Rice_2022,GoldenGateE,1.71,17,SF Bay,0 (0),17,1,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Sutter_Bypass_Rice_Rel,0.5,1,0,0,0,1,2022-03-08_Sutter_Bypass_Rice_Rel,2022-03-08,Sutter_Bypass_Rice_2022,228.021,38.94364,-121.66482,Sutter Bypass,1 (NA),0.5,315,Sutter_Bypass_Rice_Rel
+Chipps,1,0.013,0.006,0,0.03,1,2022-03-08_Sutter_Bypass_Rice_Rel,2022-03-08,Sutter_Bypass_Rice_2022,71.48599999999999,38.046132,-121.912643,West Delta,0.013 (0.006),1,4,Sutter_Bypass_Rice_Rel
+Benicia,2,0.01,0.005,0,0.03,1,2022-03-08_Sutter_Bypass_Rice_Rel,2022-03-08,Sutter_Bypass_Rice_2022,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.01 (0.005),2,3,Sutter_Bypass_Rice_Rel
+GoldenGateE,3,0.003,0.003,0,0.02,1,2022-03-08_Sutter_Bypass_Rice_Rel,2022-03-08,Sutter_Bypass_Rice_2022,1.71,37.82794,-122.46168,SF Bay,0.003 (0.003),3,1,Sutter_Bypass_Rice_Rel

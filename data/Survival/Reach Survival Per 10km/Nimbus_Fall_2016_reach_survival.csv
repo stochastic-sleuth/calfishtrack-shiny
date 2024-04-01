@@ -1,25 +1,12 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.9702239,0.0120391,0.9350531,0.9866211,Nimbus_Fall_2018,AR_Sunrise_Ramp_Rel,AR_RanchoCordova,206.04,199.37,Amer R,"AR_Sunrise_Ramp_Rel to 
-AR_RanchoCordova",206.04 to 199.37,1,299,292,38.63634,-121.26424,38.61468,-121.30276
-0.9730157,0.0089899,0.948537,0.9860225,Nimbus_Fall_2018,AR_RanchoCordova,AR_Downstream_WattAve,199.37,188.07,Amer R,"AR_RanchoCordova to 
-AR_Downstream_WattAve",199.37 to 188.07,2,292,282,38.61468,-121.30276,38.56572,-121.39069
-0.926763,0.0183785,0.8815589,0.9555838,Nimbus_Fall_2018,AR_Downstream_WattAve,AR_Upstream_Hwy80,188.07,180.95,Amer R,"AR_Downstream_WattAve to 
-AR_Upstream_Hwy80",188.07 to 180.95,3,282,267,38.56572,-121.39069,38.58339,-121.44109
-0.9069682,0.0216815,0.8548954,0.9416299,Nimbus_Fall_2018,AR_Upstream_Hwy80,AR_Mouth,180.95,174.27,Amer R,"AR_Upstream_Hwy80 to 
-AR_Mouth",180.95 to 174.27,4,267,251,38.58339,-121.44109,38.59999,-121.50684
-0.5597501,0.058426,0.4440977,0.6692607,Nimbus_Fall_2018,AR_Mouth,TowerBridge,174.27,172,Amer R,"AR_Mouth to 
-TowerBridge",174.27 to 172,5,251,220,38.59999,-121.50684,38.5802,-121.508
-0.8453526,0.0693067,0.659153,0.9392143,Nimbus_Fall_2018,TowerBridge,I80-50_Br,172,170.74,Lower Sac R,"TowerBridge to 
-I80-50_Br",172 to 170.74,6,220,212,38.5802,-121.508,38.571133,-121.5164
-0.7779765,0.0448255,0.6781465,0.8535299,Nimbus_Fall_2018,I80-50_Br,SacTrawl1,170.74,167,Lower Sac R,"I80-50_Br to 
-SacTrawl1",170.74 to 167,7,212,197,38.571133,-121.5164,38.54081,-121.51331
-1,0,1,1,Nimbus_Fall_2018,SacTrawl1,SacTrawl2,167,166.63,Lower Sac R,"SacTrawl1 to 
-SacTrawl2",167 to 166.63,8,197,197,38.54081,-121.51331,38.53823,-121.51557
-0.8826472,0.0195029,0.8387152,0.9158138,Nimbus_Fall_2018,SacTrawl2,Freeport,166.63,152.43,Lower Sac R,"SacTrawl2 to 
-Freeport",166.63 to 152.43,9,197,165,38.53823,-121.51557,38.46467,-121.50501
-0.649252,0.0353207,0.5773125,0.7149923,Nimbus_Fall_2018,Freeport,Chipps,152.43,71.47999999999999,Lower Sac R,"Freeport to 
-Chipps",152.43 to 71.48,10,165,5,38.46467,-121.50501,38.046132,-121.912643
-0.436965,0.2010464,0.1352695,0.7938305,Nimbus_Fall_2018,Chipps,Benicia,71.47999999999999,52.04,West Delta,"Chipps to 
-Benicia",71.48 to 52.04,11,5,1,38.046132,-121.912643,38.041233,-122.12382
-1,0,1,1,Nimbus_Fall_2018,Benicia,GoldenGateE,52.04,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.04 to 1.71,12,1,1,38.041233,-122.12382,37.82794,-122.46168
+estimate,se,lcl,ucl,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,group,reach_num,mean_rel_date,release_site
+0.97,0.012,0.935,0.987,AR_Sunrise_Ramp_Rel,AR_RanchoCordova,206.04,199.37,Amer R,AR_Sunrise_Ramp_Rel to AR_RanchoCordova,206.04 to 199.37,299,292,38.63634,-121.26424,38.61468,-121.30276,2016-05-14_AR_Sunrise_Ramp_Rel,1,1,2016-05-14,AR_Sunrise_Ramp_Rel
+0.973,0.009,0.949,0.986,AR_RanchoCordova,AR_Downstream_WattAve,199.37,188.07,Amer R,AR_RanchoCordova to AR_Downstream_WattAve,199.37 to 188.07,292,282,38.61468,-121.30276,38.56572,-121.39069,2016-05-14_AR_Sunrise_Ramp_Rel,1,2,2016-05-14,AR_Sunrise_Ramp_Rel
+0.927,0.018,0.882,0.956,AR_Downstream_WattAve,AR_Upstream_Hwy80,188.07,180.95,Amer R,AR_Downstream_WattAve to AR_Upstream_Hwy80,188.07 to 180.95,282,267,38.56572,-121.39069,38.58339,-121.44109,2016-05-14_AR_Sunrise_Ramp_Rel,1,3,2016-05-14,AR_Sunrise_Ramp_Rel
+0.907,0.022,0.855,0.942,AR_Upstream_Hwy80,AR_Mouth,180.95,174.27,Amer R,AR_Upstream_Hwy80 to AR_Mouth,180.95 to 174.27,267,251,38.58339,-121.44109,38.59999,-121.50684,2016-05-14_AR_Sunrise_Ramp_Rel,1,4,2016-05-14,AR_Sunrise_Ramp_Rel
+0.56,0.058,0.444,0.669,AR_Mouth,TowerBridge,174.27,172,Lower Sac R,AR_Mouth to TowerBridge,174.27 to 172,251,220,38.59999,-121.50684,38.5802,-121.508,2016-05-14_AR_Sunrise_Ramp_Rel,1,5,2016-05-14,AR_Sunrise_Ramp_Rel
+0.845,0.069,0.659,0.939,TowerBridge,I80-50_Br,172,170.74,Lower Sac R,TowerBridge to I80-50_Br,172 to 170.74,220,212,38.5802,-121.508,38.571133,-121.5164,2016-05-14_AR_Sunrise_Ramp_Rel,1,6,2016-05-14,AR_Sunrise_Ramp_Rel
+0.787,0.043,0.691,0.86,I80-50_Br,SacTrawl,170.74,166.815,Lower Sac R,I80-50_Br to SacTrawl,170.74 to 166.815,212,197,38.571133,-121.5164,38.539519999999996,-121.51444000000001,2016-05-14_AR_Sunrise_Ramp_Rel,1,7,2016-05-14,AR_Sunrise_Ramp_Rel
+0.884,0.019,0.841,0.917,SacTrawl,Freeport,166.815,152.43,Lower Sac R,SacTrawl to Freeport,166.815 to 152.43,197,165,38.539519999999996,-121.51444000000001,38.46467,-121.50501,2016-05-14_AR_Sunrise_Ramp_Rel,1,8,2016-05-14,AR_Sunrise_Ramp_Rel
+0.649,0.035,0.577,0.715,Freeport,Chipps,152.43,71.47999999999999,West Delta,Freeport to Chipps,152.43 to 71.48,165,5,38.46467,-121.50501,38.046132,-121.912643,2016-05-14_AR_Sunrise_Ramp_Rel,1,9,2016-05-14,AR_Sunrise_Ramp_Rel
+0.437,0.201,0.135,0.794,Chipps,Benicia,71.47999999999999,52.04,Carquinez Strait,Chipps to Benicia,71.48 to 52.04,5,1,38.046132,-121.912643,38.041233,-122.12382,2016-05-14_AR_Sunrise_Ramp_Rel,1,10,2016-05-14,AR_Sunrise_Ramp_Rel
+1,0,1,1,Benicia,GoldenGateE,52.04,1.71,SF Bay,Benicia to GoldenGateE,52.04 to 1.71,1,1,38.041233,-122.12382,37.82794,-122.46168,2016-05-14_AR_Sunrise_Ramp_Rel,1,11,2016-05-14,AR_Sunrise_Ramp_Rel

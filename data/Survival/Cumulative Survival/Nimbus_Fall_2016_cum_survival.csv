@@ -1,14 +1,13 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
-1,0,1,1,Nimbus_Fall_2016,AR_Sunrise_Ramp_Rel,206.04,0,Amer R,299,38.63634,-121.26424
-0.98,0.008,0.956,0.991,Nimbus_Fall_2016,AR_RanchoCordova,199.37,1,Amer R,292,38.61468,-121.30276
-0.95,0.013,0.919,0.97,Nimbus_Fall_2016,AR_Downstream_WattAve,188.07,2,Amer R,282,38.56572,-121.39069
-0.9,0.017,0.861,0.929,Nimbus_Fall_2016,AR_Upstream_Hwy80,180.95,3,Amer R,267,38.58339,-121.44109
-0.843,0.021,0.797,0.88,Nimbus_Fall_2016,AR_Mouth,174.27,4,Amer R,251,38.59999,-121.50684
-0.739,0.025,0.686,0.786,Nimbus_Fall_2016,TowerBridge,172,5,Lower Sac R,220,38.5802,-121.508
-0.724,0.026,0.67,0.772,Nimbus_Fall_2016,I80-50_Br,170.74,6,Lower Sac R,212,38.571133,-121.5164
-0.659,0.027,0.603,0.71,Nimbus_Fall_2016,SacTrawl1,167,7,Lower Sac R,197,38.54081,-121.51331
-0.659,0.027,0.603,0.71,Nimbus_Fall_2016,SacTrawl2,166.63,8,Lower Sac R,197,38.53823,-121.51557
-0.552,0.029,0.495,0.607,Nimbus_Fall_2016,Freeport,152.43,9,Lower Sac R,165,38.46467,-121.50501
-0.017,0.007,0.007,0.04,Nimbus_Fall_2016,Chipps,71.47999999999999,10,West Delta,5,38.046132,-121.912643
-0.003,0.003,0,0.023,Nimbus_Fall_2016,Benicia,52.04,11,Carquinez Strait,1,38.041233,-122.12382
-0.003,0.003,0,0.023,Nimbus_Fall_2016,GoldenGateE,1.71,12,SF Bay,1,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+AR_Sunrise_Ramp_Rel,0.5,1,0,0,0,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,206.04,38.63634,-121.26424,Amer R,1 (NA),0.5,299,AR_Sunrise_Ramp_Rel
+AR_RanchoCordova,1,0.98,0.008,0.96,0.99,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,199.37,38.61468,-121.30276,Amer R,0.98 (0.008),1,292,AR_Sunrise_Ramp_Rel
+AR_Downstream_WattAve,2,0.95,0.013,0.92,0.97,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,188.07,38.56572,-121.39069,Amer R,0.95 (0.013),2,282,AR_Sunrise_Ramp_Rel
+AR_Upstream_Hwy80,3,0.9,0.017,0.86,0.93,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,180.95,38.58339,-121.44109,Amer R,0.9 (0.017),3,267,AR_Sunrise_Ramp_Rel
+AR_Mouth,4,0.843,0.021,0.8,0.88,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,174.27,38.59999,-121.50684,Amer R,0.843 (0.021),4,251,AR_Sunrise_Ramp_Rel
+TowerBridge,5,0.739,0.025,0.69,0.79,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,172,38.5802,-121.508,Lower Sac R,0.739 (0.025),5,220,AR_Sunrise_Ramp_Rel
+I80-50_Br,6,0.724,0.026,0.67,0.77,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,170.74,38.571133,-121.5164,Lower Sac R,0.724 (0.026),6,212,AR_Sunrise_Ramp_Rel
+SacTrawl,7,0.659,0.027,0.6,0.71,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,166.815,38.539519999999996,-121.51444000000001,Lower Sac R,0.659 (0.027),7,197,AR_Sunrise_Ramp_Rel
+Freeport,8,0.552,0.029,0.5,0.61,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,152.43,38.46467,-121.50501,Lower Sac R,0.552 (0.029),8,165,AR_Sunrise_Ramp_Rel
+Chipps,9,0.017,0.007,0.01,0.04,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,71.47999999999999,38.046132,-121.912643,West Delta,0.017 (0.007),9,5,AR_Sunrise_Ramp_Rel
+Benicia,10,0.003,0.003,0,0.02,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,52.04,38.041233,-122.12382,Carquinez Strait,0.003 (0.003),10,1,AR_Sunrise_Ramp_Rel
+GoldenGateE,11,0.003,0.003,0,0.02,1,2016-05-14_AR_Sunrise_Ramp_Rel,2016-05-14,Nimbus_Fall_2016,1.71,37.82794,-122.46168,SF Bay,0.003 (0.003),11,1,AR_Sunrise_Ramp_Rel

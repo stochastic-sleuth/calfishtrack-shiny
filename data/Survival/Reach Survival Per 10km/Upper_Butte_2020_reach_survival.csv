@@ -1,0 +1,2 @@
+estimate,se,lcl,ucl,CI,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,group,reach_num,mean_rel_date,release_site
+0.448,0.094,0.279,0.631,0.35018990000000005,UpperButte_RST_Rel,UpperButte1,340.85,324.1,Butte Creek,UpperButte_RST_Rel to UpperButte1,340.85 to 324.1,23,6,39.70936,-121.75056,39.58413,-121.80032,2020-05-17_UpperButte_RST_Rel,1,1,2020-05-17,UpperButte_RST_Rel

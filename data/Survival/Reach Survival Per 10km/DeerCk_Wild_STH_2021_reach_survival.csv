@@ -1,59 +1,25 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.7152826,0.0625589,0.5791053,0.821018,DeerCk_Wild_STH_2021,Abv_WoodsonBr,Blw_IrvineFinch,425.158,394.668,Upper Sac R,"Abv_WoodsonBr to 
-Blw_IrvineFinch",425.158 to 394.668,12,9,39.920094,-122.08446000000001,39.73146,-121.97483
-1,0,1,1,DeerCk_Wild_STH_2021,Blw_IrvineFinch,Ord,394.668,371.658,Upper Sac R,"Blw_IrvineFinch to 
-Ord",394.668 to 371.658,9,6,39.73146,-121.97483,39.63447,-121.98959
-0.6647639,0.1577909,0.3311074,0.888189,DeerCk_Wild_STH_2021,Ord,BlwOrd,371.658,361.728,Upper Sac R,"Ord to 
-BlwOrd",371.658 to 361.728,6,6,39.63447,-121.98959,39.56548,-122.0018
-1,0,1,1,DeerCk_Wild_STH_2021,BlwOrd,ButteBr,361.728,344.108,Upper Sac R,"BlwOrd to 
-ButteBr",361.728 to 344.108,6,3,39.56548,-122.0018,39.4569,-121.995
-1,0,1,1,DeerCk_Wild_STH_2021,ButteBr,Colusa AC3,344.108,331.158,Lower Sac R,"ButteBr to 
-Colusa AC3",344.108 to 331.158,3,5,39.4569,-121.995,39.36038,-122.01373
-1,0,1,1,DeerCk_Wild_STH_2021,Colusa AC3,Colusa AC2,331.158,318.618,Lower Sac R,"Colusa AC3 to 
-Colusa AC2",331.158 to 318.618,5,6,39.36038,-122.01373,39.28007,-122.01891
-1,0,1,1,DeerCk_Wild_STH_2021,Colusa AC2,AbvColusaBr,318.618,307.738,Lower Sac R,"Colusa AC2 to 
-AbvColusaBr",318.618 to 307.738,6,6,39.28007,-122.01891,39.2205,-122.00847
-1,0,1,1,DeerCk_Wild_STH_2021,AbvColusaBr,Colusa BC2,307.738,296.278,Lower Sac R,"AbvColusaBr to 
-Colusa BC2",307.738 to 296.278,6,6,39.2205,-122.00847,39.184963,-121.943214
-1,0,1,1,DeerCk_Wild_STH_2021,Colusa BC2,Colusa BC3,296.278,287.208,Lower Sac R,"Colusa BC2 to 
-Colusa BC3",296.278 to 287.208,6,5,39.184963,-121.943214,39.13132,-121.936554
-1,1.066295e-7,0.9999998,1.0000002,DeerCk_Wild_STH_2021,Colusa BC3,AbvTisdale,287.208,269.238,Lower Sac R,"Colusa BC3 to 
-AbvTisdale",287.208 to 269.238,5,6,39.13132,-121.936554,39.0364,-121.82918
-1,0,1,1,DeerCk_Wild_STH_2021,AbvTisdale,BlwTisdale,269.238,261.408,Lower Sac R,"AbvTisdale to 
-BlwTisdale",269.238 to 261.408,6,6,39.0364,-121.82918,38.98941,-121.80463
-1,0,1,1,DeerCk_Wild_STH_2021,BlwTisdale,BlwChinaBend,261.408,240.618,Lower Sac R,"BlwTisdale to 
-BlwChinaBend",261.408 to 240.618,6,5,38.98941,-121.80463,38.88406,-121.81713
-1,0,1,1,DeerCk_Wild_STH_2021,BlwChinaBend,Knights_RST,240.618,222.05,Lower Sac R,"BlwChinaBend to 
-Knights_RST",240.618 to 222.05,5,6,38.88406,-121.81713,38.79348,-121.6914625
-1,0,1,1,DeerCk_Wild_STH_2021,Knights_RST,KnightsBlwRST,222.05,221.58,Lower Sac R,"Knights_RST to 
-KnightsBlwRST",222.05 to 221.58,6,6,38.79348,-121.6914625,38.78877,-121.694
-1,0,1,1,DeerCk_Wild_STH_2021,KnightsBlwRST,Abv_FremontWeir,221.58,215.18,Lower Sac R,"KnightsBlwRST to 
-Abv_FremontWeir",221.58 to 215.18,6,6,38.78877,-121.694,38.76009,-121.67145
-1,0,1,1,DeerCk_Wild_STH_2021,Abv_FremontWeir,Blw_FremontWeir,215.18,210.36,Lower Sac R,"Abv_FremontWeir to 
-Blw_FremontWeir",215.18 to 210.36,6,1,38.76009,-121.67145,38.77015,-121.6322
-1,0,1,1,DeerCk_Wild_STH_2021,Blw_FremontWeir,Blw_FRConf,210.36,203.468,Lower Sac R,"Blw_FremontWeir to 
-Blw_FRConf",210.36 to 203.468,1,2,38.77015,-121.6322,38.778105,-121.607845
-1,0,1,1,DeerCk_Wild_STH_2021,Blw_FRConf,Blw_FR_GS2,203.468,199,Lower Sac R,"Blw_FRConf to 
-Blw_FR_GS2",203.468 to 199,2,2,38.778105,-121.607845,38.73505,-121.60267
-1,0,1,1,DeerCk_Wild_STH_2021,Blw_FR_GS2,Blw_Elkhorn_GS1,199,191.92,Lower Sac R,"Blw_FR_GS2 to 
-Blw_Elkhorn_GS1",199 to 191.92,2,6,38.73505,-121.60267,38.64737,-121.57771
-1,0,1,1,DeerCk_Wild_STH_2021,Blw_Elkhorn_GS1,TowerBridge,191.92,172,Lower Sac R,"Blw_Elkhorn_GS1 to 
-TowerBridge",191.92 to 172,6,6,38.64737,-121.57771,38.5802,-121.508
-1,2.939403e-8,0.9999999,1.0000001,DeerCk_Wild_STH_2021,TowerBridge,I80-50_Br,172,170.748,Lower Sac R,"TowerBridge to 
-I80-50_Br",172 to 170.748,6,4,38.5802,-121.508,38.571133,-121.5164
-1,0,1,1,DeerCk_Wild_STH_2021,I80-50_Br,SacTrawl,170.748,166.8225,Lower Sac R,"I80-50_Br to 
-SacTrawl",170.748 to 166.8225,4,6,38.571133,-121.5164,38.539519999999996,-121.51444000000001
-1,0,1,1,DeerCk_Wild_STH_2021,SacTrawl,Little Pocket_DS of I80,166.8225,164.387,Lower Sac R,"SacTrawl to 
-Little Pocket_DS of I80",166.8225 to 164.387,6,6,38.539519999999996,-121.51444000000001,38.52448,-121.52849
-1,0,1,1,DeerCk_Wild_STH_2021,Little Pocket_DS of I80,Freeport,164.387,152.438,Lower Sac R,"Little Pocket_DS of I80 to 
-Freeport",164.387 to 152.438,6,6,38.52448,-121.52849,38.46467,-121.50501
-1,0,1,1,DeerCk_Wild_STH_2021,Freeport,Abv_Clarksburg,152.438,147.668,Lower Sac R,"Freeport to 
-Abv_Clarksburg",152.438 to 147.668,6,4,38.46467,-121.50501,38.43443,-121.52448
-0.8243689,0.159437,0.3515759,0.9759807,DeerCk_Wild_STH_2021,Abv_Clarksburg,Hood,147.668,138.228,Lower Sac R,"Abv_Clarksburg to 
-Hood",147.668 to 138.228,4,2,38.43443,-121.52448,38.3617,-121.52033
-1,2.557899e-5,0.9999499,1.0000501,DeerCk_Wild_STH_2021,Hood,Benicia,138.228,52.144000000000005,Lower Sac R,"Hood to 
-Benicia",138.228 to 52.144,2,5,38.3617,-121.52033,38.0423015,-122.1236
-0.9793242,0.0541581,0.2002846,0.9998884,DeerCk_Wild_STH_2021,Benicia,GoldenGateE,52.144000000000005,1.71,Carquinez Strait,"Benicia to 
-GoldenGateE",52.144 to 1.71,5,3,38.0423015,-122.1236,37.82794,-122.46168
-0.1565302,119.41579,1.032317e-309,1,DeerCk_Wild_STH_2021,GoldenGateE,GoldenGateW,1.71,0.8,SF Bay,"GoldenGateE to 
-GoldenGateW",1.71 to 0.8,3,3,37.82794,-122.46168,37.82126,-122.46918
+reach_end,reach_start,estimate,se,lcl,ucl,rkm_start,rkm_end,Region,Reach,RKM,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,mean_rel_date,count_at_start,count_at_end,group,reach_num,release_site
+GCID,DeerCk_RST_Rel,0.99,0.006,0.97,0.997,441.728,404.941,Upper Sac R,DeerCk_RST_Rel to GCID,441.728 to 404.941,39.9974,-121.967735,39.796839,-122.049394,2021-03-19_DeerCk_RST_Rel,2021-03-19,12,7,1,1,DeerCk_RST_Rel
+Blw_IrvineFinch,GCID,0.973,0.022,0.872,0.995,404.941,394.668,Upper Sac R,GCID to Blw_IrvineFinch,404.941 to 394.668,39.796839,-122.049394,39.73146,-121.97483,2021-03-19_DeerCk_RST_Rel,2021-03-19,7,5,1,2,DeerCk_RST_Rel
+Ord,Blw_IrvineFinch,0.99,0.01,0.934,0.999,394.668,371.658,Upper Sac R,Blw_IrvineFinch to Ord,394.668 to 371.658,39.73146,-121.97483,39.63447,-121.98959,2021-03-19_DeerCk_RST_Rel,2021-03-19,5,4,1,3,DeerCk_RST_Rel
+BlwOrd,Ord,1,0,1,1,371.658,361.728,Upper Sac R,Ord to BlwOrd,371.658 to 361.728,39.63447,-121.98959,39.56548,-122.0018,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,4,DeerCk_RST_Rel
+Colusa AC2,BlwOrd,1,0,1,1,361.728,318.618,Lower Sac R,BlwOrd to Colusa AC2,361.728 to 318.618,39.56548,-122.0018,39.28007,-122.01891,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,5,DeerCk_RST_Rel
+AbvColusaBr,Colusa AC2,1,0,1,1,318.618,307.738,Lower Sac R,Colusa AC2 to AbvColusaBr,318.618 to 307.738,39.28007,-122.01891,39.2205,-122.00847,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,6,DeerCk_RST_Rel
+Colusa BC2,AbvColusaBr,1,0,1,1,307.738,296.278,Lower Sac R,AbvColusaBr to Colusa BC2,307.738 to 296.278,39.2205,-122.00847,39.184963,-121.943214,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,7,DeerCk_RST_Rel
+Colusa BC3,Colusa BC2,1,0,1,1,296.278,287.208,Lower Sac R,Colusa BC2 to Colusa BC3,296.278 to 287.208,39.184963,-121.943214,39.13132,-121.936554,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,8,DeerCk_RST_Rel
+AbvTisdale,Colusa BC3,1,0,1,1,287.208,269.238,Lower Sac R,Colusa BC3 to AbvTisdale,287.208 to 269.238,39.13132,-121.936554,39.0364,-121.82918,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,9,DeerCk_RST_Rel
+BlwTisdale,AbvTisdale,1,0,1,1,269.238,261.408,Lower Sac R,AbvTisdale to BlwTisdale,269.238 to 261.408,39.0364,-121.82918,38.98941,-121.80463,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,10,DeerCk_RST_Rel
+BlwChinaBend,BlwTisdale,1,0,1,1,261.408,240.618,Lower Sac R,BlwTisdale to BlwChinaBend,261.408 to 240.618,38.98941,-121.80463,38.88406,-121.81713,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,11,DeerCk_RST_Rel
+Knights_RST,BlwChinaBend,1,0,1,1,240.618,222.05,Lower Sac R,BlwChinaBend to Knights_RST,240.618 to 222.05,38.88406,-121.81713,38.79248,-121.69087,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,12,DeerCk_RST_Rel
+KnightsBlwRST,Knights_RST,1,0,1,1,222.05,221.58,Lower Sac R,Knights_RST to KnightsBlwRST,222.05 to 221.58,38.79248,-121.69087,38.78877,-121.694,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,13,DeerCk_RST_Rel
+Abv_FremontWeir,KnightsBlwRST,1,0,1,1,221.58,215.18,Lower Sac R,KnightsBlwRST to Abv_FremontWeir,221.58 to 215.18,38.78877,-121.694,38.76009,-121.67145,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,14,DeerCk_RST_Rel
+Blw_Elkhorn_GS1,Abv_FremontWeir,1,0,1,1,215.18,191.92,Lower Sac R,Abv_FremontWeir to Blw_Elkhorn_GS1,215.18 to 191.92,38.76009,-121.67145,38.64737,-121.57771,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,15,DeerCk_RST_Rel
+TowerBridge,Blw_Elkhorn_GS1,1,0,1,1,191.92,172,Lower Sac R,Blw_Elkhorn_GS1 to TowerBridge,191.92 to 172,38.64737,-121.57771,38.5802,-121.508,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,16,DeerCk_RST_Rel
+SacTrawl,TowerBridge,1,0,1,1,172,166.822,Lower Sac R,TowerBridge to SacTrawl,172 to 166.822,38.5802,-121.508,38.539519999999996,-121.51444000000001,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,17,DeerCk_RST_Rel
+Little Pocket_DS of I80,SacTrawl,1,0,1,1,166.822,164.387,Lower Sac R,SacTrawl to Little Pocket_DS of I80,166.822 to 164.387,38.539519999999996,-121.51444000000001,38.52448,-121.52849,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,18,DeerCk_RST_Rel
+Freeport,Little Pocket_DS of I80,1,0,1,1,164.387,152.438,Lower Sac R,Little Pocket_DS of I80 to Freeport,164.387 to 152.438,38.52448,-121.52849,38.46467,-121.50501,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,19,DeerCk_RST_Rel
+Chipps,Freeport,0.997,0.003,0.981,1,152.438,71.486,West Delta,Freeport to Chipps,152.438 to 71.486,38.46467,-121.50501,38.046132,-121.912643,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,4,1,20,DeerCk_RST_Rel
+Benicia,Chipps,0.985,0.015,0.902,0.998,71.486,52.144,Carquinez Strait,Chipps to Benicia,71.486 to 52.144,38.046132,-121.912643,38.0423015,-122.1236,2021-03-19_DeerCk_RST_Rel,2021-03-19,4,3,1,21,DeerCk_RST_Rel
+GoldenGateE,Benicia,1,0,1,1,52.144,1.71,SF Bay,Benicia to GoldenGateE,52.144 to 1.71,38.0423015,-122.1236,37.82794,-122.46168,2021-03-19_DeerCk_RST_Rel,2021-03-19,3,2,1,22,DeerCk_RST_Rel
+GCID,DeerCk_RST_Rel,0.975,0.012,0.936,0.99,441.728,404.941,Upper Sac R,DeerCk_RST_Rel to GCID,441.728 to 404.941,39.9974,-121.967735,39.796839,-122.049394,2021-04-24_DeerCk_RST_Rel,2021-04-24,8,3,2,1,DeerCk_RST_Rel
+Blw_IrvineFinch,GCID,0.978,0.048,0.367,1,404.941,394.668,Upper Sac R,GCID to Blw_IrvineFinch,404.941 to 394.668,39.796839,-122.049394,39.73146,-121.97483,2021-04-24_DeerCk_RST_Rel,2021-04-24,3,2,2,2,DeerCk_RST_Rel

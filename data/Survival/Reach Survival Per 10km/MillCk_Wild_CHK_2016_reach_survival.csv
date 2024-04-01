@@ -1,11 +1,4 @@
-estimate,se,lcl,ucl,StudyID,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,reach_num,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end
-0.6230466,0.3618584,0.0746502,0.9713173,Nimbus_Fall_2018,MillCk_RST_Rel,MillCk1,450.7,449.92,Mill Ck,"MillCk_RST_Rel to 
-MillCk1",450.7 to 449.92,1,23,19,40.05479,-122.032104,40.055504,-122.04123
-0.9055565,0.0898474,0.5501965,0.9868699,Nimbus_Fall_2018,MillCk1,MillCk2,449.92,444.47,Mill Ck,"MillCk1 to 
-MillCk2",449.92 to 444.47,2,19,21,40.055504,-122.04123,40.046066,-122.09443
-0.8569293,0.1323226,0.4193618,0.980265,Nimbus_Fall_2018,MillCk2,Mill_Ck_Conf,444.47,441.31,Mill Ck,"MillCk2 to 
-Mill_Ck_Conf",444.47 to 441.31,3,21,20,40.046066,-122.09443,40.0327,-122.11987
-0.9368817,0.0432123,0.779934,0.9841687,Nimbus_Fall_2018,Mill_Ck_Conf,Abv_WoodsonBr,441.31,425.15,Upper Sac R,"Mill_Ck_Conf to 
-Abv_WoodsonBr",441.31 to 425.15,4,20,18,40.0327,-122.11987,39.920094,-122.08446000000001
-0.9994373,8.2525184,9.87985e-306,1,Nimbus_Fall_2018,Abv_WoodsonBr,GCID_blw,425.15,404.42,Upper Sac R,"Abv_WoodsonBr to 
-GCID_blw",425.15 to 404.42,5,18,1,39.920094,-122.08446000000001,39.79114,-122.036026
+estimate,se,lcl,ucl,reach_start,reach_end,rkm_start,rkm_end,Region,Reach,RKM,count_at_start,count_at_end,GenLat_start,GenLon_start,GenLat_end,GenLon_end,release,group,reach_num,mean_rel_date,release_site
+0.623,0.362,0.075,0.971,MillCk_RST_Rel,MillCk1,450.7,449.92,Mill Ck,MillCk_RST_Rel to MillCk1,450.7 to 449.92,23,19,40.05479,-122.032104,40.055504,-122.04123,2016-05-24_MillCk_RST_Rel,1,1,2016-05-24,MillCk_RST_Rel
+0.906,0.09,0.55,0.987,MillCk1,MillCk2,449.92,444.47,Mill Ck,MillCk1 to MillCk2,449.92 to 444.47,19,21,40.055504,-122.04123,40.046066,-122.09443,2016-05-24_MillCk_RST_Rel,1,2,2016-05-24,MillCk_RST_Rel
+0.857,0.132,0.419,0.98,MillCk2,Mill_Ck_Conf,444.47,441.31,Upper Sac R,MillCk2 to Mill_Ck_Conf,444.47 to 441.31,21,20,40.046066,-122.09443,40.0327,-122.11987,2016-05-24_MillCk_RST_Rel,1,3,2016-05-24,MillCk_RST_Rel

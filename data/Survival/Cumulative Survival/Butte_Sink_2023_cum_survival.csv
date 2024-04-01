@@ -1,0 +1,22 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Sanborn_Slough_Rel,0.5,1,0,0,0,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,288.65,39.32663,-121.8847,Butte Creek,1 (NA),0.5,60,Sanborn_Slough_Rel
+UpperButte3,1,0.95,0.028,0.86,0.98,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,267.216,39.1876,-121.90903,Butte Creek,0.95 (0.028),1,57,Sanborn_Slough_Rel
+I80-50_Br,2,0.45,0.064,0.33,0.58,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,170.748,38.571133,-121.5164,Lower Sac R,0.45 (0.064),2,19,Sanborn_Slough_Rel
+SacTrawl,3,0.45,0.064,0.33,0.58,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.45 (0.064),3,20,Sanborn_Slough_Rel
+Freeport,4,0.45,0.064,0.33,0.58,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,152.23149999999998,38.46467,-121.50501,Lower Sac R,0.45 (0.064),4,26,Sanborn_Slough_Rel
+Benicia,5,0.383,0.063,0.27,0.51,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.383 (0.063),5,23,Sanborn_Slough_Rel
+GoldenGateE,6,0.368,0.062,0.26,0.5,1,2023-05-06_Sanborn_Slough_Rel,2023-05-06,1.71,37.82794,-122.46168,SF Bay,0.368 (0.062),6,22,Sanborn_Slough_Rel
+North_Weir_Rel,0.5,1,0,0,0,2,2023-05-06_North_Weir_Rel,2023-05-06,289.49,39.33546,-121.8923,Butte Creek,1 (NA),0.5,65,North_Weir_Rel
+UpperButte3,1,0.754,0.053,0.64,0.84,2,2023-05-06_North_Weir_Rel,2023-05-06,267.216,39.1876,-121.90903,Butte Creek,0.754 (0.053),1,49,North_Weir_Rel
+I80-50_Br,2,0.308,0.057,0.21,0.43,2,2023-05-06_North_Weir_Rel,2023-05-06,170.748,38.571133,-121.5164,Lower Sac R,0.308 (0.057),2,19,North_Weir_Rel
+SacTrawl,3,0.308,0.057,0.21,0.43,2,2023-05-06_North_Weir_Rel,2023-05-06,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.308 (0.057),3,16,North_Weir_Rel
+Freeport,4,0.308,0.057,0.21,0.43,2,2023-05-06_North_Weir_Rel,2023-05-06,152.23149999999998,38.46467,-121.50501,Lower Sac R,0.308 (0.057),4,20,North_Weir_Rel
+Benicia,5,0.262,0.055,0.17,0.38,2,2023-05-06_North_Weir_Rel,2023-05-06,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.262 (0.055),5,17,North_Weir_Rel
+GoldenGateE,6,0.217,0.051,0.13,0.33,2,2023-05-06_North_Weir_Rel,2023-05-06,1.71,37.82794,-122.46168,SF Bay,0.217 (0.051),6,12,North_Weir_Rel
+Butte_Blw_Sanborn_Rel,0.5,1,0,0,0,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,293.01,39.35859,-121.89436,Butte Creek,1 (NA),0.5,67,Butte_Blw_Sanborn_Rel
+UpperButte3,1,0.522,0.061,0.4,0.64,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,267.216,39.1876,-121.90903,Butte Creek,0.522 (0.061),1,35,Butte_Blw_Sanborn_Rel
+I80-50_Br,2,0.105,0.037,0.05,0.2,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,170.748,38.571133,-121.5164,Lower Sac R,0.105 (0.037),2,7,Butte_Blw_Sanborn_Rel
+SacTrawl,3,0.105,0.037,0.05,0.2,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,166.8225,38.539519999999996,-121.51444000000001,Lower Sac R,0.105 (0.037),3,5,Butte_Blw_Sanborn_Rel
+Freeport,4,0.105,0.037,0.05,0.2,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,152.23149999999998,38.46467,-121.50501,Lower Sac R,0.105 (0.037),4,7,Butte_Blw_Sanborn_Rel
+Benicia,5,0.075,0.032,0.03,0.17,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.075 (0.032),5,5,Butte_Blw_Sanborn_Rel
+GoldenGateE,6,0.06,0.029,0.02,0.15,3,2023-05-07_Butte_Blw_Sanborn_Rel,2023-05-07,1.71,37.82794,-122.46168,SF Bay,0.06 (0.029),6,3,Butte_Blw_Sanborn_Rel

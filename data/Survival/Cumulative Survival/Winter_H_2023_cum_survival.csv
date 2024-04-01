@@ -1,0 +1,35 @@
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Bonnyview_Rel,0.5,1,0,0,0,1,2023-01-27_Bonnyview_Rel,2023-01-27,540.258,40.53758,-122.35724,Upper Sac R,1 (NA),0.5,507,Bonnyview_Rel
+Blw_ClearCr,1,0.982,0.006,0.97,0.99,1,2023-01-27_Bonnyview_Rel,2023-01-27,535.628,40.50188,-122.36192,Upper Sac R,0.982 (0.006),1,495,Bonnyview_Rel
+BlwCowCr,2,0.941,0.01,0.92,0.96,1,2023-01-27_Bonnyview_Rel,2023-01-27,520.698,40.46013,-122.22765,Upper Sac R,0.941 (0.01),2,474,Bonnyview_Rel
+Battle_Conf,3,0.911,0.013,0.88,0.93,1,2023-01-27_Bonnyview_Rel,2023-01-27,507.488,40.35371,-122.17734,Upper Sac R,0.911 (0.013),3,460,Bonnyview_Rel
+Blw_Paynes_Ck,4,0.856,0.016,0.82,0.88,1,2023-01-27_Bonnyview_Rel,2023-01-27,476.278,40.25534,-122.17332,Upper Sac R,0.856 (0.016),4,432,Bonnyview_Rel
+Altube,5,0.85,0.016,0.82,0.88,1,2023-01-27_Bonnyview_Rel,2023-01-27,460.4,40.15348,-122.1887,Upper Sac R,0.85 (0.016),5,428,Bonnyview_Rel
+Blw_Salt,6,0.85,0.016,0.82,0.88,1,2023-01-27_Bonnyview_Rel,2023-01-27,456.888,40.1464,-122.15246,Upper Sac R,0.85 (0.016),6,428,Bonnyview_Rel
+Mill_Ck_Conf,7,0.844,0.016,0.81,0.87,1,2023-01-27_Bonnyview_Rel,2023-01-27,441.318,40.0327,-122.11987,Upper Sac R,0.844 (0.016),7,426,Bonnyview_Rel
+Abv_WoodsonBr,8,0.817,0.017,0.78,0.85,1,2023-01-27_Bonnyview_Rel,2023-01-27,425.158,39.920094,-122.08446000000001,Upper Sac R,0.817 (0.017),8,412,Bonnyview_Rel
+GCID,9,0.77,0.019,0.73,0.8,1,2023-01-27_Bonnyview_Rel,2023-01-27,405.273,39.799051000000006,-122.0471165,Upper Sac R,0.77 (0.019),9,388,Bonnyview_Rel
+Blw_IrvineFinch,10,0.717,0.02,0.68,0.75,1,2023-01-27_Bonnyview_Rel,2023-01-27,394.668,39.73146,-121.97483,Upper Sac R,0.717 (0.02),10,361,Bonnyview_Rel
+Ord,11,0.62,0.022,0.58,0.66,1,2023-01-27_Bonnyview_Rel,2023-01-27,371.658,39.634564999999995,-121.98939,Upper Sac R,0.62 (0.022),11,238,Bonnyview_Rel
+BlwOrd,12,0.589,0.022,0.54,0.63,1,2023-01-27_Bonnyview_Rel,2023-01-27,361.728,39.56548,-122.0018,Upper Sac R,0.589 (0.022),12,295,Bonnyview_Rel
+AbvButteBr,13,0.53,0.022,0.49,0.57,1,2023-01-27_Bonnyview_Rel,2023-01-27,347.188,39.4717175,-121.995482,Lower Sac R,0.53 (0.022),13,263,Bonnyview_Rel
+Colusa AC3,14,0.485,0.024,0.44,0.53,1,2023-01-27_Bonnyview_Rel,2023-01-27,331.158,39.36038,-122.01373,Lower Sac R,0.485 (0.024),14,232,Bonnyview_Rel
+Benicia,15,0.16,0.016,0.13,0.19,1,2023-01-27_Bonnyview_Rel,2023-01-27,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.16 (0.016),15,81,Bonnyview_Rel
+GoldenGateE,16,0.127,0.016,0.1,0.16,1,2023-01-27_Bonnyview_Rel,2023-01-27,1.71,37.82794,-122.46168,SF Bay,0.127 (0.016),16,37,Bonnyview_Rel
+Bonnyview_Rel,0.5,1,0,0,0,2,2023-03-01_Bonnyview_Rel,2023-03-01,540.258,40.53758,-122.35724,Upper Sac R,1 (NA),0.5,362,Bonnyview_Rel
+Blw_ClearCr,1,0.961,0.01,0.94,0.98,2,2023-03-01_Bonnyview_Rel,2023-03-01,535.628,40.50188,-122.36192,Upper Sac R,0.961 (0.01),1,348,Bonnyview_Rel
+BlwCowCr,2,0.917,0.014,0.88,0.94,2,2023-03-01_Bonnyview_Rel,2023-03-01,520.698,40.46013,-122.22765,Upper Sac R,0.917 (0.014),2,332,Bonnyview_Rel
+Battle_Conf,3,0.89,0.016,0.85,0.92,2,2023-03-01_Bonnyview_Rel,2023-03-01,507.488,40.35371,-122.17734,Upper Sac R,0.89 (0.016),3,322,Bonnyview_Rel
+Blw_Paynes_Ck,4,0.832,0.02,0.79,0.87,2,2023-03-01_Bonnyview_Rel,2023-03-01,476.278,40.25534,-122.17332,Upper Sac R,0.832 (0.02),4,301,Bonnyview_Rel
+Altube,5,0.815,0.02,0.77,0.85,2,2023-03-01_Bonnyview_Rel,2023-03-01,460.4,40.15348,-122.1887,Upper Sac R,0.815 (0.02),5,295,Bonnyview_Rel
+Blw_Salt,6,0.815,0.02,0.77,0.85,2,2023-03-01_Bonnyview_Rel,2023-03-01,456.888,40.1464,-122.15246,Upper Sac R,0.815 (0.02),6,295,Bonnyview_Rel
+Mill_Ck_Conf,7,0.801,0.021,0.76,0.84,2,2023-03-01_Bonnyview_Rel,2023-03-01,441.318,40.0327,-122.11987,Upper Sac R,0.801 (0.021),7,290,Bonnyview_Rel
+Abv_WoodsonBr,8,0.793,0.021,0.75,0.83,2,2023-03-01_Bonnyview_Rel,2023-03-01,425.158,39.920094,-122.08446000000001,Upper Sac R,0.793 (0.021),8,287,Bonnyview_Rel
+GCID,9,0.752,0.023,0.7,0.79,2,2023-03-01_Bonnyview_Rel,2023-03-01,405.273,39.799051000000006,-122.0471165,Upper Sac R,0.752 (0.023),9,270,Bonnyview_Rel
+Blw_IrvineFinch,10,0.7,0.024,0.65,0.74,2,2023-03-01_Bonnyview_Rel,2023-03-01,394.668,39.73146,-121.97483,Upper Sac R,0.7 (0.024),10,251,Bonnyview_Rel
+Ord,11,0.603,0.026,0.55,0.65,2,2023-03-01_Bonnyview_Rel,2023-03-01,371.658,39.634564999999995,-121.98939,Upper Sac R,0.603 (0.026),11,213,Bonnyview_Rel
+BlwOrd,12,0.581,0.026,0.53,0.63,2,2023-03-01_Bonnyview_Rel,2023-03-01,361.728,39.56548,-122.0018,Upper Sac R,0.581 (0.026),12,204,Bonnyview_Rel
+AbvButteBr,13,0.539,0.026,0.49,0.59,2,2023-03-01_Bonnyview_Rel,2023-03-01,347.188,39.4717175,-121.995482,Lower Sac R,0.539 (0.026),13,191,Bonnyview_Rel
+Colusa AC3,14,0.539,0.026,0.49,0.59,2,2023-03-01_Bonnyview_Rel,2023-03-01,331.158,39.36038,-122.01373,Lower Sac R,0.539 (0.026),14,185,Bonnyview_Rel
+Benicia,15,0.246,0.023,0.2,0.29,2,2023-03-01_Bonnyview_Rel,2023-03-01,52.144000000000005,38.0423015,-122.1236,Carquinez Strait,0.246 (0.023),15,89,Bonnyview_Rel
+GoldenGateE,16,0.165,0.022,0.13,0.21,2,2023-03-01_Bonnyview_Rel,2023-03-01,1.71,37.82794,-122.46168,SF Bay,0.165 (0.022),16,36,Bonnyview_Rel

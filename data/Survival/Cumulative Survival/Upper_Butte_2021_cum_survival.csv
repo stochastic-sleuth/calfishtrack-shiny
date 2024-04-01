@@ -1,5 +1,4 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,Survival estimate (SE),Reach #,count,GenLat,GenLon
-1,0,0,0,Upper_Butte_2021,UpperButte_RST_Rel,340.854,0,Butte Creek,1 (NA),0,96,39.70936,-121.75056
-0.81,0.04,0.72,0.88,Upper_Butte_2021,UpperButte_SKWY,338.4,1,Butte Creek,0.81 (0.04),1,78,39.70481,-121.77057
-0.22,0.04,0.15,0.31,Upper_Butte_2021,UpperButte1,324.109,2,Butte Creek,0.22 (0.04),2,21,39.58413,-121.80032
-0.01,0.01,0,0.07,Upper_Butte_2021,UpperButte3,267.216,3,Butte Creek,0.01 (0.01),3,1,39.1876,-121.90903
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+UpperButte_RST_Rel,0.5,1,0,0,0,1,2021-04-21_UpperButte_RST_Rel,2021-04-21,Upper_Butte_2021,340.854,39.70936,-121.75056,Butte Creek,1 (NA),0.5,93,UpperButte_RST_Rel
+UpperButte_SKWY,1,0.839,0.038,0.75,0.9,1,2021-04-21_UpperButte_RST_Rel,2021-04-21,Upper_Butte_2021,338.4,39.70481,-121.77057,Butte Creek,0.839 (0.038),1,78,UpperButte_RST_Rel
+UpperButte1,2,0.226,0.043,0.15,0.32,1,2021-04-21_UpperButte_RST_Rel,2021-04-21,Upper_Butte_2021,324.109,39.58413,-121.80032,Butte Creek,0.226 (0.043),2,21,UpperButte_RST_Rel

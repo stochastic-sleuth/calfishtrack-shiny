@@ -1,15 +1,11 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
-1,0,1,1,ColemanFall_2012,BattleCk_CNFH_Rel,517.34,0,Battle Ck,169,40.398155,-122.14556
-1,0,0,0,ColemanFall_2012,BattleCk2,515.33,1,Battle Ck,27,40.3954,-122.16553
-0.965,0.025,0.866,0.991,ColemanFall_2012,Battle_Conf,507.48,2,Upper Sac R,72,40.35371,-122.17734
-0.951,0.027,0.862,0.984,ColemanFall_2012,Blw_Paynes_Ck,476.27,3,Upper Sac R,92,40.25534,-122.17332
-0.877,0.031,0.803,0.926,ColemanFall_2012,Blw_Salt,456.88,4,Upper Sac R,56,40.1464,-122.15246
-0.85,0.028,0.786,0.897,ColemanFall_2012,Abv_WoodsonBr,425.15,5,Upper Sac R,137,39.920094,-122.08446000000001
-0.817,0.038,0.731,0.88,ColemanFall_2012,Blw_IrvineFinch,394.66,6,Upper Sac R,124,39.73146,-121.97483
-0.7,0.13,0.409,0.887,ColemanFall_2012,ButteBr,344.1,7,Lower Sac R,29,39.4569,-121.995
-0.479,0.097,0.301,0.664,ColemanFall_2012,AbvTisdale,269.23,8,Lower Sac R,18,39.0364,-121.82918
-0.312,0.045,0.232,0.406,ColemanFall_2012,KnightsLandingBr,224.05,9,Lower Sac R,32,38.8021,-121.72
-0.216,0.041,0.147,0.307,ColemanFall_2012,TowerBridge,172,10,Lower Sac R,8,38.5802,-121.508
-0.189,0.03,0.137,0.256,ColemanFall_2012,FreeportDiv,153.13,11,Lower Sac R,32,38.47223,-121.50639
-0.05,0.017,0.025,0.097,ColemanFall_2012,Benicia,52.04,12,Carquinez Strait,7,38.041233,-122.12382
-0.036,0.014,0.016,0.077,ColemanFall_2012,GoldenGateE,1.71,13,SF Bay,1,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+BattleCk_CNFH_Rel,0.5,1,0,0,0,1,2012-04-19_BattleCk_CNFH_Rel,2012-04-19,517.34,40.398155,-122.14556,Battle Ck,1 (NA),0.5,97,BattleCk_CNFH_Rel
+Abv_WoodsonBr,1,0.892,0.032,0.81,0.94,1,2012-04-19_BattleCk_CNFH_Rel,2012-04-19,425.15,39.920094,-122.08446000000001,Upper Sac R,0.892 (0.032),1,82,BattleCk_CNFH_Rel
+Blw_IrvineFinch,2,0.819,0.051,0.7,0.9,1,2012-04-19_BattleCk_CNFH_Rel,2012-04-19,394.66,39.73146,-121.97483,Upper Sac R,0.819 (0.051),2,75,BattleCk_CNFH_Rel
+FreeportDiv,3,0.247,0.044,0.17,0.34,1,2012-04-19_BattleCk_CNFH_Rel,2012-04-19,153.13,38.47223,-121.50639,Lower Sac R,0.247 (0.044),3,24,BattleCk_CNFH_Rel
+GoldenGateE,4,0.031,0.018,0.01,0.09,1,2012-04-19_BattleCk_CNFH_Rel,2012-04-19,1.71,37.82794,-122.46168,SF Bay,0.031 (0.018),4,0,BattleCk_CNFH_Rel
+BattleCk_CNFH_Rel,0.5,1,0,0,0,2,2012-05-01_BattleCk_CNFH_Rel,2012-05-01,517.34,40.398155,-122.14556,Battle Ck,1 (NA),0.5,72,BattleCk_CNFH_Rel
+Abv_WoodsonBr,1,0.797,0.048,0.69,0.88,2,2012-05-01_BattleCk_CNFH_Rel,2012-05-01,425.15,39.920094,-122.08446000000001,Upper Sac R,0.797 (0.048),1,55,BattleCk_CNFH_Rel
+Blw_IrvineFinch,2,0.733,0.064,0.59,0.84,2,2012-05-01_BattleCk_CNFH_Rel,2012-05-01,394.66,39.73146,-121.97483,Upper Sac R,0.733 (0.064),2,49,BattleCk_CNFH_Rel
+FreeportDiv,3,0.111,0.037,0.06,0.21,2,2012-05-01_BattleCk_CNFH_Rel,2012-05-01,153.13,38.47223,-121.50639,Lower Sac R,0.111 (0.037),3,8,BattleCk_CNFH_Rel
+GoldenGateE,4,0.042,0.024,0.01,0.12,2,2012-05-01_BattleCk_CNFH_Rel,2012-05-01,1.71,37.82794,-122.46168,SF Bay,0.042 (0.024),4,1,BattleCk_CNFH_Rel

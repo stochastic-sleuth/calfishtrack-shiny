@@ -1,6 +1,5 @@
-cum.phi,cum.phi.se,LCI,UCI,StudyID,GEN,RKM,reach_num,Region,count,GenLat,GenLon
-1,0,1,1,Mok_Fall_2017,Sherman_Island_Rel,89.76,0,West Delta,289,38.038162,-121.72443
-0.983,0.008,0.959,0.993,Mok_Fall_2017,AntiochBridge,86.94,1,West Delta,284,38.024254,-121.75163
-0.344,0.028,0.291,0.401,Mok_Fall_2017,Chipps,71.47999999999999,2,West Delta,98,38.046132,-121.912643
-0.256,0.026,0.208,0.31,Mok_Fall_2017,Benicia,52.04,3,Carquinez Strait,71,38.041233,-122.12382
-0.188,0.026,0.142,0.244,Mok_Fall_2017,GoldenGateE,1.71,4,SF Bay,31,37.82794,-122.46168
+GEN,reach,cum.phi,cum.phi.se,LCI,UCI,group,release,mean_rel_date,studyID,GenRKM,GenLat,GenLon,Region,Survival estimate (SE),reach_num,count,release_site
+Sherman_Island_Rel,0.5,1,0,0,0,1,2017-04-28_Sherman_Island_Rel,2017-04-28,Mok_Fall_2017,89.76,38.038162,-121.72443,West Delta,1 (NA),0.5,289,Sherman_Island_Rel
+Chipps,1,0.344,0.028,0.29,0.4,1,2017-04-28_Sherman_Island_Rel,2017-04-28,Mok_Fall_2017,71.47999999999999,38.046132,-121.912643,West Delta,0.344 (0.028),1,98,Sherman_Island_Rel
+Benicia,2,0.256,0.026,0.21,0.31,1,2017-04-28_Sherman_Island_Rel,2017-04-28,Mok_Fall_2017,52.04,38.041233,-122.12382,Carquinez Strait,0.256 (0.026),2,71,Sherman_Island_Rel
+GoldenGateE,3,0.188,0.026,0.14,0.24,1,2017-04-28_Sherman_Island_Rel,2017-04-28,Mok_Fall_2017,1.71,37.82794,-122.46168,SF Bay,0.188 (0.026),3,31,Sherman_Island_Rel
